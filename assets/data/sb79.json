@@ -1,0 +1,114 @@
+{
+  "bill": {
+    "id": "SB 79",
+    "session": "2025-2026",
+    "author": "Senator Scott Wiener (D-San Francisco)",
+    "title": "Housing Development: Transit-Oriented Development",
+    "signed": "2025-10-10",
+    "signedBy": "Governor Gavin Newsom",
+    "officialUrl": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB79"
+  },
+  "tiers": [
+    {
+      "id": "adjacent",
+      "label": "Adjacent (within 200 ft of station)",
+      "appliesTo": ["Tier 1"],
+      "maxHeightFt": 95,
+      "maxDensityUnitsPerAcre": 160,
+      "approxStories": "9 to 10",
+      "notes": "Strongest allowance. Buildings over 85 ft trigger SB 423 prevailing-wage / skilled-and-trained labor standards."
+    },
+    {
+      "id": "quarter",
+      "label": "Within 1/4 mile of a Tier 1 station",
+      "appliesTo": ["Tier 1"],
+      "maxHeightFt": 75,
+      "maxDensityUnitsPerAcre": 120,
+      "maxFar": 3.5,
+      "approxStories": "7",
+      "notes": "Local height/density/FAR limits below these floors are preempted."
+    },
+    {
+      "id": "half",
+      "label": "Within 1/2 mile of a Tier 1 station",
+      "appliesTo": ["Tier 1"],
+      "maxHeightFt": 65,
+      "maxDensityUnitsPerAcre": 100,
+      "approxStories": "5 to 6",
+      "notes": "Outer ring. Still meaningfully more than most current Palo Alto downtown caps."
+    }
+  ],
+  "stationTypes": {
+    "tier1": {
+      "label": "Tier 1",
+      "definition": "Heavy rail or commuter rail with 72+ trains per day",
+      "examples": ["Caltrain (incl. Palo Alto, Cal Ave, San Antonio)", "BART", "select LA Metro lines"]
+    },
+    "tier2": {
+      "label": "Tier 2",
+      "definition": "Light rail, BRT, or commuter rail with 48-71 trains per day",
+      "examples": ["SF Muni Metro", "VTA light rail", "SacRT", "LA Metro light rail", "San Diego Trolley"]
+    }
+  },
+  "paloAlto": {
+    "stations": [
+      {
+        "name": "Palo Alto (University Ave) Caltrain",
+        "tier": "Tier 1",
+        "projectedUnits25yr": 1600,
+        "context": "Downtown Palo Alto. Surrounded by University Ave retail, parking lots, low-rise commercial."
+      },
+      {
+        "name": "California Avenue Caltrain",
+        "tier": "Tier 1",
+        "projectedUnits25yr": 900,
+        "context": "Restaurant row, mix of low-rise commercial and residential."
+      },
+      {
+        "name": "San Antonio Caltrain",
+        "tier": "Tier 1",
+        "projectedUnits25yr": 200,
+        "context": "Border of Palo Alto and Mountain View. Office and shopping."
+      }
+    ],
+    "cityResponse": "Palo Alto staff are exploring rezoning and a TOD 'alternative plan' to limit SB 79's effects while still meeting equivalent zoned-capacity targets."
+  },
+  "process": {
+    "approval": "Ministerial under SB 35 path — qualifying projects bypass CEQA and discretionary review.",
+    "preemption": "Local zoning that conflicts with the SB 79 floors is preempted, unless the city adopts a qualifying TOD alternative plan."
+  },
+  "sources": [
+    {
+      "title": "California YIMBY — SB 79 overview",
+      "url": "https://cayimby.org/legislation/sb-79/"
+    },
+    {
+      "title": "Bill text (leginfo)",
+      "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB79"
+    },
+    {
+      "title": "Sen. Wiener — Newsom signs SB 79",
+      "url": "https://sd11.senate.ca.gov/news/governor-newsom-signs-senator-wieners-landmark-law-build-more-homes-near-public-transit"
+    },
+    {
+      "title": "Holland & Knight legal analysis",
+      "url": "https://www.hklaw.com/en/insights/publications/2025/10/california-gov-gavin-newsom-signs-sb-79"
+    },
+    {
+      "title": "Allen Matkins legal alert",
+      "url": "https://www.allenmatkins.com/real-ideas/governor-newsom-approves-sb-79-high-density-transit-oriented-housing-development-projects.html"
+    },
+    {
+      "title": "Palo Alto Daily Post — 7-story buildings near Caltrain",
+      "url": "https://padailypost.com/2025/10/20/new-law-will-allow-7-story-buildings-near-caltrain-stations/"
+    },
+    {
+      "title": "Palo Alto Online — city's rezoning response",
+      "url": "https://www.paloaltoonline.com/housing/2026/04/27/palo-alto-looks-to-exemptions-rezoning-to-limit-sb-79-impacts/"
+    },
+    {
+      "title": "Palo Alto Online — downtown / San Antonio impact",
+      "url": "https://www.paloaltoonline.com/housing/2025/10/13/housing-bill-jolts-palo-altos-plans-for-downtown-san-antonio/"
+    }
+  ]
+}

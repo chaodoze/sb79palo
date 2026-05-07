@@ -492,3 +492,23 @@ table.tiers .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .qa details > .more a { color: var(--ink-soft); }
 .qa details[open] { padding-bottom: 1.2em; }
 .qa details[id] { scroll-margin-top: 4rem; }
+
+/* ---- Tier analysis page ---- */
+table.tier-verdict-table { font-size: 1rem; }
+table.tier-verdict-table td:nth-child(2) { font-weight: 700; }
+
+.script-output {
+  background: #1c1c1a;
+  color: #eaeae5;
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin: 1.2em 0 1.6em;
+  white-space: pre;
+}
+@media (prefers-color-scheme: dark) {
+  .script-output { background: #0a0a08; color: #d4d3cc; border: 1px solid var(--rule); }
+}

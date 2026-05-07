@@ -1,0 +1,10 @@
+{
+  "_comment": "Config for sb79palo's tier-analysis page. Mirrors ~/.claude/skills/sb79-tier-determination/example-config.json but writes the output into this site's assets/data/. Refresh by running: node ~/.claude/skills/sb79-tier-determination/compute-tiers.mjs --config scripts/compute-tiers.config.json",
+  "gtfs_url": "https://data.trilliumtransit.com/gtfs/caltrain-ca-us/caltrain-ca-us.zip",
+  "stations": [
+    { "name": "Palo Alto / University Ave Caltrain", "match_pattern": "^Palo Alto Caltrain " },
+    { "name": "California Avenue Caltrain", "match_pattern": "^California Avenue Caltrain " },
+    { "name": "San Antonio Caltrain", "match_pattern": "^San Antonio Caltrain " }
+  ],
+  "output_path": "../assets/data/station-tiers.json"
+}

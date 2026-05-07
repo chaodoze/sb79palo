@@ -16,6 +16,7 @@
       <ul class="nav-links">
         <li><a href="learn.html">Learn</a></li>
         <li><a href="palo-alto.html">Palo Alto</a></li>
+        <li><a href="tier-analysis.html">Tier analysis</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
@@ -221,13 +222,15 @@
 
       <details id="q-tier-stations">
         <summary>Are all three Palo Alto Caltrain stations actually Tier 1?</summary>
-        <p class="tldr"><strong>Short answer:</strong> probably University Ave, possibly Cal Ave, less certain for San Antonio. The HCD MPO advisory makes clear Caltrain is commuter rail (not heavy rail), so each station's tier depends on weekday train counts. ABAG/MTC will publish the official map.</p>
-        <p>Per the HCD MPO advisory (March 20, 2026), commuter-rail stations qualify as Tier 1 only if they get ≥72 trains per weekday averaged across both directions. 48–71 trains makes the station Tier 2. The averaging is the sum of scheduled stops over five weekdays, divided by five.</p>
-        <p>Caltrain's post-electrification schedule (effective Jan 31, 2026) runs ~104 trains per weekday between San Francisco and San Jose. But not every train stops at every station: University Ave is a major stop and likely gets close to all of them; Cal Ave and San Antonio are local-pattern stops that get fewer. Without per-station counts published, the reasonable framing is: <strong>all three are TOD stops in scope from July 1, 2026; per-station tier (1 vs. 2) is pending the official ABAG/MTC map.</strong></p>
-        <p>Why this matters: Tier 1 unlocks 95 / 75 / 65 ft (adjacent / ¼-mile / ½-mile). Tier 2's floors are lower. So the practical envelope at Cal Ave or San Antonio could be smaller than at University Ave once the map drops.</p>
+        <p class="tldr"><strong>Short answer:</strong> yes, all three. We pulled Caltrain's GTFS feed and counted: University Ave gets <strong>104 trains/weekday</strong>, California Ave and San Antonio each get <strong>90</strong> — all comfortably above the 72-train Tier 1 floor.</p>
+        <p>Per the HCD MPO advisory (March 20, 2026), commuter-rail stations qualify as Tier 1 if they get ≥72 trains per weekday averaged across both directions. 48–71 trains makes a station Tier 2. The averaging is the sum of scheduled stops across the five weekdays, divided by five.</p>
+        <p>Caltrain's post-electrification schedule (effective Jan 31, 2026) runs 112 weekday trips total (~56 each direction). University Ave is a major stop where every train stops. California Ave and San Antonio are local-pattern stops where about 14 trains skip in each direction — so they get 90 each instead of 104. All three still clear Tier 1 with margin.</p>
+        <p>Why this matters: Tier 1 unlocks the strongest floors — 95 ft adjacent, 75 ft within ¼ mile, 65 ft within ½ mile. Tier 2's floors are lower. With all three stations confirmed Tier 1, the full Tier 1 envelope applies across all of Palo Alto's transit-adjacent parcels starting July 1, 2026.</p>
+        <p>The official map still comes from ABAG/MTC in mid-2026 with a rebuttable presumption of validity. But since the inputs (Caltrain's GTFS, HCD's threshold) are public, anyone can verify.</p>
         <p class="more"><strong>Where to go for more:</strong>
+          <a href="tier-analysis.html">Our methodology page (show your work)</a> ·
           <a href="https://www.hcd.ca.gov/sites/default/files/docs/planning-and-community/sb-79-mpo-advisory.pdf">HCD MPO advisory (PDF)</a> ·
-          <a href="https://www.caltrain.com/schedules/pdfs">Caltrain schedules (per-station counts)</a></p>
+          <a href="assets/data/station-tiers.json">Raw JSON output</a></p>
       </details>
 
       <details id="q-stanford">

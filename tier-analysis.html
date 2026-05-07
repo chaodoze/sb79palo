@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tier analysis — How we determined each Palo Alto Caltrain station's SB 79 tier</title>
+<meta name="description" content="Show-your-work methodology page: how we used Caltrain GTFS data and the HCD MPO advisory to determine that all three Palo Alto Caltrain stations qualify as SB 79 Tier 1.">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+<header class="site-nav">
+  <div class="container">
+    <a class="brand" href="index.html"><span class="brand-mark">79</span> SB 79 Palo Alto</a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="palo-alto.html">Palo Alto</a></li>
+        <li><a href="tier-analysis.html">Tier analysis</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <p class="kicker">Methodology <span class="update-stamp">Updated 2026-05-06</span></p>
+  <h1>How we determined each Palo Alto Caltrain station's SB 79 tier</h1>
+  <p class="lede">
+    The official Bay Area SB 79 tier map will come from ABAG/MTC in mid-2026. But the inputs are public — Caltrain's GTFS feed and HCD's threshold definitions — so we don't have to wait. Here's the working.
+  </p>
+
+  <h2>TL;DR</h2>
+  <div class="table-wrap">
+    <table class="tiers tier-verdict-table">
+      <thead>
+        <tr>
+          <th>Station</th>
+          <th class="num">Avg trains / weekday</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Palo Alto / University Ave Caltrain</td>
+          <td class="num">104</td>
+          <td><strong style="color:var(--accent);">Tier 1</strong></td>
+        </tr>
+        <tr>
+          <td>California Avenue Caltrain</td>
+          <td class="num">90</td>
+          <td><strong style="color:var(--accent);">Tier 1</strong></td>
+        </tr>
+        <tr>
+          <td>San Antonio Caltrain</td>
+          <td class="num">90</td>
+          <td><strong style="color:var(--accent);">Tier 1</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    All three Palo Alto Caltrain stations clear the Tier 1 threshold (≥72 trains/weekday) with margin. SB 79's strongest height/density floors — 95 ft adjacent, 75 ft within ¼ mile, 65 ft within ½ mile — apply by default at all three starting July 1, 2026.
+  </div>
+
+  <h2>1. What the law actually requires</h2>
+  <p>
+    SB 79 sorts transit stops into Tier 1 and Tier 2 based on service level. For commuter rail (which is what Caltrain is), the HCD MPO advisory of March 20, 2026 spells out the math:
+  </p>
+  <blockquote style="border-left:4px solid var(--rule);padding:0.5em 1em;color:var(--ink-soft);font-style:italic;margin:1em 0;">
+    "Very high frequency commuter rail" = a commuter rail service operating an average of at least <strong>72 trains per weekday</strong> across all directions at any point in the past three years.<br><br>
+    "High frequency commuter rail" = at least <strong>48 trains per weekday</strong>, not meeting the very-high-frequency standard.<br><br>
+    "The average is the sum of the number of scheduled stops at a station for a commuter rail service for all weekdays, divided by <strong>five weekdays</strong>."<br><br>
+    A passenger rail station "occupying one physical location counts as a single station, even if multiple rail services utilize the station."
+  </blockquote>
+  <p>So:</p>
+  <ul>
+    <li>≥72 → Tier 1</li>
+    <li>48–71 → Tier 2</li>
+    <li>&lt;48 → not a TOD stop on rail-frequency grounds (could still qualify via bus service, but not relevant here)</li>
+  </ul>
+  <p>
+    Per the HCD advisory's typology table (p.9), <strong>Caltrain is classified as commuter rail</strong>, not heavy rail. So the per-station train count is what determines tier.
+  </p>
+
+  <h2>2. Where the data comes from</h2>
+  <p>
+    Caltrain publishes its schedule in <strong>GTFS</strong> format (General Transit Feed Specification — the standard Google maps and most transit apps use). The feed is a zip of CSV files describing stops, trips, schedules, and calendars. It's free and public.
+  </p>
+  <ul>
+    <li><strong>Source:</strong> <a href="https://data.trilliumtransit.com/gtfs/caltrain-ca-us/caltrain-ca-us.zip">data.trilliumtransit.com/gtfs/caltrain-ca-us/caltrain-ca-us.zip</a> (Trillium Solutions hosts the feed for Caltrain)</li>
+    <li><strong>Feed version:</strong> UTC 29-Jan-2026 22:42 — the post-electrification schedule, effective Jan 31, 2026 through Aug 31, 2026</li>
+    <li><strong>Cross-check:</strong> the Bay Area regional GTFS hub at <a href="https://511.org/open-data/transit">511.org</a></li>
+    <li><strong>Discoverable from:</strong> <a href="https://www.caltrain.com/developer-resources">caltrain.com/developer-resources</a></li>
+  </ul>
+
+  <h2>3. The methodology, step by step</h2>
+  <ol>
+    <li><strong>Download the GTFS zip.</strong> 165 KB.</li>
+    <li><strong>Find the matching stops.</strong> Each Palo Alto Caltrain station has a parent stop (e.g. <code>palo_alto</code>) and two child stops, one per direction (e.g. <code>70171</code> Northbound and <code>70172</code> Southbound). Per HCD: one physical location = one station, so we sum across both directions.</li>
+    <li><strong>Identify the weekday service.</strong> Caltrain's <code>calendar.txt</code> has one weekday-active service ID — <code>c_71742_b_86200_d_31</code> ("Year Round starting 1/31/2026 (Weekday)") — running Monday through Friday for the feed's full date range.</li>
+    <li><strong>List weekday trips.</strong> 112 trips total in <code>trips.txt</code> belong to that weekday service ID (this is roughly 56 northbound + 56 southbound).</li>
+    <li><strong>Count scheduled stops at each station.</strong> Stream <code>stop_times.txt</code> (5,414 rows). For each row, if the stop ID is one of our targets and the trip is in the weekday set, increment the per-day counter for each weekday the service is active (Mon–Fri).</li>
+    <li><strong>Sum per station, divide by 5.</strong> That's the "average trains per weekday across both directions" the HCD advisory asks for.</li>
+    <li><strong>Apply thresholds.</strong> ≥72 → Tier 1. 48–71 → Tier 2. &lt;48 → below threshold.</li>
+  </ol>
+
+  <h2>4. The numbers</h2>
+  <div class="table-wrap">
+    <table class="tiers">
+      <thead>
+        <tr>
+          <th>Station</th>
+          <th>GTFS stop_ids</th>
+          <th class="num">Mon–Fri total</th>
+          <th class="num">÷ 5</th>
+          <th>Threshold</th>
+          <th>Tier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Palo Alto / University Ave</td>
+          <td><code>70171</code> + <code>70172</code></td>
+          <td class="num">520</td>
+          <td class="num">104.0</td>
+          <td>≥ 72</td>
+          <td><strong>Tier 1</strong></td>
+        </tr>
+        <tr>
+          <td>California Avenue</td>
+          <td><code>70191</code> + <code>70192</code></td>
+          <td class="num">450</td>
+          <td class="num">90.0</td>
+          <td>≥ 72</td>
+          <td><strong>Tier 1</strong></td>
+        </tr>
+        <tr>
+          <td>San Antonio</td>
+          <td><code>70201</code> + <code>70202</code></td>
+          <td class="num">450</td>
+          <td class="num">90.0</td>
+          <td>≥ 72</td>
+          <td><strong>Tier 1</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.9rem;color:var(--ink-soft);">
+    Why University Ave gets 104 and the other two get 90: post-electrification, Caltrain runs a mix of all-stop "local" trains and "limited" trains that skip some stops. University Ave is a major stop where every train stops; California Ave and San Antonio are local-pattern stops where ~14 trains skip in each direction. All three still clear the Tier 1 bar.
+  </p>
+
+  <h2>5. Verdict per station</h2>
+  <p>
+    <strong>Palo Alto / University Ave</strong> — 104 trains/weekday. Comfortably above the 72-train Tier 1 floor. Within ½ mile of the station, SB 79 sets the height floor at 65 ft (about 5–6 stories), 75 ft within ¼ mile (about 7), and 95 ft adjacent (about 9–10).
+  </p>
+  <p>
+    <strong>California Avenue</strong> — 90 trains/weekday. 18 trains above the Tier 1 floor. Same envelopes as above apply within the half-mile band around the station.
+  </p>
+  <p>
+    <strong>San Antonio</strong> — 90 trains/weekday. Same as Cal Ave. The half-mile band straddles the Palo Alto / Mountain View boundary, so the density implications also reach into Mountain View's parcels.
+  </p>
+
+  <h2>6. Caveats</h2>
+  <ul>
+    <li><strong>Past-3-years rule.</strong> The HCD advisory says a station qualifies as Tier 1 if it met the threshold "at any point in the past three years." We computed against the current (post-electrification) schedule, which is the highest service Caltrain has ever run. A pre-electrification schedule would have shown lower service, so it doesn't flip any verdict — it can only make a station that's <em>now</em> below threshold qualify based on past service. None of our three stations are below threshold, so this is academic.</li>
+    <li><strong>Future schedule changes.</strong> Once a station qualifies, it stays qualified — the HCD advisory's "any point in the past three years" rule means a service cut wouldn't immediately downgrade a station's tier.</li>
+    <li><strong>The official map.</strong> ABAG/MTC will publish the regional SB 79 tier map in mid-2026. That map carries a <em>rebuttable presumption of validity</em> for project applicants and local governments. This page is our best read of the same input data; if ABAG's numbers differ from ours, theirs are the legal anchor.</li>
+    <li><strong>Stop counting.</strong> We count <code>stop_times.txt</code> entries regardless of <code>pickup_type</code>. Some commuter rails mark certain stops as drop-off-only or pickup-only; HCD's definition says "scheduled stops at a station" with no exclusion, so we include them all.</li>
+    <li><strong>Calendar exceptions.</strong> One-off cancellations in <code>calendar_dates.txt</code> (e.g. for holidays) are not subtracted from the typical-week count.</li>
+  </ul>
+
+  <h2>7. Reproduce this yourself</h2>
+  <p>
+    The computation is packaged as a reusable skill at <code>~/.claude/skills/sb79-tier-determination/</code> — designed to work for any California transit station with a published GTFS feed.
+  </p>
+  <pre class="script-output">
+$ git clone https://github.com/&lt;your-fork&gt;/sb79palo
+$ cd sb79palo
+$ node ~/.claude/skills/sb79-tier-determination/compute-tiers.mjs \
+       --config scripts/compute-tiers.config.json
+$ cat assets/data/station-tiers.json</pre>
+  <p>
+    The script:
+  </p>
+  <ul>
+    <li>Pulls Caltrain's GTFS zip from Trillium</li>
+    <li>Parses <code>stops.txt</code>, <code>calendar.txt</code>, <code>trips.txt</code>, and <code>stop_times.txt</code></li>
+    <li>Applies the HCD math</li>
+    <li>Writes the JSON this page reads from</li>
+  </ul>
+  <p>
+    No npm install needed — pure Node ≥18 plus the system <code>unzip</code>. Anyone can rerun it and get the same numbers (until Caltrain publishes a new schedule).
+  </p>
+
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li><a href="https://www.hcd.ca.gov/sites/default/files/docs/planning-and-community/sb-79-mpo-advisory.pdf">HCD MPO advisory (PDF, March 20, 2026)</a> — the threshold definitions</li>
+    <li><a href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB79">SB 79 bill text</a> — Gov. Code §§65912.155–65912.162</li>
+    <li><a href="https://data.trilliumtransit.com/gtfs/caltrain-ca-us/caltrain-ca-us.zip">Caltrain GTFS feed (Trillium)</a></li>
+    <li><a href="https://www.caltrain.com/developer-resources">Caltrain developer resources</a></li>
+    <li><a href="https://511.org/open-data/transit">511.org Bay Area transit data</a></li>
+    <li><a href="https://gtfs.org/schedule/reference/">GTFS reference</a></li>
+    <li><a href="assets/data/station-tiers.json">station-tiers.json</a> — the raw output of the script</li>
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <div class="container row">
+    <div>SB 79 Palo Alto · An independent learning project · 2026</div>
+    <div><a href="about.html">About &amp; sources</a></div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

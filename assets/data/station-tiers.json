@@ -1,0 +1,90 @@
+{
+  "computed_at": "2026-05-07T04:06:56.963Z",
+  "gtfs_source": {
+    "url": "https://data.trilliumtransit.com/gtfs/caltrain-ca-us/caltrain-ca-us.zip",
+    "feed_publisher": "Trillium Solutions, Inc.",
+    "feed_version": "UTC: 29-Jan-2026 22:42",
+    "feed_start_date": "20260131",
+    "feed_end_date": "20260831",
+    "downloaded_at": "2026-05-07T04:06:56.964Z"
+  },
+  "thresholds": {
+    "tier_1_min_avg_per_weekday": 72,
+    "tier_2_min_avg_per_weekday": 48,
+    "source": "HCD MPO advisory, March 20, 2026, p.4"
+  },
+  "stations": [
+    {
+      "input_name": "Palo Alto / University Ave Caltrain",
+      "match_pattern": "^Palo Alto Caltrain ",
+      "matched_gtfs_stop_ids": [
+        "70171",
+        "70172",
+        "palo_alto"
+      ],
+      "matched_gtfs_stop_name": "Palo Alto Caltrain Northbound",
+      "weekday_stops_per_day": {
+        "Mon": 104,
+        "Tue": 104,
+        "Wed": 104,
+        "Thu": 104,
+        "Fri": 104,
+        "total_5_day": 520,
+        "average": 104
+      },
+      "service_ids_used": [
+        "c_71742_b_86200_d_31"
+      ],
+      "tier": "1",
+      "tier_explanation": "Average 104.0 trains/weekday ≥ 72 → Tier 1 (very high frequency commuter rail)"
+    },
+    {
+      "input_name": "California Avenue Caltrain",
+      "match_pattern": "^California Avenue Caltrain ",
+      "matched_gtfs_stop_ids": [
+        "70191",
+        "70192",
+        "california_ave"
+      ],
+      "matched_gtfs_stop_name": "California Avenue Caltrain Northbound",
+      "weekday_stops_per_day": {
+        "Mon": 90,
+        "Tue": 90,
+        "Wed": 90,
+        "Thu": 90,
+        "Fri": 90,
+        "total_5_day": 450,
+        "average": 90
+      },
+      "service_ids_used": [
+        "c_71742_b_86200_d_31"
+      ],
+      "tier": "1",
+      "tier_explanation": "Average 90.0 trains/weekday ≥ 72 → Tier 1 (very high frequency commuter rail)"
+    },
+    {
+      "input_name": "San Antonio Caltrain",
+      "match_pattern": "^San Antonio Caltrain ",
+      "matched_gtfs_stop_ids": [
+        "70201",
+        "70202",
+        "san_antonio"
+      ],
+      "matched_gtfs_stop_name": "San Antonio Caltrain Northbound",
+      "weekday_stops_per_day": {
+        "Mon": 90,
+        "Tue": 90,
+        "Wed": 90,
+        "Thu": 90,
+        "Fri": 90,
+        "total_5_day": 450,
+        "average": 90
+      },
+      "service_ids_used": [
+        "c_71742_b_86200_d_31"
+      ],
+      "tier": "1",
+      "tier_explanation": "Average 90.0 trains/weekday ≥ 72 → Tier 1 (very high frequency commuter rail)"
+    }
+  ]
+}

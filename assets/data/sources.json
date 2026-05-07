@@ -33,6 +33,29 @@
       "note": "MTC/ABAG are required to publish the Bay Area SB 79 tier map; URL will move once posted."
     },
     {
+      "category": "transit-data",
+      "label": "Caltrain GTFS feed (Trillium-hosted)",
+      "url": "https://data.trilliumtransit.com/gtfs/caltrain-ca-us/caltrain-ca-us.zip",
+      "refresh_hint": "monthly",
+      "last_seen": "2026-05-06",
+      "note": "Used by tier-analysis.html to compute per-station weekday train counts. Re-run scripts/compute-tiers.config.json against this feed when Caltrain publishes a new schedule."
+    },
+    {
+      "category": "transit-data",
+      "label": "Caltrain developer resources",
+      "url": "https://www.caltrain.com/developer-resources",
+      "refresh_hint": "quarterly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "transit-data",
+      "label": "511.org Bay Area transit data hub",
+      "url": "https://511.org/open-data/transit",
+      "refresh_hint": "quarterly",
+      "last_seen": "2026-05-06",
+      "note": "Cross-check source for Caltrain GTFS; covers all Bay Area transit operators."
+    },
+    {
       "category": "local-government",
       "label": "City of Palo Alto — Planning & Development Services",
       "url": "https://www.paloalto.gov/Departments/Planning-Development-Services",

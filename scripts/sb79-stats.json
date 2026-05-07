@@ -1,0 +1,22 @@
+{
+  "per_station": {
+    "univ": {
+      "in_200ft": 68,
+      "in_1_4mi": 828,
+      "in_1_2mi": 1425,
+      "any_band_total": 2321
+    },
+    "calave": {
+      "in_200ft": 162,
+      "in_1_4mi": 892,
+      "in_1_2mi": 1979,
+      "any_band_total": 3033
+    },
+    "sanantonio": {
+      "in_200ft": 0,
+      "in_1_4mi": 129,
+      "in_1_2mi": 485,
+      "any_band_total": 614
+    }
+  }
+}

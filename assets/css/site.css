@@ -1060,6 +1060,172 @@ table.tiers th.num {
 .qa details[open] { padding-bottom: 1.4em; }
 .qa details[id] { scroll-margin-top: 5rem; }
 
+/* ---- Band-stats pills under each station map ---- */
+.band-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  list-style: none;
+  margin: 0.7em 0 0.5em;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+.band-stats li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2em 0.7em 0.2em 0.2em;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  margin: 0;
+}
+.band-stats .band {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0.25em 0.65em;
+  border-radius: 999px;
+  color: #fff;
+}
+.band-stats .band-adj { background: #8a2a20; }
+.band-stats .band-quarter { background: var(--red); }
+.band-stats .band-half { background: color-mix(in oklab, var(--red) 60%, var(--paper) 40%); color: var(--ink); }
+.band-stats .band-count { color: var(--ink); font-weight: 500; }
+.band-stats .band-floor { color: var(--ink-3); }
+
+/* ---- Parcel lookup widget ---- */
+.parcel-lookup {
+  margin: 2.4em 0 2em;
+  padding: 1.5rem 1.4rem 1.4rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+}
+.parcel-lookup::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--red);
+}
+.parcel-lookup h3 {
+  margin: 0 0 0.3em;
+  font-size: 1.2rem;
+  font-variation-settings: "opsz" 36, "SOFT" 40, "WONK" 1;
+}
+.parcel-lookup-help {
+  font-size: 0.93rem;
+  color: var(--ink-2);
+  margin: 0 0 1em;
+}
+.parcel-lookup-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.6em;
+}
+.parcel-lookup-input input {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  padding: 0.7em 0.95em;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid var(--rule);
+  border-radius: 6px;
+  letter-spacing: -0.005em;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.parcel-lookup-input input:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--red) 22%, transparent);
+}
+.parcel-result {
+  margin: 0.4em 0 0.6em;
+  min-height: 0;
+}
+.parcel-status {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  margin: 0.6em 0;
+}
+.parcel-miss {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  background: var(--paper);
+  border: 1px dashed var(--rule);
+  border-radius: 6px;
+  padding: 0.7em 0.95em;
+  margin: 0.6em 0;
+}
+.parcel-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--red);
+  border-radius: 0 6px 6px 0;
+  padding: 0.95em 1.1em 1em;
+  margin: 0.6em 0;
+}
+.parcel-card .parcel-apn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 0.2em;
+  font-weight: 600;
+}
+.parcel-card .parcel-address {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 36, "SOFT" 40, "WONK" 1;
+  font-weight: 600;
+  font-size: 1.18rem;
+  margin: 0 0 0.5em;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.parcel-card .parcel-band {
+  font-size: 0.95rem;
+  margin: 0.2em 0;
+  color: var(--ink);
+}
+.parcel-card .parcel-band strong { color: var(--red); }
+.parcel-card .parcel-zone,
+.parcel-card .parcel-height,
+.parcel-card .parcel-meta {
+  font-size: 0.92rem;
+  margin: 0.3em 0;
+  color: var(--ink-2);
+}
+.parcel-card .parcel-height strong { color: var(--ink); }
+.parcel-card .parcel-meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  border-top: 1px dashed var(--rule);
+  padding-top: 0.6em;
+  margin-top: 0.7em;
+}
+.parcel-lookup-meta {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  margin: 0.8em 0 0;
+}
+.parcel-lookup-meta a { color: var(--ink-2); }
+.parcel-lookup-meta a:hover { color: var(--red); }
+
 /* ---- Tier analysis page ---- */
 table.tier-verdict-table { font-size: 1rem; }
 table.tier-verdict-table td:nth-child(2) {

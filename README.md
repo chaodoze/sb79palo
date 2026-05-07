@@ -60,6 +60,24 @@ Configs (`.htmlhintrc`, `.stylelintrc.json`, `eslint.config.js`) live at the pro
 
 `assets/data/sb79.json` is the canonical source for SB 79 numbers. The `learn.html` tier table pulls from it. Update there first when laws change.
 
+## Re-running the parcel computation
+
+The per-parcel SB 79 inclusion data on `palo-alto.html` (maps + lookup widget) is precomputed by `scripts/compute-sb79-parcels.py`. It joins MTC's preliminary SB 79 TOD zones (fetched live from the public ArcGIS FeatureServer) with the City of Palo Alto's `ParcelReport` layer (a local gpkg export), and writes:
+
+- `assets/data/sb79-parcels.json` — affected-parcel records used by the address lookup
+- `assets/data/sb79-parcels.csv` — same data for download
+- `assets/img/sb79-{univ,calave,sanantonio}-parcels.svg` — per-station parcel maps
+- `scripts/sb79-stats.json` — counts per band per station (manually copy into the inline stats in `palo-alto.html` after re-running)
+
+Re-run when MTC publishes updates or the City republishes ParcelReport:
+
+```sh
+python3 -m pip install -r scripts/requirements.txt
+python3 scripts/compute-sb79-parcels.py --gpkg ~/Downloads/paloalto.gpkg
+```
+
+Requires Python 3.10+. The script uses `shapely`, `pyproj`, and `requests`; no system GDAL/OGR install needed (it parses GeoPackage geometry blobs in pure Python, including the `MultiSurface`/`CompoundCurve` wrappers the cadastral export uses).
+
 ## Disclaimer
 
 Educational content only — not legal advice.

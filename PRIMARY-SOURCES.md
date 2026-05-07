@@ -29,9 +29,21 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
 
 | Date | Item | Status | Link |
 |---|---|---|---|
-| 2026-05-04 | Council meeting where SB 79 was on agenda but **deferred due to late hour** | Video posted; minutes pending | [YouTube](https://www.youtube.com/watch?v=vM0GY2Rdnow) (deferral statement ≈ 4:58:56–4:59:28) |
+| 2026-05-04 | Council meeting where SB 79 was on agenda but **deferred due to late hour** | Video posted; transcript pulled; minutes pending | [YouTube](https://www.youtube.com/watch?v=vM0GY2Rdnow) (deferral exchange 4:58:43–5:00:24) |
+| 2026-05-18 | Possible SB 79 reschedule (per City Manager's on-the-record statement May 4) | Agenda not yet posted as of 2026-05-07 | [city clerk page](https://www.paloalto.gov/Departments/City-Clerk/City-Meeting-Groups/Meeting-Agendas-and-Minutes) |
 
-When verifying May 4 deferral: the City Manager's statement on time-sensitivity / rescheduling is in the video around 4:58:56–4:59:28. We have not yet quoted the motion verbatim from minutes — pending publication.
+#### May 4, 2026 deferral — verbatim from YouTube auto-transcript
+
+(Auto-generated; minor wording artifacts possible. Underlying recording is authoritative.)
+
+- **4:58:43 — Mayor:** "So colleagues it is 10:15… because some of our early items took a little longer than expected… I would suggest we think about deferring the last item on SB 79."
+- **4:59:15 — City Manager:** "Clearly this is a time-sensitive item, SB 79. So as such I think we'll look to bumping one of your other scheduled items in an upcoming agenda so that we can bring it back. There is a possibility for it to come back on the 18th of May, which would require us to defer an item that was already scheduled, but at this point that's our current thinking."
+- **4:59:42 — Mayor:** "We can't let it go very long but it is quite late… I would apologize to [public commenters] that we are going to defer this but I think that'll allow greater participation."
+- **5:00:15 — Mayor:** "Seeing no objections to deferring this item from my colleagues, I think we will do that, and we will stand adjourned this evening."
+
+#### How we pulled the transcript (in case YouTube changes their UI)
+
+YouTube's auto-generated captions for this video are accessible via the "Show transcript" button in the description. The transcript panel uses `transcript-segment-view-model` custom elements (not the older `ytd-transcript-segment-renderer`). Each segment's `innerText` starts with a `H:MM:SS` timestamp. The `mcp__transcriber__transcribe` MCP tool failed with YouTube bot detection (yt-dlp blocked); the workaround was to use Chrome MCP to open the video, click "Show transcript," and read the DOM via `mcp__claude-in-chrome__javascript_tool`. See repo memory `reference_primary_sources_tracker.md` for the JS snippet.
 
 ---
 

@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "description": "Canonical URLs this site monitors for SB 79 + Palo Alto updates. Future automation will fetch each, diff against last_seen content, and surface changes.",
+  "updated": "2026-05-06",
+  "sources": [
+    {
+      "category": "official",
+      "label": "HCD — SB 79 Transit-Oriented Development page",
+      "url": "https://www.hcd.ca.gov/planning-and-research/sb79-tod",
+      "refresh_hint": "weekly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "official",
+      "label": "HCD MPO advisory (March 20, 2026)",
+      "url": "https://www.hcd.ca.gov/sites/default/files/docs/planning-and-community/sb-79-mpo-advisory.pdf",
+      "refresh_hint": "monthly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "official",
+      "label": "Bill text — leginfo (SB 79, 2025–2026 session)",
+      "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB79",
+      "refresh_hint": "monthly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "regional",
+      "label": "ABAG / MTC — SB 79 regional TOD-stop map (forthcoming)",
+      "url": "https://abag.ca.gov/",
+      "refresh_hint": "weekly",
+      "last_seen": "2026-05-06",
+      "note": "MTC/ABAG are required to publish the Bay Area SB 79 tier map; URL will move once posted."
+    },
+    {
+      "category": "local-government",
+      "label": "City of Palo Alto — Planning & Development Services",
+      "url": "https://www.paloalto.gov/Departments/Planning-Development-Services",
+      "refresh_hint": "weekly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "local-government",
+      "label": "City of Palo Alto — Council meeting agendas & minutes",
+      "url": "https://www.paloalto.gov/Departments/City-Clerk/City-Meeting-Groups/Meeting-Agendas-and-Minutes",
+      "refresh_hint": "weekly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "local-government",
+      "label": "City of Palo Alto — Housing Policies & Projects",
+      "url": "https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects",
+      "refresh_hint": "weekly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "local-government",
+      "label": "San Antonio Road Area Plan (Palo Alto)",
+      "url": "https://www.paloalto.gov/files/assets/public/v/1/planning-amp-development-services/long-range-planning/area-plans-and-studies/san-antonio-rd-area-plan/",
+      "refresh_hint": "monthly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "news",
+      "label": "Palo Alto Online — housing tag",
+      "url": "https://www.paloaltoonline.com/housing/",
+      "refresh_hint": "daily",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "news",
+      "label": "Palo Alto Daily Post",
+      "url": "https://padailypost.com/",
+      "refresh_hint": "daily",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "news",
+      "label": "San José Spotlight",
+      "url": "https://sanjosespotlight.com/",
+      "refresh_hint": "daily",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "news",
+      "label": "The Almanac",
+      "url": "https://www.almanacnews.com/",
+      "refresh_hint": "daily",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "advocacy",
+      "label": "California YIMBY — SB 79",
+      "url": "https://cayimby.org/legislation/sb-79/",
+      "refresh_hint": "monthly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "advocacy",
+      "label": "Sen. Scott Wiener (SD-11) — author of SB 79",
+      "url": "https://sd11.senate.ca.gov/",
+      "refresh_hint": "monthly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "legal-analysis",
+      "label": "Holland & Knight — SB 79 analysis",
+      "url": "https://www.hklaw.com/en/insights/publications/2025/10/california-gov-gavin-newsom-signs-sb-79",
+      "refresh_hint": "quarterly",
+      "last_seen": "2026-05-06"
+    },
+    {
+      "category": "legal-analysis",
+      "label": "Allen Matkins — SB 79 alert",
+      "url": "https://www.allenmatkins.com/real-ideas/governor-newsom-approves-sb-79-high-density-transit-oriented-housing-development-projects.html",
+      "refresh_hint": "quarterly",
+      "last_seen": "2026-05-06"
+    }
+  ]
+}

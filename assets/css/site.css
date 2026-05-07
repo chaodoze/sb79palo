@@ -361,3 +361,134 @@ table.tiers .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 /* ---- Source list ---- */
 .sources { font-size: 0.92rem; color: var(--ink-soft); }
 .sources li { margin-bottom: 0.4em; }
+
+/* ---- Sources grouped by category (palo-alto.html) ---- */
+.sources-grouped {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.4rem;
+  margin: 1.5em 0 2em;
+}
+.sources-grouped .source-group h3 {
+  font-size: 0.95rem;
+  margin: 0 0 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.sources-grouped ul { padding-left: 1.1em; margin: 0; }
+
+/* ---- Update stamp ---- */
+.update-stamp {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  background: var(--bg-alt);
+  border: 1px solid var(--rule);
+  padding: 0.15em 0.55em;
+  border-radius: 999px;
+  margin-left: 0.6em;
+  vertical-align: middle;
+}
+
+/* ---- Station map (palo-alto.html) ---- */
+.station-map {
+  margin: 1.6em 0 2em;
+  padding: 1rem 1rem 0.8rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.station-map figcaption {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.5em;
+}
+.station-map figcaption strong { color: var(--ink); }
+.station-map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+}
+.station-map .map-caption {
+  margin: 0.5em 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ---- FAQ table of contents ---- */
+.faq-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5em 0 2em;
+  padding: 0.85em 1em;
+  background: var(--bg-alt);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+}
+.faq-toc a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.25em 0.75em;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.faq-toc a:hover {
+  color: var(--ink);
+  border-color: var(--rule);
+  background: var(--bg);
+}
+
+/* ---- FAQ section divider ---- */
+.faq-section {
+  margin-top: 2.5em;
+  padding-top: 1em;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 4rem;
+}
+.faq-section:first-of-type { border-top: 0; }
+.faq-section h2 { margin-top: 0.4em; }
+.faq-section .section-intro {
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-top: 0;
+}
+
+/* ---- Q&A: TL;DR + sources lines ---- */
+.qa details > .tldr {
+  background: var(--bg-alt);
+  border-left: 3px solid var(--accent);
+  padding: 0.6em 0.9em;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.96rem;
+  color: var(--ink);
+  margin-top: 0.7em;
+}
+.qa details > .tldr strong { color: var(--accent-ink); }
+.qa details > .more {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--rule);
+  padding-top: 0.6em;
+  margin-top: 0.8em;
+}
+.qa details > .more strong {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  color: var(--accent);
+  display: inline-block;
+  margin-right: 0.4em;
+}
+.qa details > .more a { color: var(--ink-soft); }
+.qa details[open] { padding-bottom: 1.2em; }
+.qa details[id] { scroll-margin-top: 4rem; }

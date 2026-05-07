@@ -43,7 +43,7 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
 
 #### How we pulled the transcript (in case YouTube changes their UI)
 
-YouTube's auto-generated captions for this video are accessible via the "Show transcript" button in the description. The transcript panel uses `transcript-segment-view-model` custom elements (not the older `ytd-transcript-segment-renderer`). Each segment's `innerText` starts with a `H:MM:SS` timestamp. The `mcp__transcriber__transcribe` MCP tool failed with YouTube bot detection (yt-dlp blocked); the workaround was to use Chrome MCP to open the video, click "Show transcript," and read the DOM via `mcp__claude-in-chrome__javascript_tool`. See repo memory `reference_primary_sources_tracker.md` for the JS snippet.
+YouTube's auto-generated captions for this video are accessible via the "Show transcript" button in the description. The transcript panel uses `transcript-segment-view-model` custom elements (not the older `ytd-transcript-segment-renderer`). Each segment's `innerText` starts with a `H:MM:SS` timestamp. The `mcp__transcriber__transcribe` tool will normally pull these directly, but on this run yt-dlp hit YouTube's "Sign in to confirm you're not a bot" gate — likely network-dependent (we were on shared conference WiFi). The fallback that worked: use Chrome MCP to open the video, click "Show transcript," and read the DOM via `mcp__claude-in-chrome__javascript_tool`. Repo memory `reference_primary_sources_tracker.md` has the JS snippet.
 
 ---
 

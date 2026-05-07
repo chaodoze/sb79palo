@@ -3,6 +3,7 @@ node_modules/
 .cache/
 .idea/
 .vscode/
+.claude/
 *.log
 .parcel-cache/
 .eslintcache

@@ -13,6 +13,7 @@ export default [
         Element: 'readonly',
         HTMLElement: 'readonly',
         SVGElement: 'readonly',
+        IntersectionObserver: 'readonly',
       },
     },
     rules: {

@@ -97,6 +97,16 @@ YouTube's auto-generated captions for this video are accessible via the "Show tr
 
 ---
 
+## Stakeholder / public-comment letters
+
+Public submissions filed with Council in connection with specific agenda items. These are *primary* documents (they enter the official record) but reflect each submitter's advocacy position — not neutral analysis. Track positions across the housing-politics spectrum as letters surface.
+
+| Date | Submitter | Agenda item | Position summary | Link |
+|---|---|---|---|---|
+| 2026-04-30 | Palo Alto Forward (Jeremy Levine, Executive Director) — pro-housing advocacy | May 4, 2026 / Agenda Item 14 — Implementation of SB 79 (deferred at the meeting) | Supports **Approach 4 (TOD Alternative Plan)** as best path. Endorses pairing with **Approach 2 (emergency historic ordinance)** as interim bridge if A4 takes too long. Opposes **Approach 3 (50% Now, Rest in 2032)** — calls it the worst of both worlds on cost, massing, and RHNA. Includes detailed 8-factor scoring table comparing all four approaches. | [Google Doc](https://docs.google.com/document/d/174bUSfEBp4lBXXMvxMJGiiSa4zD9nEGT9eX-i6i-spE/edit) |
+
+---
+
 ## Legal / policy analysis
 
 - Holland & Knight — SB 79 signed analysis

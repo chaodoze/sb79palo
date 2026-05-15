@@ -1,0 +1,12 @@
+**/.git
+**/.DS_Store
+**/node_modules
+.gitignore
+.htmlhintrc
+.stylelintrc.json
+eslint.config.js
+wrangler.jsonc
+scripts
+.assetsignore
+.wrangler
+.claude

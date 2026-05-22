@@ -10,3 +10,4 @@ scripts
 .assetsignore
 .wrangler
 .claude
+learnings.md

@@ -30,7 +30,18 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
 | Date | Item | Status | Link |
 |---|---|---|---|
 | 2026-05-04 | Council meeting where SB 79 was on agenda but **deferred due to late hour** | Video posted; transcript pulled; minutes pending | [YouTube](https://www.youtube.com/watch?v=vM0GY2Rdnow) (deferral exchange 4:58:43–5:00:24) |
-| 2026-05-18 | Possible SB 79 reschedule (per City Manager's on-the-record statement May 4) | Agenda not yet posted as of 2026-05-07 | [city clerk page](https://www.paloalto.gov/Departments/City-Clerk/City-Meeting-Groups/Meeting-Agendas-and-Minutes) |
+| 2026-05-18 | Regular meeting — **SB 79 was NOT on the agenda** (Cubberley master plan, 156 California Ave builder's remedy, retail-vitality ordinance). The City Manager's floated May 18 reschedule did not happen. | Confirmed via PrimeGov agenda | [May 18 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18721) |
+| 2026-06-01 | SB 79 implementation = **Item 17**. Staff + SB 79 Ad Hoc Committee recommend adopting two temporary ordinances — historic-resource exemption + 50% rezone ("TOD Combining District") — with interim urgency versions on June 15. | Agenda + staff report #2605-6397 + draft ordinances posted | [June 1 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727) |
+
+#### June 1, 2026 — Item 17 staff proposal (key facts)
+
+From the Item 17 staff report (#2605-6397) and the two draft ordinances (Attachments B and C):
+
+- Staff and the Council's SB 79 / Downtown Housing Plan Ad Hoc Committee (Councilmembers Burt and Lauing) recommend a **combination of Approach 2 (historic exemption) + Approach 3 (rezone all TOD-eligible sites to 50% of SB 79 capacity)**.
+- Each is a **temporary ordinance** (first reading June 1) plus a matching **interim urgency ordinance** (adopted June 15) — urgency ordinances take effect immediately, so the exclusions are in force before SB 79's July 1 effective date. Permanent ordinances follow via the Planning & Transportation Commission.
+- The 50% ordinance creates a new **TOD Combining District** (PAMC §18.14.070). It sets **FAR at exactly half of SB 79** (1.75 / 1.5 / 2.25 vs 3.5 / 3.0 / 4.5), sets **no density cap** ("Maximum density: None"), and **does not set height** — height reverts to underlying local zoning, with a daylight plane (16 ft at the property line, 45°) where a parcel abuts a low-density residential district.
+- Exclusion runs until one year after the 7th-cycle Housing Element (staff: ≈January 31, 2032).
+- **Verified against statute** (see citations below): the 50% exclusion is self-executing under §65912.161(b)(1)(A); no HCD pre-approval is required — §65912.160 is notice (14 days before adoption) + post-adoption review (within 90 days). No substantive error found in the staff approach.
 
 #### May 4, 2026 deferral — verbatim from YouTube auto-transcript
 
@@ -61,14 +72,14 @@ YouTube's auto-generated captions for this video are accessible via the "Show tr
 
 ### Key statute citations we've used
 
+Verbatim text verified at the codified Government Code sections on LegInfo (`codes_displaySection.xhtml?lawCode=GOV&sectionNum=...`).
+
 | Citation | What it says |
 |---|---|
-| §65912.157 | The operative core of SB 79 — height/density floors, ministerial path. The provision that gets deferred or replaced. |
-| §65912.161(a)(1) | Alternative plan must "maintain at least the same total net zoned capacity." |
-| §65912.161(a)(2)(C) | Local-register historic exemptions cannot exceed **10%** of the eligible area in any TOD zone. |
-| §65912.161(a)(3) | Plan shall not reduce capacity in any TOD zone by more than 50%. |
-| §65912.161(a)(4) | Site-level density capped at 200% of the chapter's maximum. |
-| §65912.161(b)(1) | Delay trigger — §65912.157 is deferred until one year after 7th-cycle housing element if the city's 6th-cycle rezoning meets the ≥50% bar. |
+| §65912.157(a) | The operative SB 79 development standards. Tier 1: within ¼ mi — 75 ft height / 120 du/ac / FAR 3.5; ¼–½ mi — 65 ft / 100 du/ac / FAR 3.0; adjacent — 95 ft / 160 du/ac / FAR 4.5. This is the section a qualifying ordinance can exclude sites from. |
+| §65912.160 | Procedure for SB 79 implementing ordinances: submit draft to HCD ≥14 days before adoption; copy to HCD within 60 days after enactment; HCD reviews substantial compliance within 90 days. **Review and notice, NOT pre-approval** — the ordinance is effective on adoption. |
+| §65912.161(a)(1)–(4) | TOD Alternative Plan (Option D) rules: maintain ≥ the same total net zoned capacity; local-register historic exemptions ≤10% of a TOD zone; no TOD zone's capacity cut by >50%; site capacity counted ≤200% of the chapter max. An alternative plan **does** need HCD review and approval. |
+| §65912.161(b)(1) | The fast off-ramp. "Prior to one year following the adoption of the seventh revision of the housing element, Section 65912.157 shall not apply" to sites a city excludes by ordinance — including **(A)** a site that permits density **and** FAR at no less than 50% of §65912.157(a), and **(F)** a site with a historic resource on the local register as of Jan 1, 2025 (also fire/flood/sea-level-rise sites). This is the statutory basis for the June 1 temporary ordinances. |
 
 ---
 

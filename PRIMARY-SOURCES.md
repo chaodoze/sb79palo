@@ -83,6 +83,70 @@ Verbatim text verified at the codified Government Code sections on LegInfo (`cod
 
 ---
 
+## Neighboring cities — what they're doing about SB 79
+
+Background for `neighbors.html`. Each row links to a primary source (city staff report, ordinance, meeting video) where available, with press coverage as a secondary check. Distinguishing rule: a row stays here only if it's verifiable against the official city record or a primary statutory document; preview-only sources are flagged.
+
+### Menlo Park
+
+| Source | What it gives us | Link |
+|---|---|---|
+| Staff Report #26-078-CC (5/12/2026 Council Item H-3) | Verbatim recitation of the 4/27/2026 Planning Commission 5–1 vote (Ferrick dissenting, Do absent) recommending the City Council NOT adopt the temporary exemption ordinance; describes staff's recommended 50% off-ramp under §65912.161(b)(1)(A) and the proposed MPMC Ch. 16.57 covering 130 parcels / 43.3 ac across D, SA-W, SA-E, ECR-SE, ECR-NE-R sub-districts. | [PDF](https://www.menlopark.gov/files/assets/public/v/1/h3-20260512-cc-sb-79-housing-developments.pdf) |
+| 4/27/2026 Planning Commission agenda packet | The Option 1–4 framing, the parcel-by-parcel exemption maps, the draft resolution. | [PDF](https://www.menlopark.gov/files/sharedassets/public/v/2/agendas-and-minutes/planning-commission/2026-meetings/agenda/20260427-planning-commission-agenda-packet.pdf) |
+| 5/12/2026 City Council meeting video | Full deliberation on Item H-3 (~4 hours in); Council reaches consensus around "no action" without a formal vote — Mayor Nash, Councilmembers Taylor, Combs, and Schmidt all on record as supporting no action. Transcribed via Transcriber MCP. | [YouTube](https://youtu.be/3jCACg8W_W0) |
+
+**Outcome (confirmed):** No exemption ordinance introduced. SB 79 will apply in Menlo Park by default on July 1, 2026. Tentative May 19 second reading is moot. Official minutes for both 4/27 and 5/12 are pending publication at time of writing.
+
+### Mountain View
+
+| Source | What it gives us | Link |
+|---|---|---|
+| MV Voice, 2026-01-28 | Council direction on Local Alternative Plan (focused on historic downtown buildings); staff confirmed LAP will not be ready by July 1, 2026. Staff estimates SB 79 covers ~21% of MV land area. | https://www.mv-voice.com/land-use/2026/01/28/mountain-view-looks-to-mitigate-impact-of-state-housing-law-sb-79/ |
+| MV Voice, 2025-12-11 | 12/9/2025 Council vote 7–0 (motion Ramirez, second Hicks) to pause historic-register expansion, declining to designate buildings as historic purely to beat the SB 79 clock. | https://www.mv-voice.com/land-use/2025/12/11/mountain-view-inches-closer-to-updating-historic-register-amid-community-pushback/ |
+| MV Voice, 2025-11-10 | EPC briefing dispute — Commissioners Yin and Cranston pushed for SB 79 briefing pre-year-end; CDD Director Murdock declined. | https://www.mv-voice.com/housing/2025/11/10/mountain-view-commissioners-city-staff-clash-on-response-to-state-housing-law/ |
+| mountainview.legistar.com | Underlying staff reports; 2026 Legislative Platform adopted text (referenced as containing an "SB 79 Alternative Plan Timelines" position — exact language needs to be pulled before being quoted). | https://mountainview.legistar.com/ |
+
+### Sunnyvale
+
+| Source | What it gives us | Link |
+|---|---|---|
+| Public hearing notice — Murphy Station heritage carve-out (PLNG-2026-0118) | Amends Zoning Code Ch. 19.96 to exclude the 100 block of S. Murphy Ave + surrounding heritage parcels from Gov. Code §65912.157. PC heard 4/27/2026; Council first reading noticed for 6/2/2026. | [PDF](https://www.sunnyvale.ca.gov/home/showpublisheddocument/878/637907364053900000) |
+| Silicon Valley Voice, 2026-02-24 | 2026 Legislative Platform adoption (2/10/2026 meeting); discussed SB 79 but no specific support/oppose position reported. | https://www.svvoice.com/sunnyvale-establishes-stances-on-state-laws/ |
+| San José Spotlight, 2025-11-06 | Mayor Larry Klein on mobile-home-park displacement risk under SB 79. | https://sanjosespotlight.com/state-bill-could-displace-sunnyvale-mobile-home-residents/ |
+
+### Redwood City
+
+| Source | What it gives us | Link |
+|---|---|---|
+| RWC Pulse, 2026-01-13 | 2026 state legislative platform adoption; no SB 79 position reported. | https://www.rwcpulse.com/city-government/2026/01/13/redwood-city-council-defines-state-level-priorities/ |
+| Greater Downtown Area Plan resources | Active long-range planning vehicle; preferred alternative estimated fall 2026, final adoption late 2027 — after SB 79 effective date. | https://rwcgreaterdowntown.com/resources/ |
+
+### San Carlos
+
+| Source | What it gives us | Link |
+|---|---|---|
+| San Carlos 2026 Strategic Agenda | City Council priorities; no SB 79-specific item. | https://www.cityofsancarlos.org/city_hall/city_council/strategic_plan.php |
+| Northeast Area Specific Plan project page | Planning Commission recommended adoption 5/18/2026; tentative council adoption 6/8/2026. Draft does not mention SB 79. | https://www.sancarlosnortheastplan.com/ |
+
+### Los Altos
+
+| Source | What it gives us | Link |
+|---|---|---|
+| losaltosca.gov | No SB 79-specific staff report or implementation ordinance on file as of 2026-05-23. | https://www.losaltosca.gov |
+| Los Altos General Plan Update launch, 2026-01-14 | References "new State laws" generically; does not name SB 79. | https://www.losaltosca.gov/m/newsflash/home/detail/30 |
+| CalMatters Digital Democracy — SB 79 page | Los Altos is not listed as a registered supporter or opponent of SB 79. | https://calmatters.digitaldemocracy.org/bills/ca_202520260sb79 |
+
+**Geographic note:** San Antonio Caltrain (190 Showers Drive, Mountain View) sits ~0.3 mi from the Los Altos border. The half-mile SB 79 radius reaches across El Camino Real into north Los Altos. No city-issued GIS analysis confirms which Los Altos parcels are affected; the authoritative source is the MTC SB 79 Regional Map.
+
+### Cross-cutting (regional and statutory)
+
+| Source | What it gives us | Link |
+|---|---|---|
+| MTC SB 79 Regional Map | Authoritative half-mile-buffer overlay on city boundaries. Preliminary draft; becomes official July 1, 2026. | https://mtc.ca.gov/planning/land-use/senate-bill-79-regional-map |
+| ABAG SB 79 Summary, 2026-04-08 | Tier definitions, train-count thresholds, Caltrain station classifications. | https://abag.ca.gov/sites/default/files/documents/2026-04/SB79-Summary-040826.pdf |
+
+---
+
 ## Press coverage
 
 - Palo Alto Online — housing tag (primary local beat reporter)

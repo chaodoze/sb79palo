@@ -6,6 +6,10 @@
 .stylelintrc.json
 eslint.config.js
 wrangler.jsonc
+package.json
+package-lock.json
+tsconfig.json
+src
 scripts
 .assetsignore
 .wrangler

@@ -1,0 +1,19 @@
+{
+  "name": "sb79palo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "SB 79 Palo Alto — learning portal. Plain HTML/CSS/JS served via Cloudflare Workers Static Assets.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "type-check": "tsc --noEmit",
+    "lint:html": "htmlhint *.html"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4",
+    "htmlhint": "^1",
+    "typescript": "^5",
+    "wrangler": "^4"
+  }
+}

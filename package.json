@@ -2,17 +2,27 @@
   "name": "sb79palo",
   "version": "0.0.0",
   "private": true,
-  "description": "SB 79 Palo Alto — learning portal. Plain HTML/CSS/JS served via Cloudflare Workers Static Assets.",
+  "description": "SB 79 Palo Alto — learning portal. Plain HTML/CSS/JS served via Cloudflare Workers Static Assets, plus a small Worker handling the council-watch chat widget.",
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "type-check": "tsc --noEmit",
-    "lint:html": "htmlhint *.html"
+    "lint:html": "htmlhint *.html",
+    "build-corpus": "tsx scripts/build-corpus.ts",
+    "migrate:local": "wrangler d1 migrations apply sb79palo-chat --local",
+    "migrate:remote": "wrangler d1 migrations apply sb79palo-chat --remote"
+  },
+  "dependencies": {
+    "openai": "^4.77.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4",
+    "@mozilla/readability": "^0.5.0",
+    "@types/jsdom": "^21.1.7",
     "htmlhint": "^1",
+    "jsdom": "^25.0.1",
+    "tsx": "^4.19.2",
     "typescript": "^5",
     "wrangler": "^4"
   }

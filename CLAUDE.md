@@ -5,8 +5,13 @@ Working notes for Claude on the SB 79 Palo Alto site.
 ## What this is
 
 A plain HTML/CSS/JS learning portal about California SB 79 and its implementation in
-Palo Alto. No build step. Deployed on Cloudflare Workers static assets; a push to
-`main` auto-deploys (live at sb79.numtot.org).
+Palo Alto. No build step on the content side. Deployed on Cloudflare Workers static
+assets; a push to `main` auto-deploys (live at sb79.numtot.org).
+
+There is also a small TypeScript Worker in `src/` that powers the **"Ask AI about
+SB 79"** chat widget on `council-watch.html` (an experiment to mine reader intent).
+The Worker handles `/api/chat` and falls through to static assets for everything else.
+See [the chat-widget runbook](#chat-widget-runbook) below.
 
 ## Before you start
 
@@ -28,6 +33,69 @@ Palo Alto. No build step. Deployed on Cloudflare Workers static assets; a push t
 
 ## Deploy
 
-`wrangler.jsonc` configures the Workers static-assets project. `.assetsignore` keeps
-repo/process files (this file, `learnings.md`, lint configs, `scripts/`) out of the
-deployed site. A git push to `main` triggers an automatic build.
+`wrangler.jsonc` configures the Workers project: `main` is `src/index.ts` (the chat
+worker), `assets.directory` is `.` (the whole repo). `.assetsignore` keeps repo/process
+files (this file, `learnings.md`, lint configs, `scripts/`, `src/`, `sources/`,
+`migrations/`) out of the deployed static-asset bundle. A git push to `main` triggers
+an automatic build.
+
+## Chat-widget runbook
+
+The chat widget is grounded by `sources/index.json` → an OpenAI vector store →
+`file_search` via the Responses API. Each turn is logged to D1 with a structured intent
+classification we can mine for content ideas.
+
+### First-time setup (once per environment)
+
+```bash
+npm install
+
+# 1. Create the D1 database for chat logs
+wrangler d1 create sb79palo-chat
+# → paste the printed database_id into wrangler.jsonc d1_databases[0].database_id
+
+# 2. Set secrets
+wrangler secret put OPENAI_API_KEY        # your OpenAI key
+wrangler secret put IP_HASH_SALT          # any random string; rotate to invalidate IP hashes
+
+# 3. Apply the schema (run for both local and remote D1)
+npm run migrate:local
+npm run migrate:remote
+
+# 4. Build the corpus (uploads sources to a new OpenAI vector store)
+export OPENAI_API_KEY=...
+npm run build-corpus
+# → paste the printed vector store ID into wrangler.jsonc vars.VECTOR_STORE_ID
+
+# 5. Deploy
+npm run deploy
+```
+
+### Updating the corpus
+
+When PRIMARY-SOURCES.md gains/loses entries, or when a fetched URL has new content,
+edit `sources/index.json` accordingly and run:
+
+```bash
+export OPENAI_API_KEY=...    # only needed if not in shell
+export VECTOR_STORE_ID=vs_…   # use the existing vector store
+npm run build-corpus
+```
+
+The script is idempotent: re-uploads only changed files, removes deleted entries, and
+rewrites `sources/file-map.json` (commit this — the Worker uses it to render citations).
+
+### Editing the AI prompt or schema
+
+`src/prompts.ts` holds the system prompt, JSON schema, intent taxonomy, and cost
+constants. Edit and redeploy; no codegen step.
+
+### Mining intent
+
+```bash
+wrangler d1 execute sb79palo-chat --remote --command \
+  "SELECT intent_category, COUNT(*) c FROM chat_messages GROUP BY intent_category ORDER BY c DESC"
+
+wrangler d1 execute sb79palo-chat --remote --command \
+  "SELECT intent_unmet_need FROM chat_messages WHERE intent_unmet_need IS NOT NULL ORDER BY created_at DESC LIMIT 20"
+```

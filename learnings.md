@@ -6,6 +6,49 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-05-26 — Chose OpenAI File Search over BAML for the council-watch chat widget
+
+### Context
+
+Adding an "Ask AI about SB 79" experiment on `council-watch.html`. Goals: grounded
+answers from a curated corpus, per-turn intent classification logged to D1 for content
+ideation, easy-to-edit prompts.
+
+### What changed mid-plan
+
+The first plan called for BAML so prompts would live in `.baml` files separate from
+code. Halfway through, switched to the OpenAI SDK directly + File Search (vector store
+via the Responses API) because:
+
+- **File Search is the actual feature we want** — it pairs the model with a curated
+  vector store and returns `file_citation` annotations against the output. BAML mostly
+  abstracts prompts, not retrieval tools; combining it with file_search adds plumbing
+  without buying much.
+- **Prompts can still be easy to edit** without BAML — a single `src/prompts.ts`
+  exports the system prompt and JSON schema as plain strings/objects. One file, no
+  codegen step.
+- **Less moving machinery** — no `baml-cli generate`, no generated `baml_client/`
+  directory. The "no build step" promise for the HTML/CSS authoring side stays intact;
+  only the TS Worker compiles (via wrangler/esbuild).
+
+### Worth knowing for next time
+
+- The Responses API supports `tools: [{ type: "file_search", vector_store_ids: [...] }]`
+  **and** `text.format: { type: "json_schema", strict: true }` in the same call. You get
+  the structured output you asked for, with `file_citation` annotations attached to the
+  raw output text. Two birds, one call. Use the annotations (plus `cited_source_ids`
+  from the structured field, as a fallback) to map back to your source manifest.
+- Reproducibility of the corpus matters more than convenience. The pipeline writes every
+  fetched URL into `sources/<id>.md` with frontmatter (`source_url`, `fetched_at`) and
+  commits it to git, so a re-index is deterministic and PRs show exactly what content
+  the AI is being grounded on.
+- D1 is the right home for chat logs even though traffic will start tiny — per-turn
+  intent classification produces structured rows we can later mine with plain SQL
+  (`SELECT intent_category, COUNT(*) FROM chat_messages GROUP BY ...`). R2/JSONL would
+  have been simpler but painful to query.
+
+---
+
 ## 2026-05-22 — Conflated SB 79's fast 50% ordinance with the multi-year alternative plan
 
 ### What we got wrong

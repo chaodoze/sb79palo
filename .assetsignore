@@ -11,8 +11,12 @@ package-lock.json
 tsconfig.json
 src
 scripts
+sources
+migrations
+.cache
 .assetsignore
 .wrangler
 .claude
 learnings.md
 CLAUDE.md
+PRIMARY-SOURCES.md

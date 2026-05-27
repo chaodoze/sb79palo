@@ -1,0 +1,10 @@
+---
+source_url: "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.159"
+title: "Gov. Code §65912.159 (CEQA, ministerial)"
+category: "statute"
+fetched_at: "2026-05-27T01:23:57.034Z"
+---
+
+Code Text
+                        Government Code - GOVTITLE 7. PLANNING AND LAND USE [65000 - 66499.58]  ( Heading of Title 7 amended by Stats. 1974, Ch. 1536. )  DIVISION 1. PLANNING AND ZONING [65000 - 66345.4]  ( Heading of Division 1 added by Stats. 1974, Ch. 1536. )  CHAPTER 4.1.5. Transit-Oriented Development [65912.155 - 65912.162]  ( Chapter 4.1.5 added by Stats. 2025, Ch. 512, Sec. 1. )  65912.159.  (a) A housing development project proposed pursuant to Section 65912.157 shall be eligible for streamlined ministerial approval pursuant to Section 65913.4 in accordance with all of the following:(1) The proposed project shall be exempt from subparagraph (A) of paragraph (4) of, and paragraph (5) of, subdivision (a) of Section 65913.4.(2) The proposed project shall comply with the affordability requirements in subclauses (I) to (III), inclusive, of clause (i) of subparagraph (B) of paragraph (4) of subdivision (a) of Section 65913.4.(3) The proposed project shall comply with all other requirements of Section
+					 65913.4, including, but not limited to, the prohibition against a site that is within a very high fire hazard severity zone, pursuant to subparagraph (D) of paragraph (6) of subdivision (a) of Section 65913.4.(b) Any housing development proposed pursuant to Section 65912.157 not seeking streamlined approval under Section 65913.4 shall be reviewed according to the jurisdiction’s development review process and Section 65589.5, except that any local zoning standard conflicting with the requirements of this chapter shall not apply.(Added by Stats. 2025, Ch. 512, Sec. 1.   (SB 79)   Effective January 1, 2026.)

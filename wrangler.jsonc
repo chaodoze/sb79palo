@@ -1,11 +1,37 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "sb79palo",
+  "main": "src/index.ts",
   "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS"
   },
   "observability": {
     "enabled": true
+  },
+  "vars": {
+    "VECTOR_STORE_ID": "",
+    "CHAT_MODEL": "gpt-4o-mini",
+    "MONTHLY_SPEND_CAP_USD": "10"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sb79palo-chat",
+      "database_id": "REPLACE_AFTER_wrangler_d1_create",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "unsafe": {
+    "bindings": [
+      {
+        "name": "RATE_LIMITER",
+        "type": "ratelimit",
+        "namespace_id": "1001",
+        "simple": { "limit": 10, "period": 60 }
+      }
+    ]
   }
 }

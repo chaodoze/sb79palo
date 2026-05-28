@@ -118,15 +118,22 @@ async function preparePayload(entry: SourceEntry): Promise<{ filePath: string; c
     return { filePath: localPath, content: raw, mime: entry.path.endsWith(".md") ? "text/markdown" : "text/plain" };
   }
 
-  // URL entry
+  // URL entry. Use the cached file on disk if present so runs are idempotent —
+  // delete sources/<id>.<ext> beforehand to force a refresh.
   if (entry.format === "pdf") {
     const targetPath = join(SOURCES_DIR, `${entry.id}.pdf`);
+    if (existsSync(targetPath)) {
+      return { filePath: targetPath, content: readFileSync(targetPath), mime: "application/pdf" };
+    }
     const bytes = await fetchBytes(entry.url);
     writeFileSync(targetPath, bytes);
     return { filePath: targetPath, content: bytes, mime: "application/pdf" };
   }
 
   const targetPath = join(SOURCES_DIR, `${entry.id}.md`);
+  if (existsSync(targetPath)) {
+    return { filePath: targetPath, content: readFileSync(targetPath), mime: "text/markdown" };
+  }
   const bytes = await fetchBytes(entry.url);
   const html = bytes.toString("utf8");
   const text = htmlToMarkdownish(html, entry.url, entry.title);

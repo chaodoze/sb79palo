@@ -12,7 +12,7 @@
     "enabled": true
   },
   "vars": {
-    "VECTOR_STORE_ID": "",
+    "VECTOR_STORE_ID": "vs_6a16472694e881919c20a9fda70e63b1",
     "CHAT_MODEL": "gpt-4o-mini",
     "MONTHLY_SPEND_CAP_USD": "10"
   },
@@ -20,7 +20,7 @@
     {
       "binding": "DB",
       "database_name": "sb79palo-chat",
-      "database_id": "REPLACE_AFTER_wrangler_d1_create",
+      "database_id": "93ee426a-a11b-4612-b87a-968391755f9c",
       "migrations_dir": "migrations"
     }
   ],

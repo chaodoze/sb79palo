@@ -1,0 +1,28 @@
+---
+source_url: "https://sanjosespotlight.com/state-bill-could-displace-sunnyvale-mobile-home-residents/"
+title: "San José Spotlight 2025-11-06 — Sunnyvale mobile-home risk"
+category: "neighbors"
+fetched_at: "2026-05-27T23:53:34.076Z"
+---
+
+Sunnyvale resident Gail Rubino is fighting to change Senate Bill 79, which could allow for mobile home parks in the city to be redeveloped, which would displace residents. Photo by Annalise Freimarck.Sunnyvale resident Gail Rubino first moved into the El Dorado Mobile Home Park 15 years ago because it was the only way she could afford home ownership in Silicon Valley. She settled into the park and formed a community she could call her own. Now, she’s fighting to change a statewide bill that would make it easier to redevelop mobile homes in the city — potentially displacing thousands of residents.
+Senate Bill 79, signed by Gov. Gavin Newsom last month, makes it easier for developers to build dense housing within a half-mile radius of public transit corridors without much say from local jurisdictions. It goes into effect in July.
+State Sen. Scott Wiener wrote the bill to address California’s housing crisis and transportation issues. But it could have unintended consequences for Sunnyvale mobile home residents. If private owners decide to sell the seven parks near public transportation hubs, developers could demolish the parks in favor of townhomes or high-rises.
+Recognizing the unintended consequences, Wiener is collaborating with state Sen. Aisha Wahab and Assemblymember Alex Lee to amend the bill to exclude mobile homes from its provisions. If it’s not amended, the bill could affect seven parks in Sunnyvale, including Adobe Wells, Plaza del Rey, El Dorado, Fox Hollow, Cape Cod Village, Willow Ranch and Casa de Amigos — the largest mobile home park in the state with more than 900 spaces, according to the Mobile Home Park Home Owners Allegiance.
+“These are folks who don’t necessarily have other options if they lose their homes, and so we want to make sure we’re protecting them,” Wiener told San José Spotlight. “That’s why, to me, it was a no-brainer to commit to do that work.”
+The bill would primarily affect the seven Sunnyvale mobile home parks, which offer 3,130 spaces to thousands of residents, according to city data. Neighboring cities in Santa Clara County, such as San Jose, have different protections in place that prevent SB 79’s unintended effects.
+El Dorado Mobile Home Park could be redeveloped under Senate Bill 79. Several state officials are working to amend this unintended consequence. Photo by Annalise Freimarck.
+Rubino said most residents in Sunnyvale mobile home parks are low-income older adults or families who wouldn’t be able to find other affordable housing in the Bay Area. She said redeveloping the parks would be “disastrous,” adding she wouldn’t know where to go if she had to move. She’s determined to work with Wiener to change the bill, and has already enlisted 11 residents to help her write to state lawmakers.
+        
+
+    
+“(Redevelopment) could happen because they’ve taken off the shackles, where (parks) can be redeveloped without city involvement,” Rubino told San José Spotlight. “If you’ve got a mobile home park owner that is second or third generation… and they don’t want to bother with it anymore — that’s a perfect opportunity to sell and get out.”
+The amendment would beef up mobile home park protections in a city that has already laid the groundwork. Sunnyvale has to have at least 400 acres dedicated to mobile homes, per city code. It also has an agreement that mobile home park owners must notify residents about redevelopment, provide relocation fees and potentially buy the homes back from residents if they can’t find another park to move into.
+Wahab, who represents Sunnyvale, said she knew she had to act when she learned those protections weren’t enough to prevent potential displacement after Newsom signed SB 79 into law. She drafted a solution to protect mobile home park residents and brought it to Wiener. She added advocating for vulnerable residents is at the heart of why she serves.
+“To every mobile home resident in Sunnyvale and across my district: I hear you, I see you and I’m fighting for you,” Wahab told San José Spotlight. “My team and I worked around the clock to make sure your voices were not forgotten in Sacramento. I’ve secured a commitment to fix this issue, and I will not stop until your homes — and your dignity — are fully protected.”
+Other Sunnyvale mobile home parks have already been redeveloped. Blue Bonnet Mobile Home Park, which was home to 50 households, closed in 2017 to make way for townhomes.Mayor Larry Klein doesn’t want redevelopment to displace residents again. He said he’s seen more predatory developers come into the city to build projects that are counterproductive to the community.
+
+“It’s especially difficult for a pro-housing city to lose the control, in this case, of what would be families that are living in a naturally affordable (home),” Klein told San José Spotlight. “(We need) the preservation of all types of housing.”
+Rubino will keep fighting for SB 79 to be amended so she can stay in her mobile home with her dog, Pogo. She said it’s a good bill, other than its unintended consequences.
+“Whatever it takes, we’re gonna get it done,” she said.
+Contact Annalise Freimarck at [email protected] or follow @annalise_ellen on X.

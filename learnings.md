@@ -6,6 +6,39 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-05-27 — Forgot to bump the CSS cache-bust query string
+
+### What happened
+
+Deployed the chat-widget CSS additions, but `council-watch.html` still linked
+`assets/css/site.css?v=2026-05-07` — the same querystring as before the change.
+Browser (and the CDN edge) treated it as the same resource and served the
+cached pre-widget version. Result: the floating button rendered as a default
+`<button>` (inline-block, no fixed positioning, no padding, lost in the page).
+
+### Why I didn't catch it
+
+`wrangler deploy` reported "3 new or modified static assets uploaded" including
+`assets/css/site.css`, which made me assume the new CSS was being served. It
+was — under that URL with no querystring — but the HTML's `<link>` element
+still referenced the stale query string, and that's the URL the browser
+actually requests. The cache-bust string in the HTML is the source of truth
+for which CSS *version* clients fetch, not the deploy.
+
+### Rule
+
+When changing CSS that's referenced via a cache-bust query string, bump that
+query string in **every** HTML file that imports it. A quick grep before
+deploy:
+
+```bash
+grep -rn 'site\.css?v=' *.html
+```
+
+`site.js` has the same pattern — same rule applies.
+
+---
+
 ## 2026-05-26 — Chose OpenAI File Search over BAML for the council-watch chat widget
 
 ### Context

@@ -392,6 +392,14 @@
       "category": "legal",
       "content_hash": "23e13fee8e729dd51e65ae5a4a23d574cf15c59e1611a7965f9540819b4b5826",
       "openai_file_id": "file-YJn7U3uF93BmWjKmjeXveS"
+    },
+    "stakeholder-paf-2026-04-30": {
+      "id": "stakeholder-paf-2026-04-30",
+      "title": "Palo Alto Forward — Public Comment on SB 79 Implementation (Jeremy Levine, 2026-04-30)",
+      "url": "https://docs.google.com/document/d/174bUSfEBp4lBXXMvxMJGiiSa4zD9nEGT9eX-i6i-spE/edit",
+      "category": "stakeholder",
+      "content_hash": "3bb5362e94844c3dff350da63a1163206d3acb722812554cbea69eac59b8a530",
+      "openai_file_id": "file-9NX4q3wA8EqvjrtZBdpy1d"
     }
   }
 }

@@ -233,6 +233,38 @@
       "content_hash": "b96dd468c8aaa4bc844dfe47f0e2b93a08e9d515f9a1518a5a42d614d5a2aaf0",
       "openai_file_id": "file-JuXoyWVMxqt2GvVo9wnuac"
     },
+    "pa-item-17-staff-report": {
+      "id": "pa-item-17-staff-report",
+      "title": "Palo Alto Council June 1, 2026 — Item 17 Staff Report (#2605-6397)",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
+      "category": "city-palo-alto",
+      "content_hash": "d9f329573f4e47ba3fd5c5b13090e00151aad81835c798a82d58cc8676f5079b",
+      "openai_file_id": "file-NS51izV1iHd2xXCfvJBn9J"
+    },
+    "pa-item-17-attach-a-tod-map": {
+      "id": "pa-item-17-attach-a-tod-map",
+      "title": "Palo Alto Council June 1, 2026 — Item 17 Attachment A: Caltrain Stations and TOD Eligible Areas map",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
+      "category": "city-palo-alto",
+      "content_hash": "34963b43d2cb31cba480304bc914ba2c33920f11dc7cbda84dc71ead41fe00da",
+      "openai_file_id": "file-Xddnrs3Ziyt2rCXq39yvKU"
+    },
+    "pa-item-17-attach-b-historic-ordinance": {
+      "id": "pa-item-17-attach-b-historic-ordinance",
+      "title": "Palo Alto Council June 1, 2026 — Item 17 Attachment B: Draft Ordinance, Historic-Resource Exemption (Option B)",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
+      "category": "city-palo-alto",
+      "content_hash": "a2b65659c40d2f2def5ffab56ffe3a186b040e5802d52a0f707ac5e87539ce62",
+      "openai_file_id": "file-CtFEE8nK5Y7hGkvdst4gxr"
+    },
+    "pa-item-17-attach-c-50pct-ordinance": {
+      "id": "pa-item-17-attach-c-50pct-ordinance",
+      "title": "Palo Alto Council June 1, 2026 — Item 17 Attachment C: Draft Ordinance, 50% SB 79 Development Standards / TOD Combining District (Option C)",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
+      "category": "city-palo-alto",
+      "content_hash": "bc80d0583de0e9e45078d18e19e09ca27b182b7c71d99d512cd8e113f2010aeb",
+      "openai_file_id": "file-35MeoVjBAsyGe1zMLYDC2Z"
+    },
     "neighbor-menlo-staff-h3": {
       "id": "neighbor-menlo-staff-h3",
       "title": "Menlo Park — Staff Report #26-078-CC (5/12/2026 Item H-3)",

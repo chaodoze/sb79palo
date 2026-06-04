@@ -32,6 +32,7 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
 | 2026-05-04 | Council meeting where SB 79 was on agenda but **deferred due to late hour** | Video posted; transcript pulled; minutes pending | [YouTube](https://www.youtube.com/watch?v=vM0GY2Rdnow) (deferral exchange 4:58:43–5:00:24) |
 | 2026-05-18 | Regular meeting — **SB 79 was NOT on the agenda** (Cubberley master plan, 156 California Ave builder's remedy, retail-vitality ordinance). The City Manager's floated May 18 reschedule did not happen. | Confirmed via PrimeGov agenda | [May 18 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18721) |
 | 2026-06-01 | SB 79 implementation = **Item 17**. Staff + SB 79 Ad Hoc Committee recommend adopting two temporary ordinances — historic-resource exemption + 50% rezone ("TOD Combining District") — with interim urgency versions on June 15. | Agenda + staff report #2605-6397 + draft ordinances posted | [June 1 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727) |
+| 2026-06-01 | **OUTCOME: first reading PASSED 5–0** (vote ~12:30 a.m. June 2). Adopted the B+C package with friendly amendments; Reckdahl & Lu recused. Second reading + urgency ordinance set for June 15. | Verified against meeting video (minutes pending) | [YouTube](https://www.youtube.com/watch?v=Cczy-CGO8IE) |
 
 #### June 1, 2026 — Item 17 staff proposal (key facts)
 
@@ -42,6 +43,18 @@ From the Item 17 staff report (#2605-6397) and the two draft ordinances (Attachm
 - The 50% ordinance creates a new **TOD Combining District** (PAMC §18.14.070). It sets **FAR at exactly half of SB 79** (1.75 / 1.5 / 2.25 vs 3.5 / 3.0 / 4.5), sets **no density cap** ("Maximum density: None"), and **does not set height** — height reverts to underlying local zoning, with a daylight plane (16 ft at the property line, 45°) where a parcel abuts a low-density residential district.
 - Exclusion runs until one year after the 7th-cycle Housing Element (staff: ≈January 31, 2032).
 - **Verified against statute** (see citations below): the 50% exclusion is self-executing under §65912.161(b)(1)(A); no HCD pre-approval is required — §65912.160 is notice (14 days before adoption) + post-adoption review (within 90 days). No substantive error found in the staff approach.
+
+#### June 1, 2026 — Item 17 OUTCOME (verified against meeting video)
+
+Source: [meeting video](https://www.youtube.com/watch?v=Cczy-CGO8IE), final ~20 minutes (transcribed via `mcp__transcriber__transcribe`, start_minutes 395). Minutes not yet posted as of 2026-06-03; video is the authoritative record.
+
+- **First reading PASSED 5–0.** Roll call (verbatim from the video): Burt — Yes; Vice Mayor Stone — Yes; Lythcott-Haims — Yes; Lauing — Yes; Mayor Veenker — Yes. "Motion carries." Vote taken ~12:30 a.m. June 2, closing out the meeting.
+- **Recusals:** Councilmembers Keith Reckdahl and George Lu recused (each owns property within the SB 79 station areas / "splash zone"), leaving five voting. On the record, staff noted Lu's conflict is limited to the San Antonio corridor and he has sought FPPC advice that may let him participate in a future, segmented discussion.
+- **What passed:** the staff/Ad Hoc recommendation — the **B+C** interim ordinance (historic exemption + 50% TOD rezone) — on first reading, *as drafted* (50% FAR figure and daylight-plane standards unchanged).
+- **Friendly amendments folded in (3A and Item 7):** (1) direct staff to consider the **Palo Alto Forward letter** when developing the permanent ordinance before the PTC; (2) have the PTC study **focused upzoning of identified corridors — with particular focus on the Cal Ave area, including El Camino Real in the vicinity of Cal Ave**, which Council has identified as suitable for higher density — returning a recommendation to Council in **6–12 months**. Staff (Director Lait) was explicit this is *not* a TOD Alternative Plan (Option D), and *not* an all-or-nothing list.
+- **Next step:** second reading + matching **interim urgency ordinance on June 15** (stated on the record by staff during the discussion), so the rules take effect before SB 79's July 1 date.
+
+> ⚠️ **Note on press accounts.** Two June 2 articles diverged: Palo Alto Online correctly reported the B+C approval but said the item "heads to the PTC on June 10" (not supported by the video — staff said 6–12 months); the Daily Post framed it as a 5–0 deferral to the PTC for 6–12 months, conflating the *separate* permanent-ordinance/Cal-Ave track with the interim vote. The video reconciles both: the interim B+C ordinance passed first reading (→ June 15), *and* a permanent/focused-upzoning track goes to the PTC for 6–12 months. Always go to the video.
 
 #### May 4, 2026 deferral — verbatim from YouTube auto-transcript
 

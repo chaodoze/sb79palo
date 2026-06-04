@@ -146,3 +146,28 @@ night. We published a "Council picked X" page before the meeting record was chec
 item was actually deferred. Lesson: a preview describes what is *planned*, not what
 *happened* — wait for the video, minutes, or post-event reporting. Full write-up in
 `PRIMARY-SOURCES.md` → "Notes on usage."
+
+---
+
+## 2026-06-03 — Two news outlets disagreed on the June 1 vote; the video settled it
+
+When checking whether the June 1, 2026 council meeting on SB 79 had results, the two
+post-event articles **contradicted each other**: Palo Alto Online reported Council
+*approved* the B+C package (correct) but said it "heads to the PTC on June 10";
+the Daily Post framed it as a 5–0 *deferral* to the PTC for 6–12 months. Each captured
+a different half of a two-track outcome. Pulling the meeting video
+(`Cczy-CGO8IE`, final ~20 min) reconciled it: the **interim B+C ordinance passed first
+reading 5–0** (→ second reading + urgency ordinance June 15), *and separately* Council
+sent a **permanent ordinance + focused Cal-Ave upzoning study to the PTC for 6–12 months**.
+Reckdahl and Lu recused.
+
+### How to prevent it / what worked
+
+- Post-event press is a *lead*, not the record — even reputable outlets. When two
+  accounts diverge on a vote, that divergence is the signal to go to the primary source,
+  not to pick the more authoritative-sounding outlet.
+- The transcriber tool on the council YouTube video, targeted to the last stretch
+  (`start_minutes` near the end where the motion/roll-call happens), is the fastest path
+  to the actual motion language and vote — far better than scraping paywalled articles.
+- A roll-call ("Burt — yes … motion carries") is the unambiguous record of what passed;
+  capture it verbatim.

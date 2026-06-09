@@ -171,3 +171,39 @@ Reckdahl and Lu recused.
   to the actual motion language and vote — far better than scraping paywalled articles.
 - A roll-call ("Burt — yes … motion carries") is the unambiguous record of what passed;
   capture it verbatim.
+
+---
+
+## 2026-06-09 — Editorial claims need the same verification rigor as reporting
+
+### What happened
+
+The first published version of the council-watch editorial on the SB 79 urgency
+findings contained two claims that wouldn't survive the site's own discipline if they
+appeared in a news item: an **unverified legislative-intent claim** ("a deliberate
+nine-month runway for exactly this kind of preparation" — the operative date is fact;
+the *purpose* was inference), and an **asserted scope claim** (that water/fire studies
+are "standard pieces of the Downtown Housing Plan work" — plausible, never checked, and
+the DHP covers only one of the three station areas). A third weakness was rhetorical:
+the Redco/156 Cal Ave entitlement-timeline argument was rebuttable in one sentence
+("SB 79 projects are ministerial — that's the point of the law"), because the
+*intended* argument had drifted in drafting. The intended point — every concrete
+project still passes fire/building-code and utility review at the permit stage
+regardless of zoning — was both stronger and supported by staff's own on-record words
+("grappled in each case," video ~5:55:30).
+
+### How to prevent it / what worked
+
+- **Editorial ≠ exempt.** Opinion gets the same primary-source check as reporting:
+  every factual premise inside an argument is a claim to verify. Inference about
+  *intent* (legislative, council, staff) must be flagged as inference or replaced with
+  the verifiable fact.
+- **Run the steelman before publishing.** Ask: what is the one-sentence rebuttal from
+  the best-informed critic? If it lands (here: SB 79's ministerial pathway vs. an
+  entitlement-timeline argument), restructure before pushing, not after.
+- **Check that the argument on the page is the argument you meant.** The Redco point
+  was meant to say "project-level review catches water/fire anyway" and drifted into
+  "entitlement is slow." Restating the thesis in one sentence before writing prevents
+  the drift.
+- A fairness self-review pass immediately after publishing caught all three; cost was
+  one extra commit. Cheaper than a reader catching it.

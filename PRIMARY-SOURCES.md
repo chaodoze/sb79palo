@@ -33,6 +33,7 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
 | 2026-05-18 | Regular meeting — **SB 79 was NOT on the agenda** (Cubberley master plan, 156 California Ave builder's remedy, retail-vitality ordinance). The City Manager's floated May 18 reschedule did not happen. | Confirmed via PrimeGov agenda | [May 18 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18721) |
 | 2026-06-01 | SB 79 implementation = **Item 17**. Staff + SB 79 Ad Hoc Committee recommend adopting two temporary ordinances — historic-resource exemption + 50% rezone ("TOD Combining District") — with interim urgency versions on June 15. | Agenda + staff report #2605-6397 + draft ordinances posted | [June 1 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727) |
 | 2026-06-01 | **OUTCOME: first reading PASSED 5–0** (vote ~12:30 a.m. June 2). Adopted the B+C package with friendly amendments; Reckdahl & Lu recused. Second reading + urgency ordinance set for June 15. | Verified against meeting video (minutes pending) | [YouTube](https://www.youtube.com/watch?v=Cczy-CGO8IE) |
+| 2026-06-15 | SB 79 second reading = **Item 23, CONSENT CALENDAR** (staff report #2606-6432): second reading + adoption of both temporary ordinances AND introduction + adoption of both interim urgency ordinances, with zoning-map updates. **Item 4** approves the June 1 draft action minutes. Agenda posted 2026-06-05. | Agenda + staff report + 4 ordinance attachments posted; verified via PrimeGov agenda HTML | [June 15 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18739) |
 
 #### June 1, 2026 — Item 17 staff proposal (key facts)
 
@@ -55,6 +56,17 @@ Source: [meeting video](https://www.youtube.com/watch?v=Cczy-CGO8IE), final ~20 
 - **Next step:** second reading + matching **interim urgency ordinance on June 15** (stated on the record by staff during the discussion), so the rules take effect before SB 79's July 1 date.
 
 > ⚠️ **Note on press accounts.** Two June 2 articles diverged: Palo Alto Online correctly reported the B+C approval but said the item "heads to the PTC on June 10" (not supported by the video — staff said 6–12 months); the Daily Post framed it as a 5–0 deferral to the PTC for 6–12 months, conflating the *separate* permanent-ordinance/Cal-Ave track with the interim vote. The video reconciles both: the interim B+C ordinance passed first reading (→ June 15), *and* a permanent/focused-upzoning track goes to the PTC for 6–12 months. Always go to the video.
+>
+> **Receipt (2026-06-09):** the [PTC's June 10 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=20312) contains **no SB 79 item** — only a Hansen Way special-setback amendment and April 29 minutes approval. PA Online's "heads to the PTC on June 10" claim is now definitively contradicted by the posted agenda.
+
+#### June 15, 2026 — Item 23 staff report (#2606-6432) key facts
+
+- **Consent calendar.** Second reading + adoption of both temporary ordinances, plus introduction AND adoption of both companion interim urgency ordinances, in one item.
+- **Why urgency:** regular ordinances are subject to a 30-day referendum period → effective **July 16, 2026**, leaving a July 1–16 gap with no local measures in force. Urgency ordinances (PAMC Ch. 2.04 + Gov. Code §65858) take effect immediately. The urgency versions "substantially mirror" the temporary ordinances.
+- **One change since first reading:** clarifies **maximum site coverage = 70%** in the TOD Combining District; staff: "does not substantively change the intensity of development permitted."
+- Other standards spelled out: FAR 1.75 / 1.5 / 2.25 (adjacent = **within 200 feet** of a transit stop); minimum setbacks 10 ft front/rear, 4 ft sides unless underlying zone differs; daylight plane 16 ft / 45° adjacent to low-density residential.
+- **Next steps if adopted:** submit ordinances to HCD; update zoning maps; over **6–12 months** prepare codifying ordinances "while exploring opportunities to accelerate housing production on California Avenue and adjacent areas on El Camino Real"; continue Downtown Housing Plan work with the Ad Hoc.
+- CEQA: exempt under Gov. Code §65912.160(c)(2).
 
 #### May 4, 2026 deferral — verbatim from YouTube auto-transcript
 
@@ -123,7 +135,8 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 
 | Source | What it gives us | Link |
 |---|---|---|
-| Public hearing notice — Murphy Station heritage carve-out (PLNG-2026-0118) | Amends Zoning Code Ch. 19.96 to exclude the 100 block of S. Murphy Ave + surrounding heritage parcels from Gov. Code §65912.157. PC heard 4/27/2026; Council first reading noticed for 6/2/2026. | [PDF](https://www.sunnyvale.ca.gov/home/showpublisheddocument/878/637907364053900000) |
+| Public hearing notice — Murphy Station heritage carve-out (PLNG-2026-0118) | Amends Zoning Code Ch. 19.96 to exclude the 100 block of S. Murphy Ave + surrounding heritage parcels from Gov. Code §65912.157. **The notice's dates (PC 4/27, Council first reading 6/2) turned out stale** — see Legistar row below. | [PDF](https://www.sunnyvale.ca.gov/home/showpublisheddocument/878/637907364053900000) |
+| Sunnyvale Legistar (web API, verified 2026-06-09) | Actual carve-out timeline: PC recommendation **4/13/2026** (file 26-0354, passed); Council **first reading passed 5/5/2026** (file 26-0481, history shows approved/Pass); **adoption as Ordinance No. 3253-26 on the 5/19/2026 consent calendar, Item 1.L** (file 26-0518). May 19 minutes still draft as of 6/9 — adoption vote not yet independently verifiable, but Ord. No. 3254-26 (next in sequence) was adopted 6/2, consistent with 3253-26 adopting 5/19. The 6/2 Council agenda has **no Murphy item**. No further Council meetings on the Legistar calendar June 8–July 1. | [Legistar](https://sunnyvaleca.legistar.com/Legislation.aspx) |
 | Silicon Valley Voice, 2026-02-24 | 2026 Legislative Platform adoption (2/10/2026 meeting); discussed SB 79 but no specific support/oppose position reported. | https://www.svvoice.com/sunnyvale-establishes-stances-on-state-laws/ |
 | San José Spotlight, 2025-11-06 | Mayor Larry Klein on mobile-home-park displacement risk under SB 79. | https://sanjosespotlight.com/state-bill-could-displace-sunnyvale-mobile-home-residents/ |
 
@@ -177,6 +190,8 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 
 | Date | Outlet | Title | Link |
 |---|---|---|---|
+| 2026-06-02 | Palo Alto Online | Council spars over strategies to limit impact of contentious housing law (June 1 recap; ⚠️ "heads to the PTC on June 10" claim contradicted by the posted PTC agenda) | https://www.paloaltoonline.com/housing/2026/06/02/council-spars-over-strategies-to-limit-impact-of-contentious-housing-law/ |
+| 2026-06-02 | Palo Alto Daily Post | Council divided on tall buildings along Cal Ave. (June 1 recap; ⚠️ conflates the PTC permanent-ordinance track with the interim vote) | https://padailypost.com/2026/06/02/council-divided-on-tall-buildings-along-cal-ave/ |
 | 2026-04-27 | Palo Alto Online | Palo Alto looks to exemptions, rezoning to limit SB 79 impacts | https://www.paloaltoonline.com/housing/2026/04/27/palo-alto-looks-to-exemptions-rezoning-to-limit-sb-79-impacts/ |
 | 2026-04-15 | Palo Alto Online (CalMatters) | Cities scramble to comply with or fight major state housing law | https://www.paloaltoonline.com/calmatters/2026/04/15/cities-scramble-to-comply-with-or-fight-major-state-housing-law/ |
 | 2025-11-11 | Palo Alto Online | Palo Alto pauses downtown plan as state housing law upends local rules | https://www.paloaltoonline.com/housing/2025/11/11/palo-alto-pauses-downtown-plan-as-state-housing-law-upends-local-rules/ |

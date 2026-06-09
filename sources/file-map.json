@@ -6,8 +6,8 @@
       "title": "Council watch — pending Palo Alto City Council decisions",
       "url": "https://sb79.numtot.org/council-watch.html",
       "category": "site",
-      "content_hash": "be109c41e1113c641af20eaf75028c2201245e28de8195fb7115b77f2b7d1043",
-      "openai_file_id": "file-GWhyfmb7ik8criUbNs6147"
+      "content_hash": "53e360ab2cfaa7789ce08b73803c8e7d8612087d602e7fb94fa176ca4c8d5a68",
+      "openai_file_id": "file-GwPShpLs3BEnP3Fdykz9Xu"
     },
     "site-index": {
       "id": "site-index",
@@ -54,8 +54,8 @@
       "title": "Neighboring cities — SB 79 responses",
       "url": "https://sb79.numtot.org/neighbors.html",
       "category": "site",
-      "content_hash": "2c0171433086d6eeee7a16aa8fc9acffcd97e3b15ad480f87a7731aeaecdf689",
-      "openai_file_id": "file-BCq7ueULtEH7ACSCwKxAN9"
+      "content_hash": "6782ae8fe7a2bcc91efd341f95ed0142db1b646b4d259c446bd3c512701961a2",
+      "openai_file_id": "file-9XK4LT3JhsNLn6mnAvbUoB"
     },
     "site-tier-analysis": {
       "id": "site-tier-analysis",
@@ -78,8 +78,8 @@
       "title": "Primary sources index (editorial master list)",
       "url": "https://github.com/chaodoze/sb79palo/blob/main/PRIMARY-SOURCES.md",
       "category": "site",
-      "content_hash": "f9e9012ed457e6e484a3b41d2d63793004bf60f11758e6a10e7e4fee1e69bf25",
-      "openai_file_id": "file-4gPdhyjLqHKrMwxdnxpPeT"
+      "content_hash": "6e1c5436239d7abc9c63ddc94e3c6c414fd6f682c1f0eb13fea451d7e5bfff6d",
+      "openai_file_id": "file-4PCs5V7YUayFvdVXEJaDCB"
     },
     "statute-leginfo-nav": {
       "id": "statute-leginfo-nav",
@@ -240,6 +240,22 @@
       "category": "city-palo-alto",
       "content_hash": "d9f329573f4e47ba3fd5c5b13090e00151aad81835c798a82d58cc8676f5079b",
       "openai_file_id": "file-NS51izV1iHd2xXCfvJBn9J"
+    },
+    "city-june-15-agenda": {
+      "id": "city-june-15-agenda",
+      "title": "June 15, 2026 Council agenda — SB 79 Item 23, second reading + urgency ordinances (PrimeGov)",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18739",
+      "category": "city-palo-alto",
+      "content_hash": "a18b2e388a5720644449d57f378a6ef854d0fa0a2ce0c9dbd49b5ebbe1beeab8",
+      "openai_file_id": "file-3KwJRqi9jzsGzC9dBJnS9R"
+    },
+    "pa-item-23-staff-report": {
+      "id": "pa-item-23-staff-report",
+      "title": "Palo Alto Council June 15, 2026 — Item 23 Staff Report (#2606-6432)",
+      "url": "https://cityofpaloalto.primegov.com/api/compilemeetingattachmenthistory/historyattachment/?historyId=df56bd4e-fb93-43c1-888c-f0ab32f465dd",
+      "category": "city-palo-alto",
+      "content_hash": "47336db9840a8610ee7ec2ef9b8e07b36a423173134d04c8d4450801202f4eba",
+      "openai_file_id": "file-LHLXtFyEq6FBb23fS73oUK"
     },
     "pa-item-17-attach-a-tod-map": {
       "id": "pa-item-17-attach-a-tod-map",

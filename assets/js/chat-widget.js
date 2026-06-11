@@ -9,7 +9,7 @@
   const SUGGESTED = [
     "What is SB 79?",
     "Which Palo Alto Caltrain station is which tier?",
-    "What's on the June 1 agenda?",
+    "What did Council decide, and what happens next?",
     "How do I comment at the next meeting?",
   ];
 

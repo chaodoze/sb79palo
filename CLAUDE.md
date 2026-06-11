@@ -29,6 +29,13 @@ See [the chat-widget runbook](#chat-widget-runbook) below.
 - **Distinguish similar-sounding options.** Before describing two related paths, write out
   how they differ on every axis (timeline, who approves, interim effect, cost).
 - **Lint before declaring done.** Run `npx htmlhint *.html` on any changed HTML.
+- **Plain language on main pages.** Home, Palo Alto, and Council watch are written for
+  residents with zero planning background. Jargon goes behind `a.term` links: dotted
+  underline, hover definition via `data-def`, click-through to `glossary.html#anchor`.
+  The glossary one-liner is the canonical `data-def` string — copy it verbatim; check
+  drift with `grep -oh 'data-def="[^"]*"' *.html | sort | uniq -c`. Tooltip only the
+  first occurrence per page. Learn / Tier analysis / About / Glossary live off-nav,
+  linked from the footer and in context.
 - After a major change, add an entry to `learnings.md` if a mistake surfaced, and commit.
 
 ## Deploy

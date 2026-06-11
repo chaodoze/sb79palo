@@ -16,6 +16,25 @@
   });
 })();
 
+// Keep glossary-term popovers inside the viewport: on hover/focus, shift the
+// popover (via --tt-shift) so it never clips at the left or right edge.
+(function clampTermPopovers() {
+  const MARGIN = 12;
+  document.querySelectorAll('a.term[data-def]').forEach((term) => {
+    const clamp = () => {
+      const half = Math.min(380, window.innerWidth * 0.8) / 2;
+      const rect = term.getBoundingClientRect();
+      const center = rect.left + rect.width / 2;
+      let shift = 0;
+      if (center - half < MARGIN) shift = MARGIN - (center - half);
+      else if (center + half > window.innerWidth - MARGIN) shift = (window.innerWidth - MARGIN) - (center + half);
+      term.style.setProperty('--tt-shift', `${shift}px`);
+    };
+    term.addEventListener('mouseenter', clamp);
+    term.addEventListener('focus', clamp);
+  });
+})();
+
 // Reveal-on-scroll: any element with the `reveal` class fades + slides into
 // place once it enters the viewport. Honors prefers-reduced-motion.
 (function revealOnScroll() {

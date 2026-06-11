@@ -6,6 +6,34 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-06-10 — Plain-language rework: glossary tooltips need a single canonical string
+
+### What happened (practice, not a mistake)
+
+Reworked the site for everyday readers: nav cut to Palo Alto / Council watch / FAQ,
+Learn's essentials folded into the home page (learn.html stays as the off-nav deep
+dive), Council watch reordered to lead with "what happens next," and jargon moved
+behind dotted-underline `a.term` links that show a hover definition (`data-def`
+attribute, pure-CSS popover) and click through to `glossary.html#anchor`.
+
+### The drift hazard and the guard
+
+The same definition now lives in two places: the glossary entry's
+`.gloss-one-liner` and every `data-def` attribute that references it. Rule: **the
+glossary one-liner is canonical — copy it verbatim into `data-def`.** Drift check
+(run before any deploy that touches terms):
+
+```bash
+grep -oh 'data-def="[^"]*"' *.html | sort | uniq -c   # same term ⇒ identical string
+```
+
+Also: tooltip only the first occurrence per page; popovers are hidden under
+`(hover: none)` so phone taps go straight to the glossary (no flash); anchor
+integrity for `glossary.html#…`, `faq.html#q-*`, and `council-watch.html#sb79`
+is grep-checked since cross-page links depend on those ids surviving rewrites.
+
+---
+
 ## 2026-05-27 — Forgot to bump the CSS cache-bust query string
 
 ### What happened

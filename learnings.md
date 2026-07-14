@@ -6,6 +6,42 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-07-14 — Verify the *identity* of a meeting video before you transcribe it
+
+### What happened
+
+Reconciling the June 15 council vote, I asked WebSearch for the meeting video. The top
+result was a YouTube link titled **"City Council Meeting - June 15, 2026"** — which I
+transcribed. It was a **different city's council meeting entirely** (a "blended
+neighborhood" zoning debate; councilmembers named Loz, Elliott, McKenna, Travillian —
+none of them Palo Alto's; zero hits on "SB 79," "Palo Alto," or any Palo Alto member).
+A whole transcription cycle wasted before the identity check caught it. The correct
+video (`GMwh6c4IIZc`) was sitting in the PrimeGov Item 23 agenda page's embedded
+`videoUrl` field the entire time.
+
+Separately, the two press recaps of June 15 got the **headline** right (the 50% urgency
+measure failed; historic exemption in force; a two-week gap) but the **vote geometry**
+wrong: both said "3–2, Burt and Lauing in favor." The video showed no one ever moved to
+adopt the 50% urgency ordinance — it died for lack of the four votes an urgency
+ordinance requires (Reckdahl & Lu recused), and the recorded votes were on a substitute
+"do not proceed" motion (5–0) and a staff-direction motion (4–1, Burt the lone no). The
+May 4 / June 1 lesson held: **the video is the record; the press is a lead.**
+
+### How to prevent it / what worked
+
+- **Get meeting-video IDs from the primary portal, not a web search.** The PrimeGov
+  meeting page for the agenda item embeds the canonical `videoUrl` (grep the page HTML
+  for `videoUrl`, or the ListUpcomingMeetings API returns it). A search-result title is
+  an assertion, not a verified identity.
+- **Identity-check every transcript before extracting.** Cheap first pass: grep the
+  transcript for the jurisdiction name, the agenda-item number, and the known
+  councilmember surnames. Zero hits ⇒ wrong source; stop. (Auto-transcripts mangle
+  names phonetically — "Burt→Bert," "Veenker→Vinker," "Reckdahl→Rectal" — so search a
+  few spellings, but a *real* Palo Alto meeting still lights up "Palo Alto"/"SB 79.")
+- **Press vote-counts are leads too, not just press decisions.** A named roll call in a
+  recap still needs the video. Here the outlets simplified "the measure failed" into a
+  clean 3–2 that the record doesn't support.
+
 ## 2026-06-10 — Plain-language rework: glossary tooltips need a single canonical string
 
 ### What happened (practice, not a mistake)

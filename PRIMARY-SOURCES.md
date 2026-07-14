@@ -33,7 +33,8 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
 | 2026-05-18 | Regular meeting — **SB 79 was NOT on the agenda** (Cubberley master plan, 156 California Ave builder's remedy, retail-vitality ordinance). The City Manager's floated May 18 reschedule did not happen. | Confirmed via PrimeGov agenda | [May 18 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18721) |
 | 2026-06-01 | SB 79 implementation = **Item 17**. Staff + SB 79 Ad Hoc Committee recommend adopting two temporary ordinances — historic-resource exemption + 50% rezone ("TOD Combining District") — with interim urgency versions on June 15. | Agenda + staff report #2605-6397 + draft ordinances posted | [June 1 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727) |
 | 2026-06-01 | **OUTCOME: first reading PASSED 5–0** (vote ~12:30 a.m. June 2). Adopted the B+C package with friendly amendments; Reckdahl & Lu recused. Second reading + urgency ordinance set for June 15. | Verified against meeting video (minutes pending) | [YouTube](https://www.youtube.com/watch?v=Cczy-CGO8IE) |
-| 2026-06-15 | SB 79 second reading = **Item 23, CONSENT CALENDAR** (staff report #2606-6432): second reading + adoption of both temporary ordinances AND introduction + adoption of both interim urgency ordinances, with zoning-map updates. **Item 4** approves the June 1 draft action minutes. Agenda posted 2026-06-05. | Agenda + staff report + 4 ordinance attachments posted; verified via PrimeGov agenda HTML | [June 15 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18739) |
+| 2026-06-15 | SB 79 = **Item 23** (staff report #2606-6432), split into 23A (two temporary ordinances, 2nd reading), 23B (historic-site urgency ordinance), 23C (50% citywide urgency ordinance). **Item 4** approves the June 1 draft action minutes. Agenda posted 2026-06-05. | Agenda + staff report + 4 ordinance attachments posted; verified via PrimeGov agenda HTML | [June 15 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18739) |
+| 2026-06-15 | **OUTCOME: temporary ordinances (23A) adopted 2nd reading → effective July 16; historic urgency ordinance (23B) adopted → effective ~July 1; the 50% citywide urgency ordinance (23C) DID NOT PASS.** 23C needed 4 of 5 eligible votes (Reckdahl & Lu recused); Lythcott-Haims, Stone, Veenker declined the required "immediate threat" finding, so it never reached a motion to adopt. Council directed staff not to proceed (5–0) and to study Cal Ave/ECR upzoning (4–1, Burt no). Net effect: **full-strength SB 79 applied citywide July 1–15 except historic sites; the 50% reduction took effect July 16.** | Verified against meeting video (auto-transcript; minutes pending) | [YouTube](https://www.youtube.com/watch?v=GMwh6c4IIZc) |
 
 #### June 1, 2026 — Item 17 staff proposal (key facts)
 
@@ -68,6 +69,20 @@ Source: [meeting video](https://www.youtube.com/watch?v=Cczy-CGO8IE), final ~20 
 - Other standards spelled out: FAR 1.75 / 1.5 / 2.25 (adjacent = **within 200 feet** of a transit stop); minimum setbacks 10 ft front/rear, 4 ft sides unless underlying zone differs; daylight plane 16 ft / 45° adjacent to low-density residential.
 - **Next steps if adopted:** submit ordinances to HCD; update zoning maps; over **6–12 months** prepare codifying ordinances "while exploring opportunities to accelerate housing production on California Avenue and adjacent areas on El Camino Real"; continue Downtown Housing Plan work with the Ad Hoc.
 - CEQA: exempt under Gov. Code §65912.160(c)(2).
+
+#### June 15, 2026 — Item 23 OUTCOME (verified against meeting video)
+
+Source: [June 15 meeting video](https://www.youtube.com/watch?v=GMwh6c4IIZc) (video ID pulled from the PrimeGov Item 23 agenda page, not a web-search result — see the learnings note about a mis-identified video). Auto-transcript, no diarization; minutes pending. What the staff report *proposed* (adopt all four ordinances in one consent item) is **not** what happened.
+
+- The city attorney split Item 23 into **23A** (the two temporary/non-urgency ordinances, second reading), **23B** (interim urgency ordinance on **historic sites**), **23C** (interim urgency ordinance applying the **50% reduction citywide**).
+- **23A adopted** on second reading → **effective July 16, 2026** (after the 30-day referendum period). City attorney on the record: "the two that you voted on the second reading will take effect on July 16th."
+- **23B (historic urgency) adopted** → **effective immediately (~July 1)**. Mayor: "we also just passed an urgency ordinance that exempts historic sites starting now… effective on July 1 when SB79 comes into effect."
+- **23C (50% citywide urgency) DID NOT PASS.** An urgency ordinance needs **4 yes votes**; with Reckdahl and Lu recused only 5 could vote, and Lythcott-Haims, Stone, and Veenker declined to make the required "current and immediate threat to the public health, safety or welfare" finding — so four yeses were impossible and no member ever moved to adopt it. Council instead passed a two-part substitute (Veenker moved, Lythcott-Haims seconded): (1) direct staff **not** to proceed with 23C — **5–0**; (2) explore/​bring back Cal Ave + El Camino zoning revisions within 6–12 months — **4–1, Burt dissenting**.
+- **Recusals (Item 23):** Lu ("I own a condo in the SB 79 radius") and Reckdahl ("my home's proximity to the San Antonio station").
+- **Net effect:** from **July 1 through July 15**, full-strength SB 79 applied in all three station areas **except historic sites** (protected by 23B); the **50% reduction took effect July 16** via 23A. City attorney: "there's a 15-day gap where SB79 would take effect to its full extent."
+- **Reasons on the record** (verbatim): Stone — the findings "acknowledge that there are no pending project applications that would be affected… these findings are just difficult to reconcile"; Veenker — "I believe that our legal risk outweighs the risk associated with having one or maybe a couple of applications that get filed in that short window," and passing it would "risk our pro housing designation"; Lythcott-Haims — "if we make emergency findings to warrant this urgency, it is highly doubtful we'll get our pro-ousing designation that we just approved in item 7."
+
+> ⚠️ **Note on press accounts (June 15).** Both [PA Online (6/16)](https://www.paloaltoonline.com/housing/2026/06/16/palo-alto-nixes-urgency-measure-to-limit-impact-of-housing-law/) and [Daily Post (6/15)](https://padailypost.com/2026/06/15/council-backs-off-of-rule-to-block-tall-buildings-near-caltrain/) got the headline right (the 50% urgency measure failed; historic exemption in force; two-week gap) but framed it as a **3–2 roll call with "Burt and Lauing in favor."** The video does not support that: **no member voted to adopt 23C** — it died for lack of the four required votes, and the recorded votes were on the substitute motion to *not* proceed (5–0) and to direct staff (4–1, Burt the lone **no** on the staff direction). Go to the video.
 
 #### May 4, 2026 deferral — verbatim from YouTube auto-transcript
 
@@ -169,7 +184,7 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 
 | Source | What it gives us | Link |
 |---|---|---|
-| MTC SB 79 Regional Map | Authoritative half-mile-buffer overlay on city boundaries. Preliminary draft; becomes official July 1, 2026. | https://mtc.ca.gov/planning/land-use/senate-bill-79-regional-map |
+| MTC SB 79 Regional Map | Authoritative half-mile-buffer overlay on city boundaries. **Official as of July 1, 2026** (was preliminary draft). Our independent GTFS tier computation is now a cross-check, not the primary basis — see usage note #2. | https://mtc.ca.gov/planning/land-use/senate-bill-79-regional-map |
 | ABAG SB 79 Summary, 2026-04-08 | Tier definitions, train-count thresholds, Caltrain station classifications. | https://abag.ca.gov/sites/default/files/documents/2026-04/SB79-Summary-040826.pdf |
 
 ---
@@ -191,6 +206,12 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 
 | Date | Outlet | Title | Link |
 |---|---|---|---|
+| 2026-07-10 | Palo Alto Online | Downtown housing proposal becomes the sixth to lean on new state law (135 University Ave, 7-story, Minority Television Project; Tier 1, ¼-mi of PA Caltrain) | https://www.paloaltoonline.com/housing/2026/07/10/downtown-housing-proposal-becomes-the-sixth-to-lean-on-new-state-law/ |
+| 2026-07-08 | Palo Alto Online | Palo Alto sees wave of housing projects as state law kicks in | https://www.paloaltoonline.com/housing/2026/07/08/palo-alto-sees-wave-of-housing-projects-as-state-law-kicks-in/ |
+| 2026-07-07 | Palo Alto Daily Post | Three developers have taken advantage of two-week gap in housing law | https://padailypost.com/2026/07/07/three-developers-have-taken-advantage-of-two-week-gap-in-housing-law/ |
+| 2026-07-02 | Palo Alto Online | Housing advocates don't expect onrush of projects as SB 79 kicks in | https://www.paloaltoonline.com/housing/2026/07/02/housing-advocates-dont-expect-onrush-of-projects-as-sb-79-kicks-in/ |
+| 2026-06-16 | Palo Alto Online | Palo Alto nixes 'urgency' measure to limit impact of housing law (June 15 recap; ⚠️ "Burt and Lauing in favor" framing not supported by the video — see the June 15 outcome note above) | https://www.paloaltoonline.com/housing/2026/06/16/palo-alto-nixes-urgency-measure-to-limit-impact-of-housing-law/ |
+| 2026-06-15 | Palo Alto Daily Post | Council backs off of rule to block tall buildings near Caltrain (June 15 recap; same ⚠️ vote-framing caveat) | https://padailypost.com/2026/06/15/council-backs-off-of-rule-to-block-tall-buildings-near-caltrain/ |
 | 2026-06-02 | Palo Alto Online | Council spars over strategies to limit impact of contentious housing law (June 1 recap; ⚠️ "heads to the PTC on June 10" claim contradicted by the posted PTC agenda) | https://www.paloaltoonline.com/housing/2026/06/02/council-spars-over-strategies-to-limit-impact-of-contentious-housing-law/ |
 | 2026-06-02 | Palo Alto Daily Post | Council divided on tall buildings along Cal Ave. (June 1 recap; ⚠️ conflates the PTC permanent-ordinance track with the interim vote) | https://padailypost.com/2026/06/02/council-divided-on-tall-buildings-along-cal-ave/ |
 | 2026-04-27 | Palo Alto Online | Palo Alto looks to exemptions, rezoning to limit SB 79 impacts | https://www.paloaltoonline.com/housing/2026/04/27/palo-alto-looks-to-exemptions-rezoning-to-limit-sb-79-impacts/ |

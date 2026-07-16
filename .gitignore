@@ -3,7 +3,12 @@ node_modules/
 .cache/
 .idea/
 .vscode/
-.claude/
+# Ignore .claude/ (local settings, caches) EXCEPT the version-controlled
+# sb79-daily-update skill, which the Mac Mini pulls to run the daily job.
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/sb79-daily-update/
 *.log
 .parcel-cache/
 .eslintcache

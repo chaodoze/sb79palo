@@ -1,0 +1,7 @@
+{
+  "_comment": "Watermark for sb79-daily-update. Scan window each run = since last_run. Site is current through the 2026-07-14 June-15 reconciliation; seed last_run there so the first real run catches anything newer.",
+  "last_run": "2026-07-14",
+  "seen_meeting_ids": [],
+  "actioned_fingerprints": [],
+  "open_prs": []
+}

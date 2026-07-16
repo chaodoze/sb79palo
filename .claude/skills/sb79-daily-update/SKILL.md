@@ -45,8 +45,10 @@ Run from the repo root. Scripts live in `.claude/skills/sb79-daily-update/script
 1. **Preflight** — `bash .claude/skills/sb79-daily-update/scripts/preflight.sh`. Aborts if
    the tree is dirty (a human may be mid-edit) or can't sync. This is the guard against the
    parallel-commit divergence documented in `learnings.md` (2026-07-14 merge).
-2. **Load state** — read `.claude/skills/sb79-daily-update/state.json`. The scan window is
-   **since `last_run`**. Note `seen_meeting_ids` and `actioned_fingerprints`.
+2. **Load state** — read `.claude/skills/sb79-daily-update/state.json`. It's per-machine
+   runtime state (gitignored); **if it's missing, `cp state.seed.json state.json` first**.
+   The scan window is **since `last_run`**. Note `seen_meeting_ids` and
+   `actioned_fingerprints`. `state.json` and `run-log.md` are local — never commit them.
 3. **Scan** — execute the `sb79-update-scan` **Quick-start procedure** verbatim:
    - `bash ~/.claude/skills/sb79-update-scan/scripts/check-meetings.sh` (PrimeGov API). If
      that skill isn't installed on this machine, `curl` the endpoint directly:

@@ -14,8 +14,9 @@ origin main` → Cloudflare auto-build. No `wrangler deploy` step.
 .claude/skills/sb79-daily-update/
 ├── SKILL.md                 # the autonomous runbook (tier gate, pipeline, safety rails)
 ├── README.md                # this file
-├── state.json               # watermark: last_run, seen ids, actioned fingerprints
-├── run-log.md               # one line per run (audit trail)
+├── state.seed.json          # committed initial watermark (copied to state.json on first run)
+├── state.json               # LOCAL runtime watermark — gitignored, per-machine
+├── run-log.md               # LOCAL audit trail (one line per run) — gitignored
 └── scripts/
     ├── preflight.sh         # sync to origin/main; abort if tree is dirty
     ├── lint-gate.sh         # htmlhint + data-def drift + local-link check

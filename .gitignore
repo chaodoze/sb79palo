@@ -9,6 +9,11 @@ node_modules/
 !.claude/skills/
 .claude/skills/*
 !.claude/skills/sb79-daily-update/
+# ...but state.json and run-log.md are per-machine runtime state, seeded from
+# state.seed.json on first run. Keep them local so daily mutations don't dirty
+# the tree (preflight) or create commit noise.
+.claude/skills/sb79-daily-update/state.json
+.claude/skills/sb79-daily-update/run-log.md
 *.log
 .parcel-cache/
 .eslintcache

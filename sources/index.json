@@ -1,463 +1,471 @@
 {
- "schema_version": 1,
- "vector_store_name": "sb79-corpus-v1",
- "description": "Source manifest for the council-watch AI chat widget. Local files are read in place; URL entries are fetched into sources/<id>.md (or .pdf) by scripts/build-corpus.ts and committed to git for reproducibility/auditability. All entries are uploaded to an OpenAI vector store; file_search grounds the chat widget's answers in these and only these.",
- "format_notes": {
-  "type": "'local' = file already in repo; 'url' = fetch then cache to sources/<id>.<ext>",
-  "format": "for 'url' entries: 'html' (default — fetch + Readability extract → .md), 'pdf' (download binary → .pdf), 'skip' (record only, don't upload — e.g. authenticated docs)",
-  "category": "free-form grouping for human review; not consumed by the chat widget"
- },
- "sources": [
-  {
-   "id": "site-council-watch",
-   "type": "local",
-   "path": "council-watch.html",
-   "url": "https://sb79.numtot.org/council-watch.html",
-   "title": "Council watch — pending Palo Alto City Council decisions",
-   "category": "site"
+  "schema_version": 1,
+  "vector_store_name": "sb79-corpus-v1",
+  "description": "Source manifest for the council-watch AI chat widget. Local files are read in place; URL entries are fetched into sources/<id>.md (or .pdf) by scripts/build-corpus.ts and committed to git for reproducibility/auditability. All entries are uploaded to an OpenAI vector store; file_search grounds the chat widget's answers in these and only these.",
+  "format_notes": {
+    "type": "'local' = file already in repo; 'url' = fetch then cache to sources/<id>.<ext>",
+    "format": "for 'url' entries: 'html' (default — fetch + Readability extract → .md), 'pdf' (download binary → .pdf), 'skip' (record only, don't upload — e.g. authenticated docs)",
+    "category": "free-form grouping for human review; not consumed by the chat widget"
   },
-  {
-   "id": "site-index",
-   "type": "local",
-   "path": "index.html",
-   "url": "https://sb79.numtot.org/",
-   "title": "SB 79 Palo Alto — homepage",
-   "category": "site"
-  },
-  {
-   "id": "site-learn",
-   "type": "local",
-   "path": "learn.html",
-   "url": "https://sb79.numtot.org/learn.html",
-   "title": "Learn — how SB 79 works",
-   "category": "site"
-  },
-  {
-   "id": "site-palo-alto",
-   "type": "local",
-   "path": "palo-alto.html",
-   "url": "https://sb79.numtot.org/palo-alto.html",
-   "title": "Palo Alto — what SB 79 means here",
-   "category": "site"
-  },
-  {
-   "id": "site-faq",
-   "type": "local",
-   "path": "faq.html",
-   "url": "https://sb79.numtot.org/faq.html",
-   "title": "FAQ — common questions about SB 79 in Palo Alto",
-   "category": "site"
-  },
-  {
-   "id": "site-may-4-decision",
-   "type": "local",
-   "path": "may-4-decision.html",
-   "url": "https://sb79.numtot.org/may-4-decision.html",
-   "title": "May 4, 2026 council meeting — what happened (deferral)",
-   "category": "site"
-  },
-  {
-   "id": "site-neighbors",
-   "type": "local",
-   "path": "neighbors.html",
-   "url": "https://sb79.numtot.org/neighbors.html",
-   "title": "Neighboring cities — SB 79 responses",
-   "category": "site"
-  },
-  {
-   "id": "site-tier-analysis",
-   "type": "local",
-   "path": "tier-analysis.html",
-   "url": "https://sb79.numtot.org/tier-analysis.html",
-   "title": "Tier analysis — Palo Alto Caltrain stations under SB 79",
-   "category": "site"
-  },
-  {
-   "id": "site-about",
-   "type": "local",
-   "path": "about.html",
-   "url": "https://sb79.numtot.org/about.html",
-   "title": "About this site",
-   "category": "site"
-  },
-  {
-   "id": "site-primary-sources",
-   "type": "local",
-   "path": "PRIMARY-SOURCES.md",
-   "url": "https://github.com/chaodoze/sb79palo/blob/main/PRIMARY-SOURCES.md",
-   "title": "Primary sources index (editorial master list)",
-   "category": "site"
-  },
-  {
-   "id": "statute-leginfo-nav",
-   "type": "url",
-   "format": "html",
-   "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB79",
-   "title": "SB 79 bill text — LegInfo navigable view",
-   "category": "statute"
-  },
-  {
-   "id": "statute-leginfo-fulltext",
-   "type": "url",
-   "format": "html",
-   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB79",
-   "title": "SB 79 bill text — LegInfo single-page",
-   "category": "statute"
-  },
-  {
-   "id": "statute-gov-65912-155",
-   "type": "url",
-   "format": "html",
-   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.155",
-   "title": "Gov. Code §65912.155 (definitions)",
-   "category": "statute"
-  },
-  {
-   "id": "statute-gov-65912-156",
-   "type": "url",
-   "format": "html",
-   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.156",
-   "title": "Gov. Code §65912.156 (TOD project)",
-   "category": "statute"
-  },
-  {
-   "id": "statute-gov-65912-157",
-   "type": "url",
-   "format": "html",
-   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.157",
-   "title": "Gov. Code §65912.157 (development standards)",
-   "category": "statute"
-  },
-  {
-   "id": "statute-gov-65912-158",
-   "type": "url",
-   "format": "html",
-   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.158",
-   "title": "Gov. Code §65912.158 (objective standards)",
-   "category": "statute"
-  },
-  {
-   "id": "statute-gov-65912-159",
-   "type": "url",
-   "format": "html",
-   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.159",
-   "title": "Gov. Code §65912.159 (CEQA, ministerial)",
-   "category": "statute"
-  },
-  {
-   "id": "statute-gov-65912-160",
-   "type": "url",
-   "format": "html",
-   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.160",
-   "title": "Gov. Code §65912.160 (HCD notice/review)",
-   "category": "statute"
-  },
-  {
-   "id": "statute-gov-65912-161",
-   "type": "url",
-   "format": "html",
-   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.161",
-   "title": "Gov. Code §65912.161 (alternative plan, off-ramps)",
-   "category": "statute"
-  },
-  {
-   "id": "statute-gov-65912-162",
-   "type": "url",
-   "format": "html",
-   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.162",
-   "title": "Gov. Code §65912.162 (preemption, severability)",
-   "category": "statute"
-  },
-  {
-   "id": "hcd-sb79-tod",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.hcd.ca.gov/planning-and-research/sb79-tod",
-   "title": "HCD — SB 79 Transit-Oriented Development page",
-   "category": "statute"
-  },
-  {
-   "id": "hcd-mpo-advisory",
-   "type": "url",
-   "format": "pdf",
-   "url": "https://www.hcd.ca.gov/sites/default/files/docs/planning-and-community/sb-79-mpo-advisory.pdf",
-   "title": "HCD MPO advisory — tier thresholds (2026-03-20)",
-   "category": "statute"
-  },
-  {
-   "id": "city-clerk-agendas",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.paloalto.gov/Departments/City-Clerk/City-Meeting-Groups/Meeting-Agendas-and-Minutes",
-   "title": "Palo Alto City Clerk — Agendas & Minutes index",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "city-primegov-portal",
-   "type": "url",
-   "format": "html",
-   "url": "https://cityofpaloalto.primegov.com/",
-   "title": "PrimeGov portal — Palo Alto meeting packets",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "city-pds-housing",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects",
-   "title": "Planning & Development Services — Housing page",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "city-council-legislation",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.paloalto.gov/Departments/City-Clerk/City-Council",
-   "title": "Palo Alto City Council legislation library",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "city-committee-meetings",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.paloalto.gov/Departments/City-Clerk/City-Council/City-Council-Committee-Meetings",
-   "title": "Palo Alto Council committee meetings",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "city-may-18-agenda",
-   "type": "url",
-   "format": "html",
-   "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18721",
-   "title": "May 18, 2026 Council agenda (PrimeGov)",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "city-june-1-agenda",
-   "type": "url",
-   "format": "html",
-   "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
-   "title": "June 1, 2026 Council agenda — SB 79 Item 17 (PrimeGov)",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "pa-item-17-staff-report",
-   "type": "url",
-   "format": "pdf",
-   "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
-   "title": "Palo Alto Council June 1, 2026 — Item 17 Staff Report (#2605-6397)",
-   "category": "city-palo-alto",
-   "note": "Downloaded via PrimeGov's dynamic document URL through a logged-in Chrome session. Source link is the agenda page."
-  },
-  {
-   "id": "city-june-15-agenda",
-   "type": "url",
-   "format": "html",
-   "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18739",
-   "title": "June 15, 2026 Council agenda — SB 79 Item 23, second reading + urgency ordinances (PrimeGov)",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "pa-item-23-staff-report",
-   "type": "url",
-   "format": "pdf",
-   "url": "https://cityofpaloalto.primegov.com/api/compilemeetingattachmenthistory/historyattachment/?historyId=df56bd4e-fb93-43c1-888c-f0ab32f465dd",
-   "title": "Palo Alto Council June 15, 2026 — Item 23 Staff Report (#2606-6432)",
-   "category": "city-palo-alto",
-   "note": "Public PrimeGov attachment URL extracted from the June 15 agenda page (meetingTemplateId=18739)."
-  },
-  {
-   "id": "pa-item-17-attach-a-tod-map",
-   "type": "url",
-   "format": "pdf",
-   "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
-   "title": "Palo Alto Council June 1, 2026 — Item 17 Attachment A: Caltrain Stations and TOD Eligible Areas map",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "pa-item-17-attach-b-historic-ordinance",
-   "type": "url",
-   "format": "pdf",
-   "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
-   "title": "Palo Alto Council June 1, 2026 — Item 17 Attachment B: Draft Ordinance, Historic-Resource Exemption (Option B)",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "pa-item-17-attach-c-50pct-ordinance",
-   "type": "url",
-   "format": "pdf",
-   "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
-   "title": "Palo Alto Council June 1, 2026 — Item 17 Attachment C: Draft Ordinance, 50% SB 79 Development Standards / TOD Combining District (Option C)",
-   "category": "city-palo-alto"
-  },
-  {
-   "id": "neighbor-menlo-staff-h3",
-   "type": "url",
-   "format": "pdf",
-   "url": "https://www.menlopark.gov/files/assets/public/v/1/h3-20260512-cc-sb-79-housing-developments.pdf",
-   "title": "Menlo Park — Staff Report #26-078-CC (5/12/2026 Item H-3)",
-   "category": "neighbors"
-  },
-  {
-   "id": "neighbor-menlo-pc-packet",
-   "type": "url",
-   "format": "pdf",
-   "url": "https://www.menlopark.gov/files/sharedassets/public/v/2/agendas-and-minutes/planning-commission/2026-meetings/agenda/20260427-planning-commission-agenda-packet.pdf",
-   "title": "Menlo Park — 4/27/2026 Planning Commission agenda packet",
-   "category": "neighbors"
-  },
-  {
-   "id": "neighbor-mv-voice-2026-01-28",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.mv-voice.com/land-use/2026/01/28/mountain-view-looks-to-mitigate-impact-of-state-housing-law-sb-79/",
-   "title": "MV Voice 2026-01-28 — SB 79 Local Alternative Plan",
-   "category": "neighbors"
-  },
-  {
-   "id": "neighbor-mv-voice-2025-12-11",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.mv-voice.com/land-use/2025/12/11/mountain-view-inches-closer-to-updating-historic-register-amid-community-pushback/",
-   "title": "MV Voice 2025-12-11 — Historic register pause",
-   "category": "neighbors"
-  },
-  {
-   "id": "neighbor-mv-voice-2025-11-10",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.mv-voice.com/housing/2025/11/10/mountain-view-commissioners-city-staff-clash-on-response-to-state-housing-law/",
-   "title": "MV Voice 2025-11-10 — EPC briefing dispute",
-   "category": "neighbors"
-  },
-  {
-   "id": "neighbor-sunnyvale-murphy",
-   "type": "url",
-   "format": "pdf",
-   "url": "https://www.sunnyvale.ca.gov/home/showpublisheddocument/878/637907364053900000",
-   "title": "Sunnyvale — Murphy Station heritage carve-out (PLNG-2026-0118)",
-   "category": "neighbors"
-  },
-  {
-   "id": "neighbor-sunnyvale-svv",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.svvoice.com/sunnyvale-establishes-stances-on-state-laws/",
-   "title": "Silicon Valley Voice 2026-02-24 — Sunnyvale legislative platform",
-   "category": "neighbors"
-  },
-  {
-   "id": "neighbor-sjs-sunnyvale-mobile",
-   "type": "url",
-   "format": "html",
-   "url": "https://sanjosespotlight.com/state-bill-could-displace-sunnyvale-mobile-home-residents/",
-   "title": "San José Spotlight 2025-11-06 — Sunnyvale mobile-home risk",
-   "category": "neighbors"
-  },
-  {
-   "id": "neighbor-rwc-pulse",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.rwcpulse.com/city-government/2026/01/13/redwood-city-council-defines-state-level-priorities/",
-   "title": "RWC Pulse 2026-01-13 — Redwood City state priorities",
-   "category": "neighbors"
-  },
-  {
-   "id": "mtc-regional-map",
-   "type": "url",
-   "format": "html",
-   "url": "https://mtc.ca.gov/planning/land-use/senate-bill-79-regional-map",
-   "title": "MTC SB 79 Regional Map (half-mile buffer)",
-   "category": "regional"
-  },
-  {
-   "id": "abag-sb79-summary",
-   "type": "url",
-   "format": "pdf",
-   "url": "https://abag.ca.gov/sites/default/files/documents/2026-04/SB79-Summary-040826.pdf",
-   "title": "ABAG SB 79 Summary (2026-04-08)",
-   "category": "regional"
-  },
-  {
-   "id": "press-pao-2026-04-27",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.paloaltoonline.com/housing/2026/04/27/palo-alto-looks-to-exemptions-rezoning-to-limit-sb-79-impacts/",
-   "title": "Palo Alto Online 2026-04-27 — exemptions & rezoning preview",
-   "category": "press"
-  },
-  {
-   "id": "press-pao-2026-04-15",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.paloaltoonline.com/calmatters/2026/04/15/cities-scramble-to-comply-with-or-fight-major-state-housing-law/",
-   "title": "Palo Alto Online 2026-04-15 — Cities scramble (CalMatters)",
-   "category": "press"
-  },
-  {
-   "id": "press-pao-2025-11-11",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.paloaltoonline.com/housing/2025/11/11/palo-alto-pauses-downtown-plan-as-state-housing-law-upends-local-rules/",
-   "title": "Palo Alto Online 2025-11-11 — Downtown plan paused",
-   "category": "press"
-  },
-  {
-   "id": "press-pao-2025-10-13",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.paloaltoonline.com/housing/2025/10/13/housing-bill-jolts-palo-altos-plans-for-downtown-san-antonio/",
-   "title": "Palo Alto Online 2025-10-13 — Housing bill jolts plans",
-   "category": "press"
-  },
-  {
-   "id": "press-sjs-rezoning",
-   "type": "url",
-   "format": "html",
-   "url": "https://sanjosespotlight.com/palo-alto-looks-to-rezoning-to-limit-impacts-of-state-bill/",
-   "title": "San José Spotlight — Palo Alto rezoning",
-   "category": "press"
-  },
-  {
-   "id": "legal-hk",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.hklaw.com/en/insights/publications/2025/10/california-gov-gavin-newsom-signs-sb-79",
-   "title": "Holland & Knight — SB 79 signed analysis",
-   "category": "legal"
-  },
-  {
-   "id": "legal-am",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.allenmatkins.com/real-ideas/governor-newsom-approves-sb-79-high-density-transit-oriented-housing-development-projects.html",
-   "title": "Allen Matkins — SB 79 alert",
-   "category": "legal"
-  },
-  {
-   "id": "legal-manatt",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.manatt.com/insights/newsletters/client-alert/sb-79-transformative-upzoning-near-transit-in-california",
-   "title": "Manatt — SB 79 transformative upzoning",
-   "category": "legal"
-  },
-  {
-   "id": "legal-lozano",
-   "type": "url",
-   "format": "html",
-   "url": "https://www.lozanosmith.com/news-clientnewsbriefdetail.php?news_id=3460",
-   "title": "Lozano Smith — 2025 housing legislation roundup",
-   "category": "legal"
-  },
-  {
-   "id": "stakeholder-paf-2026-04-30",
-   "type": "url",
-   "format": "html",
-   "url": "https://docs.google.com/document/d/174bUSfEBp4lBXXMvxMJGiiSa4zD9nEGT9eX-i6i-spE/edit",
-   "title": "Palo Alto Forward — Public Comment on SB 79 Implementation (Jeremy Levine, 2026-04-30)",
-   "category": "stakeholder",
-   "note": "Google Docs URL is not fetchable by curl. The cached sources/stakeholder-paf-2026-04-30.md was exported via /export?format=txt from a logged-in Chrome session. Re-export manually if the doc is updated."
-  }
- ]
+  "sources": [
+    {
+      "id": "site-council-watch",
+      "type": "local",
+      "path": "council-watch.html",
+      "url": "https://sb79.numtot.org/council-watch.html",
+      "title": "Council watch — pending Palo Alto City Council decisions",
+      "category": "site"
+    },
+    {
+      "id": "site-index",
+      "type": "local",
+      "path": "index.html",
+      "url": "https://sb79.numtot.org/",
+      "title": "SB 79 Palo Alto — homepage",
+      "category": "site"
+    },
+    {
+      "id": "site-learn",
+      "type": "local",
+      "path": "learn.html",
+      "url": "https://sb79.numtot.org/learn.html",
+      "title": "Learn — how SB 79 works",
+      "category": "site"
+    },
+    {
+      "id": "site-palo-alto",
+      "type": "local",
+      "path": "palo-alto.html",
+      "url": "https://sb79.numtot.org/palo-alto.html",
+      "title": "Palo Alto — what SB 79 means here",
+      "category": "site"
+    },
+    {
+      "id": "site-faq",
+      "type": "local",
+      "path": "faq.html",
+      "url": "https://sb79.numtot.org/faq.html",
+      "title": "FAQ — common questions about SB 79 in Palo Alto",
+      "category": "site"
+    },
+    {
+      "id": "site-may-4-decision",
+      "type": "local",
+      "path": "may-4-decision.html",
+      "url": "https://sb79.numtot.org/may-4-decision.html",
+      "title": "May 4, 2026 council meeting — what happened (deferral)",
+      "category": "site"
+    },
+    {
+      "id": "site-june-15-decision",
+      "type": "local",
+      "path": "june-15-decision.html",
+      "url": "https://sb79.numtot.org/june-15-decision.html",
+      "title": "June 15, 2026 council decision — ordinances split, 50% urgency measure failed",
+      "category": "site"
+    },
+    {
+      "id": "site-neighbors",
+      "type": "local",
+      "path": "neighbors.html",
+      "url": "https://sb79.numtot.org/neighbors.html",
+      "title": "Neighboring cities — SB 79 responses",
+      "category": "site"
+    },
+    {
+      "id": "site-tier-analysis",
+      "type": "local",
+      "path": "tier-analysis.html",
+      "url": "https://sb79.numtot.org/tier-analysis.html",
+      "title": "Tier analysis — Palo Alto Caltrain stations under SB 79",
+      "category": "site"
+    },
+    {
+      "id": "site-about",
+      "type": "local",
+      "path": "about.html",
+      "url": "https://sb79.numtot.org/about.html",
+      "title": "About this site",
+      "category": "site"
+    },
+    {
+      "id": "site-primary-sources",
+      "type": "local",
+      "path": "PRIMARY-SOURCES.md",
+      "url": "https://github.com/chaodoze/sb79palo/blob/main/PRIMARY-SOURCES.md",
+      "title": "Primary sources index (editorial master list)",
+      "category": "site"
+    },
+    {
+      "id": "statute-leginfo-nav",
+      "type": "url",
+      "format": "html",
+      "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB79",
+      "title": "SB 79 bill text — LegInfo navigable view",
+      "category": "statute"
+    },
+    {
+      "id": "statute-leginfo-fulltext",
+      "type": "url",
+      "format": "html",
+      "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB79",
+      "title": "SB 79 bill text — LegInfo single-page",
+      "category": "statute"
+    },
+    {
+      "id": "statute-gov-65912-155",
+      "type": "url",
+      "format": "html",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.155",
+      "title": "Gov. Code §65912.155 (definitions)",
+      "category": "statute"
+    },
+    {
+      "id": "statute-gov-65912-156",
+      "type": "url",
+      "format": "html",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.156",
+      "title": "Gov. Code §65912.156 (TOD project)",
+      "category": "statute"
+    },
+    {
+      "id": "statute-gov-65912-157",
+      "type": "url",
+      "format": "html",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.157",
+      "title": "Gov. Code §65912.157 (development standards)",
+      "category": "statute"
+    },
+    {
+      "id": "statute-gov-65912-158",
+      "type": "url",
+      "format": "html",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.158",
+      "title": "Gov. Code §65912.158 (objective standards)",
+      "category": "statute"
+    },
+    {
+      "id": "statute-gov-65912-159",
+      "type": "url",
+      "format": "html",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.159",
+      "title": "Gov. Code §65912.159 (CEQA, ministerial)",
+      "category": "statute"
+    },
+    {
+      "id": "statute-gov-65912-160",
+      "type": "url",
+      "format": "html",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.160",
+      "title": "Gov. Code §65912.160 (HCD notice/review)",
+      "category": "statute"
+    },
+    {
+      "id": "statute-gov-65912-161",
+      "type": "url",
+      "format": "html",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.161",
+      "title": "Gov. Code §65912.161 (alternative plan, off-ramps)",
+      "category": "statute"
+    },
+    {
+      "id": "statute-gov-65912-162",
+      "type": "url",
+      "format": "html",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.162",
+      "title": "Gov. Code §65912.162 (preemption, severability)",
+      "category": "statute"
+    },
+    {
+      "id": "hcd-sb79-tod",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.hcd.ca.gov/planning-and-research/sb79-tod",
+      "title": "HCD — SB 79 Transit-Oriented Development page",
+      "category": "statute"
+    },
+    {
+      "id": "hcd-mpo-advisory",
+      "type": "url",
+      "format": "pdf",
+      "url": "https://www.hcd.ca.gov/sites/default/files/docs/planning-and-community/sb-79-mpo-advisory.pdf",
+      "title": "HCD MPO advisory — tier thresholds (2026-03-20)",
+      "category": "statute"
+    },
+    {
+      "id": "city-clerk-agendas",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.paloalto.gov/Departments/City-Clerk/City-Meeting-Groups/Meeting-Agendas-and-Minutes",
+      "title": "Palo Alto City Clerk — Agendas & Minutes index",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "city-primegov-portal",
+      "type": "url",
+      "format": "html",
+      "url": "https://cityofpaloalto.primegov.com/",
+      "title": "PrimeGov portal — Palo Alto meeting packets",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "city-pds-housing",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects",
+      "title": "Planning & Development Services — Housing page",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "city-council-legislation",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.paloalto.gov/Departments/City-Clerk/City-Council",
+      "title": "Palo Alto City Council legislation library",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "city-committee-meetings",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.paloalto.gov/Departments/City-Clerk/City-Council/City-Council-Committee-Meetings",
+      "title": "Palo Alto Council committee meetings",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "city-may-18-agenda",
+      "type": "url",
+      "format": "html",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18721",
+      "title": "May 18, 2026 Council agenda (PrimeGov)",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "city-june-1-agenda",
+      "type": "url",
+      "format": "html",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
+      "title": "June 1, 2026 Council agenda — SB 79 Item 17 (PrimeGov)",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "pa-item-17-staff-report",
+      "type": "url",
+      "format": "pdf",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
+      "title": "Palo Alto Council June 1, 2026 — Item 17 Staff Report (#2605-6397)",
+      "category": "city-palo-alto",
+      "note": "Downloaded via PrimeGov's dynamic document URL through a logged-in Chrome session. Source link is the agenda page."
+    },
+    {
+      "id": "city-june-15-agenda",
+      "type": "url",
+      "format": "html",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18739",
+      "title": "June 15, 2026 Council agenda — SB 79 Item 23, second reading + urgency ordinances (PrimeGov)",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "pa-item-23-staff-report",
+      "type": "url",
+      "format": "pdf",
+      "url": "https://cityofpaloalto.primegov.com/api/compilemeetingattachmenthistory/historyattachment/?historyId=df56bd4e-fb93-43c1-888c-f0ab32f465dd",
+      "title": "Palo Alto Council June 15, 2026 — Item 23 Staff Report (#2606-6432)",
+      "category": "city-palo-alto",
+      "note": "Public PrimeGov attachment URL extracted from the June 15 agenda page (meetingTemplateId=18739)."
+    },
+    {
+      "id": "pa-item-17-attach-a-tod-map",
+      "type": "url",
+      "format": "pdf",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
+      "title": "Palo Alto Council June 1, 2026 — Item 17 Attachment A: Caltrain Stations and TOD Eligible Areas map",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "pa-item-17-attach-b-historic-ordinance",
+      "type": "url",
+      "format": "pdf",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
+      "title": "Palo Alto Council June 1, 2026 — Item 17 Attachment B: Draft Ordinance, Historic-Resource Exemption (Option B)",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "pa-item-17-attach-c-50pct-ordinance",
+      "type": "url",
+      "format": "pdf",
+      "url": "https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727",
+      "title": "Palo Alto Council June 1, 2026 — Item 17 Attachment C: Draft Ordinance, 50% SB 79 Development Standards / TOD Combining District (Option C)",
+      "category": "city-palo-alto"
+    },
+    {
+      "id": "neighbor-menlo-staff-h3",
+      "type": "url",
+      "format": "pdf",
+      "url": "https://www.menlopark.gov/files/assets/public/v/1/h3-20260512-cc-sb-79-housing-developments.pdf",
+      "title": "Menlo Park — Staff Report #26-078-CC (5/12/2026 Item H-3)",
+      "category": "neighbors"
+    },
+    {
+      "id": "neighbor-menlo-pc-packet",
+      "type": "url",
+      "format": "pdf",
+      "url": "https://www.menlopark.gov/files/sharedassets/public/v/2/agendas-and-minutes/planning-commission/2026-meetings/agenda/20260427-planning-commission-agenda-packet.pdf",
+      "title": "Menlo Park — 4/27/2026 Planning Commission agenda packet",
+      "category": "neighbors"
+    },
+    {
+      "id": "neighbor-mv-voice-2026-01-28",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.mv-voice.com/land-use/2026/01/28/mountain-view-looks-to-mitigate-impact-of-state-housing-law-sb-79/",
+      "title": "MV Voice 2026-01-28 — SB 79 Local Alternative Plan",
+      "category": "neighbors"
+    },
+    {
+      "id": "neighbor-mv-voice-2025-12-11",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.mv-voice.com/land-use/2025/12/11/mountain-view-inches-closer-to-updating-historic-register-amid-community-pushback/",
+      "title": "MV Voice 2025-12-11 — Historic register pause",
+      "category": "neighbors"
+    },
+    {
+      "id": "neighbor-mv-voice-2025-11-10",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.mv-voice.com/housing/2025/11/10/mountain-view-commissioners-city-staff-clash-on-response-to-state-housing-law/",
+      "title": "MV Voice 2025-11-10 — EPC briefing dispute",
+      "category": "neighbors"
+    },
+    {
+      "id": "neighbor-sunnyvale-murphy",
+      "type": "url",
+      "format": "pdf",
+      "url": "https://www.sunnyvale.ca.gov/home/showpublisheddocument/878/637907364053900000",
+      "title": "Sunnyvale — Murphy Station heritage carve-out (PLNG-2026-0118)",
+      "category": "neighbors"
+    },
+    {
+      "id": "neighbor-sunnyvale-svv",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.svvoice.com/sunnyvale-establishes-stances-on-state-laws/",
+      "title": "Silicon Valley Voice 2026-02-24 — Sunnyvale legislative platform",
+      "category": "neighbors"
+    },
+    {
+      "id": "neighbor-sjs-sunnyvale-mobile",
+      "type": "url",
+      "format": "html",
+      "url": "https://sanjosespotlight.com/state-bill-could-displace-sunnyvale-mobile-home-residents/",
+      "title": "San José Spotlight 2025-11-06 — Sunnyvale mobile-home risk",
+      "category": "neighbors"
+    },
+    {
+      "id": "neighbor-rwc-pulse",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.rwcpulse.com/city-government/2026/01/13/redwood-city-council-defines-state-level-priorities/",
+      "title": "RWC Pulse 2026-01-13 — Redwood City state priorities",
+      "category": "neighbors"
+    },
+    {
+      "id": "mtc-regional-map",
+      "type": "url",
+      "format": "html",
+      "url": "https://mtc.ca.gov/planning/land-use/senate-bill-79-regional-map",
+      "title": "MTC SB 79 Regional Map (half-mile buffer)",
+      "category": "regional"
+    },
+    {
+      "id": "abag-sb79-summary",
+      "type": "url",
+      "format": "pdf",
+      "url": "https://abag.ca.gov/sites/default/files/documents/2026-04/SB79-Summary-040826.pdf",
+      "title": "ABAG SB 79 Summary (2026-04-08)",
+      "category": "regional"
+    },
+    {
+      "id": "press-pao-2026-04-27",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.paloaltoonline.com/housing/2026/04/27/palo-alto-looks-to-exemptions-rezoning-to-limit-sb-79-impacts/",
+      "title": "Palo Alto Online 2026-04-27 — exemptions & rezoning preview",
+      "category": "press"
+    },
+    {
+      "id": "press-pao-2026-04-15",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.paloaltoonline.com/calmatters/2026/04/15/cities-scramble-to-comply-with-or-fight-major-state-housing-law/",
+      "title": "Palo Alto Online 2026-04-15 — Cities scramble (CalMatters)",
+      "category": "press"
+    },
+    {
+      "id": "press-pao-2025-11-11",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.paloaltoonline.com/housing/2025/11/11/palo-alto-pauses-downtown-plan-as-state-housing-law-upends-local-rules/",
+      "title": "Palo Alto Online 2025-11-11 — Downtown plan paused",
+      "category": "press"
+    },
+    {
+      "id": "press-pao-2025-10-13",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.paloaltoonline.com/housing/2025/10/13/housing-bill-jolts-palo-altos-plans-for-downtown-san-antonio/",
+      "title": "Palo Alto Online 2025-10-13 — Housing bill jolts plans",
+      "category": "press"
+    },
+    {
+      "id": "press-sjs-rezoning",
+      "type": "url",
+      "format": "html",
+      "url": "https://sanjosespotlight.com/palo-alto-looks-to-rezoning-to-limit-impacts-of-state-bill/",
+      "title": "San José Spotlight — Palo Alto rezoning",
+      "category": "press"
+    },
+    {
+      "id": "legal-hk",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.hklaw.com/en/insights/publications/2025/10/california-gov-gavin-newsom-signs-sb-79",
+      "title": "Holland & Knight — SB 79 signed analysis",
+      "category": "legal"
+    },
+    {
+      "id": "legal-am",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.allenmatkins.com/real-ideas/governor-newsom-approves-sb-79-high-density-transit-oriented-housing-development-projects.html",
+      "title": "Allen Matkins — SB 79 alert",
+      "category": "legal"
+    },
+    {
+      "id": "legal-manatt",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.manatt.com/insights/newsletters/client-alert/sb-79-transformative-upzoning-near-transit-in-california",
+      "title": "Manatt — SB 79 transformative upzoning",
+      "category": "legal"
+    },
+    {
+      "id": "legal-lozano",
+      "type": "url",
+      "format": "html",
+      "url": "https://www.lozanosmith.com/news-clientnewsbriefdetail.php?news_id=3460",
+      "title": "Lozano Smith — 2025 housing legislation roundup",
+      "category": "legal"
+    },
+    {
+      "id": "stakeholder-paf-2026-04-30",
+      "type": "url",
+      "format": "html",
+      "url": "https://docs.google.com/document/d/174bUSfEBp4lBXXMvxMJGiiSa4zD9nEGT9eX-i6i-spE/edit",
+      "title": "Palo Alto Forward — Public Comment on SB 79 Implementation (Jeremy Levine, 2026-04-30)",
+      "category": "stakeholder",
+      "note": "Google Docs URL is not fetchable by curl. The cached sources/stakeholder-paf-2026-04-30.md was exported via /export?format=txt from a logged-in Chrome session. Re-export manually if the doc is updated."
+    }
+  ]
 }

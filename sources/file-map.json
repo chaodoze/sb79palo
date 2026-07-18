@@ -6,40 +6,40 @@
       "title": "Council watch — pending Palo Alto City Council decisions",
       "url": "https://sb79.numtot.org/council-watch.html",
       "category": "site",
-      "content_hash": "9c5016ac2a5f4c19b9977e45a6867a9a1a49a8aeda6951b808d73f5e95734b93",
-      "openai_file_id": "file-GZMCrh6ygij1Uqbots9HHW"
+      "content_hash": "9f0acd0a6a4d36768ee604d7497164f8ec29472f72f141a66905de4a7f6722a8",
+      "openai_file_id": "file-AfbgCht27fazHsh8fSCb8k"
     },
     "site-index": {
       "id": "site-index",
       "title": "SB 79 Palo Alto — homepage",
       "url": "https://sb79.numtot.org/",
       "category": "site",
-      "content_hash": "ada0413db829c9a1365d87f0cb62b1fd62262b870e11b49bbaeb3ae8c426646b",
-      "openai_file_id": "file-96xveuVwAbCgLqyvCJ88V7"
+      "content_hash": "23e65611bf3f30b55d06a070d121d985b29f7333fabab888ad52409b69eefbc4",
+      "openai_file_id": "file-NwFEM7Wp8B3rkXDgJFE4ah"
     },
     "site-learn": {
       "id": "site-learn",
       "title": "Learn — how SB 79 works",
       "url": "https://sb79.numtot.org/learn.html",
       "category": "site",
-      "content_hash": "cdd472051bec64cba6ade25e7b24ad6ccb07fc2077172eae4c1fb9b66a84eb5a",
-      "openai_file_id": "file-KkUVqWEkcndaihpTNT1mw6"
+      "content_hash": "fab3962f9f65c81579759379131e2114abda71b19e283bb097c6754199ea2e4b",
+      "openai_file_id": "file-G85HcUwUPiRmgLRkH53bkx"
     },
     "site-palo-alto": {
       "id": "site-palo-alto",
       "title": "Palo Alto — what SB 79 means here",
       "url": "https://sb79.numtot.org/palo-alto.html",
       "category": "site",
-      "content_hash": "d4c6f6a0d444df03afd38fa1a304db6c3b8b1a119f85718000900fe86e266948",
-      "openai_file_id": "file-2tLgweqHMUzZ6b6XgJe9fK"
+      "content_hash": "168fe4ef67245df2091508bfc913af6210fd5653b9eb5e4fa7f010f09aa5ebe5",
+      "openai_file_id": "file-9aRZieEw35WRS9c6niMNKu"
     },
     "site-faq": {
       "id": "site-faq",
       "title": "FAQ — common questions about SB 79 in Palo Alto",
       "url": "https://sb79.numtot.org/faq.html",
       "category": "site",
-      "content_hash": "eb4beb6f5b3e95ceaf465be8d6a2085c79d3c475473909f64e632d500c10000f",
-      "openai_file_id": "file-Fpjd2PVej4D5J5HEhEowAF"
+      "content_hash": "b662c9d61ff7e4f71991765659593b84ac4d9386a24065bae8033baf6212b751",
+      "openai_file_id": "file-EKqQFzNAtHLL3DPQqs6ToF"
     },
     "site-may-4-decision": {
       "id": "site-may-4-decision",
@@ -48,6 +48,14 @@
       "category": "site",
       "content_hash": "872f97ffcb65d1c92cb0a67c12ed7f2d41d258b8c04dc1894a40be7a57e98ef8",
       "openai_file_id": "file-84DMLSvQbi7b8uBfEeg2Jc"
+    },
+    "site-june-15-decision": {
+      "id": "site-june-15-decision",
+      "title": "June 15, 2026 council decision — ordinances split, 50% urgency measure failed",
+      "url": "https://sb79.numtot.org/june-15-decision.html",
+      "category": "site",
+      "content_hash": "3dc2ef12afcf8d83752a7f530f3917cfb32577b1b46425689d5a2a82208812b2",
+      "openai_file_id": "file-PBiF1frbCWTxtufB5jDJXA"
     },
     "site-neighbors": {
       "id": "site-neighbors",
@@ -78,8 +86,8 @@
       "title": "Primary sources index (editorial master list)",
       "url": "https://github.com/chaodoze/sb79palo/blob/main/PRIMARY-SOURCES.md",
       "category": "site",
-      "content_hash": "b54ae02d3842126564415558099640a9834810c89d98a9b92406fa4944d52a47",
-      "openai_file_id": "file-8n2jr3xgb7NhU7WSsvjwtx"
+      "content_hash": "08ae0e7567040b0f37071a9f97bfe873c12c8c8a01f3c2a35a9d2eccbf6f1bae",
+      "openai_file_id": "file-SSo3MyWz775gzTYSCstgwT"
     },
     "statute-leginfo-nav": {
       "id": "statute-leginfo-nav",

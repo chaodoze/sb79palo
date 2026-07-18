@@ -206,6 +206,9 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 
 | Date | Outlet | Title | Link |
 |---|---|---|---|
+| 2026-07-14 | Palo Alto Online | Downtown North condo proposal is 7th to use new state housing law (340 Palo Alto Ave., 4-story / 48 ft, 6 for-sale condos, Chapman owners / Heather Young Architects; filed in the July 1–15 full-strength window) | https://www.paloaltoonline.com/housing/2026/07/14/downtown-north-condo-proposal-is-7th-to-use-new-state-housing-law/ |
+| 2026-07-14 | Palo Alto Daily Post | Seventh project proposed before window for tall building plans close | https://padailypost.com/2026/07/14/seventh-project-proposed-before-window-for-tall-building-plans-close/ |
+| n.d. | San José Spotlight | Palo Alto condo proposal is 7th to use new state housing law | https://sanjosespotlight.com/palo-alto-condo-proposal-is-7th-to-use-new-state-housing-law/ |
 | 2026-07-10 | Palo Alto Online | Downtown housing proposal becomes the sixth to lean on new state law (135 University Ave, 7-story, Minority Television Project; Tier 1, ¼-mi of PA Caltrain) | https://www.paloaltoonline.com/housing/2026/07/10/downtown-housing-proposal-becomes-the-sixth-to-lean-on-new-state-law/ |
 | 2026-07-08 | Palo Alto Online | Palo Alto sees wave of housing projects as state law kicks in | https://www.paloaltoonline.com/housing/2026/07/08/palo-alto-sees-wave-of-housing-projects-as-state-law-kicks-in/ |
 | 2026-07-07 | Palo Alto Daily Post | Three developers have taken advantage of two-week gap in housing law | https://padailypost.com/2026/07/07/three-developers-have-taken-advantage-of-two-week-gap-in-housing-law/ |

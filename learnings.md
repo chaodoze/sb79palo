@@ -6,6 +6,34 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-07-18 — Minutes can post *before* the scan watermark; diff against what the site claims, not just the date window
+
+### What happened (edge case, not a mistake)
+
+The daily-update scan window is "since `last_run`" (2026-07-14), but the June 15 council
+minutes had been published **June 18 (draft action) and July 1 (summary)** — before the
+watermark — while the site still said "minutes pending." A date-window sweep alone would
+have skipped them forever. The finding surfaced only because the run also checked the
+*site's own pending claims* against the portal's document list.
+
+### Rules / techniques that worked
+
+- **A "pending" claim on the site is a standing query.** Each run, re-check every claim the
+  site flags as pending (minutes, HCD review, designations) regardless of the scan window.
+- **PrimeGov document PDFs are directly fetchable**: `ListArchivedMeetings?year=YYYY` gives
+  each meeting's `documentList` (with `templateName` like "Action Minutes" and
+  `publishDate`); the file itself is at
+  `https://cityofpaloalto.primegov.com/Public/CompiledDocument/<doc id>` — **use `curl -L`**
+  (without `-L` you get a 494-byte redirect stub that `file` reports as HTML).
+- **Minutes have approval states.** June 1 action minutes are *approved* (adopted June 15,
+  Item 4, DocuSigned); June 15 minutes are still *drafts*. Cite them accordingly — a draft
+  corroborates but isn't the approved record, and per Ordinance No. 5423 the action minutes
+  + recording (not summary minutes) are the official record.
+- Draft minutes can carry **new outcome detail** the video pass didn't capture (here: the
+  23a-b consent vote geometry). New outcome detail from minutes is tier-(a) — PR it for
+  human verification against the video; don't auto-deploy it just because the minutes are a
+  primary text document.
+
 ## 2026-07-14 — Verify the *identity* of a meeting video before you transcribe it
 
 ### What happened

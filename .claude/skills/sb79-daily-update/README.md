@@ -1,6 +1,6 @@
 # sb79-daily-update
 
-A scheduled, unattended agent that runs the [`sb79-update-scan`](../../../../.claude/skills/sb79-update-scan/SKILL.md)
+A scheduled, unattended agent that runs the [`sb79-update-scan`](../sb79-update-scan/SKILL.md)
 diligence daily, **auto-deploys mechanically-verifiable "safe facts,"** and **opens a PR**
 for anything asserting an outcome (a vote, an adoption, a lawsuit) — because an unattended
 run can't transcribe a meeting video to verify it. Full runbook: [`SKILL.md`](SKILL.md).

@@ -2,12 +2,12 @@
 
 ## Refresh `station-tiers.json`
 
-The `tier-analysis.html` page reads `assets/data/station-tiers.json`, which is computed by the [`sb79-tier-determination` skill](https://github.com/) at `~/.claude/skills/sb79-tier-determination/`.
+The `tier-analysis.html` page reads `assets/data/station-tiers.json`, which is computed by the [`sb79-tier-determination` skill](https://github.com/) at `.claude/skills/sb79-tier-determination/`.
 
 To recompute against the latest Caltrain GTFS feed:
 
 ```bash
-node ~/.claude/skills/sb79-tier-determination/compute-tiers.mjs \
+node .claude/skills/sb79-tier-determination/compute-tiers.mjs \
      --config scripts/compute-tiers.config.json
 ```
 
@@ -21,7 +21,11 @@ Then commit the updated JSON.
 
 ## Why this is a skill, not a project script
 
-The skill at `~/.claude/skills/sb79-tier-determination/` is reusable across projects. If a future YIMBY portal for Mountain View, Sunnyvale, or Berkeley needs the same calculation, it can use the same skill with a different config — no need to fork the script. This site is one consumer.
+The skill at `.claude/skills/sb79-tier-determination/` is config-driven, so the same
+calculation serves any station set — a future portal for Mountain View, Sunnyvale, or
+Berkeley just needs a different config, not a forked script. It lives in this repo
+(rather than `~/.claude/skills/`) so it version-controls and deploys with the site;
+copy the directory if another project needs it.
 
 ## Future work
 

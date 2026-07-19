@@ -5,7 +5,7 @@ description: Daily unattended agent that scans for SB 79 updates (building on sb
 
 # SB 79 daily update
 
-Turns the **sensing** skill [`sb79-update-scan`](../../../../.claude/skills/sb79-update-scan/SKILL.md)
+Turns the **sensing** skill [`sb79-update-scan`](../sb79-update-scan/SKILL.md)
 into an **acting** one. It runs once a day, unattended, in the `sb79palo` repo, and:
 
 - **auto-deploys** small facts it can verify itself (a confirmed date, a new source link),
@@ -15,7 +15,7 @@ into an **acting** one. It runs once a day, unattended, in the `sb79palo` repo, 
 
 > **Read first:** the project's [`CLAUDE.md`](../../../CLAUDE.md) and
 > [`learnings.md`](../../../learnings.md), and the sibling
-> [`sb79-update-scan`](../../../../.claude/skills/sb79-update-scan/SKILL.md). Every
+> [`sb79-update-scan`](../sb79-update-scan/SKILL.md). Every
 > primary-source rule there applies here — this skill just automates the safe subset.
 
 ## The one rule that matters
@@ -50,7 +50,7 @@ Run from the repo root. Scripts live in `.claude/skills/sb79-daily-update/script
    The scan window is **since `last_run`**. Note `seen_meeting_ids` and
    `actioned_fingerprints`. `state.json` and `run-log.md` are local — never commit them.
 3. **Scan** — execute the `sb79-update-scan` **Quick-start procedure** verbatim:
-   - `bash ~/.claude/skills/sb79-update-scan/scripts/check-meetings.sh` (PrimeGov API). If
+   - `bash .claude/skills/sb79-update-scan/scripts/check-meetings.sh` (PrimeGov API). If
      that skill isn't installed on this machine, `curl` the endpoint directly:
      `https://cityofpaloalto.primegov.com/api/v2/PublicPortal/ListUpcomingMeetings`.
    - Diff the active agenda's attachments against `PRIMARY-SOURCES.md`.
@@ -138,7 +138,7 @@ after any change to this skill before re-enabling live deploys.
 
 ## See also
 
-- `~/.claude/skills/sb79-update-scan/SKILL.md` — the sensing methodology, tier thresholds,
+- `.claude/skills/sb79-update-scan/SKILL.md` — the sensing methodology, tier thresholds,
   edit-target file/line map, and the PrimeGov API technique.
 - `README.md` (this dir) — scheduling on the Mac Mini, email setup, changing autonomy.
 - `../../../CLAUDE.md`, `../../../learnings.md`, `../../../PRIMARY-SOURCES.md`.

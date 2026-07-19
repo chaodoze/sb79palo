@@ -4,11 +4,14 @@ node_modules/
 .idea/
 .vscode/
 # Ignore .claude/ (local settings, caches) EXCEPT the version-controlled
-# sb79-daily-update skill, which the Mac Mini pulls to run the daily job.
+# sb79-* skills, which are project-specific and which the Mac Mini pulls to run
+# the daily job.
 .claude/*
 !.claude/skills/
 .claude/skills/*
 !.claude/skills/sb79-daily-update/
+!.claude/skills/sb79-tier-determination/
+!.claude/skills/sb79-update-scan/
 # ...but state.json and run-log.md are per-machine runtime state, seeded from
 # state.seed.json on first run. Keep them local so daily mutations don't dirty
 # the tree (preflight) or create commit noise.

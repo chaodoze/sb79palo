@@ -1,0 +1,10 @@
+{
+  "_comment": "Example: Palo Alto's three Caltrain stations. Patterns match Caltrain's GTFS naming where each station has NB/SB child stops (e.g. 'Palo Alto Caltrain Northbound', 'Palo Alto Caltrain Southbound') with a parent_station. The script auto-includes the parent.",
+  "gtfs_url": "https://data.trilliumtransit.com/gtfs/caltrain-ca-us/caltrain-ca-us.zip",
+  "stations": [
+    { "name": "Palo Alto / University Ave Caltrain", "match_pattern": "^Palo Alto Caltrain " },
+    { "name": "California Ave Caltrain", "match_pattern": "^California Avenue Caltrain " },
+    { "name": "San Antonio Caltrain", "match_pattern": "^San Antonio Caltrain " }
+  ],
+  "output_path": "./station-tiers.json"
+}

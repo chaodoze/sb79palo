@@ -62,8 +62,8 @@
       "title": "Neighboring cities — SB 79 responses",
       "url": "https://sb79.numtot.org/neighbors.html",
       "category": "site",
-      "content_hash": "6782ae8fe7a2bcc91efd341f95ed0142db1b646b4d259c446bd3c512701961a2",
-      "openai_file_id": "file-9XK4LT3JhsNLn6mnAvbUoB"
+      "content_hash": "c9e184cc1a8b76f7bcc73e624e0492d634a6ca5b505170c09caf2c25a77ea725",
+      "openai_file_id": "file-172sThPTdkfVojpb5gsxQ3"
     },
     "site-tier-analysis": {
       "id": "site-tier-analysis",
@@ -86,8 +86,8 @@
       "title": "Primary sources index (editorial master list)",
       "url": "https://github.com/chaodoze/sb79palo/blob/main/PRIMARY-SOURCES.md",
       "category": "site",
-      "content_hash": "e61998df4e293b2da0d06f8a06b87767855ba23c0a405164c79557532f0d8cdb",
-      "openai_file_id": "file-M1wCMzyPHHnqNQKoMrc5jz"
+      "content_hash": "4a7ccc3637460f1240a3817f28d3708a23c02c5473f9e861c466ba3fa436e03e",
+      "openai_file_id": "file-723Vdk7A166ckF42ZL2vk4"
     },
     "statute-leginfo-nav": {
       "id": "statute-leginfo-nav",

@@ -6,6 +6,20 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-07-19 — Legistar "Final" minutes can belong to a same-day *special* meeting, not the one you're tracking
+
+Checking Sunnyvale's still-pending May 19 adoption vote (Ord. No. 3253-26), the Legistar
+events API showed **two City Council events on 5/19/2026**: the regular meeting (event 4514,
+minutes **Draft**, no file) and an 11 AM budget-workshop special meeting (event 4515, minutes
+**Final**, PDF posted). Grabbing "the 5/19 council minutes marked Final" and flipping the
+site's "minutes pending" claim would have cited a budget workshop that never mentions the
+ordinance. The guard that worked: **open the minutes PDF and grep for the item/ordinance
+number before flipping any pending-minutes claim** — a Final status on the right date is not
+identity. (Same-day special meetings are common around budget season.) Relatedly, a Legistar
+*matter* record showing "Passed" (26-0518 now shows MatterPassedDate 5/19) is a lead, not the
+minutes — the adoption vote stays "not independently verifiable" until the regular meeting's
+minutes go Final.
+
 ## 2026-07-18 — Minutes can post *before* the scan watermark; diff against what the site claims, not just the date window
 
 ### What happened (edge case, not a mistake)

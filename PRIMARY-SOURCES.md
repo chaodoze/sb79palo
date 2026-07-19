@@ -139,6 +139,16 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 
 **Outcome (confirmed):** No exemption ordinance introduced. SB 79 will apply in Menlo Park by default on July 1, 2026. Tentative May 19 second reading is moot. Official minutes for both 4/27 and 5/12 are pending publication at time of writing.
 
+### Atherton
+
+| Source | What it gives us | Link |
+|---|---|---|
+| Town of Atherton — Multi-Family Housing page (fetched 2026-07-19) | Official Town statement: Council adopted zoning amendments 3/18/2026 adding AMC Ch. 17.59 ("Regulations and Objective Standards for Development Projects sought Pursuant to Government Code Section 65912.157 (SB 79)"); submitted to the state 3/26/2026; Town "has received notification from HCD that Atherton is in substantial compliance with SB 79." Standards floor: height ≥75 ft, density ≥120 du/ac, FAR ≥3.5 on seven properties (Glenwood Ave, Laurel St, Victoria Dr) inside the Menlo Park Caltrain ¼-mi band. | https://www.athertonca.gov/672/Multi-Family-Housing |
+| SB 79 ordinance text — AMC Chapter 17.59 (PDF; administrative draft) | The ordinance text (26 pp., read in full 2026-07-19). ⚠️ The Town's posted copy is the **March 2026 administrative draft** — ordinance number and the "Passed and adopted… by the following vote" block are blank. Recitals confirm the path: PC hearing 1/28, Council first reading 2/18 (continued to second reading), second-reading hearing 3/18. Substance verified: pure §65912.157 objective-standards chapter (ministerial approval; maximums set exactly at the state floors — 75 ft height, 120 du/ac, 3.5 FAR — plus setback/design/screening standards); **no §65912.161(b) exclusion language anywhere**. Effective clause ties to HCD approval and SB 79's effective date. | https://www.athertonca.gov/DocumentCenter/View/12538 |
+| Town of Atherton — "That's A Wrap!" council recap, March 18, 2026 | Town's own same-week recap of the 3/18 meeting: consent agenda included "2nd Reading and Adoption of the Objective Design Standards for SB 79 affected parcels" — independent Town corroboration that adoption happened 3/18 (on consent). No vote count or ordinance number given. | https://athertonca.gov/Blog.aspx?ARC=105&IID=207 |
+
+**Status: verified 2026-07-19 (adoption); HCD claim remains self-reported.** The 3/18 adoption is corroborated by two independent Town sources (Multi-Family Housing page + meeting recap blog) plus the draft's recitals; the signed ordinance/vote count is not yet public (the Town's minutes archive lags — re-check for final minutes and an ordinance number later). The HCD substantial-compliance statement is the Town's own; no HCD letter or per-city HCD determination list is public as of 2026-07-19 (HCD's SB 79 page last updated 06/30 lists none), so the site keeps "The Town reports…" attribution. Timing is plausible: submitted 3/26, §65912.160(d) 90-day review ≈ late June.
+
 ### Mountain View
 
 | Source | What it gives us | Link |

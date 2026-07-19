@@ -139,6 +139,15 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 
 **Outcome (confirmed):** No exemption ordinance introduced. SB 79 will apply in Menlo Park by default on July 1, 2026. Tentative May 19 second reading is moot. Official minutes for both 4/27 and 5/12 are pending publication at time of writing.
 
+### Atherton
+
+| Source | What it gives us | Link |
+|---|---|---|
+| Town of Atherton — Multi-Family Housing page (fetched 2026-07-19) | Official Town statement: Council adopted zoning amendments 3/18/2026 adding AMC Ch. 17.59 ("Regulations and Objective Standards for Development Projects sought Pursuant to Government Code Section 65912.157 (SB 79)"); submitted to the state 3/26/2026; Town "has received notification from HCD that Atherton is in substantial compliance with SB 79." Standards floor: height ≥75 ft, density ≥120 du/ac, FAR ≥3.5 on seven properties (Glenwood Ave, Laurel St, Victoria Dr) inside the Menlo Park Caltrain ¼-mi band. | https://www.athertonca.gov/672/Multi-Family-Housing |
+| Adopted SB 79 ordinance — AMC Chapter 17.59 (PDF) | The ordinance text itself. ⚠️ Not yet read in full — verify chapter scope, adoption date, and that it invokes §65912.157 objective standards (not a §65912.161(b) exclusion) before treating the characterization as settled. | https://www.athertonca.gov/DocumentCenter/View/12538 |
+
+**Status: pending human verification (PR).** The 3/18 adoption and HCD substantial-compliance claims come from the Town's own page (primary-adjacent but self-reported); the council vote geometry and HCD letter have not been checked against minutes/video or an HCD document.
+
 ### Mountain View
 
 | Source | What it gives us | Link |

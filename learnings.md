@@ -6,6 +6,18 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-07-22 — build-corpus can time out waiting for OpenAI indexing; the fix is just re-running it
+
+`npm run build-corpus` aborted with "vector store file … did not finish indexing within
+2 minutes" on the `site-primary-sources` upload — a transient OpenAI-side indexing delay,
+not a content problem. Because the script is idempotent (it diffs hashes and re-uploads
+only what changed), the recovery is simply to run it again: the second pass found the
+remaining changed file, finished, and reported the full 57-file inventory. Rule for
+unattended runs: **one indexing-timeout failure ⇒ retry build-corpus once before declaring
+the corpus step failed.** (Postscript: the same-day Sunnyvale scan also validated the
+2026-07-19 same-day-special-meeting guard — event 4514's Final minutes were grepped for
+Item 1.L / Ord. No. 3253-26 before flipping the pending claim, and the item was there.)
+
 ## 2026-07-19 — Legistar "Final" minutes can belong to a same-day *special* meeting, not the one you're tracking
 
 Checking Sunnyvale's still-pending May 19 adoption vote (Ord. No. 3253-26), the Legistar

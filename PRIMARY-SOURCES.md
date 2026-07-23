@@ -220,6 +220,7 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 
 | Date | Outlet | Title | Link |
 |---|---|---|---|
+| 2026-07-22 | Palo Alto Online | Final 2 housing projects round out Palo Alto's SB 79 window (total now **nine** SB 79 filings, 341 units / ~395,310 sq ft per the article; the last two: "Forest Commons," 69 apts incl. 9 affordable at 332 & 350 Forest Ave. downtown, Vittoria Management + Sares Regis; and 19 units incl. 3 affordable at 2497 High St., 71 ft, near Cal Ave Caltrain. ⚠️ Press count — application list not yet verified against city planning records) | https://www.paloaltoonline.com/housing/2026/07/22/final-2-housing-projects-round-out-palo-altos-sb-79-window/ |
 | 2026-07-14 | Palo Alto Online | Downtown North condo proposal is 7th to use new state housing law (340 Palo Alto Ave., 4-story / 48 ft, 6 for-sale condos, Chapman owners / Heather Young Architects; filed in the July 1–15 full-strength window) | https://www.paloaltoonline.com/housing/2026/07/14/downtown-north-condo-proposal-is-7th-to-use-new-state-housing-law/ |
 | 2026-07-14 | Palo Alto Daily Post | Seventh project proposed before window for tall building plans close | https://padailypost.com/2026/07/14/seventh-project-proposed-before-window-for-tall-building-plans-close/ |
 | n.d. | San José Spotlight | Palo Alto condo proposal is 7th to use new state housing law | https://sanjosespotlight.com/palo-alto-condo-proposal-is-7th-to-use-new-state-housing-law/ |

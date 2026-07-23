@@ -6,6 +6,16 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-07-23 — A "pending → final" flip must sweep every page that repeats the claim
+
+The 7/22 Sunnyvale minutes flip updated the per-city section header on `neighbors.html`
+("carve-out adopted (minutes final)") but missed the scorecard table row 150 lines up,
+which still said "(minutes pending)" — the two contradicted each other on the same page
+for a day. Rule: when flipping any pending/confirmed claim, `grep -n` the whole repo for
+the claim's key phrases ("minutes pending", the ordinance number, the date) and update
+every occurrence in the same commit; the scorecard/summary tables are the easy ones to
+miss because the flip work naturally focuses on the detailed section.
+
 ## 2026-07-22 — build-corpus can time out waiting for OpenAI indexing; the fix is just re-running it
 
 `npm run build-corpus` aborted with "vector store file … did not finish indexing within

@@ -335,3 +335,40 @@ regardless of zoning — was both stronger and supported by staff's own on-recor
   the drift.
 - A fairness self-review pass immediately after publishing caught all three; cost was
   one extra commit. Cheaper than a reader catching it.
+
+---
+
+## 2026-07-25 — A claim written ahead of its own effective date quietly went false
+
+### What happened
+
+The daily scan found that seven places on the site asserted MTC's SB 79 Regional Map
+"becomes official July 1, 2026" / "became final July 1, 2026" / "Official as of July 1,
+2026." As of 2026-07-25 both MTC and ABAG still label that map a **preliminary draft** —
+ABAG's page says verbatim "MTC has developed a **preliminary draft map** of these TOD
+Zones," and MTC's own link to the viewer still carries `?draft=true`. MTC's page was last
+updated 2026-07-22, *after* the date in question, so the draft label isn't a stale page.
+
+Nobody wrote a false claim. The wording was authored *before* July 1 as an accurate
+statement about the future ("becomes official on…"), and it turned false on its own when
+the date arrived and the predicted event didn't happen. No scan step was looking for it,
+because the daily pass hunts for **new events**, and this was an **old sentence** going
+stale in place. It survived at least three weeks of daily runs.
+
+### How to prevent it / what worked
+
+- **A future-dated claim is a scheduled liability.** When writing "X becomes official on
+  DATE," you are committing to re-verify on DATE. Either phrase it as an expectation
+  ("MTC has said it expects to finalize by…") or record the date as something to check.
+- **The daily scan needs a "past-due predictions" pass**, not just a new-events sweep.
+  A cheap version: `grep -rniE '(becomes|will be|will publish|coming|effective) [^.]{0,40}(official|final|mid-2026|20[0-9]{2}-[0-9]{2})' *.html` and look at anything whose
+  date is now in the past. Stale future tense ("in mid-2026") is the visible tell.
+- **Confirm the negative from two surfaces before correcting.** Here: ABAG's page text
+  *and* MTC's `?draft=true` link. The ArcGIS viewer itself is JS-only — checked,
+  inaccessible — and the search snippet describing it as a "preliminary draft view" was
+  treated as a lead, not a citation, per the standing rule.
+- **This is tier-(a), not a safe fact.** It reverses a published claim about a map's legal
+  status; whether MTC adopted the map without relabeling it, and whether the statutory
+  rebuttable presumption attaches to a *published* or an *adopted* map, both need a primary
+  record. Routed to PR #5 with those as the merge checklist rather than auto-deployed.
+- Swept all seven occurrences in one branch per the 2026-07-23 flip-sweep rule.

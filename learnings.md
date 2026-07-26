@@ -6,6 +6,58 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-07-26 — We applied the statute's standards without checking the statute's conditions
+
+### What happened
+
+`neighbors.html` said SB 79's half-mile band "spills into" north Los Altos, that affected
+parcels "become SB 79–eligible on July 1, 2026," and called the city's silence "the most
+concerning quiet on the scorecard." The geometry was right and the conclusion was wrong.
+Gov. Code **§65912.157(a)(4)** applies the Tier 1 quarter-to-half-mile floors only "within
+a city with a population of at least 35,000"; **(a)(6)** carries the identical condition
+for Tier 2. Los Altos is **31,921** (DOF E-1, 2026-01-01). No part of the city is within a
+quarter mile of San Antonio Caltrain, and (a)(3)/(a)(5) — the bands with no population
+condition — therefore never reach it. Routed to PR #6, not deployed, because whether a
+sub-35,000 city's outer band is *entirely* outside SB 79 or inside it as an allowed use at
+30 du/ac with local standards intact turns on reading §65912.157(a)'s chapeau against its
+standards paragraphs — a city-attorney question, not an unattended-agent one.
+
+This is a different failure from the 2026-07-25 MTC entry. That was a true sentence that
+went stale. This one was **never true**: we read the parts of the statute that set numbers
+and skipped the clauses that set who the numbers apply to.
+
+### How to prevent it / what worked
+
+- **A statutory standard has an eligibility condition attached. Read both.** We verified
+  tier thresholds, height floors, FAR, and the off-ramp mechanics against codified text —
+  but the phrase "within a city with a population of at least 35,000" sits in the same
+  sentence as the numbers we did quote, and nobody read to the end of it. When quoting a
+  standard, quote the *whole* operative sentence, including its qualifiers.
+- **Per-jurisdiction pages need a per-jurisdiction eligibility check.** `neighbors.html`
+  applies one statute across eight cities. Every such page needs a column for each
+  statutory condition that varies by jurisdiction. The threshold check is now recorded in
+  `PRIMARY-SOURCES.md`: under 35,000 → Menlo Park 33,785, Los Altos 31,921, San Carlos
+  29,249, Atherton 7,086; over → Sunnyvale, Mountain View, Redwood City, Palo Alto.
+  **Menlo Park is 1,215 under the line** — re-check it against each new DOF E-1.
+- **Low-trust sources earn their keep as leads.** This surfaced from a *realtor blog* in a
+  routine press sweep — the kind of source the discipline says never to cite. It was right,
+  and it was right about something four months of primary-source work had missed. The rule
+  holds (never cite it), but the corollary is worth stating: a low-trust source asserting a
+  statutory condition we've never seen before is a cheap, high-value thing to go check.
+- **Two surfaces before correcting, as with the MTC entry**: the codified §65912.157 text
+  pulled from leginfo *and* ABAG's own SB 79 Summary, whose standards table says verbatim
+  "Between ¼ and ½ mile of TOD stop in a city with at least 35,000 residents." Population
+  came from the authoritative DOF E-1 spreadsheet, parsed directly — not from the
+  population-aggregator site the first search returned.
+- **The 2026-07-25 past-due-predictions grep works — keep running it.** Its first live run
+  caught `neighbors.html`'s "SB 79 is expected to apply on July 1, 2026" (Sunnyvale), 25
+  days stale; deployed as a tier-(b) tense fix (1560106).
+- Near-miss worth recording: the first draft of the correction cited **§65912.161**(a)(4)
+  — the *off-ramp* statute — instead of §65912.157. Caught on re-read before commit. Same
+  root cause as the 2026-05-22 Option C/D entry: two adjacent sections in one chapter, and
+  the wrong one is always plausible. Re-read every section number against the text you
+  actually fetched.
+
 ## 2026-07-23 — A "pending → final" flip must sweep every page that repeats the claim
 
 The 7/22 Sunnyvale minutes flip updated the per-city section header on `neighbors.html`

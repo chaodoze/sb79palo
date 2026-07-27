@@ -6,6 +6,68 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-07-27 — The page was updated for the event; its opening paragraph wasn't
+
+### What happened
+
+`palo-alto.html`'s "Specific projects in motion" section still opened with "SB 79 doesn't
+kick in until July 1, 2026, so there are no SB-79-specific projects yet" — 26 days after
+it kicked in, and with nine projects filed. What makes this different from the 2026-07-25
+MTC entry is that **the rest of the page had already been corrected**: line 132 described
+the July 16 effective date in past tense, and line 149 described the two-week window as
+history. The June-15 and July-16 update passes rewrote the substantive paragraphs and
+walked right past the intro sentence that framed them.
+
+So this wasn't a sentence nobody revisited. It was a sentence in a section people
+*did* revisit, that survived because editing attention goes to the paragraph carrying the
+new fact, not to the lede that set up the old one.
+
+### How to prevent it / what worked
+
+- **When an event lands, re-read the section's first sentence, not just the paragraph you
+  came to change.** Ledes, section intros, and "here's what's coming" framings are written
+  in anticipatory tense by construction, which is exactly the tense that rots. Add the
+  intro paragraph to the flip-sweep checklist from 2026-07-23 alongside scorecard rows and
+  summary tables.
+- **The past-due-predictions grep found it — on its second live run.** Worth noting that
+  the 2026-07-25 grep has now caught something on both days it has run (Sunnyvale tense
+  7/26, this 7/27). It is the highest-yield check in the daily pass right now.
+- **Split the fix at the tier line rather than deferring the whole thing.** The stale
+  sentence had two halves: a date-tense error (mechanical, self-verifiable) and "there are
+  no projects yet" (an outcome claim whose replacement — nine projects, 384 vs 341 units —
+  is exactly what PR #4 is pending on). Deployed the first half and *deleted* the second
+  rather than restating a count, so the page now asserts no number at all. A tier-(a)
+  entanglement in one clause doesn't have to block the safe correction in the other;
+  removing a false claim is safe even when replacing it isn't.
+- **Declining to sweep is sometimes the disciplined answer.** The same grep surfaced seven
+  more stale "July 1" claims on `neighbors.html`. Not deployed: PRs #5 and #6 already
+  rewrite overlapping line ranges, and the Menlo Park (33,785) and San Carlos (29,249)
+  "SB 79 applies by default" cells inherit PR #6's unresolved outer-band question — their
+  ¼-mile bands are unconditioned but their ¼-to-½-mile bands are not. A partial sweep that
+  dodged the PR hunks would have left the page half past-tense and half future-tense,
+  which is the exact self-contradiction the 7/23 rule exists to prevent. Recorded as a
+  comment on #6 with a suggested merge order instead.
+- Near-miss, same shape as the 7/26 §65912.161 slip: that PR comment first quoted Redwood
+  City and Mountain View populations (86,684 / 82,376) **from recall**. The real DOF E-1
+  figures were on PR #6's own branch — 81,809 and 88,533. Caught and the comment edited,
+  but the lesson is that the conclusion being right ("both clear 35,000") is what made the
+  wrong digits feel safe to type. Verified numbers live in the repo; go read them.
+
+### Also worth recording: the HCD letters dashboard is a Power BI embed
+
+Five runs have logged HCD's Technical Assistance and Enforcement Letters dashboard as
+"JS-only, checked, inaccessible" while trying to verify Atherton's self-reported HCD
+substantial-compliance notice. The underlying surface is now identified — the page embeds
+`https://app.powerbigov.us/view?r=eyJrIjoiMDQ5YzI3YzQtNzBhYS00NWMwLThlYmQtNWEyMjRkNGI0NGVkIiwidCI6IjJiODI4NjQ2LWIwMzctNGZlNy04NDE1LWU5MzVjZDM0Y2Y5NiJ9`
+(grep the page HTML for `<iframe`). Fetching that embed directly returns a 200 with a
+~29 KB JS app shell and no letter data, so it is **not** headless-reachable either; it
+needs a real browser session or the Power BI query API with a token. Rule: stop
+re-probing it in the daily pass. Note also that HCD does publish some enacted SB 79
+ordinances as direct PDFs under
+`hcd.ca.gov/sites/default/files/docs/planning-and-community/HAU/<city>-sb79-in-<MMDDYY>.pdf`
+(San Francisco's is the confirmed example) — a targeted search for that pattern is a
+cheaper path than the dashboard.
+
 ## 2026-07-26 — We applied the statute's standards without checking the statute's conditions
 
 ### What happened

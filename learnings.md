@@ -6,6 +6,78 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-07-28 — A city with no machine-readable portal is invisible to a portal-driven sweep
+
+### What happened
+
+`neighbors.html` called Redwood City **`silent`** — "no SB 79-specific action on the docket," on a
+snapshot stamped "As of May 23, 2026." On **July 13, 2026** the Redwood City City Council took the
+question up directly and decided it: unanimously kept SB 79's standards rather than adopt an
+off-ramp, and directed staff to prepare a TOD Alternative Plan for spring 2027. Four outlets
+covered it (SM Daily Journal preview 6/18, Local News Matters 7/14, RWC Pulse 7/15, Patch 7/20).
+The site missed it for **15 days**, across five daily runs.
+
+Every one of those runs "checked" the neighbor cities. The checks were **portal-driven** — PrimeGov
+for Palo Alto, the Legistar web API for Sunnyvale and Mountain View. Redwood City has no reachable
+portal API: `redwoodcity.org` 403s even with a browser UA, the city runs **CivicClerk**
+(`redwoodcity.civicclerk.com`, a JS shell whose OData API 404s), the Legistar client `redwoodcity`
+is not provisioned, and `redwoodcity.granicus.com` 404s. So the sweep returned nothing for Redwood
+City every day — and **"no API" produced exactly the same output as "nothing happened."**
+
+### How to prevent it / what worked
+
+- **An unreachable source must be recorded as a gap, not as a negative.** This is the standing
+  "checked, inaccessible" rule (never speculate about what a 403 would have said) — but the rule was
+  only ever applied to *one-off* fetches. Applied to a *recurring* check it has a second half: if a
+  city's portal has never been machine-readable, then no run has ever actually checked that city,
+  and the run log should say so rather than listing it among the quiet ones. Cities with no working
+  API need a **press-first** check, since press is the only surface that reaches them.
+- **"Silent" is a standing query, exactly like "pending."** The 2026-07-18 rule ("a *pending* claim
+  on the site is a standing query — re-check it every run regardless of the scan window") generalizes
+  further than it was written. A `silent` / `no action on the docket` status is a *stronger* claim
+  than `pending` — it asserts a negative about the whole world — yet it reads as settled and so
+  nobody re-checks it. Every per-city status kicker on `neighbors.html` is a claim with an expiry.
+- **A dated snapshot stamp is an admission that the claim expires.** "As of May 23, 2026" sat in the
+  Redwood City paragraph the whole time. Same family as the 7/25 past-due-predictions finding, but
+  the inverse tense: that grep hunts *future*-dated claims going stale ("becomes official July 1").
+  A stamped *past* snapshot rots just as reliably and no grep was looking for it. Cheap addition to
+  the daily pass — run **both** spellings, the prose one and the ISO one:
+
+  ```bash
+  grep -rniE 'as of (january|february|march|april|may|june|july|august|september|october|november|december) [0-9]{1,2}, 20[0-9]{2}' *.html
+  grep -rniE 'as of 20[0-9]{2}-[0-9]{2}-[0-9]{2}' *.html
+  ```
+
+  Anything more than ~30 days old is a re-check, not a fact. Run live on 2026-07-28 this returns
+  three hits, all on `neighbors.html`, all stamped **May 23, 2026** (~9 weeks stale): the Redwood
+  City paragraph (:254, the subject of this entry), the **San Carlos** paragraph (:271 — "no SB 79-specific
+  staff report, ordinance, or council action has been posted to the city's PrimeGov portal as of
+  May 23, 2026"), and the **scorecard's own header sentence** (:41, "What each neighbor city has done
+  as of 2026-05-23" — which stamps the entire table). A July 2026 press check found no San Carlos
+  action, so that claim still holds on the merits; the point is that nothing in the pipeline was
+  *testing* it. The scorecard header is the highest-leverage of the three, since one stale stamp
+  there silently ages all seven city rows at once.
+- **The find came from a generic search, not a targeted one.** The query that surfaced it was a
+  scattershot `SB 79 ordinance Menlo Park OR "Los Altos" OR "San Carlos" OR "Redwood City" council
+  July 2026` — no city-specific hypothesis. Worth keeping one deliberately broad neighbor sweep in
+  the pass; the targeted per-city checks are all keyed to surfaces we already know about, which is
+  precisely why they can't find a city we've stopped watching.
+- **Tier-split held.** The outcome (a council vote) went to PR #7 with the primary record
+  unread — `redwoodcity.org` was 403 on the day. The four press links went to `PRIMARY-SOURCES.md`
+  as tier-(b) leads (a86ed43) with an explicit ⚠️ row saying the action is *not* independently
+  verified. Indexing a lead is safe; asserting the outcome is not.
+- **The two recaps disagree, so the branch writes the weaker claim.** RWC Pulse headlines it "adopts
+  state transit housing standards"; Patch says the council "directed staff to allow SB 79's baseline
+  obligations to remain in effect." Adoption and direction are not the same act, and no source gives
+  an ordinance number. Per the 2026-06-03 rule (when two accounts diverge, that divergence *is* the
+  signal), the PR states the common denominator — "voted … and directed staff," plus an explicit "no
+  ordinance number has surfaced" — and hands the discrepancy to the reviewer rather than picking the
+  more authoritative-sounding outlet.
+- Useful corroboration trick: the **June 18 preview** independently fixed the meeting date *before*
+  the meeting, which is a cleaner date source than the recaps (RWC Pulse's own page renders "Monday,
+  July 15" — but July 15, 2026 is a Wednesday). A preview can't establish that something happened,
+  but it can establish *when it was scheduled*, which is a different and verifiable claim.
+
 ## 2026-07-27 — The page was updated for the event; its opening paragraph wasn't
 
 ### What happened

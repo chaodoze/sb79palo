@@ -40,11 +40,13 @@ done
 # PrimeGov endpoints are confirmed.
 base_url_for_city() {
   case "$1" in
-    palo-alto)  echo "https://cityofpaloalto.primegov.com" ;;
-    # Add as confirmed:
-    # mountain-view) echo "https://..." ;;
-    # menlo-park)    echo "https://..." ;;
-    # sunnyvale)     echo "https://..." ;;
+    palo-alto)    echo "https://cityofpaloalto.primegov.com" ;;
+    san-carlos)   echo "https://cityofsancarlos.primegov.com" ;;
+    atherton)     echo "https://atherton.primegov.com" ;;
+    redwood-city) echo "https://redwoodcity.primegov.com" ;;
+    # Confirmed NOT PrimeGov (do not re-probe):
+    #   mountain-view, sunnyvale -> Legistar (webapi.legistar.com/v1/<client>/events)
+    #   menlo-park, los-altos    -> no PrimeGov subdomain resolves
     *) return 1 ;;
   esac
 }
@@ -52,6 +54,9 @@ base_url_for_city() {
 if [[ "${LIST:-0}" == "1" ]]; then
   echo "Known cities:"
   echo "  palo-alto      https://cityofpaloalto.primegov.com"
+  echo "  san-carlos     https://cityofsancarlos.primegov.com"
+  echo "  atherton       https://atherton.primegov.com"
+  echo "  redwood-city   https://redwoodcity.primegov.com   (new instance; no 2026 archive yet)"
   echo ""
   echo "Add new cities by editing the base_url_for_city function in this script."
   exit 0

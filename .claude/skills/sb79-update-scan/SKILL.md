@@ -56,6 +56,46 @@ bash ~/.claude/skills/sb79-update-scan/scripts/check-meetings.sh
 ```
 
 Add `--city <slug>` for the neighbor cities listed in the script's city table.
+Confirmed PrimeGov cities: **Palo Alto, San Carlos, Atherton, Redwood City** (the last is a
+new instance with no 2026 archive yet). Mountain View and Sunnyvale are Legistar; no
+PrimeGov subdomain resolves for Menlo Park or Los Altos.
+
+### Reading PrimeGov agenda *text* (not just the calendar)
+
+`Portal/viewer?id=<docId>` is an **Accusoft JS shell** — it returns ~225 KB of markup and
+zero content, which is why several cities looked "silent" when they were not (2026-07-29:
+San Carlos had adopted an SB 79 exclusion ordinance in April). Three routes that *do* work
+headlessly:
+
+```
+# 1. The calendar (ids, dateTime, videoUrl, per-document ids and templateIds)
+GET /api/v2/PublicPortal/ListArchivedMeetings?year=2026
+GET /api/v2/PublicPortal/ListUpcomingMeetings
+
+# 2. Full agenda ITEM TEXT — use the templateId of the document whose
+#    compileOutputType == 3 (the "HTML Agenda"/"HTML Packet" entry)
+GET /Portal/Meeting?meetingTemplateId=<templateId>
+
+# 3. Attachment PDFs (staff reports, ordinance text) — hrefs are in the page from (2)
+GET /api/compilemeetingattachmenthistory/historyattachment/?historyId=<guid>
+```
+
+Two bonuses in the route-2 HTML: each item carries `data-videolocation="<seconds>"`, the
+offset into that meeting's `videoUrl` — hand it to a human as `…&t=<seconds>` so they can
+verify a vote directly. And the page header renders the meeting time in **UTC** (a 7 PM
+meeting shows as next-day 2:00 AM); trust the API's `dateTime`, per the caveat below.
+
+**Known limit:** *compiled* documents (Minutes, Agenda, Packet — `compileOutputType == 1`)
+are **not** retrievable. The `historyattachment` route serves attachments only, and no
+`CompiledDocument`/`DownloadDocumentFile` endpoint exists. So a city whose minutes are
+compiled documents (Atherton) still needs a human. Sweep the agendas anyway — an agenda
+item title tells you an ordinance *exists*, which is what the daily scan is for.
+
+A fourth, out-of-band confirmation for "was this ordinance actually adopted?": check the
+**codified** municipal code (Code Publishing / Municode). Codifiers only publish enacted
+ordinances and stamp each section with its ordinance number — e.g. San Carlos SCMC
+Ch. 18.25A carries "(Ord. 1634 § 4 (Exh. A), 2026)". Strong evidence, but it is still not
+the meeting record: it shows the ordinance was enacted, not how the vote went.
 
 ## Sources to check, by tier
 

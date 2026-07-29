@@ -558,3 +558,75 @@ stale in place. It survived at least three weeks of daily runs.
   rebuttable presumption attaches to a *published* or an *adopted* map, both need a primary
   record. Routed to PR #5 with those as the merge checklist rather than auto-deployed.
 - Swept all seven occurrences in one branch per the 2026-07-23 flip-sweep rule.
+
+---
+
+## 2026-07-29 — A JS viewer made a full docket look like an empty one
+
+### What happened
+
+`neighbors.html` called San Carlos **silent**: kicker, heading, scorecard row, summary
+paragraph and two takeaway bullets, all resting on one sentence — "No SB 79-specific staff
+report, ordinance, or council action has been posted to the city's PrimeGov portal as of
+May 23, 2026."
+
+San Carlos had adopted **Ordinance 1634** on April 13, effective May 13 — ten days *before*
+that as-of date. It excludes every site zoned MU-DC-100, MU-D-120, MU-SC-120 or RM-100
+within a quarter mile of San Carlos Caltrain from §65912.157, under Gov. Code
+**§65912.161(b)(1)(A)**, until a year after the seventh-cycle housing element. Planning
+Commission recommendation March 2, introduction March 23, second reading April 13. It is
+the most complete off-ramp on the scorecard, and we had the city filed under "nothing
+happened." Routed to PR #8.
+
+This is *not* the failure mode of the 7/25 and 7/28 entries. Nothing went stale. The claim
+was false on the day it was written, and eleven daily runs re-affirmed it.
+
+### The actual cause: a negative that came from the wrong route
+
+PrimeGov's `Portal/viewer?id=<docId>` is an **Accusoft JS shell**. It returns HTTP 200 and
+~225 KB of markup containing zero document text — for every document, in every PrimeGov
+city, whether or not the document exists. Earlier scans used it, got nothing, and recorded
+nothing as *nothing happened*.
+
+The tell was there and got walked past: every document came back at **exactly 224335
+bytes**. Identical byte counts across five unrelated agendas is not a docket, it's a
+template.
+
+### How to prevent it / what worked
+
+- **A negative is only as good as the route that produced it.** Before writing "nothing on
+  the portal," fetch a document you *already know exists* and confirm the route returns its
+  text. An unreadable endpoint and an empty docket are the same HTTP 200.
+- **Identical response sizes across different documents mean you are reading a shell.**
+  Cheap check, worth making reflexive.
+- This generalizes 7/28 one step. That entry said a city with no machine-readable portal is
+  invisible to a portal-driven sweep. San Carlos *had* the portal. Having an API is not the
+  same as reading it — **"we have an API for this city" is not a substitute for "this query
+  returns text."**
+- **Routes that do work** (now in `sb79-update-scan/SKILL.md`, 6db5bd5): the calendar at
+  `/api/v2/PublicPortal/ListArchivedMeetings?year=<yr>`; **agenda item text** at
+  `/Portal/Meeting?meetingTemplateId=<templateId of the compileOutputType==3 doc>`; and
+  attachment PDFs at
+  `/api/compilemeetingattachmenthistory/historyattachment/?historyId=<guid>`. Compiled
+  documents (Minutes, Packet) remain unreachable — that limit is real, and it is why the
+  April 13 *vote* still went to a PR instead of a deploy.
+- **Sweep the whole year, not the window.** The find came from running the SB 79 grep over
+  all 61 San Carlos meetings of 2026, not just meetings since the watermark. When a new
+  read-route opens up, the correct scan window is *all of it* — the watermark protects
+  against re-reading, and a route that never worked has read nothing to re-read.
+- **Probe laterally when a technique lands.** The same subdomain probe turned up
+  `atherton.primegov.com` (five runs had logged Atherton as "checked, inaccessible") and
+  `redwoodcity.primegov.com` (live, but a new instance with a one-record 2026 archive — it
+  does *not* surface the July 13 record PR #7 is pending on). One probe, three cities.
+- **Codified municipal code is the cheap adoption check.** Code Publishing/Municode publish
+  only *enacted* ordinances and stamp each section with its number — SCMC Ch. 18.25A carries
+  "(Ord. 1634 § 4 (Exh. A), 2026)". Strong corroboration; still not the meeting record, so
+  it does not convert an outcome into a safe fact.
+- **Distinguishing similar options paid off again.** §65912.161(b) (*exclude* sites already
+  permitting ≥50% of the standards) and the "50% off-ramp" this site tracks for Palo Alto
+  and Menlo Park (*reduce* the standards to 50%) are both "50 percent" and are opposite in
+  what the city gives up. Writing the contrast out explicitly is what made the scorecard row
+  and the takeaway bullets correct rather than merely updated.
+- **Near-miss:** the first draft of the scorecard cell said San Carlos "pursued the 50%
+  off-ramp," which would have put it in the same column as Menlo Park's rejected proposal
+  and inverted the meaning. Caught by re-reading the ordinance recitals before committing.

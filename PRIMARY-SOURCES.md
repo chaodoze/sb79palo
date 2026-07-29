@@ -210,6 +210,12 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 
 **Geographic note:** San Antonio Caltrain (190 Showers Drive, Mountain View) sits ~0.3 mi from the Los Altos border. The half-mile SB 79 radius reaches across El Camino Real into north Los Altos. No city-issued GIS analysis confirms which Los Altos parcels are affected; the authoritative source is the MTC SB 79 Regional Map.
 
+**Population threshold (added 2026-07-26):** Geometry alone does not settle whether SB 79 bites in Los Altos. Gov. Code §65912.157(a)(4) sets the Tier 1 quarter-to-half-mile floors (65 ft / 100 du/ac / FAR 3) only "within a city with a population of at least 35,000"; §65912.157(a)(6) does the same for Tier 2 (55 ft / 80 du/ac / FAR 2.5). ABAG's own SB 79 Summary states the condition in its standards table verbatim: "Between ¼ and ½ mile of TOD stop in a city with at least 35,000 residents." Los Altos is **31,921** (DOF E-1, 2026-01-01) and no part of it is within a quarter mile of San Antonio Caltrain.
+
+Open question for a city attorney, deliberately not resolved on the site: §65912.157(a)'s chapeau makes a qualifying project an allowed use "within one-half or one-quarter mile" of a stop, while only the standards paragraphs carry the 35,000 condition. So a sub-35,000 city's outer band may be either (i) entirely outside SB 79, or (ii) inside it as an allowed use at ≥30 du/ac with local height/density standards still enforceable.
+
+Threshold check against DOF E-1 (2026-01-01) for every city on this page — **under 35,000:** Menlo Park 33,785, Los Altos 31,921, San Carlos 29,249, Atherton 7,086. **Over:** Sunnyvale 161,884, Mountain View 88,533, Redwood City 81,809, Palo Alto 69,004. Menlo Park at 33,785 is the near-miss to watch: it is 1,215 below the line, so its outer band is in the same position as Los Altos's, and nothing on this site should assert half-mile SB 79 effects there. Palo Alto itself clears the threshold comfortably, so none of the Palo Alto-facing pages are affected. Source: https://dof.ca.gov/forecasting/demographics/estimates-e1/ (E-1_2026_InternetVersion.xlsx).
+
 ### Cross-cutting (regional and statutory)
 
 | Source | What it gives us | Link |

@@ -630,3 +630,47 @@ template.
 - **Near-miss:** the first draft of the scorecard cell said San Carlos "pursued the 50%
   off-ramp," which would have put it in the same column as Menlo Park's rejected proposal
   and inverted the meaning. Caught by re-reading the ordinance recitals before committing.
+
+## 2026-07-30 — the record we kept calling unverified was never probed
+
+**What happened.** Every SB 79 project-count claim since 2026-07-14 has carried the caveat
+"press count — application list not yet verified against city planning records," and PR #4
+has sat open for seven days waiting on exactly that. In eight runs, no run ever checked
+whether the city's planning record was reachable. This run probed it: Palo Alto's
+**Accela Citizen Access** portal (`aca-prod.accela.com/PALOALTO/`) is live, returns real
+markup, and its **General Search is public — no login wall** — with Application Number,
+Start/End Date and Street fields. Eight days of "unverified" without one `curl`.
+
+The probe only happened by accident: the 7/29 Palo Alto Online article sourced its
+July 28 upload date to "the city's online permit portal," which is what revealed the portal
+surfaces filings by date at all.
+
+**But it is not solved.** A naive ASP.NET postback (harvest `__VIEWSTATE` +
+`__VIEWSTATEGENERATOR`, POST the `txtGSStartDate`/`txtGSEndDate` pair with `btnNewSearch`)
+**302s to `Error.aspx`**. The form needs session/ScriptManager state a flat POST doesn't
+carry. So the honest status is **partly open**: reachable and public, not yet queryable
+headlessly.
+
+### How to prevent it / what worked
+
+- **"Not verified against X" is a standing query, exactly like "pending" and "silent."**
+  7/18 made *pending* a standing query; 7/28 made *silent* one. This adds the third and it
+  is the sharpest, because the caveat is **our own wording** — we wrote the unverified note,
+  so we already knew the record existed and where it lived. A caveat the site repeats daily
+  is a to-do the scan should be re-testing daily, not a disclaimer that ages into furniture.
+- **This is 7/29's lesson pointed the other way.** That entry: a negative is only as good as
+  the route that produced it. Here there was *no* route — we never produced a negative at
+  all, we just kept restating an absence. **Never probing is worse than probing badly**; a
+  bad probe at least fails visibly.
+- **A 302 to an error page is the ASP.NET twin of the Accusoft shell.** Both return a
+  non-error-looking HTTP status carrying zero data. Same reflex as the identical-byte-size
+  check: after a postback, confirm the response *contains result rows*, not merely that the
+  request completed.
+- **When headless fails, hand the human the exact route.** The search form is public, so a
+  reviewer can run the July 1–31 date-range query in a browser in under a minute. The portal
+  also names `PDSdata@paloalto.gov` for data questions. Both are now on PRs #4 and #9 — an
+  unattended run that can't verify something should still shorten the human's path to it.
+- **Not recorded as a confirmed route.** `sb79-update-scan/SKILL.md` gets the portal as a
+  *candidate* only. The 7/29 lateral-probe win was tempting to repeat here by writing up
+  Accela as solved; it isn't, and a skill file claiming a route that 302s would cost a
+  future run more than the silence did.

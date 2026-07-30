@@ -18,6 +18,15 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
   https://midpenmedia.org/category/government/city-of-palo-alto/
 - Planning & Development Services — Housing Policies & Projects
   https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects
+- **Accela Citizen Access — planning/building permit records** (⚠️ *candidate route, verified 2026-07-30*)
+  https://aca-prod.accela.com/PALOALTO/Cap/CapHome.aspx?module=Planning
+  The city's permit record, and the primary source for **which SB 79 applications were filed and
+  when** — the question the 384-vs-341 unit conflict and PR #4 turn on. Publicly reachable with
+  **no login wall**; the "General Search" form takes Application Number, Start/End Date and Street.
+  **Not yet queryable headlessly:** a flat ASP.NET postback (harvesting `__VIEWSTATE` +
+  `__VIEWSTATEGENERATOR`, POSTing `txtGSStartDate`/`txtGSEndDate` with `btnNewSearch`) 302s to
+  `Error.aspx` — the form needs session/ScriptManager state. A human can run the date-range search
+  in a browser in under a minute. The portal names **PDSdata@paloalto.gov** for data questions.
 - City of Palo Alto Council legislation library
   https://www.paloalto.gov/Departments/City-Clerk/City-Council
 - Council Committee Meetings page

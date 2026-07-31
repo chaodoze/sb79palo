@@ -631,6 +631,45 @@ template.
   off-ramp," which would have put it in the same column as Menlo Park's rejected proposal
   and inverted the meaning. Caught by re-reading the ordinance recitals before committing.
 
+## 2026-07-31 — I typed the hostname from memory and nearly logged a live portal as dead
+
+**What happened (near-miss, caught in-run).** The neighbor sweep probed
+`sancarlos.primegov.com`. It returned `HTTP 000`, twice, then `Could not resolve host`. Two
+days after the 7/29 entry about San Carlos being wrongly filed under "nothing happened," the
+run was one line away from writing "San Carlos PrimeGov — checked, inaccessible" into the log.
+
+The portal was fine. San Carlos's subdomain is **`cityofsancarlos.primegov.com`** — same
+`cityof` prefix as Palo Alto's, which is exactly why the shortened form felt right. The
+correct host has been sitting in `sb79-update-scan/scripts/check-meetings.sh`'s
+`base_url_for_city` table the whole time, alongside a comment saying that table is where
+cities get added. I did not read it. Fetched properly, the archive returns 61 meetings,
+newest document published 7/23 — pre-watermark, genuinely no change.
+
+### How to prevent it / what worked
+
+- **A recorded route exists so you stop re-deriving it. Read the table, don't recall it.**
+  This is a new failure mode in the 7/28 → 7/30 family, and it is the sharpest yet because
+  the fix required no discovery at all. 7/28: no route existed. 7/29: the route existed and
+  returned a shell. 7/30: a route existed and we never ran it. Today: the route existed, was
+  written down, worked — and I ran a *different* address. Guessing a URL that a project file
+  already specifies is not a probe, it's a coin flip that happens to be logged as evidence.
+- **A DNS failure is not an access failure, and the log must not flatten them.** `HTTP 000` /
+  `Could not resolve host` means *this name does not exist* — which is far more often a typo
+  than an outage. A 403 or a JS shell says something about the city; a NXDOMAIN says something
+  about your string. Cheap discriminator, now reflexive: before recording any host as
+  unreachable, `socket.gethostbyname` it and compare the name against the recorded route.
+  Here that one check flipped the finding in seconds.
+- **What actually caught it was an unrelated source.** The `cityofsancarlos` spelling surfaced
+  while grepping `check-meetings.sh` for the *Legistar* client names — not from re-examining
+  the failure. Same shape as the 7/30 Accela find, which came out of a press article's
+  offhand phrase. Two runs in a row where the correction arrived sideways; worth treating a
+  stalled check as a reason to go read the tooling, not only to retry the fetch.
+- **The self-check the 7/29 entry asks for would have caught this too, one step earlier.**
+  "Fetch a document you already know exists and confirm the route returns its text" — San
+  Carlos Ord. 1634 is exactly such a known document, and a route that cannot resolve its host
+  fails that test immediately. The rule was written for shells returning 200; it works just as
+  well on names returning nothing.
+
 ## 2026-07-30 — the record we kept calling unverified was never probed
 
 **What happened.** Every SB 79 project-count claim since 2026-07-14 has carried the caveat

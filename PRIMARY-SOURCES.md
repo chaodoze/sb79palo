@@ -25,8 +25,13 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
   **no login wall**; the "General Search" form takes Application Number, Start/End Date and Street.
   **Not yet queryable headlessly:** a flat ASP.NET postback (harvesting `__VIEWSTATE` +
   `__VIEWSTATEGENERATOR`, POSTing `txtGSStartDate`/`txtGSEndDate` with `btnNewSearch`) 302s to
-  `Error.aspx` — the form needs session/ScriptManager state. A human can run the date-range search
-  in a browser in under a minute. The portal names **PDSdata@paloalto.gov** for data questions.
+  `Error.aspx` — the form needs session/ScriptManager state. *Re-probed 2026-08-01 by a second,
+  different route:* `Cap/GlobalSearchResults.aspx?QueryText=…` returns **HTTP 200 with a ~93 KB
+  shell and zero result rows** — same class of failure as the postback, and the same shape as the
+  Accusoft and Power BI shells (a success status carrying no data). Two distinct routes have now
+  failed; **stop re-probing headlessly** and treat this as a human-only route until someone finds a
+  session-bearing client. A human can run the date-range search in a browser in under a minute.
+  The portal names **PDSdata@paloalto.gov** for data questions.
 - City of Palo Alto Council legislation library
   https://www.paloalto.gov/Departments/City-Clerk/City-Council
 - Council Committee Meetings page
@@ -122,6 +127,30 @@ YouTube's auto-generated captions for this video are accessible via the "Show tr
 - HCD MPO advisory (PDF, March 20, 2026) — tier definitions, train-count thresholds
   https://www.hcd.ca.gov/sites/default/files/docs/planning-and-community/sb-79-mpo-advisory.pdf
 
+**The three other SB 79 surfaces HCD links from that page** (indexed 2026-08-01; each
+fetched and confirmed to resolve). Twelve daily runs checked the TOD page's *last-updated
+stamp* and never read its *link list*, so none of these were in this index:
+
+- **Submit an SB 79 Ordinance or TOD Alternative Plan** — the §65912.160 filing channel.
+  HCD's wording: draft and enacted ordinances and TOD alternative plans "must be submitted
+  to HCD's Portal as a 'Housing Law Request'," with the submittal form attached as a cover
+  sheet, "within 60 calendar days of enactment."
+  https://calhcd.service-now.com/csp?id=sc_cat_item&sys_id=91e19b8ac31955109a97251ce0013105
+- **SB 79 Local Enactment Submittal Form** (PDF, 328 KB; server `last-modified`
+  2026-05-07) — the required cover sheet for the above.
+  https://www.hcd.ca.gov/sites/default/files/docs/planning-and-community/sb-79-local-enactment-submittal-form.pdf
+- **Guidance to Include SB 79 Sites in Housing Elements** — technical assistance for
+  counting SB 79 capacity in a housing-element sites inventory under §65912.155: sites must
+  be listed parcel-specifically by APN, must satisfy every §65583.2 site requirement, and
+  capacity must be justified against the "likelihood that developers will utilize SB 79"
+  rather than assumed, with a monitoring program. Bears on any future Palo Alto or
+  neighbor-city claim that SB 79 zoning does RHNA work.
+  https://www.hcd.ca.gov/planning-and-research/sb79-tod/housing-element-sites
+
+⚠️ A fourth link, **"HCD Technical Assistance and SB 79 Ordinance Review Letters,"** is
+treated separately below — it is the per-jurisdiction letter register, and it is not
+headless-readable.
+
 ### Key statute citations we've used
 
 Verbatim text verified at the codified Government Code sections on LegInfo (`codes_displaySection.xhtml?lawCode=GOV&sectionNum=...`).
@@ -160,7 +189,7 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 | Town of Atherton — "That's A Wrap!" council recap, March 18, 2026 | Town's own same-week recap of the 3/18 meeting: consent agenda included "2nd Reading and Adoption of the Objective Design Standards for SB 79 affected parcels" — independent Town corroboration that adoption happened 3/18 (on consent). No vote count or ordinance number given. | https://athertonca.gov/Blog.aspx?ARC=105&IID=207 |
 | **PrimeGov public API — `atherton.primegov.com`** (identified 2026-07-29) | Atherton *does* run a machine-readable portal — five earlier scans logged the Town's records as "checked, inaccessible (404/JS)" and were looking at the wrong surface. Same access pattern as San Carlos (see below): `…/api/v2/PublicPortal/ListArchivedMeetings?year=2026` for the calendar, `…/Portal/Meeting?meetingTemplateId=<tid>` for agenda item text. Sweeping all 51 Atherton meetings of 2026 for SB 79 gives the Town's own agenda language for the whole path — PC 1/28 (`tid2475`, "Attachment 3 - Administrative Draft Chapter 17.59 SB 79 Ordinance"); Council 2/18 (`tid2505`) "INTRODUCTION AND FIRST READING OF AN ORDINANCE THAT AMENDS THE ATHERTON MUNICIPAL CODE TO ADDRESS POTENTIAL DEVELOPMENT UNDER SENATE BILL 79"; Council 3/18 (`tid2515`) "SECOND READING AND ADOPTION OF AN ORDINANCE TO ADD CHAPTER 17.59 AND AMEND CHAPTER 17.60 … TO ADDRESS POTENTIAL DEVELOPMENT UNDER SENATE BILL 79", staff recommendation "that the City Council adopt the attached ordinance". **No SB 79 item appears on any Atherton agenda after 3/18 through 7/22/2026** — the 7/15 regular meeting has none. | https://atherton.primegov.com/api/v2/PublicPortal/ListArchivedMeetings?year=2026 |
 
-**Status: verified 2026-07-19 (adoption); agenda path re-confirmed from the Town's own portal 2026-07-29; HCD claim remains self-reported.** A 3/18 **Minutes** document does exist in the portal (doc id 7244) but is not headless-retrievable — compiled minutes only render through the Accusoft JS viewer, and the `historyattachment` download route that works for *attachments* does not serve compiled documents. So the vote count is still unread. The 3/18 adoption is corroborated by two independent Town sources (Multi-Family Housing page + meeting recap blog) plus the draft's recitals; the signed ordinance/vote count is not yet public (the Town's minutes archive lags — re-check for final minutes and an ordinance number later). The HCD substantial-compliance statement is the Town's own; no HCD letter or per-city HCD determination list is public as of 2026-07-19 (HCD's SB 79 page last updated 06/30 lists none), so the site keeps "The Town reports…" attribution. Timing is plausible: submitted 3/26, §65912.160(d) 90-day review ≈ late June.
+**Status: verified 2026-07-19 (adoption); agenda path re-confirmed from the Town's own portal 2026-07-29; HCD claim remains self-reported.** A 3/18 **Minutes** document does exist in the portal (doc id 7244) but is not headless-retrievable — compiled minutes only render through the Accusoft JS viewer, and the `historyattachment` download route that works for *attachments* does not serve compiled documents. So the vote count is still unread. The 3/18 adoption is corroborated by two independent Town sources (Multi-Family Housing page + meeting recap blog) plus the draft's recitals; the signed ordinance/vote count is not yet public (the Town's minutes archive lags — re-check for final minutes and an ordinance number later). The HCD substantial-compliance statement is the Town's own, and the site keeps its "The Town reports…" attribution — but the reason recorded here through 2026-07-31 was wrong. **Corrected 2026-08-01:** a public per-jurisdiction register *does* exist and HCD names it on the SB 79 TOD page itself, as **"HCD Technical Assistance and SB 79 Ordinance Review Letters,"** with the blurb "All letters issued are available to the public and organized by jurisdiction, date and subject" → https://www.hcd.ca.gov/hau/enforcement-letters. The earlier note ("no HCD letter or per-city HCD determination list is public … HCD's SB 79 page lists none") read the page's last-updated stamp and not its link list. What is actually true is narrower and is an *access* limit, not an absence: that page is the **Power BI Gov embed** already logged as not headless-reachable (see `learnings.md` 2026-07-27) — its H1 is still the generic "Technical Assistance and Enforcement Letters Dashboard" and the page markup contains no SB 79 text, so only HCD's own link label ties it to SB 79. **Route for a human:** open the dashboard in a real browser and filter by jurisdiction = Atherton; a letter there would convert the Town's self-report into a state record. Atherton's status is unchanged and unverified either way. Timing is plausible: submitted 3/26, §65912.160(d) 90-day review ≈ late June.
 
 ### Mountain View
 

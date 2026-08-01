@@ -47,6 +47,16 @@ base_url_for_city() {
     # Confirmed NOT PrimeGov (do not re-probe):
     #   mountain-view, sunnyvale -> Legistar (webapi.legistar.com/v1/<client>/events)
     #   menlo-park, los-altos    -> no PrimeGov subdomain resolves
+    #
+    # Legistar web-API CLIENT names (verified 2026-08-01 against /v1/<client>/bodies).
+    # The client is NOT always the city slug, and a wrong one returns a 500-ish
+    # "LegistarConnectionString setting is not set up in InSite for client: X"
+    # rather than a 404 — so it reads like an outage when it is a typo:
+    #   mountain-view -> mountainview
+    #   sunnyvale     -> sunnyvaleca      <-- NOT "sunnyvale"
+    #   redwood-city  -> not provisioned (see learnings.md 2026-07-28)
+    # Note every *.legistar.com host resolves (wildcard DNS, one IP), so a
+    # successful gethostbyname says nothing about whether a client exists.
     *) return 1 ;;
   esac
 }

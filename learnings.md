@@ -713,3 +713,60 @@ headlessly.
   *candidate* only. The 7/29 lateral-probe win was tempting to repeat here by writing up
   Accela as solved; it isn't, and a skill file claiming a route that 302s would cost a
   future run more than the silence did.
+
+## 2026-08-01 — Twelve runs checked a page's date stamp and never read its links
+
+**What happened.** Every run since 2026-07-18 has logged "HCD SB 79 page — still 06/30" as a
+clean negative. The stamp was accurate and the fetch was real. But HCD's SB 79 TOD page links
+**four** SB 79 surfaces, and this index carried none of them: the ServiceNow "Housing Law
+Request" channel where §65912.160 ordinances and TOD alternative plans are actually filed
+(within 60 calendar days of enactment), the **SB 79 Local Enactment Submittal Form** PDF
+(server `last-modified` 2026-05-07 — it has been sitting there for three months), HCD's
+**guidance for counting SB 79 sites in a housing-element inventory**, and a per-jurisdiction
+letter register.
+
+That fourth one made a claim in `PRIMARY-SOURCES.md` false. The Atherton note read: "no HCD
+letter or per-city HCD determination list is public as of 2026-07-19 (HCD's SB 79 page last
+updated 06/30 **lists none**)." It lists one — **"HCD Technical Assistance and SB 79 Ordinance
+Review Letters,"** blurbed "All letters issued are available to the public and organized by
+jurisdiction, date and subject." We had asserted an absence about the very page we were
+fetching daily.
+
+### The new failure mode: monitoring freshness as a proxy for contents
+
+This is the fifth entry in the route family and it is the one with no broken route at all.
+7/28: no route existed. 7/29: the route existed and returned a shell. 7/30: a route existed
+and was never run. 7/31: a route was recorded and I ran a different string. Today the route
+worked, ran twelve times, returned the real page every time — and the scan only ever read
+**one field of it**. A daily check that extracts a single scalar is a *change detector*, not a
+*read*. It answers "has this moved?" and gets silently promoted into "I know what this says."
+
+- **A change detector cannot license a claim about contents.** "Still 06/30" supports exactly
+  one sentence: the page's stamp has not moved. It does not support "the page lists none." When
+  a run wants to assert what a source *contains*, that run has to have parsed the contents —
+  not the header.
+- **Cheap fix, now part of the pass: enumerate the outbound links of every tier-1/tier-4
+  source, and diff the link set against what this index carries.** A link list is small, stable,
+  and machine-comparable; it would have caught all four on 7/18. Contrast with the 7/29 rule
+  (fetch a document you know exists, confirm text comes back) — that one validates the *route*;
+  this validates the *coverage*. Both are needed and they catch different things.
+- **The 7/27 near-miss is the same page.** That run identified the Power BI embed behind the
+  HAU dashboard and correctly ruled it not headless-reachable — while the Atherton note two
+  files away was asserting that no such register existed. The finding and the false claim were
+  in the same repository on the same day and nothing connected them, because the dashboard was
+  logged under its generic name ("Technical Assistance and Enforcement Letters") and the Atherton
+  question was filed under Atherton. **HCD's own SB 79-page link label is what ties them
+  together**, and the label lives in exactly the link list nobody read.
+- **The correction is narrower than the error, and that matters.** What is true is an *access*
+  limit, not an absence: the register is public and organized by jurisdiction, and it is a Power
+  BI Gov embed we cannot read headlessly (page H1 is still the generic dashboard title; the
+  markup contains no SB 79 text, so only HCD's link label connects it). Atherton's status is
+  unchanged and still unverified. Deployed as tier-(b) because every load-bearing fact is a
+  `curl` away and nothing about what *happened* moved; the human gets the route — filter the
+  dashboard by jurisdiction = Atherton — instead of a flipped claim.
+- **Second Accela route, same shell.** `Cap/GlobalSearchResults.aspx?QueryText=` returns HTTP
+  200, ~93 KB, zero result rows — the postback from 7/30 was not the problem. Two distinct routes
+  have now failed the "does the response contain rows?" test, so it is recorded as human-only and
+  taken out of the daily probe rotation. Three shells in this codebase now share one signature:
+  Accusoft's 224335 bytes, the Power BI 29 KB app shell, and Accela's 93 KB. **A 200 is not a
+  read.**

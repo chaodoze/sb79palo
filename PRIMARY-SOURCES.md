@@ -151,6 +151,32 @@ stamp* and never read its *link list*, so none of these were in this index:
 treated separately below — it is the per-jurisdiction letter register, and it is not
 headless-readable.
 
+### ⚠️ Newsom/HCD housing enforcement actions are **Housing Element Law**, not SB 79
+
+Checked 2026-08-02 because trade press headlines the March action as SB 79 enforcement.
+Both Governor's Office releases were fetched and searched: **each contains zero occurrences
+of "SB 79" / "Senate Bill 79,"** and the grounds in both are the **housing element** (6th
+cycle), a separate statute from §§65912.155–65912.162.
+
+- **2026-03-25 — final warning / Notices of Violation to 15 cities and counties.** All
+  "more than two years behind schedule" and more than 60 days from a certified housing
+  element; 30 days to respond before referral to the Attorney General.
+  https://www.gov.ca.gov/2026/03/25/governor-newsom-issues-final-warning-to-15-communities-violating-state-housing-laws/
+  (HCD mirror, also zero SB 79 mentions: https://www.hcd.ca.gov/about-hcd/newsroom/HAU-15-NOV)
+- **2026-07-16 — AG suits filed against five cities**: Calexico, Costa Mesa, Half Moon Bay,
+  Ridgecrest, Turlock. Same housing-element grounds; not SB 79.
+  https://www.gov.ca.gov/2026/07/16/no-more-excuses-newsom-administration-takes-legal-action-against-five-california-local-governments-for-defying-state-housing-law/
+- ⚠️ **Do not cite for SB 79 enforcement:** HousingWire, "Newsom warns cities of lawsuits
+  over California SB 79 law" (2026-03-26). It reports the 3/25 *housing-element* action
+  under an SB 79 headline and splices in Los Angeles's separate SB 79 density ordinance.
+  https://www.housingwire.com/articles/los-angeles-sb79-density/
+
+**Exactly what this establishes:** neither release names Palo Alto or any tracked neighbor
+city, and HCD's newsroom index (https://www.hcd.ca.gov/about-hcd/newsroom) carried no SB 79
+news item when enumerated 2026-08-02. It does **not** establish that no SB 79 enforcement
+exists anywhere — the per-jurisdiction SB 79 letter register is the Power BI embed noted
+below, still not headless-readable, so an absence cannot be read off it.
+
 ### Key statute citations we've used
 
 Verbatim text verified at the codified Government Code sections on LegInfo (`codes_displaySection.xhtml?lawCode=GOV&sectionNum=...`).
@@ -285,8 +311,10 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 | 2026-07-10 | Palo Alto Online | Downtown housing proposal becomes the sixth to lean on new state law (135 University Ave, 7-story, Minority Television Project; Tier 1, ¼-mi of PA Caltrain) | https://www.paloaltoonline.com/housing/2026/07/10/downtown-housing-proposal-becomes-the-sixth-to-lean-on-new-state-law/ |
 | 2026-07-10 | YIMBY Law (advocacy blog; surfaced 2026-07-20) | "Coalition Victory in Palo Alto — SB 79 units are already on the way." Discloses YIMBY Law sent legal letters to the PA Planning Commission and City Council arguing the urgency ordinances lacked the Gov. Code §65858(c) "current and immediate threat" findings; links the letters. ⚠️ Advocacy framing — says the coalition "convinced the Council to deny" the urgency measures; the video record shows no member ever moved to adopt 23C. Lead for the stakeholder-letters table (letters not yet pulled/verified against the agenda-packet correspondence). | https://www.yimbylaw.org/law-journal/coalition-victory-in-palo-alto-sb-79-units-are-already-on-the-way |
 | 2026-07-08 | Palo Alto Online | Palo Alto sees wave of housing projects as state law kicks in | https://www.paloaltoonline.com/housing/2026/07/08/palo-alto-sees-wave-of-housing-projects-as-state-law-kicks-in/ |
+| 2026-07-07 | Palo Alto Online | Basket-inspired project on Cal Ave. returns, aided by state law — **414 California Ave.**: five residential stories over ground-floor retail/restaurant, **39 units**, two underground parking levels (75 stalls), **72 ft** at its tallest, invoking SB 79's 75-ft ¼-mile Tier 1 standard. Replaces an earlier **planned home zoning (PHZ)** request for a similar six-story, 37-apartment, 78-ft building. Per the article, the PHZ version drew a **7–0** prescreening rebuke in **September 2025** — then-Mayor Ed Lauing, verbatim: "Your vote tonight is 7-0 that this building needs some work" — with Lythcott-Haims and Lu objecting that all affordable units sat on one floor; under the SB 79 application the low-income count drops **7 → 6** but spreads across the first four residential floors. Architect Zoltan Pali (SPF Architects). ⚠️ Press account — the filing is not verified against city permit records, the Sept 2025 prescreening vote is the article's characterization and not checked against that meeting's record, and whether this project is one of the nine in the 7/22 running count is **not** established here (see PR #4). | https://www.paloaltoonline.com/housing/2026/07/07/basket-inspired-project-on-cal-ave-returns-invokes-new-state-law/ |
 | 2026-07-07 | Palo Alto Daily Post | Three developers have taken advantage of two-week gap in housing law | https://padailypost.com/2026/07/07/three-developers-have-taken-advantage-of-two-week-gap-in-housing-law/ |
 | 2026-07-02 | Palo Alto Online | Housing advocates don't expect onrush of projects as SB 79 kicks in | https://www.paloaltoonline.com/housing/2026/07/02/housing-advocates-dont-expect-onrush-of-projects-as-sb-79-kicks-in/ |
+| 2026-07-02 | Davis Vanguard (statewide) | SB 79 Takes Effect, Opening New Era for Transit-Oriented Housing as Cities Split over Compliance — statewide day-one survey. Useful for one indexed fact: the law "applies immediately in **Alameda, Los Angeles, Sacramento, San Diego, San Francisco, San Mateo and Santa Clara counties**," plus Orange County once the OC Streetcar begins operating (consistent with this site's Santa Clara/San Mateo scope). Carries Wiener's framing ("The era of brazen obstruction of new homes is over") and YIMBY Law's stated intent to monitor implementation and challenge circumvention. ⚠️ Advocacy-heavy sourcing; the 1.5-million-homes figure is the author's/sponsor's estimate, not an agency projection. | https://davisvanguard.org/2026/07/california-housing-law-sb79-2/ |
 | 2026-06-16 | Palo Alto Online | Palo Alto nixes 'urgency' measure to limit impact of housing law (June 15 recap; ⚠️ "Burt and Lauing in favor" framing not supported by the video — see the June 15 outcome note above) | https://www.paloaltoonline.com/housing/2026/06/16/palo-alto-nixes-urgency-measure-to-limit-impact-of-housing-law/ |
 | 2026-06-15 | Palo Alto Daily Post | Council backs off of rule to block tall buildings near Caltrain (June 15 recap; same ⚠️ vote-framing caveat) | https://padailypost.com/2026/06/15/council-backs-off-of-rule-to-block-tall-buildings-near-caltrain/ |
 | 2026-06-02 | Palo Alto Online | Council spars over strategies to limit impact of contentious housing law (June 1 recap; ⚠️ "heads to the PTC on June 10" claim contradicted by the posted PTC agenda) | https://www.paloaltoonline.com/housing/2026/06/02/council-spars-over-strategies-to-limit-impact-of-contentious-housing-law/ |

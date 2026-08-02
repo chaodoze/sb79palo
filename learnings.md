@@ -770,3 +770,73 @@ worked, ran twelve times, returned the real page every time — and the scan onl
   taken out of the daily probe rotation. Three shells in this codebase now share one signature:
   Accusoft's 224335 bytes, the Power BI 29 KB app shell, and Accela's 93 KB. **A 200 is not a
   read.**
+
+## 2026-08-02 — The summarizer moved two events into the scan window; neither had moved
+
+**What happened (two near-misses, both caught in-run).** Nothing in the 8/1→8/2 window was real,
+but the search layer twice asserted that something was:
+
+1. A search summary said Palo Alto "council members expressed support for projects during
+   **prescreening hearings in August**." No August agenda has a prescreening item. The underlying
+   Palo Alto Online article says the prescreening hearing was **September 2025** — then-Mayor Ed
+   Lauing, verbatim, "Your vote tonight is 7-0 that this building needs some work."
+2. A search summary surfaced "Newsom warned 15 jurisdictions to comply with SB 79 within 30 days"
+   against an **August 2026** query. The HousingWire article carrying that claim is dated
+   **2026-03-26**, and the Governor's release it reports is **2026-03-25** — four months
+   pre-watermark.
+
+Either one, taken at face value, would have been written up as a same-day finding.
+
+### The new failure mode: fabricated recency
+
+This is a different animal from 2026-07-14, where a search-result *title* misidentified a
+meeting. That was identity drift, and the fix was to get the video id from the portal. Here the
+**date** is what drifted, and the date is the one field a window-scanned daily pass cannot
+independently sanity-check — because a plausibly-recent date is *exactly* what passes the window
+filter. Every other guard in this pipeline (fingerprints, `seen_meeting_ids`, the watermark)
+assumes the date attached to a finding came from the source. A summarizer that infers "August"
+from an August query defeats all of them at once, and it fails *toward* generating work rather
+than toward silence, which is the direction that costs a run its credibility.
+
+- **Read `datePublished` off the article, never off the summary.** Cheap and mechanical: fetch
+  the page and pull the JSON-LD (`"datePublished"` / `"dateModified"`). Both catches above came
+  from that one field. It is now the first thing to extract from any press hit, before reading a
+  word of the body. Note the URL slug and the JSON-LD can legitimately differ by a few hours
+  across the UTC boundary (the Cal Ave article is `/2026/07/07/` and
+  `2026-07-08T01:07:37+00:00`); that is the same artifact as the PrimeGov UTC caveat, not a
+  discrepancy.
+- **A date-shaped query invites a date-shaped hallucination.** Both bad summaries appeared under
+  queries containing "August 2026." The window belongs in the *filter*, not in the *prompt* — ask
+  for the topic, then reject on the fetched date.
+
+### And the subject drifted too: "SB 79" attached to a housing-element action
+
+HousingWire's headline is "Newsom warns cities of lawsuits over **California SB 79 law**." The
+two Governor's Office releases it rests on — 3/25 (Notices of Violation to 15 jurisdictions) and
+7/16 (AG suits against Calexico, Costa Mesa, Half Moon Bay, Ridgecrest, Turlock) — contain
+**zero** occurrences of "SB 79" or "Senate Bill 79." Both are **Housing Element Law**, 6th cycle,
+a different statute from §§65912.155–65912.162. The article gets there by splicing Los Angeles's
+separate SB 79 density ordinance into a housing-element enforcement story.
+
+- **The "press is a lead" rule usually gets applied to vote geometry. Apply it to the statute,
+  too.** 2026-06-03 and 2026-07-14 taught that outlets get *counts* wrong. This one got the
+  **law** wrong. Grepping the primary release for the statute's own name is a two-second check
+  and it is now part of indexing any enforcement story.
+- **This is the 7/26 lesson from the other side.** That entry: we read a statute's standards and
+  skipped its eligibility conditions. Here a *source* did the analogous thing — took an
+  enforcement action and attached it to the wrong statute entirely. Same cure both times: name
+  the section, then confirm the text actually says it.
+- **Recorded as a counter-citation, not just an omission.** The index now carries an explicit
+  ⚠️ "do not cite for SB 79 enforcement" row with the two gov.ca.gov releases beside it, because
+  this headline will keep surfacing on exactly the queries this scan runs every day. Indexing
+  *why a plausible source is wrong* is cheaper than re-deriving it monthly — same reasoning as
+  the 7/29 note that killed the Accusoft viewer route.
+- **The negative was scoped to what was actually read.** The new section says neither release
+  names a tracked city and HCD's newsroom index carried no SB 79 item — and says explicitly that
+  this does **not** establish the absence of SB 79 enforcement anywhere, because the
+  per-jurisdiction register is still the Power BI embed nobody can read headlessly. Direct
+  application of yesterday's rule: a change detector cannot license a claim about contents, and
+  an unreadable surface cannot license a claim about absence.
+- Coverage win from the same thread: **HCD's newsroom** (`/about-hcd/newsroom`) had never been
+  enumerated by this pass. It is the HAU enforcement channel. Checked 8/2 — no SB 79 news item —
+  and now named in the index so a future run checks a surface rather than rediscovering it.

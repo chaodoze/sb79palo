@@ -840,3 +840,49 @@ separate SB 79 density ordinance into a housing-element enforcement story.
 - Coverage win from the same thread: **HCD's newsroom** (`/about-hcd/newsroom`) had never been
   enumerated by this pass. It is the HAU enforcement channel. Checked 8/2 — no SB 79 news item —
   and now named in the index so a future run checks a surface rather than rediscovering it.
+
+## 2026-08-03 — A lead I could not read is not a lead I get to dismiss
+
+**What happened.** An SB 79 lawsuit query surfaced "New California housing law challenged in court
+by Los Angeles nonprofit." Following it: `news.yahoo.com` → 308 → `yahoo.com` → 308 →
+`sacbee.com/news/politics-government/capitol-alert/article254476462.html`, which refuses `curl`
+(exit 92, HTTP/2 protocol error) and WebFetch alike. **The article was never read.** A filed court
+challenge to SB 79 is a tier-(a) trigger, so this is not a lead the run can shrug off.
+
+### The asymmetry I nearly got backwards
+
+There was an available shortcut: SacBee's article IDs are roughly sequential, `254476462` sits in
+their 2021 range, and SB 79 was not introduced until 2025 — so the story is "obviously" about
+SB 9/SB 10 and can be dropped. That reasoning is probably *correct* and it is still not a **read**.
+It is the same move as inferring contents from a freshness stamp (7/31) or a bill number from a
+headline (8/2), just pointed at an ID instead of a date.
+
+- **7/31 established one direction: an unreadable surface cannot license a claim of absence.**
+  The mirror image is now on the record — **an unreadable surface cannot license a claim that a
+  lead is spurious, either.** Both directions collapse "I could not check" into "I checked," and
+  the second one is more tempting because it *reduces* work rather than manufacturing it. Silence
+  and a dismissal look identical in a run log; only one of them is honest.
+- **So it gets indexed as open, with a route.** The counter-citation table now carries the row with
+  the full redirect chain, the exact failure mode, and the human instruction: open the SacBee URL
+  in a real browser once and settle which bill it names. Same shape as the Atherton Power BI entry
+  — the deliverable for an unreadable source is a route, not a verdict.
+- **The negative that *was* earned is narrower.** Nothing else in the sweep reports a filed
+  challenge to SB 79, and YIMBY Law's own law-journal index carries no such post (latest 7/10). But
+  that is a read of **titles on an index page**, not of the posts, and the index is written to say
+  so. One sentence of scope is the difference between a finding and a guess.
+
+### Meanwhile, yesterday's two-second check earned its keep on a different story type
+
+Palo Alto Online published **in-window** (JSON-LD `datePublished` 2026-08-03T14:06:08+00:00)
+"Stanford Terrace Inn owners sue city to halt demolition order" — a Palo Alto lawsuit, about a
+demolition order, blocking a property owner's housing application, with the complaint literally
+alleging retaliation over the city's "preferred high-density housing agenda." Maximally SB-79-shaped.
+Grepping the fetched article for the statute's own name returned **zero** occurrences of "SB 79,"
+"Senate Bill 79," "65912," or "Caltrain"; it is a federal selective-enforcement and discrimination
+suit filed July 16 over the council's April 20 demolition order at 531 Stanford Ave.
+
+- **The 8/2 rule was written for enforcement press ("grep the primary release for the statute's own
+  name"). It generalizes to local litigation unchanged, and that is where it will keep paying** —
+  a housing-adjacent lawsuit in the tracked city is exactly the finding a daily pass wants to be
+  true. Filed as a counter-citation rather than dropped, for the same reason as the HousingWire row:
+  it will surface again on tomorrow's queries.

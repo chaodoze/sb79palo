@@ -151,6 +151,16 @@ stamp* and never read its *link list*, so none of these were in this index:
 treated separately below — it is the per-jurisdiction letter register, and it is not
 headless-readable.
 
+**Link-set diff, 2026-08-03 — closed.** The TOD page's outbound links were re-enumerated
+(stamp still **06/30/2026**; link set unchanged from 08-01). Every SB 79 link above is now
+indexed. The one page link that was not is **"Housing Accountability Unit Portal"** →
+https://www.hcd.ca.gov/hau/portal. Fetched: a wrapper page, no date stamp, **no occurrence
+of "SB 79" / "Senate Bill 79" / "65912,"** and its single functional link is the **same
+ServiceNow catalog item** (`sys_id=91e19b8ac31955109a97251ce0013105`) already indexed above
+as "Submit an SB 79 Ordinance or TOD Alternative Plan." So the §65912.160 filing channel and
+the HAU's general intake — where, in HCD's own description of that page, any party may file a
+potential housing-law violation complaint — are **one queue**, not two.
+
 ### ⚠️ Newsom/HCD housing enforcement actions are **Housing Element Law**, not SB 79
 
 Checked 2026-08-02 because trade press headlines the March action as SB 79 enforcement.
@@ -324,6 +334,19 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 | 2025-11-11 | Palo Alto Online | Palo Alto pauses downtown plan as state housing law upends local rules | https://www.paloaltoonline.com/housing/2025/11/11/palo-alto-pauses-downtown-plan-as-state-housing-law-upends-local-rules/ |
 | 2025-10-13 | Palo Alto Online | Housing bill jolts Palo Alto's plans for downtown, San Antonio | https://www.paloaltoonline.com/housing/2025/10/13/housing-bill-jolts-palo-altos-plans-for-downtown-san-antonio/ |
 | n.d. | San José Spotlight | Palo Alto looks to rezoning to limit impacts of state bill | https://sanjosespotlight.com/palo-alto-looks-to-rezoning-to-limit-impacts-of-state-bill/ |
+
+### ⚠️ Recurring search hits that are **not** an in-window SB 79 story
+
+The queries this scan runs daily ("Palo Alto SB 79," "SB 79 lawsuit") keep surfacing items
+that turn out to be a different statute, a different subject, or a different year. Each below
+was **fetched and checked**; recording *why* it fails is cheaper than re-deriving it monthly.
+Companion to the ⚠️ Newsom/HCD housing-element block above, which is the same pattern.
+
+| Surfaced as | What it actually is | Link |
+|---|---|---|
+| "Stanford Terrace Inn owners sue city to halt demolition order" (Palo Alto Online, JSON-LD `datePublished` **2026-08-03T14:06:08+00:00**) — reads as a new Palo Alto housing lawsuit | A **federal selective-enforcement and discrimination suit**, filed **July 16** in what the article calls "the U.S. District Court of Northern California," by owner **Stanford Orion** over the demolition order the City Council approved **April 20** for **531 Stanford Ave.** (College Terrace). The article contains **zero** occurrences of "SB 79" / "Senate Bill 79" / "65912" / "Caltrain." The owners' pending application is **22 three-story homes**; the only housing-policy language in the complaint is its allegation that enforcement was retaliation against the city's "preferred high-density housing agenda." **Not an SB 79 matter** — do not log it as one. | https://www.paloaltoonline.com/land-use/2026/08/03/stanford-terrace-inn-owners-sue-city-to-halt-demolition-order/ |
+| "California housing reform faces new test as LA Metro resists transit zoning law" (HousingWire) — surfaced undated in an SB 79 search | Genuine SB 79 coverage, but JSON-LD `datePublished` **2026-01-23** — six months pre-watermark and predating SB 79's July 1 effective date. Rejected on the **fetched** date, not on the snippet, per the 2026-08-02 rule. | https://www.housingwire.com/articles/la-transit-housing-reform/ |
+| "New California housing law challenged in court by Los Angeles nonprofit" — surfaced on an *SB 79 lawsuit* query | **Unresolved: checked, inaccessible — no claim made either way.** `news.yahoo.com` 308s to `yahoo.com`, which 308s to SacBee `.../capitol-alert/article254476462.html`; SacBee refuses both `curl` (exit 92, HTTP/2 protocol error) and WebFetch, so neither its date nor the bill number it names has been read. Scoped negative from what *was* read: nothing else in the 08-03 sweep reports a filed court challenge to SB 79, and **YIMBY Law's own law-journal index** carries no such post (latest entries 2026-07-10 and earlier — titles only, posts not opened). **Route for a human:** open the SacBee URL in a real browser once and settle which bill it names. | https://www.sacbee.com/news/politics-government/capitol-alert/article254476462.html |
 
 ---
 

@@ -154,7 +154,11 @@ For each, the most useful primary endpoint is in parentheses. Add new ones to `s
 
 - **Menlo Park** — agendas-and-minutes (`https://www.menlopark.gov/Agendas-and-minutes`); YouTube archive at `https://www.youtube.com/@cityofmenlopark`; April 27 PC + May 12 CC minutes are **still pending** at last scan
 - **Mountain View** — Legistar (`https://mountainview.legistar.com/`); MV Voice for press
-- **Sunnyvale** — agendas (`https://sunnyvale.legistar.com/`); Murphy Avenue carve-out first reading scheduled 2026-06-02
+- **Sunnyvale** — agendas (`https://sunnyvaleca.legistar.com/`); Murphy Avenue carve-out first reading scheduled 2026-06-02.
+  ⚠️ The client is **`sunnyvaleca`**, not `sunnyvale` — `https://sunnyvale.legistar.com/Calendar.aspx`
+  answers **HTTP 200 with a 19-byte body, "Invalid parameters!"** (re-confirmed 2026-08-04), which reads
+  like an empty calendar rather than a bad hostname. Same trap as the web API's
+  "LegistarConnectionString … is not set up" (see `scripts/check-meetings.sh`'s client table)
 - **Redwood City** — `https://www.redwoodcity.org/city-hall/agendas-minutes` (no SB 79 action on docket as of last scan)
 - **San Carlos** — `https://www.cityofsancarlos.org/city_hall/city_council/agendas_and_minutes.php`
 - **Los Altos** — `https://www.losaltosca.gov/agendacenter` — no city station, but San Antonio half-mile spills in

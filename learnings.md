@@ -886,3 +886,59 @@ suit filed July 16 over the council's April 20 demolition order at 531 Stanford 
   a housing-adjacent lawsuit in the tracked city is exactly the finding a daily pass wants to be
   true. Filed as a counter-citation rather than dropped, for the same reason as the HousingWire row:
   it will surface again on tomorrow's queries.
+
+## 2026-08-04 — The statute-name grep has a false *positive*, and it lives inside our own token
+
+**What happened.** The Daily Post published in-window (byline 8/3 11:32 pm) "Developer threatens
+city over Sunset project": **Menlo Park** — a tracked city — a developer threatening to sue over
+**665 apartments** in towers up to **461 ft**, days after a **warning letter from AG Bonta**. On a
+daily pass whose tier-(a) triggers include "a legal challenge was filed," this is about as
+SB-79-shaped as a story gets. The 8/2 rule fired correctly: grep the article for the statute's own
+name → **zero** "SB 79," "Senate Bill 79," or "65912." Then I went to the city's own record, and
+that is where the interesting thing happened.
+
+### The prefix collision
+
+Menlo Park's **2026-02-10 "Response to Challenged Conduct Letter"** for 80 Willow Road matches
+**`65912` nineteen times** and SB 79 **zero** times. Every hit is **§65912.100 et seq. — AB 2011**,
+the 2022 Affordable Housing and High Road Jobs Act (§§65912.121–65912.124 are its streamlining
+provisions); the letter's caption is **Gov. Code §65589.5(h)(6)(D)(iv)**, the Housing Accountability
+Act. SB 79 lives at **§§65912.155–65912.162**. Two unrelated statutes, one `65912.` prefix, same
+chapter of the Government Code.
+
+- **`65912` is not an SB 79 token, and this codebase has been treating it as one.** It appears as an
+  SB-79 marker in the scan greps, in the counter-citation rows written on 8/2 and 8/3 ("zero
+  occurrences of … `65912`"), and in this pass's own sweeps. On the sources checked so far it
+  happened to be sound — because none of them discussed AB 2011. That is luck, not a method.
+  **Match on `65912.15`/`65912.16`, or on the bill's name, and confirm the article.**
+- **Every prior entry in this family is a false *negative*; this is the first false *positive*.**
+  7/14 a search title misidentified a meeting; 7/31 a shell 200 posed as a read; 8/2 a summary
+  invented a date and HousingWire attached the wrong statute to a real action; 8/3 an unreadable
+  page tempted a dismissal. All of those make you *miss* or *mis-source* something. This one
+  manufactures a finding out of a genuinely-fetched primary document — the grep is honest, the
+  document is real, and the answer is still wrong. **A verified quote from a verified source can
+  still be about a different law.**
+- **It was caught only because the fetch went one layer past the press.** The article alone would
+  have been logged tier-(c) on the zero-hit grep and that would have been the right call for the
+  wrong reason. Pulling the city's own letter is what surfaced the collision — the same
+  "go to the primary record" move that this project keeps relearning, paying off in the direction
+  of *precision* rather than *recall* for once.
+
+### The part I did not resolve, on purpose
+
+The Daily Post says Heneghan is now "citing a **new state law** that could force a decision" and
+**never names it**. The February letter predates that filing and cannot identify it. A search
+summary volunteered "**Permit Streamlining Act**" — which is exactly the move 8/2 caught
+HousingWire making, so it is recorded as unread, not as fact. The counter-citation row says the
+dispute is AB 2011 + HAA, flags the unnamed law as an open thread, and hands a human the route
+(the SF Chronicle piece or the developer's August letter). **Naming the statute you *did* read is
+not permission to name the one you didn't.**
+
+### Also this run: an 8/1 recommendation that sat unapplied for three days
+
+The 8/1 log ended "the skill file's stale host should be fixed." Half of it had been — the client
+table in `check-meetings.sh` got `sunnyvale -> sunnyvaleca` — but `sb79-update-scan/SKILL.md:157`
+still printed `sunnyvale.legistar.com`, which answers **HTTP 200 with a 19-byte "Invalid
+parameters!" body**. A 200 with an empty-looking calendar reads as "no meetings," not as "wrong
+host," which is the same failure shape as the 7/31 hostname bug and the shell-200 family. Fixed
+today. **A recommendation written only into the run log is not a fix; the log is not a queue.**

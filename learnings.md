@@ -887,6 +887,95 @@ suit filed July 16 over the council's April 20 demolition order at 531 Stanford 
   true. Filed as a counter-citation rather than dropped, for the same reason as the HousingWire row:
   it will surface again on tomorrow's queries.
 
+## 2026-08-05 — The summary attributed a claim to an article that doesn't contain it
+
+**What happened (near-miss, caught in-run).** A neighbor-sweep search returned California YIMBY's
+"SB 79, One Month In" (2026-08-03) among its results, and the search summary asserted: "San Mateo,
+Redwood City, Palo Alto, Mountain View, and Sunnyvale clear that bar. Menlo Park, Burlingame, San
+Carlos, Belmont, and Millbrae do not, so in those five cities **the new standards stop at a quarter
+mile from the station**."
+
+That sentence resolves the exact question **PR #6 has been open on since 2026-07-26** — whether a
+sub-35,000 city's ¼-to-½-mile band is entirely outside SB 79 or inside it at 30 du/ac with local
+standards intact. The 7/26 entry routed it to a PR precisely because it is a city-attorney question.
+Here was a plausible answer, seemingly from the bill's own sponsor.
+
+It is not in the article. Fetched and grepped: **zero** occurrences of "35,000," "quarter mile,"
+"Belmont," "Millbrae," "San Carlos," "Redwood City," or "population." The post never discusses the
+population threshold at all.
+
+### The new failure mode: fabricated *attribution*
+
+8/2 recorded fabricated **recency** — a summary inventing a date. This is the same machinery pointed
+at a different field: the summary blended a claim (probably from the realtor blog in the same result
+set — the 7/26 entry's low-trust-lead family) into a list of links, and the claim inherited the
+credibility of the most authoritative link in that list. Every guard this pipeline has is keyed to
+*which source* a finding came from; fingerprints, counter-citation rows, the "press is a lead" rule
+all assume the attribution is real. When the attribution itself is synthetic, a laundered claim
+arrives wearing a source it never came from.
+
+- **Attribution is a field to verify, exactly like the date.** 8/2 made `datePublished` the first
+  thing to extract from any press hit. This adds the second: before crediting a source with a claim,
+  **grep the fetched source for the claim's own distinctive tokens.** Both checks are two seconds and
+  both have now caught something on their first real outing.
+- **It failed toward closing an open PR, which is the expensive direction.** 8/2's failure generated
+  work; this one would have *retired* a deliberately-unresolved question — and PR #6 exists because
+  an unattended run should not answer it. A summary that hands you the answer to the one thing you
+  wrote down as too hard to answer deserves more suspicion, not less.
+- **What made it tempting is that it is probably true.** The 7/26 correction already established the
+  35,000 condition from §65912.157(a)(4)/(a)(6) and ABAG's own summary; "standards stop at a quarter
+  mile" is a reasonable reading. Same shape as the 8/3 SacBee entry: correct-sounding reasoning is
+  still not a read. The claim stays in PR #6 as an open question and is recorded on the source row as
+  something the article **does not** say, so tomorrow's run doesn't re-adopt it.
+
+### The gate checks that a file exists, not that the anchor does
+
+Drafting PR #10's timeline entry I wrote `<a class="term" href="glossary.html#density-bonus"
+data-def="…">`. There is no `id="density-bonus"` in `glossary.html` — I invented the term. **`lint-gate.sh`
+passed it.** Its "local link sanity" step greps `href="…\.html` and checks the *file* exists; the
+fragment is never examined. The `data-def` drift check also passed, because drift is defined as one
+anchor carrying two strings and this anchor carried exactly one — its own, on the only page using it.
+A wholly fictional glossary term is invisible to both checks.
+
+- CLAUDE.md says anchor integrity for `glossary.html#…`, `faq.html#q-*` and `council-watch.html#sb79`
+  "is grep-checked." It is — by a human, by hand, in the 2026-06-10 rework. It is **not** in the
+  automated gate the daily agent relies on, and the gate is the only thing standing between an
+  unattended run and `main`. A rule that lives in prose and not in the gate is a rule the agent
+  can pass while breaking.
+- Cheap check, and it found the codebase otherwise clean — this branch's was the **only** dangling
+  anchor sitewide:
+
+  ```bash
+  comm -23 <(grep -ohE 'glossary\.html#[a-z0-9-]+' *.html | sed 's/.*#//' | sort -u) \
+           <(grep -oE 'id="[a-z0-9-]+"' glossary.html | sed 's/id="//;s/"//' | sort -u)
+  ```
+
+- **Fixed by deletion, not by invention.** The tempting repair was to add a `density-bonus` glossary
+  entry, which would have quietly widened a tier-(a) PR into a content addition nobody asked for.
+  Removed the term link and explained the phrase inline instead; the PR body flags the glossary entry
+  as a *reviewer's* call. Same reflex as the 7/27 split — removing a bad claim is safe even when
+  replacing it isn't.
+
+### Also this run: a fourth statute in the same Government Code neighborhood
+
+The 8/4 open thread — the Daily Post said Menlo Park's 80 Willow developer was "citing a **new state
+law** that could force a decision" and never named it — is closed, from the city's own project page:
+the AG's July 29 notice was sent **pursuant to AB 712 (Gov. Code §65914.2)**, and alleges violations
+of **AB 2011 and the Housing Accountability Act**. Still not SB 79 (city page: AB 2011 ×18, SB 79 ×0).
+The search summary's "Permit Streamlining Act" guess, correctly recorded on 8/4 as unread rather than
+adopted, is **refuted** — zero occurrences in either source.
+
+- The 8/4 entry noted `65912.` is shared by AB 2011 (§65912.100) and SB 79 (§§65912.155–.162). The
+  real neighborhood is wider: **§65589.5 (HAA), §65912.100 (AB 2011), §65912.155–.162 (SB 79),
+  §65914.2 (AB 712)** — four statutes, one dispute, all in Gov. Code chapter 659xx. Matching on
+  `65912.15`/`65912.16` (the 8/4 fix) handles the AB 2011 collision but not AB 712. **Name the bill,
+  then confirm the section, then confirm the section is ours.**
+- Worth noting *what* closed it: not the press, and not the AG letter (still unread, 10 pp.) — the
+  **city's own project page**, which states the statute in one sentence. Three runs treated this as
+  needing the SF Chronicle or the developer's letter. The cheapest primary was `menlopark.gov/80willow`
+  and no run had fetched it. Sixth entry in the route family, same moral as 7/30: never probing is
+  worse than probing badly.
+
 ## 2026-08-04 — The statute-name grep has a false *positive*, and it lives inside our own token
 
 **What happened.** The Daily Post published in-window (byline 8/3 11:32 pm) "Developer threatens

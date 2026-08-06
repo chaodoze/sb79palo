@@ -887,6 +887,37 @@ suit filed July 16 over the council's April 20 demolition order at 531 Stanford 
   true. Filed as a counter-citation rather than dropped, for the same reason as the HousingWire row:
   it will surface again on tomorrow's queries.
 
+## 2026-08-06 — Two contradictory route claims lived in this repo for five weeks; the wrong one won
+
+**What happened.** Atherton's SB 79 ordinance had been adopted 2026-03-18 and the site said so — sourced to the Town's own marketing surfaces (a Multi-Family Housing page, a "That's A Wrap!" recap blog) and to an administrative draft whose ordinance-number and vote block are **blank**. `PRIMARY-SOURCES.md` recorded the reason the record was unread: *"A 3/18 Minutes document does exist in the portal (doc id 7244) but is not headless-retrievable."* Same for San Carlos: PR #8 has been open since 7/29 with one unresolved item — *"The April 13 vote. This is the one thing not in the record I could read."*
+
+Both were readable the whole time. `GET /Public/CompiledDocument/<document id>` with `curl -L` returns the real PDF. Doc 7244 is 310,853 B of approved March 18 minutes: **Ordinance 678**, consent item 3, motion Lewis / second Lane, **AYES: Lewis, Lane, Widmer, DeGolia, Holland**, no noes/absent/abstain. San Carlos doc 17222 gives Ord. 1634 adopted on consent, **3–0, Rak and Dugan absent**. Two open questions closed in one afternoon by a URL neither city had to publish.
+
+### The new failure mode: a repo that disagreed with itself, and nothing adjudicated it
+
+`learnings.md` **2026-07-18** documented this exact endpoint — "PrimeGov document PDFs are directly fetchable… the file itself is at `https://cityofpaloalto.primegov.com/Public/CompiledDocument/<doc id>` — **use `curl -L`**." It was written for Palo Alto and worked.
+
+`sb79-update-scan/SKILL.md`, written **2026-07-29**, then recorded the opposite as a "Known limit": *"compiled documents … are **not** retrievable … no `CompiledDocument`/`DownloadDocumentFile` endpoint exists. So a city whose minutes are compiled documents (Atherton) still needs a human."*
+
+Both sentences sat in the repo, eleven days apart, naming the same endpoint, one saying it works and one saying it does not exist. **The negative won**, for two reasons worth naming: it was in the *skill file* (operational, read every run) while the positive was in *learnings* (narrative, read as history); and it was scoped as a general PrimeGov fact while the positive was filed under a Palo Alto anecdote. A finding written as "here's how I got this Palo Alto PDF" does not advertise itself as "here is the compiled-document route for every instance."
+
+- **A route learned on one instance is a hypothesis about every instance. Test it laterally the day you learn it.** The 7/29 entry already contains this rule — "probe laterally when a technique lands," which is how `atherton.primegov.com` was found in the first place. It was applied to *hostnames* and not to *endpoints*. One `curl` against Atherton on 7/18 would have saved five weeks and shortened two PRs.
+- **The "known limit" was never tested against a document known to exist.** This is the 7/29 rule verbatim — *fetch a document you already know exists and confirm the route returns its text* — and 7/29 is the entry that **introduced the false limit**. It applied its own test to `Portal/viewer` (correctly: an Accusoft shell) and then generalized from "this route fails" to "no route exists," which is a claim about the whole API surface that no test supports. **Ruling out one route is not ruling out the endpoint space.**
+- **Grep the repo for contradictions before recording a negative.** Cheap and mechanical, and it would have fired here: `grep -rn "CompiledDocument" .` returns both sentences. Any new "X is not possible" line should be checked against every prior mention of X. Absence claims are the ones worth the extra ten seconds, because they don't fail loudly — they just stop work quietly, and every subsequent run inherits the stop.
+- **Six weeks of "needs a human" was the visible symptom and nobody read it as a bug.** `PRIMARY-SOURCES.md` said the vote "is still unread"; PR #8 said it "could not be read"; the skill file said Atherton "still needs a human." Three files agreeing is not corroboration when all three descend from one untested claim. Same shape as 7/30 ("never probing is worse than probing badly") and 8/5's 80 Willow close — where the cheapest primary, `menlopark.gov/80willow`, had never been fetched in three runs. **That is now the fourth entry in a row where the fix was to fetch something obvious rather than to reason harder.**
+
+### What went right
+
+- **Both finds stayed tier-(a).** A vote count from minutes is new outcome detail, so Atherton went to PR #11 and San Carlos went as a comment on the existing PR #8 rather than a competing branch over the same lines (the 7/27 rule). Having a readable primary record does not promote an outcome to a safe fact.
+- **The 7/19 same-day-special-meeting guard fired and mattered.** San Carlos held *two* council meetings on 4/13 — a 6:25 PM special (id 2869) and the 7:00 PM regular (2771), each with its own Minutes document. The special's minutes contain zero occurrences of "1634". Grabbing "the 4/13 minutes" without grepping for the ordinance number would have cited the wrong meeting, exactly as the Sunnyvale budget-workshop near-miss predicted.
+- **Approval state was checked, not assumed** (7/18 rule). Atherton doc 7244 is confirmed *approved*: the 4/15 minutes carry consent item 2, "APPROVAL OF MINUTES FOR MARCH 18, AND APRIL 1, 2026," and 7244 published 4/16. San Carlos is weaker and the index says so — the 5/26 agenda calendars the approval and 17222 published 5/27, but the 5/26 minutes are themselves unposted, so the approval action is unread.
+- **The three-aye count was not written up as a split.** San Carlos shows "AYES: Layton, McDowell, Venkatesh" on a five-member council — which reads like a 3–2 or a recusal until you read the roll call twelve lines earlier: *"City Council Absent: Adam Rak, Vice Mayor; John Dugan, Councilmember."* This codebase has been trained by Reckdahl/Lu to expect recusals; **a short count is a roll-call question first.**
+- **A route mistake caught by size, not by error.** Fetching the 5/26 San Carlos packet with the document `id` where route 2 wants the `templateId` returned **147 bytes** — an "Object moved" stub, HTTP 200. Same family as the 224335-byte Accusoft shell and the 19-byte Legistar "Invalid parameters!" body. Checking `ls -l` before parsing is what caught it.
+
+### Also this run: a lawsuit-shaped lead that names no statute
+
+San Carlos's 8/10 special-meeting agenda lists a closed session on **existing litigation — `BP I SPE, LLC v. City of San Carlos`, San Mateo Sup. Ct. 26-CIV-05734**. A 2026 suit against the one tracked city with a §65912.161(b) exclusion is maximally tier-(a)-shaped, and the agenda gives **no subject matter and no statute**. Recorded as an open lead with a route (court lookup refused `curl`; the 8/10 report-out is the cheap path), neither adopted nor dismissed — the 8/3 rule in both directions. Fourth consecutive run where the correct output for a plausible lead was a route rather than a verdict.
+
 ## 2026-08-05 — The summary attributed a claim to an article that doesn't contain it
 
 **What happened (near-miss, caught in-run).** A neighbor-sweep search returned California YIMBY's

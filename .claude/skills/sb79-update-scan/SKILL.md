@@ -78,6 +78,10 @@ GET /Portal/Meeting?meetingTemplateId=<templateId>
 
 # 3. Attachment PDFs (staff reports, ordinance text) — hrefs are in the page from (2)
 GET /api/compilemeetingattachmenthistory/historyattachment/?historyId=<guid>
+
+# 4. COMPILED documents (Minutes, Agenda, Packet — compileOutputType == 1)
+#    Use the document's `id` from the calendar's documentList. MUST use curl -L.
+GET /Public/CompiledDocument/<document id>
 ```
 
 Two bonuses in the route-2 HTML: each item carries `data-videolocation="<seconds>"`, the
@@ -85,11 +89,24 @@ offset into that meeting's `videoUrl` — hand it to a human as `…&t=<seconds>
 verify a vote directly. And the page header renders the meeting time in **UTC** (a 7 PM
 meeting shows as next-day 2:00 AM); trust the API's `dateTime`, per the caveat below.
 
-**Known limit:** *compiled* documents (Minutes, Agenda, Packet — `compileOutputType == 1`)
-are **not** retrievable. The `historyattachment` route serves attachments only, and no
-`CompiledDocument`/`DownloadDocumentFile` endpoint exists. So a city whose minutes are
-compiled documents (Atherton) still needs a human. Sweep the agendas anyway — an agenda
-item title tells you an ordinance *exists*, which is what the daily scan is for.
+**Corrected 2026-08-06 — compiled documents ARE retrievable, via route 4.** This file
+previously recorded a "known limit" that Minutes/Agenda/Packet could not be fetched and
+that "a city whose minutes are compiled documents (Atherton) still needs a human." That was
+wrong, and it blocked Atherton's minutes for five weeks. The correct route is
+`/Public/CompiledDocument/<document id>` — the same endpoint already documented for Palo
+Alto in `learnings.md` (2026-07-18), which nobody generalized to the other PrimeGov
+instances. Confirmed live on 2026-08-06 against three documents on two instances:
+`atherton.primegov.com` doc **7244** (3/18/2026 approved Minutes, 310,853 B, 4 pp.) and doc
+**7311** (4/15/2026 Minutes, 340,093 B), plus `cityofsancarlos.primegov.com` doc **17632**
+(8/10/2026 special-meeting Agenda, 466,179 B, 2 pp.). Note the id is the document's `id`
+from the calendar's `documentList`, **not** its `templateId`, and `-L` is required (without
+it you get a ~494-byte redirect stub that `file` reports as HTML).
+
+The genuine limit is narrower: `Portal/viewer?id=<docId>` (the Accusoft shell) is useless,
+and `historyattachment` serves attachments only. Neither of those implies the compiled
+document itself is unreachable. Sweep the agendas anyway — an agenda item title tells you an
+ordinance *exists* — but now pull the Minutes too, and check the templateName is `Minutes`
+and whether a later meeting approved them before treating them as the approved record.
 
 A fourth, out-of-band confirmation for "was this ordinance actually adopted?": check the
 **codified** municipal code (Code Publishing / Municode). Codifiers only publish enacted

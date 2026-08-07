@@ -305,7 +305,7 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 
 | Source | What it gives us | Link |
 |---|---|---|
-| MTC SB 79 Regional Map | Authoritative half-mile-buffer overlay on city boundaries. **Official as of July 1, 2026** (was preliminary draft). Our independent GTFS tier computation is now a cross-check, not the primary basis — see usage note #2. | https://mtc.ca.gov/planning/land-use/senate-bill-79-regional-map |
+| MTC SB 79 Regional Map | Half-mile-buffer overlay on city boundaries. ⚠️ **Still labeled a preliminary draft as of 2026-07-25** — ABAG's SB 79 page states verbatim: "Working with transit agencies and local governments, MTC has developed a **preliminary draft map** of these TOD Zones," and MTC's own link to the viewer still carries `?draft=true`. SB 79 itself took effect July 1, 2026 regardless; no MTC adoption/finalization action has been located. A prior version of this row asserted the map was "Official as of July 1, 2026" — that was an anticipatory claim, not a verified one. Our independent GTFS tier computation therefore remains a working basis, not merely a cross-check — see usage note #2. | https://mtc.ca.gov/planning/land-use/senate-bill-79-regional-map |
 | ABAG SB 79 Summary, 2026-04-08 | Tier definitions, train-count thresholds, Caltrain station classifications. | https://abag.ca.gov/sites/default/files/documents/2026-04/SB79-Summary-040826.pdf |
 
 ---

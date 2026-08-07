@@ -29,7 +29,7 @@
   <p class="kicker">Methodology <span class="update-stamp">Updated 2026-05-06</span></p>
   <h1>How we figured out which group each Palo Alto Caltrain station is in</h1>
   <p class="lede">
-    The official Bay Area map showing which station is in which SB 79 group will come from the regional planning agency (ABAG/MTC) in mid-2026. But everything you need to figure it out yourself is already public &mdash; Caltrain's published schedule, plus the state housing department's official train-count thresholds. So we didn't wait. Here's the work.
+    The official Bay Area map showing which station is in which SB 79 group comes from the regional planning agency (ABAG/MTC) &mdash; and as of July 2026, what they've published is still labeled a preliminary draft. But everything you need to figure it out yourself is already public &mdash; Caltrain's published schedule, plus the state housing department's official train-count thresholds. So we didn't wait. Here's the work.
   </p>
 
   <h2>TL;DR</h2>
@@ -168,7 +168,7 @@
   <ul>
     <li><strong>Past-3-years rule.</strong> The HCD advisory says a station qualifies as Tier 1 if it met the threshold "at any point in the past three years." We computed against the current (post-electrification) schedule, which is the highest service Caltrain has ever run. A pre-electrification schedule would have shown lower service, so it doesn't flip any verdict — it can only make a station that's <em>now</em> below threshold qualify based on past service. None of our three stations are below threshold, so this is academic.</li>
     <li><strong>Future schedule changes.</strong> Once a station qualifies, it stays qualified — the HCD advisory's "any point in the past three years" rule means a service cut wouldn't immediately downgrade a station's tier.</li>
-    <li><strong>The official map.</strong> ABAG/MTC will publish the regional SB 79 tier map in mid-2026. That map carries a <em>rebuttable presumption of validity</em> for project applicants and local governments. This page is our best read of the same input data; if ABAG's numbers differ from ours, theirs are the legal anchor.</li>
+    <li><strong>The official map.</strong> ABAG/MTC's regional SB 79 tier map is out but still labeled a preliminary draft as of July 2026. Once final, that map carries a <em>rebuttable presumption of validity</em> for project applicants and local governments. This page is our best read of the same input data; if ABAG's numbers differ from ours, theirs are the legal anchor.</li>
     <li><strong>Stop counting.</strong> We count <code>stop_times.txt</code> entries regardless of <code>pickup_type</code>. Some commuter rails mark certain stops as drop-off-only or pickup-only; HCD's definition says "scheduled stops at a station" with no exclusion, so we include them all.</li>
     <li><strong>Calendar exceptions.</strong> One-off cancellations in <code>calendar_dates.txt</code> (e.g. for holidays) are not subtracted from the typical-week count.</li>
   </ul>

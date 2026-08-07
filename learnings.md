@@ -1062,3 +1062,65 @@ still printed `sunnyvale.legistar.com`, which answers **HTTP 200 with a 19-byte 
 parameters!" body**. A 200 with an empty-looking calendar reads as "no meetings," not as "wrong
 host," which is the same failure shape as the 7/31 hostname bug and the shell-200 family. Fixed
 today. **A recommendation written only into the run log is not a fix; the log is not a queue.**
+
+## 2026-08-07 — The same false negative as yesterday, one day later, on a different agency
+
+Yesterday's entry was about a "not retrievable" claim that was really a claim about one surface.
+Today produced the same shape again, and it had been sitting in `PRIMARY-SOURCES.md` for five
+weeks with a **Route for a human** attached to it:
+
+> **Route for a human:** open the dashboard in a real browser and filter by jurisdiction =
+> Atherton; a letter there would convert the Town's self-report into a state record.
+
+The dashboard finding was **correct**. `hcd.ca.gov/hau/enforcement-letters` is a Power BI Gov
+embed, it is not headless-reachable, and re-probing it would have failed again today. What was
+wrong was the sentence that followed from it — that *therefore* the letter needed a human.
+
+HCD's written §65912.160(d)(3) findings for Atherton, dated **2026-06-10**, are a two-page PDF at
+`athertonca.gov/DocumentCenter/View/12731`. It is linked from the Town's Multi-Family Housing
+page — **a page this project fetched on 7/19, 7/29, 8/01 and 8/06** while recording the letter as
+unavailable. The letter names the statute, the date, the signer (Housing Accountability Unit
+Chief), and — more usefully than expected — *which documents the city actually submitted*.
+
+- **An agency register is one publisher of an agency document; the recipient is another.**
+  Two parties hold every letter. Checking one and concluding the document is unreachable is the
+  error, and it is not specific to HCD: the same applies to AG notices, LAFCO determinations, and
+  any correspondence where a city is the addressee.
+- **Grepping a page is not enumerating a page.** The reason four fetches missed it: the Town's
+  link label is "**SB 79 - Zoning Ordinance Approved**." The scan greps for `SB 79` and reads the
+  last-updated stamp; it never listed the `href`s. A document whose label never says "HCD" cannot
+  match a search for HCD. **Enumerate the link set of any city page you fetch — cheap, and it is
+  how yesterday's HCD link-set diff was already being run for `hcd.ca.gov` but not for cities.**
+- **The estimate was right and that made it worse.** The struck note even predicted the timing
+  ("submitted 3/26, 90-day review ≈ late June"). Being able to *predict* a document's existence
+  and date is a reason to look harder, not a substitute for finding it.
+- **Two of these in two days is a pattern, not a coincidence.** Both were negative claims about
+  retrievability, written confidently, scoped too broadly, and inherited by every later run
+  without re-test. The generalized rule now lives in `sb79-update-scan/SKILL.md`: *before writing
+  down that a state-agency document is unreachable, check whether the subject jurisdiction
+  publishes it.* **Negative claims about access need an expiry date; positive ones don't.**
+
+### A tooling trap that would have silently faked a "no SB 79" finding
+
+The Aug 17 council agenda carries an 8-storey, 228-unit project, so its staff report got pulled.
+`pdftotext` **is not installed on this Mac Mini** — and the run's first extraction returned
+`chars 0` for all three PDFs, with every SB 79 grep dutifully reporting `0`.
+
+Zero characters and zero hits are not the same result, and only one of them is evidence. Had the
+0-hit line been read at face value, the run would have logged "staff report checked, no SB 79"
+on a document it had never actually read. `pypdf` (installed) extracted 26,998 characters and
+confirmed the honest answer: Item 7 is **Builder's Remedy under §65589.5(d)(5)**, zero SB 79.
+
+This is the `ls -l` habit from 7/29 and 8/06 (the 147-byte stub, the 494-byte redirect, the
+19-byte Legistar body) moved one layer inward: **check the size of what you extracted, not just
+the size of what you downloaded.** A parser that isn't there fails exactly like a document that
+says nothing.
+
+### One more: a headline claimed an approval that its own body didn't
+
+An aggregator surfaced as "**Atherton (!) OK's 30-unit townhomes within city limits**." The post
+is a block quote of The Almanac saying the town "**could soon see**" the development; its body
+has zero occurrences of `approv*`, `OKs`, or `preliminary`. Atherton has approved nothing — the
+filing is a preliminary application in early review, and no SB 79 item has reached the Council
+since 3/18. Counter-cited rather than left to resurface. **The HAPPENED-vs-PROPOSED rule has to
+be applied to headline verbs too, and aggregators are where the verb gets upgraded.**

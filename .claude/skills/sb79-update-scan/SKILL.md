@@ -114,6 +114,28 @@ ordinances and stamp each section with its ordinance number — e.g. San Carlos 
 Ch. 18.25A carries "(Ord. 1634 § 4 (Exh. A), 2026)". Strong evidence, but it is still not
 the meeting record: it shows the ordinance was enacted, not how the vote went.
 
+### HCD §65912.160 review letters: check the *city's* site, not just HCD's register
+
+HCD's own per-jurisdiction register ("HCD Technical Assistance and SB 79 Ordinance Review
+Letters," `https://www.hcd.ca.gov/hau/enforcement-letters`) is a **Power BI Gov embed** and is
+genuinely not headless-reachable — that much has been re-confirmed repeatedly. **But that is a
+fact about one surface, not about the document.** Cities routinely post their own copy of the
+letter they received. Confirmed 2026-08-07: Atherton's HCD substantial-compliance letter
+(2026-06-10, §65912.160(d)(3), signed by the Housing Accountability Unit Chief) is a plain PDF
+at `https://www.athertonca.gov/DocumentCenter/View/12731`, linked from the Town's
+Multi-Family Housing page under the label "SB 79 - Zoning Ordinance Approved" — a page this
+project had already fetched four times while recording the letter as "needs a human with a
+real browser."
+
+**So: enumerate the link list of the city page you just fetched.** Grepping a page for "SB 79"
+and reading its last-updated stamp is not the same as listing its `href`s; a document whose
+label never says "HCD" will not match a topic grep. This is the same false-negative shape as
+the compiled-document one recorded above (2026-08-06) — an access limit verified on one
+surface, then generalized into a property of the record itself. **Before writing down that a
+state-agency document is unreachable, check whether the subject jurisdiction publishes it.**
+These letters are worth the trouble: they carry the statutory finding, its exact date, *which
+documents the city actually submitted*, and HCD's own caveats.
+
 ## Sources to check, by tier
 
 ### Tier 1 — Palo Alto primary sources

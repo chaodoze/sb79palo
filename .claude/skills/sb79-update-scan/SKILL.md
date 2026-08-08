@@ -136,6 +136,29 @@ state-agency document is unreachable, check whether the subject jurisdiction pub
 These letters are worth the trouble: they carry the statutory finding, its exact date, *which
 documents the city actually submitted*, and HCD's own caveats.
 
+### Backfill: a watermark scan cannot find what predates the watermark
+
+Every run scans **since `last_run`**, which is correct for new activity and structurally blind to
+anything older. If the site asserts a **bounded set** — "nine projects filed in the July 1–15
+window," "seven affected parcels in Atherton," "five cities with ordinances" — the daily sweep will
+report "nothing new" about that set indefinitely, whether it is complete or not.
+
+Confirmed 2026-08-08: the **first** of Palo Alto's nine window filings (2455 El Camino Real /
+Coronet Motel, Bayhill Ventures, reported 2026-07-06 by two outlets independently) was missing
+from `PRIMARY-SOURCES.md` for 33 days, while the index carried detailed rows for the sixth,
+seventh and last two. The press index had been built *forward* from the day scanning started;
+nothing ever swept backward to the start of the window it was indexing.
+
+Two cheap checks:
+
+- **Enumerate a closed window once, deliberately**, from its start date — not from the day this
+  project began scanning. One backward pass per bounded set.
+- **Read ordinals in indexed headlines as a completeness checksum.** A row titled "the sixth to
+  lean on new state law" asserts that five others exist. An index holding an *n*th and no *1st* is
+  provably incomplete, and the check is a property of the file — no fetch, no network, no window.
+  `grep -oiE "\b(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|[0-9]+(st|nd|rd|th))\b"`
+  over the press table, then account for each ordinal.
+
 ## Sources to check, by tier
 
 ### Tier 1 — Palo Alto primary sources

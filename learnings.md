@@ -1124,3 +1124,79 @@ has zero occurrences of `approv*`, `OKs`, or `preliminary`. Atherton has approve
 filing is a preliminary application in early review, and no SB 79 item has reached the Council
 since 3/18. Counter-cited rather than left to resurface. **The HAPPENED-vs-PROPOSED rule has to
 be applied to headline verbs too, and aggregators are where the verb gets upgraded.**
+
+---
+
+## 2026-08-08 — The index counted to nine, named the sixth and seventh, and never had a first
+
+### What happened
+
+The July 1–15 window is the central factual object on this site: two weeks in which
+full-strength SB 79 applied in Palo Alto, and the filings that used it. `PRIMARY-SOURCES.md`
+tracks that window closely — nine projects, 341 units per Director Lait, 384 per a different
+press count, the discrepancy open on PR #4 for two weeks.
+
+Today's scan found that **the first filing in that window was never indexed at all**. Bayhill
+Ventures' proposal to demolish the Coronet Motel at **2455 El Camino Real** — six storeys, 65 ft,
+76 units, 12 affordable — was reported by Palo Alto Online **2026-07-06** and independently by the
+Daily Post the same day, which dates the application to **July 1, the day the law took effect**.
+Three outlets, two independent. `grep -i "coronet\|motel\|2455\|bayhill"` across the entire repo:
+**zero hits.** It sat unindexed for **33 days**, across roughly thirty daily runs, while this
+project wrote detailed rows about the sixth, the seventh, and the last two.
+
+### Why the scan never caught it
+
+The window is closed. Every daily run scans **since `last_run`**, and a 7/6 article stopped being
+in anyone's window on 7/7. The press index was therefore built **forward** from the day the
+project started sweeping — and nothing ever swept **backward** to the beginning of the thing it
+was indexing. A watermark-driven scan is structurally incapable of finding what predates the
+watermark; it will faithfully report "nothing new" forever.
+
+It surfaced today only by accident: a generic `"SB 79" Palo Alto housing August 2026` search
+returned the syndicated copy, and the run checked it because a month-old article dressed as
+recent is the **fabricated-recency** pattern from 8/2. Checking the date is what exposed it —
+the article was correctly judged out-of-window, and then found to be missing from the repo
+entirely. **The recency check caught a completeness bug.**
+
+### The checksum that was sitting in the file the whole time
+
+The index contains these rows, in this order:
+
+```
+2026-07-10 | Downtown housing proposal becomes the sixth to lean on new state law
+2026-07-14 | Downtown North condo proposal is 7th to use new state housing law
+2026-07-14 | Seventh project proposed before window for tall building plans close
+```
+
+Three rows whose own headlines number the filings — and no row for the first, second, third,
+fourth or fifth. The 7/7 Daily Post row indexed here says "**Three** developers have taken
+advantage of two-week gap" and was read only as a link, never as a count that the index failed
+to match.
+
+**An ordinal in a source you have indexed is a completeness assertion about sources you have
+not.** "Sixth" means five exist. A press index that contains an *n*th and no *1st* is
+self-evidently incomplete, and the check is free: it is a property of the file, requiring no
+fetch, no network, no window.
+
+### What changed
+
+- Three rows added to `PRIMARY-SOURCES.md` (PA Online 7/6 origin, Daily Post 7/6 independent —
+  the only account that dates the submission — and the San José Spotlight 7/7 syndication), each
+  caveated: the "first" ordinal is the press's and not the city's, the half-mile-vs-quarter-mile
+  band disagreement between the two outlets is unresolved, and Accela ACA is still not
+  headless-readable so no filing has been confirmed against city permit records.
+- Routed to **PR #4** as a comment, not a new branch — #4 owns the timeline hunk this belongs in
+  (7/27 rule). The comment says explicitly: **do not write "the first of the nine"** until the
+  city's application list is in hand. Naming the first filing does not reconcile the count.
+- `sb79-update-scan/SKILL.md` gains the backfill rule below.
+
+### The rule
+
+**A window-scanning skill needs one backward pass over each closed window it claims to track.**
+The daily watermark is for *new* activity; it is not a completeness guarantee about a finite past
+event, and it silently converts "never looked" into "nothing new." When the site asserts a
+bounded set — nine projects, seven parcels, five cities — enumerate that set against the index
+**once, deliberately**, from the beginning of the window rather than from the day scanning began.
+
+Filings **2 through 5** are still unindexed. The same search that surfaced this one will likely
+surface them; that backfill is now the open item.

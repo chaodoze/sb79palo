@@ -1200,3 +1200,53 @@ bounded set — nine projects, seven parcels, five cities — enumerate that set
 
 Filings **2 through 5** are still unindexed. The same search that surfaced this one will likely
 surface them; that backfill is now the open item.
+
+## 2026-08-09 — The four missing filings were inside sources the index had already cited
+
+Yesterday's backfill rule worked: one deliberate backward pass over 2026-07-01..07-15 closed the
+set of nine Palo Alto window filings. But the *shape* of where they were found is its own lesson,
+and it is not the one I expected.
+
+**I assumed the backfill would need new searching.** The 8/8 note said "the same search that
+surfaced this one will likely surface them." It didn't take a search. Filings #2–#5 were sitting
+in **three articles this index had already cited by URL** — the 7/8 PA Online "wave of housing
+projects," the 7/7 Daily Post "Three developers," and the 7/10 "sixth to lean on new state law."
+The first two had been in the press table for a month as **title-only rows**: date, outlet,
+headline, link, nothing else. The 7/8 piece names all five of the first filings in its second
+paragraph and describes three of them in detail. It was linked from `council-watch.html` line 184
+the whole time.
+
+### The rule
+
+**An indexed URL is not a read source. A title-only row is a promissory note, not a citation.**
+Every other row in that press table carries extracted facts and a ⚠️ caveat; these carried a
+headline. The difference was invisible because the table's *shape* is uniform — same four columns,
+same link — so a row that had been read and a row that had merely been filed look identical at a
+glance. Completeness of the *link list* got silently read as completeness of the *knowledge*.
+
+Concretely, before searching outward for a missing fact, **grep the index for rows with no
+extracted content and read those first.** They are the cheapest possible source: already
+identified as relevant, already dated, already fetched once. The check is
+`awk -F'|' 'NF>3 && length($4)<120' ` over the press table — a short description field on a
+substantive story is the tell.
+
+### The second half: a bounded set deserves two independent partitions
+
+The nine reconstructed to **341 units** — exactly Lait's figure, refuting the 384 that one article
+carried and that PR #4 has been stuck on since 7/23. That alone would be suggestive. What makes it
+convincing is that the *same* nine also partition **4 near California Ave / 5 near downtown / 0 near
+San Antonio**, which is exactly the split the 7/23 Spotlight piece separately attributes to Lait.
+
+Two unrelated partitions of one set both landing on independently-reported totals is far stronger
+than either alone, and it costs nothing extra — the geography was already in the rows. **When a
+bounded set is finally enumerated, look for a second dimension already present in the sources and
+check that too.** One matching total can be coincidence or motivated arithmetic; two orthogonal
+ones are hard to fake.
+
+### What it still isn't
+
+None of this touched the city's application record — Accela ACA remains not headless-readable, and
+nine press accounts agreeing is not nine applications on file. The arithmetic **corroborates**
+Lait's number; it does not **verify** the filings. That distinction is the whole tier gate, so the
+reconciliation went to PR #4 as a comment and `council-watch.html` on `main` still says "Seven SB 79
+projects." The deployed change was the index only.

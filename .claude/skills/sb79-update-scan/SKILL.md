@@ -159,6 +159,22 @@ Two cheap checks:
   `grep -oiE "\b(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|[0-9]+(st|nd|rd|th))\b"`
   over the press table, then account for each ordinal.
 
+**Closed 2026-08-09 — and the backfill needed no searching.** All nine Palo Alto window filings are
+now enumerated in `PRIMARY-SOURCES.md`. Filings #2–#5 were not out on the web; they were inside
+**three articles the index had already cited**, two of which had sat in the press table for a month
+as **title-only rows** (date, outlet, headline, link — no extracted content). Hence:
+
+- **Read the index's own thin rows before searching outward.** An indexed URL is not a read source.
+  A row whose description field is just a headline is a promissory note, and it is indistinguishable
+  at a glance from a fully-mined row because the table shape is uniform. Cheapest first move on any
+  "what am I missing" question: `awk -F'|' 'NF>3 && length($4)<120'` over the press table.
+- **Check a bounded set on a second, independent dimension.** The nine summed to **341 units**
+  (matching Lait's reported figure and refuting a stray 384) *and* partitioned **4 California Ave /
+  5 downtown / 0 San Antonio** (matching a separately-reported split). Two orthogonal partitions
+  agreeing is much stronger evidence than one, and the second dimension was already in the rows.
+- Still not verification: press arithmetic **corroborates** a city figure, it does not confirm the
+  filings. The site-facing count stays on PR #4 until the application record is read.
+
 ## Sources to check, by tier
 
 ### Tier 1 — Palo Alto primary sources

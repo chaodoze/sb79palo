@@ -1250,3 +1250,67 @@ nine press accounts agreeing is not nine applications on file. The arithmetic **
 Lait's number; it does not **verify** the filings. That distinction is the whole tier gate, so the
 reconciliation went to PR #4 as a comment and `council-watch.html` on `main` still says "Seven SB 79
 projects." The deployed change was the index only.
+
+---
+
+## 2026-08-10 — The watermark dedups on meetings; the record arrives as documents
+
+### What happened
+
+Today's two best findings were both attached to meetings this scan had already marked **seen**, and
+both had been sitting there for weeks:
+
+- **Palo Alto PTC, July 8** (meeting 3075, in `seen_meeting_ids` since early July). Its **draft
+  summary minutes** (doc **21152**) record staff reporting "approval of **3** SB 79 ordinances" —
+  the city's own count of the June 15 outcome, arrived at independently of ours — and a **6–0**
+  commission motion that names "the layering of various State laws, **including the State Density
+  Bonus Law and SB 79**." The doc id sits between two documents known to have been created on
+  **August 5**, so it predates yesterday's run.
+- **Atherton PC, July 22** (meeting 539, swept as an agenda on 7/29). Its **packet** (doc **7507**)
+  contains the **June 24 draft minutes**, in which the Town Planner announces "a potential SB 79
+  application for **110 Glenwood Avenue** … approximately 30 stacked townhome units." That is the
+  Town's own record of a filing this index had carried since **July 31 on press alone** — and the
+  Town said it **five weeks before the first outlet did**.
+
+### Why the scan couldn't see them
+
+The dedup key is the **meeting id**. Step 4 of the runbook drops "any finding whose … meeting id is
+in `seen_meeting_ids` with no change," and in practice "no change" was being evaluated against the
+**calendar row**, not against the meeting's `documentList`. But a meeting's documents are not
+contemporaneous with the meeting. The agenda exists days *before*; **minutes exist weeks after**,
+and the minutes are the record — the one artifact the whole tier gate is built around. A watermark
+that dedups on the event permanently hides the artifact that arrives late.
+
+Compounding it, Atherton's minutes weren't even filed under their own meeting: the June 24 minutes
+are **inside the July 22 packet**, because that is the meeting where they go for approval. So the
+document that mattered was two hops from the id the scan was tracking.
+
+### The rule
+
+**Diff the `documentList`, not the meeting id.** Both PrimeGov endpoints already return, per meeting,
+each document's `id`, `templateName` and `compileOutputType`. Store that set per meeting in
+`state.json` and re-check it — a meeting is "unchanged" only when its document set is unchanged.
+Minutes appearing on a months-old meeting is the highest-value diff this scan can produce, and it is
+free: the calendar call is already being made.
+
+And when reading a packet, **read it for the prior meeting's minutes**, not only for its own agenda
+items. A packet is a compilation; the approval item near the front of it carries the last meeting's
+record.
+
+### The shape, again
+
+This is the fourth cousin of the same family error — 8/06 (compiled documents "unreachable"), 8/07
+(HCD letter "needs a browser"), 8/08 (index built forward from the scan start), and now this. Each
+time, **a check that was correctly performed on one surface was allowed to stand in for the
+question**. Atherton's 2026 agendas really had been swept, and really did contain zero SB 79 items
+after 3/18 — that sentence is still true, and it is still in `PRIMARY-SOURCES.md`. It just never
+meant what it was being used to mean. An agenda sweep returning zero is a fact about **agenda item
+titles**; the packets were never opened. The scope note is now written next to the claim.
+
+### What was deployed
+
+Index only (**32016c4**), plus the corpus refresh. Both minutes documents are **drafts**, and the
+Atherton one records a staff *announcement* of a *potential* application — so the site-facing claims
+went nowhere: 110 Glenwood to **PR #12** (whose title asks for exactly this record), the Daily Post's
+fourth restatement of **nine / 341** to **PR #4**. A city record is a much better source than three
+downstream press accounts; it is still not the application.

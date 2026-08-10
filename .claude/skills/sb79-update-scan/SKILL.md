@@ -175,6 +175,31 @@ as **title-only rows** (date, outlet, headline, link — no extracted content). 
 - Still not verification: press arithmetic **corroborates** a city figure, it does not confirm the
   filings. The site-facing count stays on PR #4 until the application record is read.
 
+### Diff the `documentList`, not the meeting id
+
+A meeting id goes into the watermark the first time the meeting is seen — which is when its
+**agenda** posts. But the **minutes** post weeks later, onto that same id, and the minutes are
+the record. Dedup on the id alone and the scan is permanently blind to the one artifact the
+tier gate is built around.
+
+Confirmed 2026-08-10, twice in one run. Palo Alto **PTC July 8** (meeting 3075, seen since early
+July) gained **draft summary minutes** (doc 21152) recording staff's own count of the June 15
+outcome — "approval of **3** SB 79 ordinances" — and a **6–0** motion naming "the layering of
+various State laws, including the State Density Bonus Law and SB 79." Atherton **PC July 22**
+(meeting 539, swept as an agenda on 7/29) carries in its **packet** (doc 7507) the **June 24 draft
+minutes**, where the Town Planner announces the **110 Glenwood** SB 79 application — the Town's own
+record, **five weeks before** the first press account this index had been relying on.
+
+- Both PrimeGov calendar endpoints already return, per meeting, each document's `id`,
+  `templateName` and `compileOutputType`. **Store that set per meeting and re-check it.** A meeting
+  is "unchanged" only when its *document set* is unchanged. Costs nothing — the call is already made.
+- **Read a packet for the previous meeting's minutes**, not only for its own agenda items. A packet
+  is a compilation, and the approval item near its front carries the last meeting's record. Atherton
+  filed June 24's minutes under July 22.
+- **An agenda sweep returning zero is a fact about agenda item titles.** It is not an absence of
+  record, and it must not be written down as one. Same false-negative shape as 2026-08-06 and
+  2026-08-07: a check correctly performed on one surface standing in for the question.
+
 ## Sources to check, by tier
 
 ### Tier 1 — Palo Alto primary sources

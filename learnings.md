@@ -1314,3 +1314,93 @@ Atherton one records a staff *announcement* of a *potential* application — so 
 went nowhere: 110 Glenwood to **PR #12** (whose title asks for exactly this record), the Daily Post's
 fourth restatement of **nine / 341** to **PR #4**. A city record is a much better source than three
 downstream press accounts; it is still not the application.
+
+---
+
+## 2026-08-11 — A source can go stale without going dead, and nothing in this scan was watching for it
+
+### What happened
+
+`PRIMARY-SOURCES.md` had cited the **ABAG SB 79 Summary** since April as
+`.../documents/2026-04/SB79-Summary-040826.pdf`. That URL still returns HTTP 200 and a valid
+16-page PDF. It is also **no longer the document ABAG publishes**: on **2026-07-17** ABAG issued a
+revised summary at a *different* path, `.../documents/2026-07/SB79-Summary-07172026.pdf`, and its
+digital-library entry now serves only that one. The April file's own stamp reads "Last updated:
+July 1, 2026"; the current one reads July 17.
+
+The revision was not cosmetic. Diffing the two:
+
+- **§65912.161(b)(1) went from one sentence to the full enumeration** — six subparagraphs, (A)
+  through (F), with three distinct low-resource / aggregate-capacity pathways inside (B). This site
+  had been telling readers on `neighbors.html` that the off-ramp statute has **"two ways in."**
+  Reading the codified statute confirmed six. Routed to **PR #13**.
+- A **new "Low-Resource Area" definition** (CTCAC/HCD opportunity area maps) — a term with zero
+  occurrences anywhere in this repo.
+- "Pedestrian access point," flatly "not a defined term" in April, now points at HCD's MPO advisory
+  — a memo this index already had.
+- The MTC-map sentence was rewritten in the *less* hedged direction on the same day ABAG's webpage
+  kept calling the map a "preliminary draft" (noted on PR #5).
+
+### Why nothing caught it
+
+Every detection mechanism this scan has is aimed at **new events**: new meeting ids, new documents
+on known meetings (added 8/10), new press by date, new agenda items. A static reference document
+that is silently re-issued at a new path generates **no event at all**. Worse, the three checks that
+might plausibly have caught it each fail for a different reason:
+
+- A **link check** passes — the old URL still resolves.
+- A **watermark scan** has nothing to compare; the document isn't a meeting or an article.
+- A **topic grep** of the publisher's page finds "SB 79" in both versions and reports no change.
+
+What actually surfaced it was enumerating the **link list** on a *different* agency's page (MTC's
+regional-map page), which led to ABAG's landing page, which named a file whose date didn't match the
+one in the index. That is the 2026-08-07 habit — *enumerate the hrefs, don't topic-grep the page* —
+paying off a second time, on a source that was already indexed and already read.
+
+### The rule
+
+**An indexed document has two identities: its URL and its version. This project has only ever
+tracked the first.** For any static reference document in `PRIMARY-SOURCES.md` — agency summaries,
+advisories, sample ordinances, checklists — the URL resolving is not evidence that it is current.
+
+Two cheap checks, neither requiring a fetch of the file:
+
+- **Re-resolve through the publisher's index entry, not the file path.** Digital-library / document-
+  center pages carry a *document date*. ABAG's entry says "July 17, 2026" in plain text; the stale
+  citation was one page-fetch away from being caught, any day since 7/17.
+- **Read the date embedded in the filename as an assertion.** `SB79-Summary-040826.pdf`,
+  `Template_SB79EligibilityChecklist07172026.docx`, `sb-79-mpo-advisory.pdf` — publishers who date
+  their filenames are telling you the version. A cited filename whose date is months behind the
+  publisher's current one is provably stale, and the check is a property of two strings.
+
+Add a periodic **version sweep** over the cross-cutting source table, distinct from the daily
+watermark scan, for exactly the reason the 2026-08-08 backfill entry gives: a scan that only looks
+forward is structurally blind to a class of staleness, however long it runs.
+
+### The shape, again
+
+Fifth in the family, and the first that is not about reachability. 8/06 (compiled documents
+"unreachable"), 8/07 (HCD letter "needs a browser"), 8/08 (index built forward from the scan start),
+8/10 (agenda swept, packet never opened) — each was *a check correctly performed on one surface
+standing in for the question*. This one is the same move applied to time rather than to surface: the
+April PDF **was** read, in full, correctly. The reading was just no longer about the current
+document, and nothing in the pipeline distinguished "I read this source" from "I read the version of
+this source that is current."
+
+### Operational note — the transcriber does not bound cost by window
+
+The transcriber MCP resolved the San Carlos closed-session question in one call (2.5-hour video,
+`start_minutes: 0, end_minutes: 14`). The same call shape **timed out twice** against Palo Alto's
+8/10 council video (5+ hours), in both `auto` and `quick` mode, with a 10-minute window. `start_`/
+`end_minutes` appear to trim the *transcript*, not the fetch — so window size is not a cost lever on
+a long video. Consequence for this skill: video verification of a Palo Alto council outcome is
+**not** something an unattended run can rely on, which is the assumption the tier gate was built on
+anyway. The 8/10 consent-calendar approval of the June 15 minutes remains unverified for that
+reason, and is logged as such rather than assumed.
+
+### What was deployed
+
+Index only (**ffdd8a6**): the current ABAG summary, the new MTC/ABAG eligibility-checklist template
+(indexed, **not read** — it is a `.docx` and nothing here characterizes its contents), and ABAG's
+RHTA landing page. The claim change went to **PR #13**; the map evidence to **PR #5**; the San Carlos
+closed-session negative to **PR #8**.

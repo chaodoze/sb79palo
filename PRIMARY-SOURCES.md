@@ -38,6 +38,32 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
   https://www.paloalto.gov/Departments/City-Clerk/City-Council/City-Council-Committee-Meetings
 - Weekly City Manager Updates (status digest)
   https://www.paloalto.gov/News-Articles/City-Manager (search "Weekly City Manager Updates")
+- **"Status of the City's Temporary SB 79 Implementation Regulations"** — City Manager news
+  article, **published 2026-08-04** (read in full 2026-08-12)
+  https://www.paloalto.gov/News-Articles/City-Manager/Status-of-the-Citys-Temporary-SB-79-Implementation-Regulations
+  The **city's own authoritative statement** of what the June 15 temporary ordinances currently do,
+  and the first city-published enumeration of the window filings. Carries: a **nine-row table** of
+  the pre-applications by address / units / floor area / zoning district / ground-floor commercial,
+  totalling **341 units and 395,310 sq ft**; the interim standards (FAR **2.25:1** adjacent — within
+  200 ft — of a stop, **1.75:1** within ¼ mile, **1.5:1** between ¼ and ½ mile; **10-ft front and rear
+  / 4-ft side setbacks** unless the underlying zone prescribes otherwise; **daylight plane from 16 ft
+  at 45°** where adjacent to low-density residential); the historic exemption running "through one
+  year following adoption of the City's 7th Cycle Housing Element"; and next steps (implementing
+  ordinances in **6–12 months**, California Ave / El Camino acceleration, Downtown Housing Plan).
+  ⚠️ The city calls these **pre-applications / "preliminary applications"**, with **formal submittals
+  required within 180 days to comply with SB 330** — not filed projects. Two typos in the city's own
+  text when quoting: "**Sente** Bill (SB) 79" and "**transient**-oriented development" (×2).
+- Current Planning — Ordinances, Maps, Guidelines & Standards (hosts the **new SB 79 zoning map**
+  showing the areas covered by the ordinances Council adopted June 15; linked from the article above
+  as "now available online" — *indexed 2026-08-12, map itself not yet read*)
+  https://www.paloalto.gov/Departments/Planning-Development-Services/Current-Planning/Ordinances-Maps-Guidelines-Standards
+
+> **⚠️ Fetching paloalto.gov — send an honest CLI user-agent, not a browser one.** Corrected
+> 2026-08-12, reversing the standing advice. The domain sits behind Akamai, which **allows**
+> `curl/8.x` and `Wget/1.21.4` (HTTP 200) and **blocks** any browser-shaped UA — Chrome, Safari,
+> Firefox, even a bare `Mozilla/5.0` — *and* a suppressed UA, with HTTP 403 (verified across four
+> paths, including `/robots.txt`, and stable over repeats). Spoofing a browser is what *causes* the
+> 403. Plain `curl -sL` works; `WebFetch` does not.
 
 ### Specific council records we've cited
 

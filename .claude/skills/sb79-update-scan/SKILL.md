@@ -308,7 +308,16 @@ For a typical "anything new on SB 79?" prompt:
 
 ## Caveats
 
-- **paloalto.gov** pages often 403 to bot-style fetches. If you need the content, try with a browser-like User-Agent or fall back to the city's PrimeGov / YouTube / Midpen Media surfaces.
+- **paloalto.gov — send an honest CLI user-agent, NOT a browser one.** ⚠️ Corrected 2026-08-12; this
+  entry previously advised the opposite and that advice was the bug. The domain is behind Akamai, which
+  **allows** `curl/8.x` and `Wget/1.21.4` (HTTP **200**) and **blocks** every browser-shaped UA — Chrome,
+  Safari, Firefox, bare `Mozilla/5.0`, Googlebot — *and* a suppressed UA, with **403**. Verified across
+  four paths, `/robots.txt` included, stable over repeats. It blocks browser *impersonation*, not
+  automation. So: plain `curl -sL "<url>"` with no `-A` flag. `WebFetch` 403s and cannot be fixed.
+  Cost of the old advice: the city's own 2026-08-04 SB 79 status statement — a Tier 1 source — was
+  logged as unreachable for eight days. **Any past "paloalto.gov: checked, inaccessible" note deserves
+  one plain-curl retry.** Exception: the **Accela** permit portal fails for an unrelated reason
+  (session/postback state) and is not affected. PrimeGov / YouTube / Midpen remain good fallbacks.
 - **paloaltoonline.com** rate-limits aggressive fetches (429). Use WebSearch to find specific URLs, then fetch each individually with delays if needed.
 - **The PrimeGov UTC artifact**: the portal page sometimes shows the dateTime in UTC ("6/2 12:30 AM" for a 6/1 5:30 PM Pacific meeting). The API's `dateTime` field is always local. **Trust the API.**
 - **Neighbor-city Legistar URLs** vary in URL structure. The script's city table is the source of truth — extend it when a new endpoint is identified.

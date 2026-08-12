@@ -1404,3 +1404,75 @@ Index only (**ffdd8a6**): the current ABAG summary, the new MTC/ABAG eligibility
 (indexed, **not read** — it is a `.docx` and nothing here characterizes its contents), and ABAG's
 RHTA landing page. The claim change went to **PR #13**; the map evidence to **PR #5**; the San Carlos
 closed-session negative to **PR #8**.
+
+---
+
+## 2026-08-12 — Spoofing a browser is what got us blocked. The workaround was the bug.
+
+`PRIMARY-SOURCES.md` and `sb79-update-scan/SKILL.md` both carried the same advice, for weeks:
+paloalto.gov "often 403s to bot-style fetches — if you need the content, try with a browser-like
+User-Agent." It is the standard trick and it sounds right. **It is exactly backwards for this
+domain, and following it is what produced the 403s.**
+
+Measured today against the same URL, four paths, stable over repeats:
+
+| User-Agent sent | Result |
+|---|---|
+| `curl/8.x` (curl's own default) | **200** |
+| `Wget/1.21.4` | **200** |
+| Chrome / Safari / Firefox UA | 403 |
+| bare `Mozilla/5.0` | 403 |
+| Googlebot | 403 |
+| *(User-Agent suppressed entirely)* | 403 |
+
+Akamai here is not blocking automation — it is blocking **browser impersonation**. An honest CLI
+user-agent passes; a client claiming to be Chrome while presenting none of a browser's other
+characteristics is a *stronger* bot signal than curl admitting what it is. `/robots.txt` itself 403s
+under a Chrome UA and returns 200 under curl's. `WebFetch` 403s and has no knob to fix it.
+
+### What it cost
+
+Palo Alto published **"Status of the City's Temporary SB 79 Implementation Regulations"** on
+**2026-08-04** — the city's own authoritative account of what the June 15 ordinances require, with a
+nine-row table of the window pre-applications. A Tier 1 primary source, squarely this site's subject.
+
+It sat unread for **eight days**. Yesterday's run found the URL, tried it "with and without a browser
+UA," got 403, and correctly logged it as an open lead needing a human with a browser. The discipline
+worked — nothing was invented, a search-summary paraphrase was explicitly refused. But the lead was
+unnecessary. The document was one `curl -sL` away the whole time, and had been since the day it
+published.
+
+It also confirmed, independently, all three interim floor-area numbers this site had been asserting
+from the June 15 record alone — and supplied the city record PR #4 had been waiting on since 7/23.
+
+### The shape
+
+Sixth in the family (8/06, 8/07, 8/08, 8/10, 8/11), and a new variant. The others were *a check
+correctly performed on one surface standing in for the question*. This one is **a remedy that was
+never checked against the failure it claimed to fix.** Nobody ever tested whether the browser-UA
+trick helped here; it was written down because it is generally true, and then it hardened into a
+project fact and got repeated across two files. A wrong workaround is worse than no workaround: it
+converts a reachable source into a documented dead end, and the documentation makes future runs stop
+trying.
+
+### How to apply
+
+- **When a fetch fails, vary one thing at a time and record the actual matrix** — don't apply a
+  remembered fix and conclude from its failure. "403 with and without a browser UA" was written
+  yesterday; the distinguishing case (curl's *own* UA, which is neither) was never tried.
+- **Distrust inherited workarounds that no entry here ever verified.** A tip repeated in two files is
+  not corroboration if both copies came from the same untested assumption.
+- **A 403 is a claim about a request, not about a document.** Same lesson as 8/06 (the Accusoft
+  shell) and 8/07 (the Power BI embed), one layer down: there, the wrong *surface*; here, the wrong
+  *headers* on the right surface.
+- **Re-open the paloalto.gov dead ends.** Every "checked, inaccessible" note against this domain was
+  probably taken under the bad UA and deserves one plain-curl retry. Note the exception: the **Accela
+  permit portal** is a genuinely different failure (session/postback state, two routes tried) and is
+  *not* explained by this — don't let one correction trigger blanket optimism.
+
+### What was deployed
+
+Index only (**5c25bee**): the 8/04 city status statement, the Current Planning page hosting the new
+SB 79 zoning map, and the corrected fetch rule. The site-facing content — the interim setback and
+step-down standards, and the city's "pre-application" framing of the window filings — went to
+**PR #14**; the nine-project reconciliation to **PR #4**, which it resolves but does not merge.

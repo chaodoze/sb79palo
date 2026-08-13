@@ -6,6 +6,67 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-08-13 — Two surfaces that answer a different question than the one asked
+
+### What happened
+
+Two false negatives surfaced in one run, both from the same family as 2026-08-06, -07 and -10, and
+both caught only because something *else* forced a second look.
+
+**1. The City Manager news index is JS-rendered.** The scan skill lists "Weekly City Manager Updates"
+(`paloalto.gov/News-Articles/City-Manager`) as a Tier 1 source. Fetched with the now-correct plain
+`curl` UA it returns **HTTP 200 and 270 KB** — and **zero** article links. All 543 anchors on the page
+are nav chrome and language switchers; the article list is injected by JavaScript. So the page grep
+for "SB 79" returns nothing, indistinguishable from a genuine absence, on a **200 with a large body**.
+Every prior "checked, nothing" on that index was a fact about a JS shell, not about the city's news.
+
+The fix was available the whole time: **`paloalto.gov/sitemap.xml` is 1.1 MB, 200, and enumerates
+4,369 URLs — every one with a `<lastmod>`.** It lists **723** City Manager articles, and grepping it
+settles the SB 79 question in one fetch: exactly **one** SB 79 news article exists
+(`Status-of-the-Citys-Temporary-SB-79-Implementation-Regulations`, `lastmod` 2026-08-04), the one
+already indexed. Same fetch surfaced the **332 Forest Avenue project page** (`lastmod` 2026-08-05),
+a Tier 1 city surface nothing had ever listed.
+
+**2. Grepping an agenda is not reading its attachments.** The 8/12 run recorded PA doc **21237**
+(PTC 8/12 agenda) as "read, zero SB 79." That was true of the agenda *text*. But Item 2 was
+**332 Forest Avenue**, whose staff report devotes a section to the SB 79 alternative, and the
+meeting's public-comment packet ran **73 pages with 26 SB 79 occurrences**. The agenda text was
+clean because agendas carry *item titles*; the SB 79 content lives one level down, in the sixteen
+`historyattachment` PDFs the agenda links.
+
+### How to prevent it / what worked
+
+- **A 200 with a big body is not evidence the content was served.** The Akamai lesson (2026-08-12)
+  taught that a 403 can be self-inflicted; this is the mirror. Before recording "checked, nothing"
+  on an index page, **count what you enumerated** — if a listing page yields zero items of the kind
+  it exists to list, the parse failed, whatever the status code was. `grep -c '<a '` returning 543
+  while the article-link pattern returns 0 is the tell.
+- **Look for a sitemap before scraping a JS index.** It is the cheapest possible change-detector:
+  one request, every URL, every `lastmod`. This is now the primary paloalto.gov sweep — it replaces
+  grepping the news index, and its `lastmod` field turns "did anything change?" into a sort.
+- **Extend the documentList diff one level down.** The 2026-08-10 rule ("a meeting is unchanged only
+  when its *document set* is unchanged") worked perfectly here — it caught that meeting 3079's HTML
+  agenda had been **re-compiled during the meeting**, doc 21237 → **21239**, `publishDate`
+  20:01:17. But the diff points at a *document*, and the run then greps that document's *text*.
+  **For an agenda, the unit of reading is the attachment set, not the agenda.** Enumerate the
+  `historyattachment` hrefs and grep the PDFs — sixteen fetches, and it is where the record is.
+- **Agendas get re-published mid-meeting.** Late correspondence lands hours after the packet posts,
+  sometimes while the meeting is underway. A sweep that reads an agenda the morning of a meeting has
+  not read that meeting's correspondence; re-check the documentList the next day.
+- **The transcriber is not a verification route for long meetings.** Third timeout of this shape:
+  a 3 h 34 m video failed in `auto` (full) and in `quick` (60–150 min window), confirming the
+  2026-08-11 finding that windows trim the transcript, not the fetch. YouTube captions are also
+  unavailable (no `captionTracks` in the watch HTML; InnerTube player 400), and Midpen Media's PTC
+  archive is stale since April. **For meetings over ~3 hours, plan on the minutes**, which post onto
+  the tracked meeting id — and route the outcome to a PR meanwhile. That is the gate working, not
+  failing.
+- One more receipt for "a search summary is a lead": queries for this project return an
+  "Aug. 11 prescreening" where councilmembers gave "enthusiastic support." That is **August 11,
+  2025** — the underlying articles are dated 2025, and the staff report says so. A summary that
+  drops the year will drop it into your scan window.
+
+---
+
 ## 2026-07-28 — A city with no machine-readable portal is invisible to a portal-driven sweep
 
 ### What happened

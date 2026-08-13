@@ -136,6 +136,72 @@ state-agency document is unreachable, check whether the subject jurisdiction pub
 These letters are worth the trouble: they carry the statutory finding, its exact date, *which
 documents the city actually submitted*, and HCD's own caveats.
 
+### paloalto.gov: start from `sitemap.xml`, not from a listing page
+
+**Confirmed 2026-08-13.** `https://www.paloalto.gov/sitemap.xml` returns **1.1 MB, HTTP 200**, and
+enumerates **4,369 URLs — every one carrying a `<lastmod>` timestamp**. This is the cheapest
+change-detector the project has: one request answers "what on the city's site changed since
+`last_run`?" as a sort, across every department page, project page and news article.
+
+```bash
+curl -sL https://www.paloalto.gov/sitemap.xml -o /tmp/pa_sitemap.xml
+# everything touched since the watermark:
+python3 - <<'PY'
+import re
+s=open('/tmp/pa_sitemap.xml',encoding='utf-8',errors='replace').read()
+for e in re.findall(r'<url>(.*?)</url>', s, flags=re.S):
+    loc=re.search(r'<loc>(.*?)</loc>',e,re.S); lm=re.search(r'<lastmod>(.*?)</lastmod>',e,re.S)
+    if loc and lm and lm.group(1) >= '2026-08-12': print(lm.group(1), loc.group(1))
+PY
+```
+
+**Why this matters more than convenience: the City Manager news index is a JS shell.**
+`paloalto.gov/News-Articles/City-Manager` answers **200 with 270 KB** and contains **zero article
+links** — all 543 of its anchors are nav chrome and language switchers. Grepping it for "SB 79"
+therefore *always* returns nothing, on a large, healthy-looking 200. The sitemap lists **723** City
+Manager articles by URL and settles the question directly. Article *bodies* are static and fetch
+fine (the 2026-08-04 SB 79 status article greps 236 hits) — **it is only the index that is blind.**
+
+Same trap shape as the compiled-document (8/06), HCD-letter (8/07) and agenda-sweep (8/10) entries:
+a check correctly performed on one surface standing in for the question. **If a listing page yields
+zero items of the kind it exists to list, the parse failed — regardless of status code.**
+
+### Read an agenda's attachments, not just its text
+
+The documentList diff tells you a meeting's document set changed. It does **not** tell you what is in
+it, and **an agenda's SB 79 content is almost never in the agenda text** — agendas carry item
+*titles*; the substance is in the linked `historyattachment` PDFs.
+
+Confirmed 2026-08-13 on Palo Alto PTC **8/12** (meeting 3079). The agenda text greps **zero** "SB 79".
+Its attachments carry: a staff report whose "Senate Bill (SB) 79" section describes an SB 330
+preliminary application for a 69-unit alternative under **§65912.155**, and a **73-page** public-comment
+packet with **26** "SB 79" occurrences. Extract and grep them:
+
+```bash
+# 1. pair each attachment with its label
+python3 -c "
+import re,html; s=open('agenda.html',encoding='utf-8',errors='replace').read()
+for m in re.finditer(r'<a[^>]*historyId=([a-f0-9-]{36})[^>]*>(.*?)</a>', s, flags=re.S|re.I):
+    print(m.group(1), '|', html.unescape(re.sub(r'<[^>]+>','',m.group(2))).strip())"
+# 2. fetch each and grep the extracted text (pypdf is available; pdftotext is NOT)
+curl -sL "https://cityofpaloalto.primegov.com/api/compilemeetingattachmenthistory/historyattachment/?historyId=<guid>" -o att.pdf
+```
+
+**Agendas are re-compiled mid-meeting.** Meeting 3079's HTML Agenda moved from doc **21237** to
+**21239** at `publishDate` **2026-08-12T20:01:17** — during the meeting — as late correspondence
+landed. A sweep that reads an agenda the morning of a meeting has not read that meeting's
+correspondence. **Re-check the documentList the day after.**
+
+### Verifying a long meeting: the transcriber will not do it
+
+Budget for this before promising a verification. On a **3 h 34 m** video the transcriber timed out in
+both `auto` (full) and `quick` (60–150 min window) modes — the third failure of this shape, and
+consistent with the 2026-08-11 finding that **start/end minutes trim the transcript, not the fetch**.
+Two fallbacks that also failed on 2026-08-13: YouTube **caption tracks** are absent from the watch
+HTML and the InnerTube player endpoint returns **400**; **Midpen Media's** PTC archive is stale (latest
+entry April 29, 2026). For meetings over ~3 hours, **plan on the minutes** — they post onto the same
+meeting id the documentList diff already tracks — and route the outcome to a PR meanwhile.
+
 ### Backfill: a watermark scan cannot find what predates the watermark
 
 Every run scans **since `last_run`**, which is correct for new activity and structurally blind to

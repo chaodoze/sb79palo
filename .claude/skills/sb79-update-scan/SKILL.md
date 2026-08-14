@@ -259,6 +259,28 @@ record, **five weeks before** the first press account this index had been relyin
 - Both PrimeGov calendar endpoints already return, per meeting, each document's `id`,
   `templateName` and `compileOutputType`. **Store that set per meeting and re-check it.** A meeting
   is "unchanged" only when its *document set* is unchanged. Costs nothing — the call is already made.
+- **Diff it in BOTH directions — a removal is the more urgent signal.** ⚠️ Added 2026-08-14 after a
+  one-directional diff shipped a dead link to production. When Council approves minutes, PrimeGov
+  **replaces** the draft with the approved document under the same template and **unpublishes the
+  draft**. Meeting **2840** went from `[20949, 20951, 20955, 20981, 21023]` to
+  `[20949, 20951, 20955, 21023, 21272]`: doc **21272** (approved Action Minutes) arrived and doc
+  **20981** (the draft the site had cited since 7/18, in `PRIMARY-SOURCES.md` ×2 and on the deployed
+  `june-15-decision.html` ×2) **vanished**. An addition means new material to read; a removal means
+  an existing citation just died. Compute both:
+  ```python
+  added   = [d for d in now if d not in prev]
+  removed = [d for d in prev if d not in now]   # <-- this is the one that breaks the live site
+  ```
+  Then `grep -rn "CompiledDocument/<removed id>" *.html *.md` before doing anything else.
+- **The dead URL returns HTTP 200.** `…/Public/CompiledDocument/20981` redirects to
+  `/Public/PublishedDocumentError` and serves a ~1.1 KB "Document Not Found" **HTML** page with a
+  200 status. A status-code check passes; so does `lint-gate.sh`, whose link pass validates only
+  *local* `.html` targets and never fetches an external URL. Check `content_type` and size:
+  `curl -sL -o /dev/null -w "%{http_code} %{content_type} %{size_download}\n" <url>` — a compiled
+  minutes PDF is hundreds of KB of `application/pdf`, not 1 KB of `text/html`.
+- **Treat draft→approved as a link-rot event, not just a status change.** The status flip and the
+  citation repair are one task; doing only the first leaves a dead link behind a sentence that now
+  reads more confident than before.
 - **Read a packet for the previous meeting's minutes**, not only for its own agenda items. A packet
   is a compilation, and the approval item near its front carries the last meeting's record. Atherton
   filed June 24's minutes under July 22.

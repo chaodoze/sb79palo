@@ -1537,3 +1537,64 @@ Index only (**5c25bee**): the 8/04 city status statement, the Current Planning p
 SB 79 zoning map, and the corrected fetch rule. The site-facing content — the interim setback and
 step-down standards, and the city's "pre-application" framing of the window filings — went to
 **PR #14**; the nine-project reconciliation to **PR #4**, which it resolves but does not merge.
+
+---
+
+## 2026-08-14 — The documentList diff watches for arrivals. The link broke on a departure.
+
+Today's scan worked exactly as designed and still shipped a dead link to production, because the
+diff it runs is one-directional.
+
+Palo Alto meeting **2840** (June 15 — the load-bearing SB 79 meeting) gained doc **21272**, the
+council-approved **Action Minutes**. The 2026-08-10 rule fired correctly and the run caught it. But
+the same publish also **removed** doc **20981**, the *draft* action minutes the site had cited since
+July 18 — in two places in `PRIMARY-SOURCES.md` and in **two places on `june-15-decision.html`, a
+deployed page**. PrimeGov swaps the draft for the approved document under the same template; the
+draft does not survive.
+
+The diff never saw it. The implementation asks only `[d for d in docs if d not in prev]` — what
+arrived. Meeting 2840's stored set was `[20949, 20951, 20955, 20981, 21023]` and its live set is
+`[20949, 20951, 20955, 21023, 21272]`. One addition, one deletion, and only the addition was
+reportable.
+
+**And the departure is invisible to every cheap check.** `https://…/Public/CompiledDocument/20981`
+does not 404. It redirects to `/Public/PublishedDocumentError` and serves a 1,101-byte "Document Not
+Found" page **at HTTP 200**. A status-code check passes. `lint-gate.sh` passes too — its link check
+validates *local* `.html` targets and never touches external URLs. The only thing that catches this
+is asking whether the bytes are the document.
+
+This is the third member of a family now: **2026-08-12** (Akamai 403 on the right URL with the wrong
+UA), **2026-08-13** (a 200 with 270 KB and zero article links), and this one. Each time the failure
+was a healthy-looking response standing in for a document. The new wrinkle is the direction of
+travel: the previous two were sources we could never read; this was a source we **had** read,
+verified, and cited — and it expired underneath a citation that still looked fine.
+
+### What changes
+
+- **Diff the document set both ways.** A removal is a signal, not noise, and it is usually the more
+  urgent one: an addition means new material to read, a removal means an existing citation just
+  died. `scripts/` state now records removals; the scan skill's "Diff the `documentList`" section
+  says so explicitly.
+- **A draft→approved flip is a link-rot event, not just a status change.** When minutes are
+  approved, assume the draft URL is gone and grep the repo for it before updating anything else.
+  The status flip and the link fix are the same task.
+- **`lint-gate.sh` does not check external links** and should not be trusted to. Its local-link pass
+  reads as broader than it is — the same over-reading recorded on 2026-08-13 about anchors.
+
+### The near-miss worth naming
+
+A search summary offered the YIMBY Law press release *"…Sue San Francisco for Violating State
+Housing Law with Family Zoning Plan"* as the primary source for today's SB 79 suit. It is dated
+**2026-02-12**, concerns the Family Zoning Plan, and greps **zero** "SB 79" — same plaintiffs, same
+defendant, different case. Fetched and rejected rather than cited. This is the 2026-08-05 and
+2026-08-11 failure mode again, and the defense was the same each time: open the thing before
+quoting it.
+
+### What was deployed
+
+**0edbe68** — the approved-minutes status flip and the dead-link repair on `june-15-decision.html`
+and `PRIMARY-SOURCES.md`; **abb536f** — the corpus re-index. The June 15 votes themselves did not
+change: the approved minutes reproduce the draft's sentences verbatim (23a–b **4-1-2**, 23C "not
+proceed" **5-0-2**, staff direction **4-1-2** Burt no), which is why this was a tier-(b) confirmation
+rather than a correction. The first filed **SB 79 lawsuit** (housing groups v. San Francisco *and*
+HCD) went to **PR #16** — an outcome, and press-derived until someone pulls the docket.

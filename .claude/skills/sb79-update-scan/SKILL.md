@@ -272,6 +272,16 @@ record, **five weeks before** the first press account this index had been relyin
   removed = [d for d in prev if d not in now]   # <-- this is the one that breaks the live site
   ```
   Then `grep -rn "CompiledDocument/<removed id>" *.html *.md` before doing anything else.
+- **But only `compileOutputType == 1` removals are link rot.** Enabling the two-way diff on
+  2026-08-14 immediately flagged three removals, and **two were false alarms**: meeting **3079** lost
+  doc **21237** and meeting **2839** lost doc **20943**. `21237` was an **HTML Agenda**
+  (`compileOutputType == 3`) superseded by `21239` in the mid-meeting recompile already recorded on
+  8/13 — type-3 documents are addressed by `templateId` via `/Portal/Meeting?meetingTemplateId=…`,
+  their ids churn routinely, and `/Public/CompiledDocument/<id>` **never** served them (it returns
+  the same 1,101-byte error page for a perfectly live HTML agenda, including the current one). Only
+  `20943` — June 8's *draft* Action Minutes, type 1, replaced by approved doc `21271` — was genuine
+  rot, and nothing cited it. **So: filter removals to `compileOutputType == 1` before alarming, and
+  don't read a 1.1 KB error page on a type-3 id as evidence of anything.**
 - **The dead URL returns HTTP 200.** `…/Public/CompiledDocument/20981` redirects to
   `/Public/PublishedDocumentError` and serves a ~1.1 KB "Document Not Found" **HTML** page with a
   200 status. A status-code check passes; so does `lint-gate.sh`, whose link pass validates only

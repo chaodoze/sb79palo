@@ -1598,3 +1598,14 @@ change: the approved minutes reproduce the draft's sentences verbatim (23a–b *
 proceed" **5-0-2**, staff direction **4-1-2** Burt no), which is why this was a tier-(b) confirmation
 rather than a correction. The first filed **SB 79 lawsuit** (housing groups v. San Francisco *and*
 HCD) went to **PR #16** — an outcome, and press-derived until someone pulls the docket.
+
+**Same-day addendum.** Turning the two-way diff on immediately flagged **three** removals, and
+**two were false alarms** — a useful calibration on a rule written an hour earlier. Meeting 3079 lost
+doc **21237** and meeting 2839 lost doc **20943**. Only `20943` (June 8's *draft* Action Minutes,
+`compileOutputType == 1`, replaced by approved doc `21271`) was real rot, and nothing cited it.
+`21237` was an **HTML Agenda** (type 3) superseded by `21239` in the mid-meeting recompile already
+recorded on 8/13; type-3 documents are addressed by `templateId`, their ids churn normally, and
+`/Public/CompiledDocument/<id>` never served them — it returns the *same* 1,101-byte error page for
+the current, live HTML agenda `21239`. **Filter removals to `compileOutputType == 1` before
+alarming.** The error page that made the real problem visible is also perfectly happy to
+manufacture two fake ones.

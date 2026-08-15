@@ -285,6 +285,30 @@ Background for `neighbors.html`. Each row links to a primary source (city staff 
 | MV Voice, 2025-12-11 | 12/9/2025 Council vote 7–0 (motion Ramirez, second Hicks) to pause historic-register expansion, declining to designate buildings as historic purely to beat the SB 79 clock. | https://www.mv-voice.com/land-use/2025/12/11/mountain-view-inches-closer-to-updating-historic-register-amid-community-pushback/ |
 | MV Voice, 2025-11-10 | EPC briefing dispute — Commissioners Yin and Cranston pushed for SB 79 briefing pre-year-end; CDD Director Murdock declined. | https://www.mv-voice.com/housing/2025/11/10/mountain-view-commissioners-city-staff-clash-on-response-to-state-housing-law/ |
 | mountainview.legistar.com | Underlying staff reports; 2026 Legislative Platform adopted text (referenced as containing an "SB 79 Alternative Plan Timelines" position — exact language needs to be pulled before being quoted). | https://mountainview.legistar.com/ |
+| **EPC 2026-08-19, Item 5.1 — agenda** (Legistar meeting 3398, matter file **205997**; fetched + read 2026-08-15, agenda PDF printed 8/14) | **Mountain View is pursuing the §65912.161(b)(1)(F) historic-resource exclusion — a track this index and `neighbors.html` did not have it on.** The EPC is asked to recommend Council (1) accept the Historic Context Statement, (2) adopt a Historic Preservation Ordinance update, and (3) **"Adopt an Ordinance … Amending the Zoning Map to Exclude Properties Designated on the Mountain View Register of Historic Resources Prior to January 1, 2025, From Government Code Section 65912.157 (Senate Bill 79)."** ⚠️ **Nothing has happened** — this is a noticed hearing on a staff recommendation. Routed to **PR #17**. | [agenda PDF](https://legistar1.granicus.com/mountainview/meetings/2026/8/3398_A_Environmental_Planning_Commission_26-08-19_Advisory_Board_Agenda.pdf) · [meeting detail](https://mountainview.legistar.com/MeetingDetail.aspx?LEGID=3398&GID=344&G=37932D0B-039B-4529-B6D8-73445A1D4799) |
+| **EPC 2026-08-19 staff report** (24 pp., 334,788 B; extracted 54,397 chars + read 2026-08-15) | The substance, and it is one level below the agenda text. **The exclusion is temporary and narrow:** it reaches only resources already on the MV Register as of 1/1/2025 and only those "within one-half mile of applicable TOD stops," and it "expires one year after the adoption of the Seventh Cycle Housing Element, scheduled for 2031." Verbatim on the limit: *"Historic resources not already included in the MV Register as of January 1, 2025 cannot be excluded from SB 79 without the adoption of a TOD Alternative Plan."* **Separately — and this is the larger item — the ordinance update creates a historic-*district* process explicitly for SB 79 purposes:** *"A historic district may serve as a basis to justify a permanent exemption from SB 79 within the district. Staff has drafted the historic district process to allow Council to initiate the designation of a historic district for that purpose."* Register scope: **99 resources** (41 currently listed + 58 proposed). Schedule: EPC 8/19 → Council; if adopted, **second reading Oct 13, 2026**, effective **November**; a further Council hearing "likely in December" to adopt the new Register. CEQA: common-sense exemption plus **§65912.160(c)(2)** ("an ordinance consistent with the provisions of SB 79 shall not be considered a project under CEQA"). Cross-references the **January 27, 2026 Council meeting, Item 3.1** for SB 79 background. | [staff report PDF](https://legistar1.granicus.com/mountainview/attachments/5af9565e-2e1b-4eef-9502-15333b5580b2.pdf) |
+| **EPC 2026-08-19 ATT 3 — draft Zoning Map Amendment ordinance** (6 pp.; read 2026-08-15) | The city attorney's own statutory cite, which is the cleanest corroboration this project has of the six-subparagraph reading: *"WHEREAS, SB 79 (Gov. Code, § **65912.161(b)(1)(F)**), allows a local agency to defer the application of SB 79 for any historic resource designated as of January 1, 2025 on a local register until after adoption of the next housing element by adopting an ordinance to exclude such sites."* Recites that the **January 27, 2026** Council direction was to prepare amendments "consistent with the authority provided under Government Code Section **65912.161**" — see the ⚠️ below. Lists **"twenty-four parcels"** by street address and APN (206 Bush; 445 Calderon; 124-126, 142-156, 169-175, 201, 228 and 298 Castro; 350 and 394 Franklin; 403 and 425 Hope; 302 and 484 Loreto; 157 Moffett; 372 Mountain View Ave; 360 Oak; 390 Palo Alto Ave; 472 S. Shoreline; 322 and 327 View; 1043 and 515 Villa; 1074-1076 Wright), to be shown on the Zoning Map as *"Properties excluded from Government Code Section 65912.157 (SB 79) until one year following the adoption of the seventh revision of the housing element."* The map exhibit is stamped **July 2026** and **DRAFT**. | [ATT 3 PDF](https://legistar1.granicus.com/mountainview/attachments/1ccbcf86-aa3e-454b-bed0-8e165628a090.pdf) |
+| **EPC 2026-08-19 ATT 2 — draft Historic Preservation Ordinance** (29 pp.; read 2026-08-15) | Carries the Zoning Ordinance half of the exclusion at **SEC. 36.55.75.a**: *"SB 79 temporary exclusion. In accordance with Government Code Section 65912.161(b)(1), all properties designated on the Historic Register on or before January 1, 2025 shall be excluded from applicability of Government Code Section 65912.157, until one year following the adoption of the seventh revision of the housing element of the general plan."* ⚠️ **The staff report's own cross-reference to this language is wrong** — it points at "Section 36.55.75.**c** in Attachment 2," but (c) is the state/national-eligible single-family-and-duplex provision. Caught 2026-08-15 by opening ATT 2 instead of trusting the pointer; cite **36.55.75.a**. | [ATT 2 PDF](https://legistar1.granicus.com/mountainview/attachments/69f4a600-1b08-4376-b07c-9abe41429130.pdf) |
+
+> ⚠️ **Two Mountain View claims on this site now need a human's eye, and both are on PR #17.**
+> (1) `neighbors.html` describes the **2026-01-27** Council action as direction to begin a **Local
+> Alternative Plan**; the city attorney's ordinance recites the *same* direction as being to prepare
+> amendments under **§65912.161** — the historic-*exclusion* authority, which is a different
+> mechanism from the alternative plan at §65912.161(b)(1)(C)/(c). One of the two characterizations
+> is incomplete and the January 27 Item 3.1 materials are what settle it. (2) `neighbors.html`
+> currently reads the 12/9/2025 register-pause vote as showing "the political tolerance for using
+> the 'create historic resources to defeat the law' approach is low in Mountain View." The register
+> update is back, with an SB 79 zoning-map amendment attached to it. **Note also that MV Voice's
+> framing — that SB 79 lets cities exempt historic resources "if they adopt a *Local Alternative
+> Plan*" — is not what the statute says:** §65912.161(b)(1)(F) is an ordinance-and-zoning-map route
+> under §65912.160, wholly separate from the alternative plan. Same "distinguish similar-sounding
+> options" trap as the Option C/D conflation (`learnings.md` 2026-05-22).
+>
+> **Fetch note:** `mountainview.gov` (incl. `/historicupdate`, the project page the staff report
+> advertises) returns **403 under every user-agent tried** — `curl/8.7.1`, `Wget/1.21.4` *and*
+> Chrome (426-byte body each). Checked, inaccessible; not a UA problem, unlike `hklaw.com` and
+> `padailypost.com` below. **Legistar is the working route for this city** and it serves the
+> attachments directly.
 
 ### Sunnyvale
 
@@ -467,6 +491,32 @@ Public submissions filed with Council in connection with specific agenda items. 
 
 - Holland & Knight — SB 79 signed analysis
   https://www.hklaw.com/en/insights/publications/2025/10/california-gov-gavin-newsom-signs-sb-79
+- **Holland & Knight — "Tracking SB 79 Implementation Before the Train Leaves the Station"**,
+  **2026-06-16**, Chelsea Maclean / Tara Sullivan / Will Sterling (fetched + read in full
+  2026-08-15; 53 occurrences of "SB 79")
+  https://www.hklaw.com/en/insights/publications/2026/06/tracking-sb-79-implementation-before-the-train-leaves-the-station
+  **The first source this index has naming HCD's actual §65912.160 determinations.** Verbatim:
+  *"As of this publication, HCD has provided formal feedback to two cities regarding SB 79
+  implementation: HCD rejected Beverly Hills' TOD alternative plan, but approved San Jose's
+  exclusion ordinance."* Dates given in the piece: the Beverly Hills rejection **2026-05-08**, the
+  San Jose substantial-compliance findings **2026-06-04**. Also a compliance-strategy taxonomy:
+  Los Angeles, San Francisco and San Jose pursuing **permanent industrial-employment-hub
+  exclusions**; Los Angeles **"as is Palo Alto"** relying on the 50% temporary exclusion "to
+  effectively delay SB 79 implementation for the entire city"; San Jose/San Diego/Oakland on
+  exclusions now with alternative plans later; SF and South Pasadena doing both; Beverly Hills on an
+  adopted-but-rejected alternative plan; and **"Mountain View is likewise pursuing a TOD
+  alternative plan as its sole near-term compliance strategy, but the city has not yet adopted the
+  plan"** — a characterization that predates, and is now qualified by, the 8/19 EPC item above.
+  ⚠️ **A law firm's characterization of HCD letters, not the letters.** Neither determination has
+  been read against HCD's own record; HCD's per-jurisdiction register is the Power BI embed that is
+  not headless-reachable. **Route for a human, per the 2026-08-07 rule:** check whether *Beverly
+  Hills* and *San Jose* publish their own copies of the HCD letters, as Atherton did. Note the San
+  Jose item bears directly on **PR #16** — the SF petition attacks the same §65912.160(e)(2)
+  industrial-employment-hub exclusion HCD is said to have approved for San Jose.
+  ⚠️ **Fetch note:** `hklaw.com` requires a **browser** user-agent — `curl`'s own UA and
+  `Wget/1.21.4` both get **403** (4,548-byte block page); a Chrome UA gets 200 / 64 KB. This is the
+  exact inverse of `paloalto.gov`, so the UA fix is per-domain and must be measured, not assumed.
+  `padailypost.com` behaves the same way (**406** under `curl/8.7.1`, 200 under Chrome).
 - Allen Matkins — SB 79 alert
   https://www.allenmatkins.com/real-ideas/governor-newsom-approves-sb-79-high-density-transit-oriented-housing-development-projects.html
 - Manatt — SB 79 transformative upzoning client alert

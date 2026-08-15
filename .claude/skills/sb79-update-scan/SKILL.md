@@ -416,6 +416,28 @@ For a typical "anything new on SB 79?" prompt:
   logged as unreachable for eight days. **Any past "paloalto.gov: checked, inaccessible" note deserves
   one plain-curl retry.** Exception: the **Accela** permit portal fails for an unrelated reason
   (session/postback state) and is not affected. PrimeGov / YouTube / Midpen remain good fallbacks.
+- **The UA fix is per-domain. Measure it; never carry one domain's answer to another.** ⚠️ Added
+  2026-08-15. The 2026-08-12 correction above is right *about paloalto.gov* and it is the opposite of
+  what three other domains in this rotation want. Measured matrix, same four requests each:
+
+  | Domain | `curl/8.x` own UA | `Wget/1.21.4` | Chrome UA |
+  |---|---|---|---|
+  | `paloalto.gov` | **200** | **200** | 403 |
+  | `hklaw.com` | 403 (4,548 B block page) | 403 | **200** (64 KB) |
+  | `padailypost.com` | 406 (300 B) | — | **200** (348 KB) |
+  | `mountainview.gov` | 403 (426 B) | 403 (426 B) | 403 (426 B) |
+
+  So: try the plain CLI UA **and** a browser UA before recording any domain as inaccessible, and
+  write down which one worked. `mountainview.gov` is the honest negative of the four — it refuses
+  all three, so it is **checked, inaccessible**, and **Legistar is the working route for Mountain
+  View** (`webapi.legistar.com/v1/mountainview/…`, which also serves the meeting attachments).
+
+- **Neighbor-city Legistar carries the SB 79 content in the attachments, same as PrimeGov.** The
+  events API gives `EventAgendaFile` (a Granicus PDF — grep it), and
+  `/v1/<client>/events/<id>/eventitems?Attachments=1` gives each item's `MatterAttachmentHyperlink`.
+  Confirmed 2026-08-15: Mountain View EPC 8/19 (meeting 3398) — the *agenda* greps 2 "SB 79," and the
+  staff report and draft ordinances behind it carry 19 and 27 hits and the whole substance.
+
 - **paloaltoonline.com** rate-limits aggressive fetches (429). Use WebSearch to find specific URLs, then fetch each individually with delays if needed.
 - **The PrimeGov UTC artifact**: the portal page sometimes shows the dateTime in UTC ("6/2 12:30 AM" for a 6/1 5:30 PM Pacific meeting). The API's `dateTime` field is always local. **Trust the API.**
 - **Neighbor-city Legistar URLs** vary in URL structure. The script's city table is the source of truth — extend it when a new endpoint is identified.

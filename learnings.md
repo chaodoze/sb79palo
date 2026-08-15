@@ -1609,3 +1609,107 @@ recorded on 8/13; type-3 documents are addressed by `templateId`, their ids chur
 the current, live HTML agenda `21239`. **Filter removals to `compileOutputType == 1` before
 alarming.** The error page that made the real problem visible is also perfectly happy to
 manufacture two fake ones.
+
+---
+
+## 2026-08-15 — Yesterday's correction became today's untested inheritance
+
+### What happened
+
+The 2026-08-12 entry is one of the sharpest in this file: paloalto.gov blocks *browser
+impersonation*, an honest `curl/8.x` UA gets 200, and the remembered "try a browser-like
+User-Agent" trick was the bug. It cost eight days on a Tier 1 source. The correction was written
+into `learnings.md`, into `sb79-update-scan/SKILL.md` **and** into `PRIMARY-SOURCES.md`.
+
+Today a Holland & Knight SB 79 implementation tracker surfaced. Plain `curl -sL`: **403**, a
+4,548-byte block page. Under the fresh rule that is a clean, well-founded negative — honest CLI UA
+is what this project sends now, and it failed. The article would have gone into the log as
+inaccessible.
+
+It is a Chrome-UA-only domain. Measured, one variable at a time:
+
+| Domain | `curl/8.x` own UA | `Wget/1.21.4` | Chrome UA |
+|---|---|---|---|
+| `paloalto.gov` | **200** | **200** | 403 |
+| `hklaw.com` | 403 (4,548 B) | 403 | **200** (64 KB) |
+| `padailypost.com` | 406 (300 B) | — | **200** (348 KB) |
+| `mountainview.gov` | 403 (426 B) | 403 (426 B) | 403 (426 B) |
+
+Four domains, three different answers. Note `padailypost.com` — an outlet this pass sweeps
+**daily** — has been 406ing under the post-8/12 default, and a 406 with a 300-byte body reads like
+a dead site rather than a rejected header.
+
+### The failure mode: a correction generalizes exactly as badly as the error did
+
+The 8/12 entry says "distrust inherited workarounds that no entry here ever verified" and "vary one
+thing at a time and record the actual matrix." Both were aimed at the *old* advice. Neither was
+applied to the *new* advice, which was written down in three files within an hour of being measured
+— on **one domain**. It had every property the entry warned about: repeated across files, true where
+it was tested, never re-tested anywhere else.
+
+This is the same shape as 2026-08-06, where a route learned on Palo Alto's PrimeGov was recorded as
+a general limit on every PrimeGov instance. The difference is the direction of travel: there a
+**negative** over-generalized, here a **positive** did, and a positive is harder to catch because it
+keeps working on the domain you keep checking. **A fix measured on one host is a fact about that
+host.** The deliverable for a fetch problem is a matrix, not a default.
+
+- The one honest negative in the table is `mountainview.gov`, which refuses all three. That is
+  **checked, inaccessible** — and it matters that it is now distinguishable from the other three
+  rather than sharing a log line with them. Legistar is the working route for that city.
+- **Try both UAs before recording any domain as unreachable**, and write down which one worked. Two
+  requests. Recorded in `sb79-update-scan/SKILL.md` as a table rather than as a rule, because a rule
+  is what got over-generalized twice now.
+
+### The other half: the attachment rule was never carried across to Legistar
+
+`sb79-update-scan/SKILL.md` has said since 8/13 that an agenda's SB 79 content "is almost never in
+the agenda text" — agendas carry item *titles*, the substance is in the linked PDFs. That section is
+written entirely in PrimeGov vocabulary (`historyattachment`, `compileOutputType`), and the neighbor
+cities on Legistar were being swept by grepping `EventAgendaFile` and stopping there.
+
+Today's find is the demonstration. Mountain View's **EPC 8/19 agenda** greps **2** "SB 79." Behind
+it: a 24-page staff report (19 hits), a draft zoning-map amendment ordinance (27 hits) and a
+29-page draft historic-preservation ordinance — carrying the whole of Mountain View's
+**§65912.161(b)(1)(F)** historic exclusion, 24 properties, its 2031 expiry, and a historic-*district*
+process staff say was drafted so Council can pursue a **permanent** SB 79 exemption. The agenda line
+alone would have supported a one-line log entry and nothing on the site.
+
+The route is symmetrical to PrimeGov's and was already available:
+`/v1/<client>/events/<id>/eventitems?Attachments=1` returns each item's
+`MatterAttachmentHyperlink`. Now in the skill file. **When a reading rule is written in one
+portal's nouns, ask what its equivalent is in the other portal before assuming the rule doesn't
+apply there.**
+
+### Three smaller ones, all from opening the thing
+
+- **A staff report's cross-reference is not a citation.** The report points at "Section
+  **36.55.75.c** in Attachment 2" for the SB 79 exclusion language. Opening ATT 2: it is
+  **36.55.75.a**; (c) is the state/national-eligible single-family-and-duplex provision. The
+  pointer was written by the same author as the document it points into and it was still wrong.
+  Same two-second habit as grepping a source for a claim's own tokens (2026-08-05) — follow the
+  cross-reference into the attachment rather than quoting the pointer.
+- **The 2026-08-09 thin-row check was scoped to the table where the problem was found.** That entry
+  gave a real check — `awk -F'|' 'NF>3 && length($4)<120'` over the press table — for rows that are
+  a headline and a link rather than a read source. `PRIMARY-SOURCES.md` → **Legal / policy analysis**
+  is *five consecutive bare URLs* with no extracted content at all, and has been since the file was
+  created; **Data sources** is another four. Today's H&K alert (2026-06-16) is the first entry in
+  that section anyone has read, and it turned out to carry the only account this project has of
+  HCD's actual §65912.160 determinations — **Beverly Hills' TOD alternative plan rejected 2026-05-08,
+  San Jose's exclusion ordinance approved 2026-06-04** — while five weeks of runs recorded HCD
+  determinations as unobtainable behind the Power BI register. **A check invented for one table is
+  worth running over every table in the file.**
+- **A city attorney's ordinance is a cheap second source on the statute.** ATT 3's recitals cite
+  §65912.161(b)(**1**)(**F**) by subparagraph, which independently corroborates PR #13's finding
+  that (b)(1) enumerates (A)–(F) — a correction this project made from the codified text on 8/11 and
+  had no outside confirmation of. Drafting attorneys cite to the subparagraph because they have to;
+  press and summaries never do.
+
+### What was deployed vs. PR'd
+
+**Index only.** `b15ac72` (the four Mountain View documents + the H&K alert + the per-domain UA
+matrix in the scan skill), `bf063b6` (the 8/11 PA Online fish-market piece — fifth restatement of
+nine / 341, and a **"Senate Bill 79"-only** article that a `SB 79` grep misses outright), `915ceda`
+(corpus re-index, 57 files). The site-facing framing change went to **PR #17**, because the EPC has
+not met: everything in that diff is a *proposal*, and Mountain View's own January 27 direction is
+described one way by `neighbors.html` and another way by the city attorney's recital — which is a
+human's question, not an unattended run's.

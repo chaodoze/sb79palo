@@ -1713,3 +1713,65 @@ nine / 341, and a **"Senate Bill 79"-only** article that a `SB 79` grep misses o
 not met: everything in that diff is a *proposal*, and Mountain View's own January 27 direction is
 described one way by `neighbors.html` and another way by the city attorney's recital — which is a
 human's question, not an unattended run's.
+
+## 2026-08-16 — An attachment set was read down to the interesting-sounding names
+
+Yesterday's run applied the 2026-08-13 attachment rule to Mountain View EPC 8/19 (Legistar meeting
+3398) and read the agenda, the staff report, ATT 2 and ATT 3 — the four documents whose names
+promise substance. **The item has eleven attachments.** The other seven were opened today. The rule
+was followed; the read was not complete, and two of the seven were load-bearing:
+
+- **ATT 5 is the Mountain View Register itself** — *"46 TOTAL (43 privately-owned properties plus 3
+  city-owned properties)"*. That is the **denominator the staff report never states**. The site was
+  about to characterize a "24 parcels excluded" off-ramp with no idea whether 24 was most of the
+  register or a slice of it. It is 24 of 46.
+- **ATT 7 is the entire public-comment record** on a citywide ordinance, and it greps **zero**
+  "SB 79" — while one of its three submissions objects to preserving **124-126 Castro St** because
+  *"That's right next to the Caltrain station, so it's one of the main gateways to the city."*
+  124-126 Castro is **one of the 24 parcels on the exclusion list**. The most on-point stakeholder
+  comment this project has found in Mountain View was invisible to every string search it runs.
+
+**The failure mode is name-based triage.** "ATT 5 - Mountain View Register" and "ATT 7 - Public
+Comments" read as boilerplate next to "Staff Report" and "Zoning Map Amendment Ordinance." They are
+not. This is the 2026-08-09 thin-row finding one level inward: there, a *row* was counted as a read
+source because it had a URL; here, an *item* was counted as read because its headline documents
+were. Both times the missing material was already inside something the index had.
+
+- **Enumerate the attachment set and account for every entry.** The call that produced the four is
+  the same call that lists the eleven — `/v1/<client>/events/<id>/eventitems?Attachments=1` returns
+  all of them with ids and names. There is no extra fetch to justify; there is only the decision to
+  stop early. Same for PrimeGov's `historyId` pairing.
+- **A short attachment is not a minor one.** ATT 5 is 2 pages and 3,217 chars; the two documents
+  that grep zero and cost the most to read — ATT 1 (232 pp.) and ATT 9 (478 pp.) — are the ones name
+  triage would have prioritized. Page count is anti-correlated with what mattered here.
+- **Corollary for zero-hit greps, again:** all seven grep zero "SB 79." Six of those zeros are
+  honest. ATT 7's is not — it is a fact about the phrase, on a document *about* the SB 79 item.
+
+Also recovered by opening ATT 2's Exhibit A: **§36.55.75.c is the 14 CRHR/NRHP-eligible
+single-family dwellings and duplexes** under interim HP-permit review. Yesterday correctly caught
+that the staff report's pointer to "36.55.75.c" was wrong and the SB 79 language is at **.a**, but
+recorded only what .c *isn't*. Naming what a bad cross-reference actually points at is what stops
+the next reader from re-deriving it.
+
+## 2026-08-16 — "Thursday" is not a date, and the same plaintiffs sue the same city twice
+
+PR #16 dates the SF SB 79 petition by inference: SF Standard says the suit was filed "Thursday" in a
+piece published **2026-08-13**, which is a Thursday, so it was filed 8/13. Today's sweep surfaced
+**KQED**, *"YIMBY Groups Sue San Francisco, Arguing Upzoning Doesn't Go Far Enough"* — same three
+plaintiffs (YIMBY Law, CalHDF, Californians for Homeownership), same defendant, and the sentence
+*"filed a lawsuit on Thursday afternoon."* It is dated **February 12, 2026**, greps **zero**
+"SB 79," and is about the Family Zoning Plan / housing element.
+
+**February 12, 2026 and August 13, 2026 are both Thursdays.** So the inference reproduces perfectly
+against a different lawsuit six months earlier. It is still probably right about the August filing,
+but it cannot validate itself, and the docket check on PR #16 moves from prudent to required.
+
+- **A relative date reference is not a date.** "Thursday," "last week," "Monday" resolve only
+  against a publication date that is itself often a `dateModified`. Convert them, then confirm.
+- **Repeat-litigant stories defeat headline matching.** When the same coalition sues the same city
+  on a schedule, the outlet, the headline shape, the plaintiff list, the defendant *and* the
+  day-of-week can all match across genuinely distinct cases. The **only** reliable discriminators
+  here were the article's own date and a `SB 79` grep returning zero.
+- **The counter-citation table worked, and needs widening.** PR #16 counter-cited the February
+  *press release*. The trap came back as KQED — a major newsroom, which ranks higher and reads more
+  credible. **Counter-cite the case, not the URL**, or the next outlet to cover it walks straight in.

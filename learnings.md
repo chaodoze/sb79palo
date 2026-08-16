@@ -1775,3 +1775,34 @@ but it cannot validate itself, and the docket check on PR #16 moves from prudent
 - **The counter-citation table worked, and needs widening.** PR #16 counter-cited the February
   *press release*. The trap came back as KQED — a major newsroom, which ranks higher and reads more
   credible. **Counter-cite the case, not the URL**, or the next outlet to cover it walks straight in.
+
+## 2026-08-16 — The fingerprint had the meeting id in it; the dedup compared whole strings
+
+PR **#18** was opened for the PTC 8/12 / 332 Forest outcome while PR **#15**, opened 2026-08-13 on
+the same hearing, was already open. The state file already carried
+`outcome:3079:item2-332-forest-ptc-0812`; the new finding fingerprinted as
+`outcome:3079:332-350-forest-phz-arb-vote-4-2`. **Both start `outcome:3079:`.** The skill file
+specifies the form as `outcome:<meeting-id>:<item>` — the meeting id was right there, and the dedup
+step compared full strings and found no match.
+
+The two PRs turned out to be complementary rather than duplicative (#15 is a pending-outcome stub in
+`PRIMARY-SOURCES.md`; #18 is the `council-watch.html` copy #15's own checklist said the finding
+"likely deserves"), so nothing was lost but the human's time in discovering the relationship. The
+next one will not necessarily be so lucky.
+
+- **Dedup `outcome:<meeting-id>:*` on the meeting-id prefix, not the whole string.** A single meeting
+  generates *differently worded* findings on different days as evidence arrives — an agenda on day
+  one, a stub when the video can't be transcribed, a press recap a week later, minutes after that.
+  Free text after the id will differ every time by construction. The stable part is the id, which is
+  why the format puts it there.
+- **List the open PRs before branching.** `gh pr list` is one call and is the ground truth about what
+  has already been routed to a human. `actioned_fingerprints` is this job's *memory* of what it did;
+  the PR list is the *state of the world*, and they drift — the fingerprint set cannot know that a
+  human closed, merged or retitled something.
+- **A new finding about an already-PR'd event usually belongs as a comment on that PR** (the 7/27
+  rule), and the exception — genuinely new site copy in a different file — is worth stating rather
+  than assuming. Here the exception applied and the linkage still had to be added by hand afterward.
+- Worth noting what *did* work: the press account answered #15's central open question almost
+  point-for-point, including the one it flagged as most consequential. **A stub PR that writes down
+  its own verification checklist pays off when the evidence finally lands** — the reconciliation was
+  mechanical because #15 had said exactly what to look for.

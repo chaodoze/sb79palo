@@ -511,6 +511,7 @@ Public submissions filed with Council in connection with specific agenda items. 
 | Date | Submitter | Agenda item | Position summary | Link |
 |---|---|---|---|---|
 | 2026-04-30 | Palo Alto Forward (Jeremy Levine, Executive Director) — pro-housing advocacy | May 4, 2026 / Agenda Item 14 — Implementation of SB 79 (deferred at the meeting) | Supports **Approach 4 (TOD Alternative Plan)** as best path. Endorses pairing with **Approach 2 (emergency historic ordinance)** as interim bridge if A4 takes too long. Opposes **Approach 3 (50% Now, Rest in 2032)** — calls it the worst of both worlds on cost, massing, and RHNA. Includes detailed 8-factor scoring table comparing all four approaches. | [Google Doc](https://docs.google.com/document/d/174bUSfEBp4lBXXMvxMJGiiSa4zD9nEGT9eX-i6i-spE/edit) |
+| 2026-06-11 (post announcing it; letter sent "this week") | Housing Action Coalition (Ali Sapirman) — pro-housing advocacy, SF-based | Between the **June 1 first reading** and the **June 15 second reading** — the interim ordinances, and specifically the *urgency* route (23B/23C) | **Opposes the emergency-ordinance vehicle, not delay as such.** Two stated concerns, verbatim: (1) *"The public doesn't have enough information to evaluate what's being proposed. The staff report doesn't tell the public how many historic resources actually fall within SB 79's eligibility a[rea]"* — without it "residents can't assess what it would mean in practice for an ordinance to cap development at just 50% of SB 79's minimum densities"; (2) *"Emergency ordinances are the wrong vehicle… New housing near transit doesn't meet that bar. Palo Alto cannot credibly characterize new housing as a public safety emergency. If the Council wants to delay SB 79, it should do so through the normal legislative process."* Calls Palo Alto *"the most direct challenge to SB 79's intent right now."* Separately records that **HAC filed a formal complaint with HCD** over SCAG's map methodology (an LA-region matter, not MTC). ⚠️ This is the **blog post announcing the letter**, not the letter — the letter itself should be in the June 15 packet correspondence and has **not** been retrieved. ⚠️ Pre-watermark backfill (predates this project's scan window); indexed 2026-08-17 after being read in full (11 "SB 79" occurrences, 5 "Palo Alto"). Position only — asserts no outcome. Consistent with the site's record: Council did adopt 23B (historic urgency) and declined to proceed on 23C (50% citywide urgency) on June 15. | [Housing Action Coalition, "SB 79 Implementation: The Gap Between Intent and Reality"](https://housingactioncoalition.org/news/sb-79-implementation) |
 
 ---
 
@@ -546,6 +547,34 @@ Public submissions filed with Council in connection with specific agenda items. 
   `padailypost.com` behaves the same way (**406** under `curl/8.7.1`, 200 under Chrome).
 - Allen Matkins — SB 79 alert
   https://www.allenmatkins.com/real-ideas/governor-newsom-approves-sb-79-high-density-transit-oriented-housing-development-projects.html
+- **Allen Matkins — "The City of Los Angeles Seeks to Delay Implementation of Senate Bill 79
+  (SB 79) Until 2030"**, dated **6.08.26**, Spencer B. Kallick / Korinna Anderson (fetched + read
+  in full 2026-08-17; 27 occurrences of "SB 79"; `allenmatkins.com` answers **200** to both
+  `curl`'s own UA and a Chrome UA)
+  https://www.allenmatkins.com/real-ideas/the-city-of-los-angeles-seeks-to-delay-implementation-of-senate-bill-79-sb-79-until-2030.html
+  **The mechanism behind the comparison the H&K row above already draws.** H&K characterizes Los
+  Angeles, *"as is Palo Alto,"* as relying on the 50% temporary exclusion to delay SB 79 citywide;
+  this alert is the detail. Two ordinances: a **Phased Implementation Ordinance** that "temporarily
+  pauses SB 79" for six enumerated site categories (≥50% of SB 79's density and residential FAR
+  already permitted; TOD zones meeting a one-third/75%-aggregate test; designated low-resource
+  areas; very high fire hazard severity zones; sites vulnerable to one foot of sea level rise; sites
+  including a **historic resource designated as of January 1, 2025** on a local register) until
+  "a year after the next Housing Element is adopted, likely in 2030" — plus **permanent** exclusions
+  for industrial employment hubs and sites more than a one-mile walk from a qualifying TOD stop. And
+  a **Low-Rise Ordinance** upzoning properties that *don't* qualify for temporary exemption so that
+  they then do — the City's own estimate is that the pair renders **100% of sites citywide**
+  eligible for temporary exemption (≈90% already eligible; 2.2% permanently exempt).
+  ⚠️ **The adoption claim is UNVERIFIED and the document contradicts itself.** The lede says *"If
+  adopted and approved, two **proposed** ordinances … **would** delay SB 79 Citywide"*, while the
+  body says *"the City Council approved the ordinances on June 3, 2026"* (CPC 5/14, PLUM 5/26) and
+  *"Following Los Angeles's adoption…"* — i.e. an alert written pre-adoption and updated
+  post-adoption without harmonizing the lede. **No LA council record has been read.** Same
+  HAPPENED-vs-PROPOSED shape as the OppNow Atherton headline (2026-08-07). **No page on this site
+  asserts anything about Los Angeles's ordinances**, and none should until the record is read.
+  ⚠️ Pre-watermark backfill (2026-06-08); indexed 2026-08-17. Also useful as a dated marker on
+  SCAG's map: draft released **2026-06-01**, CEHD committee recommended approval **2026-06-04**,
+  Regional Council final action set for **2026-07-02** — the SCAG analogue to the MTC map this
+  project tracks, and the subject of the HAC complaint in the stakeholder table above.
 - Manatt — SB 79 transformative upzoning client alert
   https://www.manatt.com/insights/newsletters/client-alert/sb-79-transformative-upzoning-near-transit-in-california
 - Lozano Smith — 2025 housing legislation roundup

@@ -1806,3 +1806,48 @@ next one will not necessarily be so lucky.
   point-for-point, including the one it flagged as most consequential. **A stub PR that writes down
   its own verification checklist pays off when the evidence finally lands** — the reconciliation was
   mechanical because #15 had said exactly what to look for.
+
+## 2026-08-17 — The summary resolved a contradiction the document never resolved
+
+Allen Matkins' SB 79 alert on Los Angeles surfaced today, unindexed. `WebFetch` reported it
+cleanly: *"The City of Los Angeles **adopted** two ordinances (actions already completed)"*, with
+a date — City Council approved June 3, 2026. Fetched directly, the document says both things. Its
+lede: *"**If adopted and approved**, two **proposed** ordinances … **would** delay SB 79 Citywide
+until likely 2030."* Its body, four sentences later: *"the City Council approved the ordinances on
+June 3, 2026,"* and *"Following Los Angeles's adoption…"*. It is a law-firm alert written before
+adoption and updated after, with the lede left alone.
+
+The previous summarizer failures here were **fabrication** — an inferred date (2026-08-02) and an
+attributed sentence that wasn't in the source (2026-08-05). This one invented nothing. Every clause
+it produced is in the document. What it removed was the document's **disagreement with itself**,
+which is the only part that mattered, because "proposed" and "adopted" are exactly the distinction
+this project's one rule is built on.
+
+- **A summarizer returns a resolved reading. Documents are not always resolved.** Summarization is
+  lossy in a specific direction: it collapses hedges, reconciles tenses, and picks the confident
+  clause. The failure mode isn't a wrong fact, it's a **manufactured certainty** — and it is
+  invisible in the output, because a contradiction that has been smoothed away leaves no trace.
+  The existing rule ("AI summaries are leads, not citations") is right and was followed; what's new
+  is *why* it has to be followed even when the summary is accurate.
+- **When a source's own tense is the finding, quote both halves.** The index row for this alert
+  records the lede and the body verbatim and marks the adoption UNVERIFIED. A row that recorded only
+  the body would have been true to the summary and false to the document.
+
+### The tier gate has two exits, and this finding needed a third
+
+An adoption is an outcome, so the gate says PR. But a PR is a *proposed site edit*, and **no page on
+this site says anything about Los Angeles's ordinances** — nor should it; the site covers Palo Alto
+and its peninsula neighbors. Opening a PR would have meant drafting copy asserting an unverified,
+out-of-scope outcome purely to satisfy the routing rule. Deploying was obviously wrong. Dropping it
+was also wrong: the index already draws the LA comparison (Holland & Knight calls LA, *"as is Palo
+Alto,"* a user of the 50% temporary exclusion), so the mechanism is genuinely useful context.
+
+- **deploy / PR is not exhaustive. The third exit is: index the source with the claim marked
+  unverified, and assert nothing.** `PRIMARY-SOURCES.md` is in `.assetsignore` — recording what a
+  document *says*, with its caveats, is not the site *claiming* it. That is what the index is for,
+  and it already does this for the Atherton administrative draft and the OppNow headline.
+- **A finding can be in scope for the index and out of scope for the site.** Those are different
+  questions and were being answered as one. Ask them separately.
+- Corollary, applied today: the alert was **not** added to the chat corpus as a fetched source, only
+  as an index row. A fetched source is quotable by the widget on its own, without the caveat
+  paragraph attached — an unverified outcome claim should not be independently citable.

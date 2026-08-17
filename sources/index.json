@@ -466,6 +466,15 @@
       "title": "Palo Alto Forward — Public Comment on SB 79 Implementation (Jeremy Levine, 2026-04-30)",
       "category": "stakeholder",
       "note": "Google Docs URL is not fetchable by curl. The cached sources/stakeholder-paf-2026-04-30.md was exported via /export?format=txt from a logged-in Chrome session. Re-export manually if the doc is updated."
+    },
+    {
+      "id": "stakeholder-hac-2026-06-11",
+      "type": "url",
+      "format": "html",
+      "url": "https://housingactioncoalition.org/news/sb-79-implementation",
+      "title": "Housing Action Coalition — SB 79 Implementation: The Gap Between Intent and Reality (Ali Sapirman, 2026-06-11)",
+      "category": "stakeholder",
+      "note": "Blog post announcing HAC's letter to the Palo Alto City Council opposing the URGENCY/emergency-ordinance route for the interim SB 79 rules (between the 6/1 first reading and the 6/15 second reading). Position, not outcome. The letter itself is not this document and has not been retrieved; look in the June 15 packet correspondence."
     }
   ]
 }

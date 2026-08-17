@@ -86,8 +86,8 @@
       "title": "Primary sources index (editorial master list)",
       "url": "https://github.com/chaodoze/sb79palo/blob/main/PRIMARY-SOURCES.md",
       "category": "site",
-      "content_hash": "d8107815810b468704a192d3f910ddada170effa7dc176b267095c3f21f81f62",
-      "openai_file_id": "file-LANL4PougvTeuP6aFxtyqo"
+      "content_hash": "1144390862f8b4761d152ffa65cff9f45ac75ef567ba8cc4eb3d2c4191a97da1",
+      "openai_file_id": "file-Czi1tdgneetfr5UgmpNQjF"
     },
     "statute-leginfo-nav": {
       "id": "statute-leginfo-nav",
@@ -456,6 +456,14 @@
       "category": "stakeholder",
       "content_hash": "3bb5362e94844c3dff350da63a1163206d3acb722812554cbea69eac59b8a530",
       "openai_file_id": "file-9NX4q3wA8EqvjrtZBdpy1d"
+    },
+    "stakeholder-hac-2026-06-11": {
+      "id": "stakeholder-hac-2026-06-11",
+      "title": "Housing Action Coalition — SB 79 Implementation: The Gap Between Intent and Reality (Ali Sapirman, 2026-06-11)",
+      "url": "https://housingactioncoalition.org/news/sb-79-implementation",
+      "category": "stakeholder",
+      "content_hash": "6c3049991200904fe687daecd09b28da0a4945a31227452d58191c3eff5f0534",
+      "openai_file_id": "file-7Be4Gp7GLo6TVkkuzj6K9B"
     }
   }
 }

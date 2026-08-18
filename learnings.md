@@ -1907,3 +1907,21 @@ document needs is structural, not lexical — and a text dump has had its struct
   A bare "the temporary ordinance" in a city document identifies neither.
 - Applied today: the index row for these minutes carries the near-miss explicitly, so the next reader
   of that document meets the correction before the sentence.
+
+### Postscript, same run — `seen_meeting_ids` is single-city, and the id spaces overlap
+
+While advancing the watermark this run I briefly wrote **all three PrimeGov cities'** meeting ids into
+`state.json`'s flat `seen_meeting_ids` list (156 → 243). Caught before saving, because the prior count
+was *exactly* Palo Alto's meeting count — the list had always been Palo-Alto-only, and nothing in
+`SKILL.md` or the file's own `_comment` says so.
+
+The ranges settle it: **San Carlos meeting ids run 2744–2965 and Palo Alto's run 2818–3079.** They
+overlap. A merged list would have silently marked unseen Palo Alto meetings as already-seen — the
+exact permanent blindness the 2026-08-10 entry was written to prevent, reintroduced through the
+dedup structure instead of the dedup rule.
+
+- **`seen_meeting_ids` = Palo Alto only. Every other city dedups through `seen_meeting_docs[<city>]`,**
+  which is keyed by city and therefore collision-free. That is why the per-city map exists; it is not
+  just a finer-grained version of the id list.
+- **A bare integer id is only unique inside its instance.** Any future cross-city watermark must be
+  `<city>:<id>`, like the fingerprints already are.

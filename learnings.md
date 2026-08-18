@@ -1851,3 +1851,59 @@ Alto,"* a user of the 50% temporary exclusion), so the mechanism is genuinely us
 - Corollary, applied today: the alert was **not** added to the chat corpus as a fetched source, only
   as an index row. A fetched source is quotable by the widget on its own, without the caveat
   paragraph attached — an unverified outcome claim should not be independently citable.
+
+---
+
+## 2026-08-18 — The false positive was inside a document that was genuinely about SB 79
+
+### What happened
+
+The document-set diff on Palo Alto ARB meeting **3057** surfaced the **July 16, 2026 ARB draft
+summary minutes** (23 pp.), attached to the 8/20 agenda for approval. A keyword sweep returned
+**3 "SB 79" hits**, all in Item 3 (the Board's annual work plan) — including Assistant Director
+Jennifer Armer's *"There were 5 preliminary applications under SB 79 for potential downtown housing
+development,"* which is city staff's own figure for the downtown half of the partition this index
+had only from press arithmetic. Good finding; indexed.
+
+Then, while confirming Armer's title, an unrelated grep landed on a fourth passage in the same
+document: *"Assistant Director Jennifer Armer stated that **the temporary ordinance runs through
+June 2027**, so staff was targeting to have something for Council consideration before then to avoid
+a lapse."*
+
+Same document. Same speaker. Same meeting. A sunset date on a "temporary ordinance," in a file whose
+SB 79 content had just been confirmed — and this project's entire Palo Alto record is built on a
+**temporary ordinance** with a sunset. Read at that width it is a new, primary-source, city-staff
+expiry date for the 50% exclusion, contradicting the site's published **~2032**.
+
+It is not. It belongs to **Item 2, wireless communication facilities**, ~59,000 characters earlier in
+the document, and refers to the WCF ordinance. Caught only because the surrounding 2,000 characters
+were read before the phrase was believed — they are about AT&T and Verizon right-of-way clusters.
+
+### Why this one is a different shape
+
+Every trap logged since 2026-08-06 is a **false negative** across surfaces: a check correctly
+performed on one surface standing in for the question (compiled documents, the HCD register, the
+City Manager index, an agenda's item titles). The defenses built for those all say *look somewhere
+else too*.
+
+This is the inverse, and none of those defenses fire on it. Nothing here is inaccessible; the fetch
+worked, the extraction worked, the grep worked, the document really is about SB 79, and the sentence
+really is in it, verbatim, from a named staff member. **The relevance filter that a multi-item
+document needs is structural, not lexical — and a text dump has had its structure removed.**
+
+- **In a minutes/packet document, a fact's owner is its agenda item, not its file.** Before adopting
+  any sentence from a compiled record, locate the item heading above it (`ACTION ITEMS`,
+  `STUDY SESSION`, the numbered title) and check that the item is the one the finding is about.
+  Costs one regex over the extracted text; the item boundaries are right there.
+- **The dangerous phrases are the ones that don't contain the keyword.** A ±700-character window
+  around "SB 79" — the search this run actually ran — would never have surfaced this passage, which
+  is the only reason it stayed harmless. A different query ("does anything here give a sunset date?")
+  would have hit it directly with nothing around it to signal the mismatch. Keyword proximity was
+  doing safety work it was not designed for and cannot be relied on for.
+- **`temporary ordinance` is now a known collision token in Palo Alto records**, alongside the
+  `65912.100 / 65912.15x / 65914.2 / 65589.5` section-number collision (2026-08-03) and the
+  `SB 79` -inside- `SB 790` shape (2026-08-04). Palo Alto has at least two live temporary
+  ordinances — the SB 79 half-size exclusion (to **~2032**) and the WCF ordinance (to **June 2027**).
+  A bare "the temporary ordinance" in a city document identifies neither.
+- Applied today: the index row for these minutes carries the near-miss explicitly, so the next reader
+  of that document meets the correction before the sentence.

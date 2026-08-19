@@ -565,17 +565,72 @@ Public submissions filed with Council in connection with specific agenda items. 
   a **Low-Rise Ordinance** upzoning properties that *don't* qualify for temporary exemption so that
   they then do — the City's own estimate is that the pair renders **100% of sites citywide**
   eligible for temporary exemption (≈90% already eligible; 2.2% permanently exempt).
-  ⚠️ **The adoption claim is UNVERIFIED and the document contradicts itself.** The lede says *"If
-  adopted and approved, two **proposed** ordinances … **would** delay SB 79 Citywide"*, while the
-  body says *"the City Council approved the ordinances on June 3, 2026"* (CPC 5/14, PLUM 5/26) and
-  *"Following Los Angeles's adoption…"* — i.e. an alert written pre-adoption and updated
-  post-adoption without harmonizing the lede. **No LA council record has been read.** Same
-  HAPPENED-vs-PROPOSED shape as the OppNow Atherton headline (2026-08-07). **No page on this site
-  asserts anything about Los Angeles's ordinances**, and none should until the record is read.
+  ~~⚠️ **The adoption claim is UNVERIFIED and the document contradicts itself.**~~ The lede says
+  *"If adopted and approved, two **proposed** ordinances … **would** delay SB 79 Citywide"*, while
+  the body says *"the City Council approved the ordinances on June 3, 2026"* (CPC 5/14, PLUM 5/26)
+  and *"Following Los Angeles's adoption…"* — i.e. an alert written pre-adoption and updated
+  post-adoption without harmonizing the lede. Same HAPPENED-vs-PROPOSED shape as the OppNow
+  Atherton headline (2026-08-07). ✅ **Resolved 2026-08-19 against Los Angeles's own record — see
+  the four LA primary sources indexed directly below.** Both halves of the alert turn out to
+  describe real events: the City Clerk's council-file activity log shows a Council adoption on
+  **06/03/2026** *and a second one on* **06/23/2026** (after the City Attorney transmitted drafts
+  on 6/17 and PLUM waived consideration on 6/18), and it is the June 23 action the enacted
+  ordinances certify. The alert's error is not its date, it is that neither clause is the final
+  record. ⚠️ **The site's position is unchanged: no page here asserts anything about Los
+  Angeles's ordinances, and none should** — LA is out of scope. This is an index row recording
+  what LA's documents say, not a site claim (2026-08-17 third-exit rule).
   ⚠️ Pre-watermark backfill (2026-06-08); indexed 2026-08-17. Also useful as a dated marker on
   SCAG's map: draft released **2026-06-01**, CEHD committee recommended approval **2026-06-04**,
   Regional Council final action set for **2026-07-02** — the SCAG analogue to the MTC map this
   project tracks, and the subject of the HAC complaint in the stakeholder table above.
+- **Los Angeles — the enacted SB 79 ordinances themselves** (both fetched, text-extracted and read
+  2026-08-19; `cityclerk.lacity.org` and `planning.lacity.gov` both answer **200** to plain `curl`
+  and to a Chrome UA). These are the signed, City-Clerk-certified documents, not a report about
+  them, and they close the open lead the Allen Matkins alert opened on 2026-08-17.
+  - **Ordinance No. 188968 — Phased Implementation Ordinance** (CF 25-1083-S4; 8 pp., 8,296,425 B;
+    62 × "SB 79"/"65912")
+    https://cityclerk.lacity.org/onlinedocs/2025/25-1083-S4_ord_188968_06-30-26.pdf
+  - **Ordinance No. 188967 — Low-Rise Ordinance** (CF 25-1083-S3; 21 pp., 16,689,838 B; 49 hits;
+    amends LAMC §§ 12.03 and 12.22 A.38)
+    https://cityclerk.lacity.org/onlinedocs/2025/25-1083-S3_ord_188967_06-30-26.pdf
+  - **City Clerk council file 25-1083-S4 — activity log** (the procedural record; also gives the
+    S3 sibling)
+    https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=25-1083-S4
+  - **LA City Planning — "Senate Bill (SB) 79"** (the department's own chronology, Nov 2025 → June
+    2026)
+    https://planning.lacity.gov/resources/senate-bill-sb-79
+  **What the record says, verbatim.** Both ordinance PDFs carry the same three stamps:
+  *"Ordinance Passed June 23, 2026 / Ordinance Published: 06/30/2026 / Ordinance Effective Date:
+  06/30/2026,"* with Mayor concurrence **06/26/2026**. LA City Planning's page agrees: *"The
+  ordinances were adopted by City Council on June 23, 2026. On June 30, 2026 the Low-Rise Ordinance
+  and Phased Implementation Ordinance became effective."* ⚠️ **The vote tally is NOT read.** The
+  Clerk's certification states only that the ordinance *"was passed … by a vote of not less than
+  three-fourths of all its members"* — a threshold, not a count. Nothing here asserts how any
+  member voted; that would need the Council minutes, which have not been fetched.
+  **Two corrections to the alert's mechanism description, from the ordinance's own text.**
+  (1) The temporary exemptions are **eight** lettered categories (Sec. 2, A–H), not six —
+  A ≥50% density/FAR §65912.161(b)(1)(A); B the 33%/75%-aggregate test (b)(1)(B)(i); C low-resource
+  TOD zone at 40% aggregate (b)(1)(B)(ii); D TCAC/HCD-mapped low-resource area at 50% of total
+  citywide capacity (b)(1)(B)(iii); E covered by a local TOD alternative plan (b)(1)(C); F very
+  high fire hazard severity zone or state responsibility area (b)(1)(D); G vulnerable to one foot
+  of sea level rise (b)(1)(E); H historic resource designated as of January 1, 2025 on a local
+  register (b)(1)(F), which LA defines to include **Historic Cultural Monuments and HPOZs**.
+  (2) The **permanent** exclusions are a separate section under a different statute — Sec. 1,
+  §65912.160(e): A no walking path under one mile to the TOD stop; B an industrial employment hub
+  (contiguous ≥250 acres, General-Plan-designated as employment lands on or before January 1, 2025,
+  housing not a permitted use), available only because LA has ≥15 TOD stops.
+  **Two details that bear on this project directly.** The sunset clock is the *same statutory one*
+  the site describes for Palo Alto — the ordinance's own words are *"for the period that is prior
+  to one year following the adoption of the seventh revision of the City's Housing Element"*
+  (§65912.161(b)); the alert's "likely 2030" is LA's housing-element timing, not a different rule,
+  which is why Palo Alto's ≈2032 and LA's ≈2030 can both be right. And Sec. 8 requires the City to
+  *"transmit a final copy of this ordinance to HCD no later than 60 days after it takes effect"* —
+  i.e. by ≈**2026-08-29**, a dated thing to look for on HCD's §65912.160(d)(3) register.
+  ⚠️ One more thing the alert does not mention, from the Low-Rise Ordinance's first recital: LA
+  enacted *"without prejudice to, and shall not be construed as a waiver of the City's ability to
+  file a protest or pursue other rights, remedies, and legal proceeding to challenge SB 79."*
+  A city complying while expressly reserving the right to sue.
+
 - Manatt — SB 79 transformative upzoning client alert
   https://www.manatt.com/insights/newsletters/client-alert/sb-79-transformative-upzoning-near-transit-in-california
 - Lozano Smith — 2025 housing legislation roundup

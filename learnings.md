@@ -1925,3 +1925,67 @@ dedup structure instead of the dedup rule.
   just a finer-grained version of the id list.
 - **A bare integer id is only unique inside its instance.** Any future cross-city watermark must be
   `<city>:<id>`, like the fingerprints already are.
+
+---
+
+## 2026-08-19 — "The document contradicts itself" was a hypothesis about the document. Both dates were real.
+
+### What happened
+
+The 2026-08-17 entry recorded the Allen Matkins LA alert as self-contradicting: a lede saying two
+**proposed** ordinances **would** delay SB 79, a body saying *"the City Council approved the
+ordinances on June 3, 2026."* The reading was that the alert was written pre-adoption and updated
+post-adoption without harmonizing the lede, and that one of the two clauses was the truth. The lead
+was parked: *"No LA council record has been read."*
+
+Today the record was read. **Both clauses describe real events, and neither is the outcome.** The
+City Clerk's council-file activity log for CF 25-1083-S4 shows a Council adoption on **06/03/2026**
+*and a second Council adoption on* **06/23/2026**, with the City Attorney transmitting drafts on
+6/17 and PLUM waiving consideration on 6/18 in between. The enacted, Clerk-certified ordinances —
+**No. 188968** (Phased Implementation) and **No. 188967** (Low-Rise) — both carry *"Ordinance Passed
+June 23, 2026 / Published 06/30/2026 / Effective 06/30/2026."* The alert's date is not wrong; it
+names the first of two adoptions of the same file.
+
+- **A contradiction in a source is a claim about the source. Verify it like any other claim.** The
+  8/17 entry did the hard part right — it refused to pick the confident clause, and it quoted both
+  halves. But the frame it wrote down ("an alert written pre-adoption and updated post-adoption")
+  was itself an inference about how the document came to be, recorded in the index next to the
+  verbatim quotes as if it were of the same kind. It was plausible and it was wrong. **When a
+  document appears to disagree with itself, the cheapest explanation is a sloppy author; the
+  cheapest *check* is the underlying record, and it can return a third shape neither clause implies.**
+- **Corollary for the tier gate:** an unverified outcome parked in the index should record *what the
+  document says*, not *why it says it*. The "why" costs nothing to omit and is the part that turns
+  out to be fiction.
+
+### The route was a URL pattern, not a browser
+
+The 8/17 lead was filed as needing a human. It did not. `cityclerk.lacity.org` and
+`planning.lacity.gov` both answer **200 to a plain `curl`** — the enacted ordinance PDFs are
+8.3 MB and 16.7 MB of `application/pdf` at predictable paths
+(`/onlinedocs/2025/<council-file>_ord_<ordinance-no>_<date>.pdf`), and the council file's activity
+log is server-rendered HTML at a query-string endpoint. Nothing on LA's side changed between 8/17
+and 8/19. What changed is that an ordinary press-sweep query happened to return a `cityclerk`
+document as a *search result*, which revealed the repository the run could have gone to directly.
+
+- Same shape as **2026-08-06** (compiled documents), **2026-08-07** (HCD letters on the recipient's
+  own site) and **2026-08-13** (the JS index vs the sitemap): a record recorded as unread because
+  the surface first tried didn't carry it. The new variant is that **no surface was tried at all** —
+  the lead was written as "no record has been read," which is a statement about effort, and then
+  filed under "route for a human," which is a statement about availability. Those are not the same
+  sentence.
+- **Every California city clerk publishes enacted ordinances, and the ordinance is a better source
+  than the minutes for the one question the gate cares about.** It carries the passage date, the
+  publication date, the effective date, the ordinance number and the Clerk's certification, in a
+  fixed block on the last page. Before routing an adoption to a human, ask for the ordinance.
+- ⚠️ **The certification is a threshold, not a tally.** Both LA ordinances certify passage *"by a
+  vote of not less than three-fourths of all its members."* That confirms adoption and says nothing
+  about who voted how — the minutes are still the only source for a count, and this index does not
+  assert one.
+
+### A secondary source undercounted a list the primary enumerates
+
+The alert describes the temporary pause as **six** enumerated site categories. Ordinance 188968
+Sec. 2 enumerates **eight** (A–H), under §65912.161(b)(1)(A)–(F), and puts the **permanent**
+exclusions in a separate section under a different statute (Sec. 1, §65912.160(e), two categories).
+A count in a secondary source is exactly the kind of detail that reads as concrete and specific and
+is checkable in one fetch. Check it.

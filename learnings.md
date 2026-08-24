@@ -1989,3 +1989,59 @@ Sec. 2 enumerates **eight** (A–H), under §65912.161(b)(1)(A)–(F), and puts 
 exclusions in a separate section under a different statute (Sec. 1, §65912.160(e), two categories).
 A count in a secondary source is exactly the kind of detail that reads as concrete and specific and
 is checkable in one fetch. Check it.
+
+## 2026-08-24 — The attribution was right and the conclusion it licensed was wrong
+
+`PRIMARY-SOURCES.md`'s ARB 7/16 row carried this warning, written by an earlier run of this same
+job and auto-deployed as a tier-(b) safe fact:
+
+> ⚠️ **Do not read this document's "the temporary ordinance runs through June 2027" as SB 79** —
+> that line is Ms. Armer under **Item 2 (wireless communication facilities)**, about the WCF
+> ordinance. Palo Alto's SB 79 half-size exclusion runs to **~2032**.
+
+The first sentence is almost certainly correct: that utterance does sit under the WCF item, and
+distinguishing it was good work of exactly the kind this file keeps asking for. The second sentence
+is the problem. It does not merely record where the line came from — it uses the misattribution to
+retire the *date*, and it does so by leaning on an unstated premise: **that a mid-2027 date could
+not be an SB 79 date.**
+
+That premise is false, and today's run found the refutation in a document the project had already
+fetched. Both June 15 temporary ordinances — Attachment A (historic resources, SECTION 6) and
+Attachment B (the 50% option, SECTION 7) — say, verbatim and identically:
+
+> "This Ordinance shall be effective on the 31st day following its adoption and **shall expire on
+> July 1, 2027 unless extended or superseded**."
+
+The same ordinances *also* say the sites are excluded "until one year following the adoption of the
+City's seventh cycle Housing Element" — the ≈2032 figure. **Two clocks, one document**, and the
+site had been publishing only the longer one across four pages.
+
+- **A "these are different things" finding tells you the two things are different. It does not tell
+  you either one is false.** The correct output of that ARB analysis was "this WCF line is not
+  evidence about SB 79" — a statement about one sentence's evidentiary value. What got written was
+  "and therefore ~2032," which is a substantive claim about a different document that was never
+  opened. Distinguishing is a *subtraction* operation; it cannot produce a new positive claim.
+- **The tell was available at the time: the rebuttal cited no source.** The warning's ~2032 half
+  points at nothing — no ordinance section, no attachment, no line. Every other assertion in that
+  row carries a citation. A clause that argues rather than cites, inside a row that otherwise
+  cites, is where to look first.
+- **The near-term date is the one a reader needs, and it is the one this shape deletes.** The error
+  ran in the direction of making the local rule sound more settled than it is: six more years,
+  rather than ten more months and a Council decision. When a distinguish-the-similar-things move
+  discards a date, check which of the two dates was *nearer* — discarding the nearer one is how a
+  site ends up confidently describing a lapsed rule.
+- **Corroboration arrived independently and would have been enough on its own.** The PTC 8/26 SOFA
+  consultant memo, indexed this run, says "a temporary ordinance that will allow roughly 50% of the
+  otherwise-applicable SB 79 density **through July 1, 2027**" under a heading reading "SB 79
+  (effective July 1, 2026)." Under the old warning's logic this would have been dismissed a second
+  time as another 2027-shaped confusion. **A rule that dismisses a class of dates will keep
+  dismissing them.** That is what makes this variant worse than a one-off misread.
+- Related but not the same as **2026-08-18** (a false positive *inside* a genuinely-SB-79 document)
+  and **2026-08-19** (a self-contradiction that turned out to be two real dates). Those were about
+  reading one document correctly. This one is about an inference that traveled from a document that
+  was read to a document that was not.
+
+Site-facing correction routed to **PR #19**, not deployed — it changes a published claim on four
+pages and the *adopted* ordinance text has still not been read (the attachments are stamped
+`***NOT YET APPROVED***`, and codified PAMC is not headlessly reachable: codepublishing 404, amlegal
+403, municode a 6 KB JS stub).

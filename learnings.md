@@ -2045,3 +2045,50 @@ Site-facing correction routed to **PR #19**, not deployed — it changes a publi
 pages and the *adopted* ordinance text has still not been read (the attachments are stamped
 `***NOT YET APPROVED***`, and codified PAMC is not headlessly reachable: codepublishing 404, amlegal
 403, municode a 6 KB JS stub).
+
+## 2026-08-25 — The official record and the complete record are different documents
+
+Palo Alto Council meeting **2845** (Aug 10) had minutes indexed since 8/14: doc **21242**,
+`templateName` **"Action Minutes"**, published 8/13, greps **zero** "SB 79." The same
+attachment was re-read on 8/25 off the 8/24 consent agenda — zero again. On 8/25 at
+**16:00:27** the clerk published doc **21320**, `templateName` **"Summary Minutes"**, 27 pp.,
+onto the same meeting id. It greps **one**, and the hit is a resident submitting three slides
+on SB 79 implementation under **Virtual Public Comment** — the first resident testimony on
+SB 79 in any Palo Alto meeting record this project holds, carrying the **$6.3M** listing for
+**340 Palo Alto Ave.** (window filing row 7) from the city's own record rather than the press.
+
+This file already records (2026-06, §"Minutes have approval states") that per **Ordinance No.
+5423** the *action* minutes plus the recording are the **official** record and summary minutes
+are not. That is true and it is not the same question. **"Official" ranks authority; it does
+not describe coverage.** Action minutes carry motions and votes. Summary minutes carry the
+narrative — staff reports, councilmember discussion, and *public comment*, which is where a
+law the city is implementing shows up before it is ever an agenda item. A meeting can produce
+an action-minutes grep of zero and a summary-minutes grep that is the day's only finding.
+
+The failure this avoided is quiet and permanent: **treating a meeting as "minuted" once any
+minutes document lands.** The 8/10 documentList diff fired correctly on 8/13 for 21242, the
+row was written, and the meeting looked closed. Only the document-set diff — which re-checks
+a meeting forever, not once — caught 21320 twelve days later. Two rules:
+
+- **`templateName` is part of the identity, not a label.** A meeting's minutes are not one
+  artifact. Track *which* minutes templates have posted (`Action Minutes`, `Summary Minutes`,
+  `Minutes`) and read each on arrival; do not let one satisfy the other. Same shape as the
+  draft→approved rule (2026-08-14), one axis over.
+- **Grep the summary minutes for public comment specifically.** The 2026-08-10 rule says to
+  read a packet for the *previous* meeting's minutes. This is its sibling: read the summary
+  minutes for the things the action minutes structurally cannot contain.
+
+Deployed as a source-index row (`374a4af`), attributed and not adopted — the speaker's
+lot-value disparity claim and his framing that *the ordinance* created the 15-day window (it
+was the gap between SB 79's July 1 effective date and the ordinances' July 16 one) are
+statements entered into the record, not findings.
+
+**Second, smaller, from the same run: a diff that flags everything is a broken comparison, not
+a finding.** The sweep's first pass reported ~160 Palo Alto documents "removed" across every
+meeting — because the removal test compared integer doc ids against a dict whose keys were
+strings, so nothing ever matched. This file's 2026-08-13 rule reads "if a listing page yields
+zero items of the kind it exists to list, the parse failed — regardless of status code." The
+dual holds and is worth stating: **if a diff flags 100% of the corpus, suspect the comparison
+before the corpus.** A one-way sanity check (`removed ⊆ prev` and `len(removed) < len(prev)`)
+would have caught it before a single fetch. Cost here was one wasted pass; the cost of
+believing it would have been ~160 phantom link-rot alarms.

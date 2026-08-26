@@ -2092,3 +2092,64 @@ dual holds and is worth stating: **if a diff flags 100% of the corpus, suspect t
 before the corpus.** A one-way sanity check (`removed ⊆ prev` and `len(removed) < len(prev)`)
 would have caught it before a single fetch. Cost here was one wasted pass; the cost of
 believing it would have been ~160 phantom link-rot alarms.
+
+---
+
+## 2026-08-26 — A timestamp is a claim about the file's metadata. The bytes are a separate question.
+
+### What happened
+
+The daily Tier-4 version sweep checks a handful of static reference documents by `Last-Modified`,
+because they generate no other event (that is the whole lesson of **2026-08-11**, above: a source can
+go stale without going dead). Today the sweep fired: the **ABAG SB 79 Summary** — both the superseded
+April file and the current July one — returned
+
+```
+2026-04/SB79-Summary-040826.pdf     last-modified: Tue, 25 Aug 2026 16:07:38 GMT
+2026-07/SB79-Summary-07172026.pdf   last-modified: Tue, 25 Aug 2026 16:07:45 GMT
+```
+
+Both had been stable for weeks. A `Last-Modified` inside the scan window, on the region's canonical
+SB 79 explainer, is exactly the shape of a Tier-4 finding — and 8/11 is a standing reminder that when
+ABAG revises this document, **the revision is not cosmetic** (that one moved §65912.161(b)(1) from one
+sentence to six subparagraphs and put a claim on `neighbors.html` into PR #13).
+
+It was not a revision. Nothing in either file changed.
+
+### The tell, and it was free
+
+Two things gave it away, and both were already in the response this scan had made:
+
+1. **The two files live in different month directories and moved 7 seconds apart.** Editorial revisions
+   to a superseded April document and a current July document do not happen 7 seconds apart. That is a
+   filesystem touch — a platform sync (nginx/Pantheon), not an author.
+2. **nginx's ETag is `"<mtime-hex>-<size-hex>"`.** So a bare `HEAD` already carries the size:
+   `"6a8dbdd1-76f86"` → `0x76f86` = **487,302 bytes**, which is *byte-for-byte* the size this project
+   recorded for the July file on 2026-08-21. Same size, same content, new timestamp.
+
+The mtime fields confirm the first point arithmetically: `0x6a8dbdd1 − 0x6a8dbdca = 7`.
+
+### The rule
+
+**Never treat `Last-Modified` alone as a revision signal. Confirm it against a second dimension —
+size or hash — before writing down that a document changed.** This is the 2026-08-09 "check a bounded
+set on a second, independent dimension" habit applied to a file instead of a fact, and here the second
+dimension cost *nothing*: on nginx the ETag hands you the size in the same `HEAD` the sweep already
+makes. Record the size next to the timestamp in the run log so the comparison exists next time.
+
+Note the symmetry with **2026-08-11**, which is why these two belong together:
+
+- 8/11: the document **changed** and every signal said unchanged (200, same URL, same topic grep).
+- 8/26: every signal said **changed** and the document had not.
+
+A metadata field is evidence about metadata. It becomes evidence about content only when something
+content-shaped agrees with it — which is the same sentence this file has now written about status
+codes (8/06, 8/07), about page greps (8/13), and about press summaries (8/24).
+
+### Also worth knowing, from the same run
+
+Palo Alto's **Aug 17 Council Summary Minutes** (doc 21321) print the disposition of Item 6's original
+motion as **`MOTION PASSED/FAILED: X-X`** — an unfilled template placeholder in a published,
+un-DRAFTed record. The document does not record how that motion went. **A primary record can be
+incomplete without looking incomplete**, and a grep for `MOTION PASSED` finds this line and reports a
+vote. Before citing a motion out of minutes, read the tally, not just the label.

@@ -2153,3 +2153,79 @@ motion as **`MOTION PASSED/FAILED: X-X`** — an unfilled template placeholder i
 un-DRAFTed record. The document does not record how that motion went. **A primary record can be
 incomplete without looking incomplete**, and a grep for `MOTION PASSED` finds this line and reports a
 vote. Before citing a motion out of minutes, read the tally, not just the label.
+
+---
+
+## 2026-08-27 — The index was unreachable, so the documents were written off. Third time, same agency.
+
+### What happened
+
+`PRIMARY-SOURCES.md` has carried, since 2026-08-01, an accurate note that HCD's per-jurisdiction
+register — **"HCD Technical Assistance and SB 79 Ordinance Review Letters"**,
+`hcd.ca.gov/hau/enforcement-letters` — is a **Power BI Gov embed** and is not headless-reachable.
+That has been re-confirmed repeatedly and it is still true.
+
+What was never tried, in nineteen daily runs, is a **domain-restricted web search of `hcd.ca.gov`**.
+It surfaced one on the first attempt:
+
+```
+https://www.hcd.ca.gov/sites/default/files/docs/planning-and-community/HAU/san-francisco-sb79-in-070126.pdf
+```
+
+`curl -sL` → **200, `application/pdf`, 225,670 B, 4 pp.** No browser, no UA trick, no session. It is
+HCD's July 1 substantial-compliance letter for San Francisco's Ordinance 082-26, signed by the same
+Housing Accountability Unit Chief who signed Atherton's — and it is the document the SF lawsuit
+(PR #16) puts in issue. Its condition of approval is squarely on the State Density Bonus Law, which
+is the subject of PR #10.
+
+### Why this is the third instance and not a new mistake
+
+- **2026-08-06** — `Portal/viewer?id=` is an Accusoft JS shell ⇒ recorded as "compiled minutes are
+  not retrievable." They were, at `/Public/CompiledDocument/<id>`. Cost: five weeks of Atherton.
+- **2026-08-07** — the HAU register is a Power BI embed ⇒ recorded as "the letter needs a human with
+  a real browser." Atherton's letter was a plain PDF on the *Town's* DocumentCenter, on a page this
+  project had already fetched four times. That entry closed with a generalized rule: *before
+  recording that a state-agency document is unreachable, check whether the subject jurisdiction
+  publishes its own copy.*
+- **2026-08-27 (this one)** — same register, same agency, and the rule from 8/07 **did not fire**,
+  because it named the wrong escape hatch. The 8/07 rule says "check the other party." The actual
+  lesson is one level up, and it is what all three share: **an unreadable index is a fact about the
+  index. The documents it lists have their own URLs and their own access properties.**
+
+The 8/07 entry generalized from *one* alternate surface (the subject jurisdiction) instead of from
+the shape. So it produced a checklist item rather than a habit, and a checklist item only fires when
+the situation looks like the one that wrote it. This time the document was on **HCD's own domain the
+whole time** — the very domain that had been written off — which the 8/07 rule does not even reach.
+
+### The rule
+
+**When an index is unreachable, go looking for the items directly.** A register, a dashboard, a
+listing page and a search form are *finding aids*; failing to read one tells you nothing about
+whether its contents are fetchable. Concretely, before writing "not headless-readable" about a class
+of document: run a **domain-restricted search of the publishing domain**, and try the document's own
+URL if any instance of it is known. Both are one request.
+
+### And the symmetric discipline, which cost nothing to keep
+
+Having found the path shape — `…/HAU/<jurisdiction>-sb79-in-<MMDDYY>.pdf` — the obvious next move is
+to guess it for the tracked cities. Six guesses (Palo Alto ×2, Atherton, San Jose, Beverly Hills,
+San Carlos) returned **404**. That is worth exactly nothing: the slug and the letter date are both
+unguessable, so a 404 is a failed guess, not an absence of a letter. Domain-restricted search for
+Palo Alto and Atherton SB 79 letters also returned none — again **one surface**, again not an absence.
+
+This is the mirror of the entry above and needs stating alongside it, because the same run produced
+both: **a new route that works does not make its negative results informative.** Discovering that
+letters are fetchable does not license "Palo Alto has no letter." The index records the route, the
+six 404s, and the fact that they prove nothing.
+
+### Also from this run, for the record
+
+- **Meeting 2847 (Council special, 8/24) posted its Draft Action Minutes (doc 21331).** Council
+  approved the August 10 minutes **7–0 on consent** (Item 3, in the 3-4/6-8 block) — closing the
+  question the 8/25 lead opened. Zero SB 79 in the document. Meeting **2845** still shows no signed
+  replacement for draft Action Minutes 21242, so the draft→approved link-rot event has not fired yet.
+- **The ABAG second-dimension rule from 8/26 worked on its first use.** Both summary PDFs still carry
+  `Last-Modified: Tue, 25 Aug 2026 16:07:38/45 GMT` — inside the window, and the shape that fired
+  yesterday. Their ETags are byte-identical to yesterday's (`"6a8dbdca-126065"`, `"6a8dbdd1-76f86"`
+  → 1,204,325 B and 487,302 B). Unchanged, in one `HEAD`, with no fetch. Recording the size next to
+  the timestamp is what made today's check free.

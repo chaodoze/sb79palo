@@ -2229,3 +2229,48 @@ six 404s, and the fact that they prove nothing.
   yesterday. Their ETags are byte-identical to yesterday's (`"6a8dbdca-126065"`, `"6a8dbdd1-76f86"`
   → 1,204,325 B and 487,302 B). Unchanged, in one `HEAD`, with no fetch. Recording the size next to
   the timestamp is what made today's check free.
+
+## 2026-08-28 — The parser worked. The document had no text. The grep table couldn't tell me apart.
+
+Forty-one attachments came off the September 9 Council agenda. Forty extracted cleanly. One —
+Information Report B's **Attachment B, "2026 Council Priorities and Objectives Q2 Update," 21
+pages** — returned **20 characters, total, across all 21 pages**. It is an image-only PDF with no
+text layer.
+
+The run printed one line per attachment: pages, bytes, characters, `SB79=n`. That document's line
+read `21pp  20ch  SB79=0`, sitting in a column of thirty-nine other honest `SB79=0`s. **A partial
+extraction failure is shaped exactly like a real negative**, and the batch table is what makes them
+indistinguishable — the whole point of the table is that you scan the hit column, not the char
+column.
+
+This is the **8/17 lesson one layer inward**. That day the failure was categorical: `pdftotext`
+wasn't installed, so *everything* returned `chars 0`, and the fix was "check the size of what you
+extracted, not just what you downloaded." A parser that isn't there fails loudly and uniformly —
+you notice, because nothing works. **A parser that *is* there fails quietly and selectively.**
+`pypdf` was installed, was working, had just extracted 265,627 characters from a 134-page ARB
+attachment, and had no complaint about this file. Nothing errored. The output was simply empty and
+formatted like an answer.
+
+So the rule needs to be per-document and mechanical, not a habit of noticing:
+
+- **Carry chars-per-page in the same row as the hit count.** `20ch / 21pp ≈ 1` is not a document
+  with nothing in it; a real 21-page PDF runs hundreds to thousands of characters per page. Under
+  ~50 chars/page, the row is **UNREAD**, and it must print as UNREAD, not as `SB79=0`.
+- **A zero from an unread document is not a zero.** It licenses no absence claim. Today's honest
+  output is *"the Q2 status of objective 1.2.2 is unread"* — not *"the Q2 update does not mention
+  SB 79."* Those are different sentences and only one of them is supported.
+- **Route it, don't drop it.** It went into `unresolved_leads` with the route (OCR, or a human), the
+  same as any other surface this project can't reach.
+
+One more thing worth saying plainly, because it changes how much this matters. **The scanned
+document was the one carrying the status.** Attachment A — the *objectives list* — is native text
+and extracted fine, which is how objective **1.2.2, "Receive Council direction on optional SB 79
+implementation strategies,"** surfaced at all. Attachment B — the *Q2 progress against those
+objectives* — is the scan. Summary tables, status decks and progress reports are disproportionately
+printed-and-rescanned artifacts, and they are disproportionately the documents that answer "where
+does this actually stand." **Expect the extraction to fail precisely where the answer is**, and
+size the check accordingly.
+
+Same family as 8/06, 8/07, 8/10, 8/13 and 8/27: a check correctly performed on one surface standing
+in for the question. The new part is that this time the surface was *inside* the pipeline, not out
+on the network, and it reported success.

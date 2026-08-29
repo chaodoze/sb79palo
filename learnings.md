@@ -2274,3 +2274,65 @@ size the check accordingly.
 Same family as 8/06, 8/07, 8/10, 8/13 and 8/27: a check correctly performed on one surface standing
 in for the question. The new part is that this time the surface was *inside* the pipeline, not out
 on the network, and it reported success.
+
+## 2026-08-29 — "Refuses curl" and "does not exist" are different facts. One hid the other for 23 days.
+
+An open lead had recorded, since 2026-08-06, that the San Mateo County Superior Court docket for
+**BP I SPE, LLC v. City of San Carlos, 26-CIV-05734** was unreachable because
+`odyssey.smcgov.org` **"refused curl (HTTP 000)."** That sentence is wrong in a way that mattered.
+
+`odyssey.smcgov.org` is **NXDOMAIN**. It has no DNS record and never did. `curl` exit 6 is *could
+not resolve host* — the request never left the machine. What got written down was a claim about the
+**server's behavior**; what actually happened was a claim about a **hostname that doesn't exist**.
+The first is a wall. The second is a typo, and typos are fixable.
+
+Following the real court site (`sanmateo.courts.ca.gov`, which answers 200) to its own
+"Online Case Access" page produced the actual portal in one hop:
+**`https://odyportal-ext.sanmateocourt.org/portal-external`**. It is live, it is public, and it
+exposes an Odyssey Smart Search form. It is CAPTCHA-gated (`"CaptchaEnabled":true` in the dashboard
+config), so it still needs a human — but the lead now names a route that **exists** instead of one
+that never did, and "needs a human with a browser" is finally the *true* reason rather than a
+coincidentally-correct one.
+
+**The rule: read the failure mode, not just the failure.** `curl`'s exit code distinguishes cases
+that the string "HTTP 000" flattens into one:
+
+| exit | meaning | what it licenses |
+|---|---|---|
+| **6** | could not resolve host | **the URL is wrong** — go find the right one |
+| **7** | could not connect | host exists, port closed/firewalled |
+| **28** | timeout | reachable but slow or tarpitting; retry is meaningful |
+| **35/92** | TLS / HTTP-2 protocol error | transport mismatch — try `--http1.1` |
+| **0** + 403 | server refused you | a real refusal; UA/headers are the variable |
+
+Only the last row is "the site refuses this agent." The scan skill's own caveat says an unreadable
+surface licenses neither an absence claim nor a dismissal — this adds that it doesn't license a
+**diagnosis** either. Record the exit code next to the URL.
+
+### The same run, the same day: there is no "correct" User-Agent
+
+On 2026-08-13 this file recorded that `paloalto.gov` wants the plain `curl` UA. Today that
+generalized badly in both directions at once:
+
+- **`paloalto.gov` and `menlopark.gov` (Akamai) 403 the spoofed Chrome UA and 200 the default
+  `curl` UA.** `sitemap.xml` returned `403 / 385 B` under Chrome and `200 / 1,121,730 B / 4,401
+  URLs` under plain `curl`. Menlo Park's agendas page: `403` → `200 / 672 links`.
+- **`odyportal-ext.sanmateocourt.org` does the exact opposite** — `403 / 0 B` under plain `curl`,
+  `200` under the Chrome UA. It is the only reason the court portal above was found at all.
+- **`redwoodcity.org` 403s under both**, which is now a *tested* conclusion rather than an assumed
+  one, and leaves its PrimeGov instance as the working route.
+
+So the UA is a **per-host variable with no default that is safe in both directions**. Spoofing a
+browser is not strictly more permissive — on the two Akamai-fronted city sites it is *the thing
+being blocked*, and a script that only spoofs would have reported those sources as dead. **Try both
+before recording a 403**, and record which one worked, per host.
+
+### And a toolchain gap that has no in-agent workaround
+
+Yesterday's image-only-PDF lead assumed OCR was a route. It is not, on this machine: **no
+`tesseract`, no `ocrmypdf`, no `pdftoppm`/poppler, no `pytesseract`.** The `Read` tool's PDF
+rendering also depends on `pdftoppm` and fails with the same message, so there is no vision
+fallback either. Today produced a **second** image-only agenda (meeting 3138's doc 21365: 1 page,
+zero fonts, a single `/Image`, 0 characters), so this is recurring, not incidental.
+**Remediation is one command a human runs once — `brew install poppler tesseract` — and until then
+every image-only PDF is UNREAD by definition, not by judgment.**

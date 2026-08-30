@@ -86,8 +86,8 @@
       "title": "Primary sources index (editorial master list)",
       "url": "https://github.com/chaodoze/sb79palo/blob/main/PRIMARY-SOURCES.md",
       "category": "site",
-      "content_hash": "1144390862f8b4761d152ffa65cff9f45ac75ef567ba8cc4eb3d2c4191a97da1",
-      "openai_file_id": "file-Czi1tdgneetfr5UgmpNQjF"
+      "content_hash": "38e3c634c40a6bf26780ce78fa8608aee4ee7da54e5afbb4885f343db7762f1f",
+      "openai_file_id": "file-Ji4maPukCPnJSCVuLqPW77"
     },
     "statute-leginfo-nav": {
       "id": "statute-leginfo-nav",
@@ -456,6 +456,14 @@
       "category": "stakeholder",
       "content_hash": "3bb5362e94844c3dff350da63a1163206d3acb722812554cbea69eac59b8a530",
       "openai_file_id": "file-9NX4q3wA8EqvjrtZBdpy1d"
+    },
+    "stakeholder-paf-2026-05-29": {
+      "id": "stakeholder-paf-2026-05-29",
+      "title": "Palo Alto Forward — Comment on SB 79 Implementation, Agenda Item 17, with redlined Attachment C (Jeremy Levine, 2026-05-29)",
+      "url": "https://docs.google.com/document/d/1U8MoQakrwiTZfpdl3tjpOLyzWa9SGPUeg2dl6R4U6sc/edit",
+      "category": "stakeholder",
+      "content_hash": "b76334cf62cdf21a2a3e996735466f37badd50f50500bcdaa6744dd07ab486a8",
+      "openai_file_id": "file-T95BXwDSbqgSjipTsiHoff"
     },
     "stakeholder-hac-2026-06-11": {
       "id": "stakeholder-hac-2026-06-11",

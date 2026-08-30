@@ -465,7 +465,16 @@
       "url": "https://docs.google.com/document/d/174bUSfEBp4lBXXMvxMJGiiSa4zD9nEGT9eX-i6i-spE/edit",
       "title": "Palo Alto Forward — Public Comment on SB 79 Implementation (Jeremy Levine, 2026-04-30)",
       "category": "stakeholder",
-      "note": "Google Docs URL is not fetchable by curl. The cached sources/stakeholder-paf-2026-04-30.md was exported via /export?format=txt from a logged-in Chrome session. Re-export manually if the doc is updated."
+      "note": "Fetchable headlessly: a publicly-shared Google Doc serves plain text at /export?format=txt (verified 2026-08-30, plain curl, HTTP 200 text/plain). The /edit URL is a JS shell; the export URL is not. (Corrects an earlier note claiming this doc needed a manual export from a logged-in browser session.)"
+    },
+    {
+      "id": "stakeholder-paf-2026-05-29",
+      "type": "url",
+      "format": "html",
+      "url": "https://docs.google.com/document/d/1U8MoQakrwiTZfpdl3tjpOLyzWa9SGPUeg2dl6R4U6sc/edit",
+      "title": "Palo Alto Forward — Comment on SB 79 Implementation, Agenda Item 17, with redlined Attachment C (Jeremy Levine, 2026-05-29)",
+      "category": "stakeholder",
+      "note": "Second, later PAF letter — headed 'RE: Agenda Item 17, Implementation of SB 79' (the June 1, 2026 first reading), distinct from the 2026-04-30 letter on Item 14. Appendix redlines Attachment C (the 50% urgency ordinance) to carve eight areas out of the TOD Combining District so full SB 79 standards would apply there. Position, not outcome. Advocacy org's own copy, not the June 1 packet correspondence copy, which has not been located. Fetchable headlessly: a publicly-shared Google Doc serves plain text at /export?format=txt (verified 2026-08-30, plain curl, HTTP 200 text/plain). The /edit URL is a JS shell; the export URL is not."
     },
     {
       "id": "stakeholder-hac-2026-06-11",

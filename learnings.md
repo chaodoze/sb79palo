@@ -6,6 +6,62 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-08-30 — A note in the corpus manifest had been doing the job of a fact for six weeks
+
+### What happened
+
+A quiet Sunday sweep — four PrimeGov instances with **zero** document changes, a city sitemap with
+**zero** URLs touched since the watermark, seven press listings at zero — turned up one real finding,
+and it came from a **web-search result the project had already seen and skipped**: Palo Alto Forward's
+petition page. Enumerating that page's `href`s (not grepping it for "SB 79") surfaced a link to a
+**second** PAF letter: **May 29, 2026**, headed verbatim *"RE: Agenda Item 17, Implementation of SB 79"*
+— a different letter, a different agenda item, and a different ask from the **April 30 / Item 14**
+letter that was the only PAF letter in the index. Its appendix redlines Attachment C with eight
+carve-outs restoring full SB 79 standards on Cal Ave, El Camino Real, Alma, San Antonio Road and the
+Downtown Housing Plan area.
+
+That matters because **both** `council-watch.html` and `PRIMARY-SOURCES.md` record the June 1 friendly
+amendment as *"consider the Palo Alto Forward letter"* — unlinked. Any reader following the citation
+trail landed on the April 30 letter, addressed to a different item. Routed to **PR #22**; the identity
+question is a record question and needs the June 1 video.
+
+### The actual lesson: a `note` field is not a measurement
+
+`sources/index.json` carried this on the April 30 entry, written **2026-07-16** and never re-tested:
+
+> *"Google Docs URL is not fetchable by curl. The cached `sources/stakeholder-paf-2026-04-30.md` was
+> exported via `/export?format=txt` from a logged-in Chrome session. Re-export manually if the doc is
+> updated."*
+
+**It is wrong, and the note contains its own refutation.** A publicly-shared Google Doc serves plain
+text at `/export?format=txt` to **plain `curl`, no session, no cookies** — verified today on both
+letters: `200 / text/plain / 10,521 B` and `200 / text/plain / 10,180 B`. What is not fetchable is the
+`/edit` URL, which is a JS shell. Someone measured the `/edit` URL, wrote down *"Google Docs"*, and
+the generalization then imposed a manual human step on every stakeholder letter for six weeks.
+
+Same shape as 2026-08-06 (compiled documents), -07 (HCD letters), -10 (agenda sweeps) and -13 (the
+City Manager index) — an access limit correctly measured on **one URL form** standing in for the
+document. The new wrinkle: those were all recorded in prose, where they read as claims. This one was
+recorded as **configuration**, where it reads as settled and gets executed rather than questioned.
+**Re-test the access notes in `sources/index.json` the way you would re-test a claim in
+`PRIMARY-SOURCES.md`** — the file's authority comes from having been true once, not from being config.
+
+### Second surface, same family: `athertonca.gov/agendacenter` is a *search form*
+
+Chasing the 12-day-old meeting-543 lead onto the Town's own site: `/agendacenter` answers **200 with
+109 KB** and lists **zero agendas**, because it is the CivicPlus *search UI* — 1,298 characters of text,
+all of it form labels ("Time Period", "Start Date", "Select a Category"). A zero there is a parse
+artifact. The page that actually answers the question, `/641/Agendas-Minutes`, says the Town has **no
+independent archive**: it points readers at *"Agenda's & Minutes - Public Portal"*, i.e. the same
+PrimeGov instance where 543 is absent. `Calendar.aspx` is likewise a JS shell (2,191 text chars from
+122 KB, zero "City Council").
+
+**So the "check athertonca.gov" half of that lead's route is closed, and it closed as a negative
+result about the route, not about the meeting.** Meeting 543 still has no published cancellation
+notice anywhere reachable, and that remains the absence of a record rather than a record of absence.
+
+---
+
 ## 2026-08-13 — Two surfaces that answer a different question than the one asked
 
 ### What happened

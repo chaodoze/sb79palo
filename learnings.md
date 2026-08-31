@@ -2392,3 +2392,91 @@ fallback either. Today produced a **second** image-only agenda (meeting 3138's d
 zero fonts, a single `/Image`, 0 characters), so this is recurring, not incidental.
 **Remediation is one command a human runs once — `brew install poppler tesseract` — and until then
 every image-only PDF is UNREAD by definition, not by judgment.**
+
+## 2026-08-31 — The host resolved. `curl` still couldn't. A third way for a source to look dead.
+
+The scan was flat on every mechanical surface (four PrimeGov instances, `paloalto.gov`'s 4,401-URL
+sitemap, two Legistar clients, seven press indexes — zero changes anywhere), so the day's work was
+an open lead: three SB 79 articles surfaced 2026-08-11 and deliberately left unindexed until
+somebody read them. Two of the three checked out and are now indexed. The third was already in
+`PRIMARY-SOURCES.md` and had been for two weeks. And reading them turned up a statutory claim worth
+checking, which is where the real lesson is.
+
+### `exit 6` is not `403`, and it is not NXDOMAIN
+
+Both articles assert a **year** for when SB 79's temporary exclusions lapse — Reason says the
+ordinances "expire in 2032," HousingWire adds a whole regional structure ("Bay Area cities must
+adopt a permanent transit-oriented development plan by 2032 … Non-Bay Area counties have only until
+January 2027"). This project's rule is that a statutory claim gets read at the codified section, not
+taken from a summary. So: fetch `§65912.160` and `§65912.161` from LegInfo.
+
+```
+curl: (6) Could not resolve host: leginfo.legislature.ca.gov
+```
+
+Under `curl`'s own UA. And under a Chrome UA. And with `-4`. And with the sandbox disabled.
+
+Four failures that all look like the host is gone. It is not:
+
+```
+$ host leginfo.legislature.ca.gov
+leginfo.legislature.ca.gov has address 192.234.214.85          # DNS is fine
+
+$ python3 -c "import socket; socket.getaddrinfo('leginfo.legislature.ca.gov',443)"
+[Errno 8] nodename nor servname provided, or not known          # the STUB RESOLVER is not
+
+$ curl -sSL --resolve leginfo.legislature.ca.gov:443:192.234.214.85 "<url>"
+200  text/html  167,356 B                                       # the server was there all along
+```
+
+The name resolves by direct DNS query and fails through `getaddrinfo`, so **everything that goes
+through the system resolver** — `curl`, Python's `socket`, presumably `WebFetch` — reports the host
+as nonexistent. `--resolve` pins the address and the fetch is completely normal.
+
+Yesterday's entry drew the line between **"refuses curl"** and **"does not exist."** This is a third
+category on the far side of both: **resolvable, reachable, serving 200 — and invisible to the
+resolver the tools actually use.** Its signature is a *transport-layer* error where the two known
+categories produce *HTTP* answers (403/406 for refusal, NXDOMAIN for absence). An agent that
+pattern-matches "curl failed" → "source inaccessible" writes down the same sentence for all three.
+
+What makes this one expensive rather than merely annoying: **LegInfo is the codified statute.** It is
+the one source this project's core discipline says must never be taken on someone else's summary.
+A run that stopped at `exit 6` would have had to either drop the check or repeat the press's number,
+and repeating a press number about a statute is precisely the failure this file exists to prevent.
+Recorded as a fetch note in `PRIMARY-SOURCES.md`, next to the statute table, with the caveat that
+the IP may move and must be re-measured.
+
+### What the statute actually said — and it vindicated the hedge
+
+**No calendar year appears in either section.** §65912.161(b)(1) reads *"Prior to one year following
+the adoption of the seventh revision of the housing element, Section 65912.157 shall not apply"* to
+excluded sites; §65912.160 contains no date at all, and its (e) carries only the two **permanent**
+exemptions — (e)(1) no walking path under a mile, (e)(2) the industrial employment hub gated on
+**"a local government with at least 15 transit-oriented development stops."** No regional carve-out,
+no 2032, no January 2027.
+
+So the press's confident years are downstream inferences from a housing-element date nobody has set,
+and the site's *"about 2032"* — sourced to staff's ≈January 31, 2032 estimate of Palo Alto's own
+7th-cycle timing — is right, and right *because it is hedged*. The already-indexed reconciliation of
+"Palo Alto's ≈2032 and LA's ≈2030 can both be right" survives intact. **The check changed nothing
+and was still worth running**: a verification that confirms is not a wasted one, and the alternative
+was carrying two mutually inconsistent unhedged years into the index. Both rows now say so
+explicitly, so the next reader doesn't re-litigate it.
+
+### A lead's `why_open` is a snapshot, and nothing re-validates it
+
+The lead named three articles as unindexed. The third — Holland & Knight's June 16 tracker — had
+been fetched, read in full, and given a fifteen-line entry in `PRIMARY-SOURCES.md` around 8/16,
+complete with the Beverly Hills / San Jose HCD dates and the `hklaw.com` browser-UA note. The lead
+was written 8/11 and never touched again; the work got done through a different day's search and
+nobody walked back to the lead that had asked for it.
+
+Harmless here — one wasted fetch. But the shape is the same one this file keeps recording from the
+other direction: **a note that was true when written, read later as though it were current.** The
+8/30 entry was a stale `sources/index.json` comment that imposed a manual step for six weeks; this
+is a stale `state.json` lead that asked for work already done. Both are prose captured at a moment
+and then trusted indefinitely.
+
+Cheap guard, and it costs nothing because the file is local: **before acting on a lead, grep the
+index for the artifact it names.** `grep -c hklaw PRIMARY-SOURCES.md` would have answered in one
+command, before any network call. Do it for every lead older than a week.

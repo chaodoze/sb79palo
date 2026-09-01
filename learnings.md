@@ -2480,3 +2480,89 @@ and then trusted indefinitely.
 Cheap guard, and it costs nothing because the file is local: **before acting on a lead, grep the
 index for the artifact it names.** `grep -c hklaw PRIMARY-SOURCES.md` would have answered in one
 command, before any network call. Do it for every lead older than a week.
+
+---
+
+## 2026-09-01 — The two-way document diff has a blind third direction: the meeting itself can vanish
+
+A flat-looking sweep. Four PrimeGov instances produced three document-set changes in Palo Alto and
+one new Atherton meeting; all four documents extracted cleanly and all four grep **zero** "SB 79"
+(Finance Committee 8/18 Summary Minutes doc 21371, EDC 8/26 Action Minutes doc 21370, and Atherton's
+9/9 study session, which is a residential permit-parking item). The `paloalto.gov` sitemap moved 24
+URLs, none of them planning. HCD's SB 79 page still reads "Last updated: 06/30/2026." Every lawsuit
+the search surfaced was already fingerprinted.
+
+The two findings worth having both came from places the documented diff does not look.
+
+### `removed` was only ever computed *inside* a meeting
+
+The 2026-08-10 entry established diffing a meeting's `documentList` rather than its id; 2026-08-14
+added the second direction after a one-directional diff shipped a dead link. Both directions are
+computed **per meeting, while iterating the meetings the API just returned**:
+
+```python
+for mid, m in current_meetings.items():      # <-- the loop
+    added   = [d for d in now if d not in prev]
+    removed = [d for d in prev if d not in now]
+```
+
+A meeting that leaves the calendar entirely is never visited by that loop. It is not `added`, it is
+not `removed`, it is not "unchanged" — it is simply not iterated, and the sweep reports nothing,
+correctly and forever.
+
+Atherton meeting **543** (City Council REGULAR, 2026-08-19) is exactly that case, and it was already
+an open lead: carried since **2026-08-11** because it sat on the calendar with an **empty
+`documentList`** past the Brown Act's 72-hour posting deadline. Today it is absent from all four
+endpoints — `ListUpcomingMeetings` and `ListArchivedMeetings` for 2025, 2026 and 2027. The Council
+ids now run 541, 542, **544**, 546, 547, 548; **543 and 545 are both gone.** It surfaced only because
+this run wrote an extra check on a hunch:
+
+```python
+gone = [k for k in state_docs[city] if k not in now]   # the third direction
+```
+
+So there are three, not two: **added documents** are new material to read, **removed documents** are
+link rot on the live site, and **removed meetings** are a watch item evaporating. The third is the
+quietest, because the thing that would have raised the alarm is the thing that disappeared.
+
+### The two portals disagree about what a cancellation looks like
+
+Same day, same question — did a meeting happen? — and two portals answered in different currencies.
+
+**Legistar hands you a document.** Mountain View EPC **9/2** (meeting 3399) keeps its row, sets
+`EventComment` to `"MEETING CANCELLED"`, and swaps its `EventAgendaFile` for a two-page
+**"Cancellation Notice - Final"** PDF (597,214 B) that says so over the city's name. That is a record.
+It is worth having beyond the calendar: EPC 8/19 — the §65912.161(b)(1)(F) historic-exclusion hearing
+on **PR #17** — still has `EventMinutesFile: null` and an `EventLastModifiedUtc` frozen at 8/14, and
+9/2 was the next EPC at which those minutes could have been approved. The minutes route to verifying
+that PR slips, and now the index says why.
+
+**PrimeGov hands you an absence.** Atherton 543 is just not there.
+
+That asymmetry is evidentiary, not cosmetic. "The meeting was cancelled" is a claim about the record.
+On Legistar it is readable; on PrimeGov, a missing row is equally consistent with a cancellation, a
+reschedule under a fresh id, or a clerk's data correction — and the Town's `agendacenter` is a JS
+search form with nothing headlessly reachable to break the tie (`athertonca.gov/citycouncil` 404s).
+So the index records what was measured — *"no longer appears on any PrimeGov calendar endpoint"* —
+and explicitly declines to call it a cancellation. Same shape as every false-negative entry in this
+file: **a fact about one surface is not a fact about the record**, and the fix is to write down the
+surface, not to upgrade the inference.
+
+### A caveat outlived its own file — by 460 lines
+
+Yesterday's guard ("before acting on a lead, grep the index for the artifact it names") got its
+confirmation today, from a lead that needed no network at all. The press-backfill block ended:
+*"⚠️ **395,310 sq ft** total remains unchecked — per-project square footage was never reported."*
+Four hundred and sixty lines **above it, in the same file**, the entry for the city's own 2026-08-04
+status article had recorded since 8/12 that it carries "a nine-row table … by address / units /
+**floor area** / zoning district / ground-floor commercial."
+
+Re-fetched and summed today: 90,000 + 27,430 + 66,080 + 70,475 + 20,925 + 14,491 + 17,545 + 19,250 +
+69,114 = **395,310**, exactly, and its Units column sums to **341**, exactly. A **third** orthogonal
+partition of the same nine filings, from the city rather than an outlet, sitting unused for twenty
+days behind a caveat asserting it did not exist.
+
+The caveat was not false, it was **unscoped**. It meant "never reported *in press*" and it said
+"never reported." Guard: **when writing "X was never reported," name who never reported it.** An
+unqualified negative is a claim about every source, and it will be read as one — including by the
+agent that wrote it.

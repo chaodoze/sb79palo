@@ -6,6 +6,80 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-09-02 — Summary minutes can settle a fact and can never settle a quotation
+
+### What happened
+
+The document-set diff on Palo Alto meeting **3079** (PTC, 8/12) turned up doc **21372**,
+`templateName` **"Summary Minutes"**, `publishDate` **2026-09-01T21:29:45.627** — posted a few hours
+after the previous day's sweep. 19 pp., 261,786 B, 21 "SB 79" hits. It is the city's own record of
+the meeting **PR #18** has been open on since 8/16 with a press account as its only source.
+
+**The PR's own instruction is what caught it.** PR #18 said, verbatim: *"Minutes are the cheaper route
+and are not posted yet… If you'd rather wait, waiting is the right call — the daily job's documentList
+diff will catch them."* Seventeen days later it did, unprompted, because the route was written into
+the PR body rather than left in someone's head. **Write the verification route into the PR, naming the
+mechanism that will satisfy it.** That is what turned a stalled PR into a resolved one at zero cost.
+
+### The lesson: minutes verify facts; only video verifies quotes
+
+The minutes cleared four of PR #18's five checks and **refuted one** — and the one they refuted was
+not refuted for lack of evidence. It was refuted **structurally**.
+
+- ✅ **The 4–2 vote:** verbatim, with the roll call. Akin, Hechtman, James, Templeton yes; Ji and
+  Chang no. The press account was exactly right.
+- ✅ **The unit count (82 vs 89):** the item title reads *"Eight-Story, **82**-Unit."* Three sources at
+  82 against one body-text 89.
+- ✅ **The 16 demolished units:** *"relocation assistance for the existing 16 units."*
+- ⚠️ **The leverage framing:** *stronger* in the city's record than in the press, and from the
+  applicant — *"there was a window of opportunity in Palo Alto to, in effect, submit for SB 79. It
+  would have been foolish not to… The applicant had it as an insurance policy."*
+- ❌ **The Hechtman quotation:** **absent, and it always would have been.**
+
+That last one is the reusable part. **Summary minutes are reported speech by construction.** Ji's line
+in the press — *"The whole point of the PHZ process is to be a discussion with the neighbors"* —
+appears in the minutes as *"Vice Chair Ji commented that the point of the PHZ process was to have
+discussions with neighbors."* Same content, no quotation marks, and no amount of waiting for better
+minutes will produce them. So a checklist item phrased *"confirm the quote verbatim"* can **never** be
+closed by the minutes route, while *"confirm the vote"* is closed by it completely.
+
+**Split the checklist by artifact before promising a route.** Fact/outcome/tally → minutes, cheap,
+headless. Quotation → video, expensive, human. A PR that mixes both into one "verify against video or
+minutes" line will sit open waiting for the expensive artifact when four fifths of it could have
+closed on the cheap one. PR #18's own point 2 got this right by accident — it offered *"if the video
+doesn't support it cleanly, cut the quote and keep the sentence."* Make that deliberate: **draft
+outcome PRs so the quotation is severable from the fact.**
+
+### Correction: PrimeGov does not "just delete the row"
+
+Yesterday's entry concluded that *"Legistar documents a cancellation where PrimeGov just deletes the
+row,"* generalized from Atherton meeting **543** vanishing from all four calendar endpoints. **Today,
+two PrimeGov instances did the opposite, in the same sweep:**
+
+- Palo Alto meeting **3059** appeared as a *new* row titled *"Historic Resources Board Regular Meeting
+  **- CANCELED**"* carrying doc **21375** — a 1-page cancellation notice PDF (227,280 B): *"THIS MEETING
+  HAS BEEN CANCELED. The next meeting will be held on Thursday, October 08, 2026."*
+- San Carlos meeting **2929** appeared as a new row whose only document, doc **17876** (355,626 B), is
+  headed **"CANCELLATION NOTICE"**: *"The September 08, 2026 Regular Meeting of the Planning and
+  Transportation Commission has been cancelled."*
+
+So PrimeGov cancellations are *normally* documented — a title suffix plus a notice PDF — and **that is
+the shape to expect.** Atherton 543's disappearance is the anomaly, and it is now less explicable, not
+more: it is an Atherton-instance behavior or a deletion, **not a property of PrimeGov.** The
+correct standing check is still `gone = [k for k in state if k not in now]`, but a `gone` result should
+now be read as *unusual* rather than as the platform's normal way of saying "cancelled."
+
+**One observation, one instance, one day → a platform-wide rule.** The same false-generalization shape
+as 2026-08-06 (compiled documents), -07 (HCD letters), -10 (agenda sweeps), -13 (the City Manager
+index) and -30 (the corpus manifest note) — and this time the generalization survived less than
+twenty-four hours before its own sweep contradicted it. **A contrast drawn between two systems from a
+single example on each side is a hypothesis, not a finding. Label it as one.**
+
+(Meeting 3059's other document, doc **21376**, served the familiar 1,101-byte `text/html` error page —
+it is the type-3 HTML Agenda, addressed by `templateId`, exactly as recorded on 2026-08-14. Not rot.)
+
+---
+
 ## 2026-08-30 — A note in the corpus manifest had been doing the job of a fact for six weeks
 
 ### What happened

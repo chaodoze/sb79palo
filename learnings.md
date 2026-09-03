@@ -6,7 +6,70 @@ site via `.assetsignore`.
 
 ---
 
-## 2026-09-02 — Summary minutes can settle a fact and can never settle a quotation
+## 2026-09-03 — The operative rule was on a permit-forms page the whole time
+
+### What happened
+
+For ten days the index has recorded that the **adopted** text of Palo Alto's June 15 temporary SB 79
+ordinances is unread, and that the route to it is a human opening Municode in a browser. The lead
+(`lead:paloalto:adopted-text-of-jun15-temporary-ordinances-unread`, PR #19) documents three codifier
+services probed and all three closed: Code Publishing 404s because Palo Alto is not its client,
+American Legal 403s on both user-agents, Municode serves a 6,095-byte JS stub. All true, all still
+true.
+
+Today's sitemap sweep turned up `…/Current-Planning/Forms-Applications` with a `lastmod` of
+**2026-09-02T18:57:11Z**. Fetched and grepped — **2 hits** — it links, under the heading *"Other
+helpful forms,"* a one-page PDF titled **"Senate Bill 79 Implementation — TOD Combining District
+Regulations."** Its header reads *"(Effective through July 1, 2027, unless extended or otherwise
+modified by City Council resolution.)"* and it states the whole interim standard as a table: minimum
+density 30 u/ac or 5 units whichever is greater; minimum residential FAR 2.25 / 1.75 / 1.5 by distance
+band; setbacks 10 ft front and rear, 4 ft side; daylight plane 16 ft rising at 45°; and a
+§65912.161(b)(1)(A) conflict rule for the rest of Title 18.
+
+That is the city's own statement of the operative rule, published *after* adoption, on its own
+website, in plain PDF — while the project searched for it in codifiers and meeting packets.
+
+### The thing worth generalizing
+
+It does not close PR #19 and it should not: a staff handout is a summary, not the signed ordinance,
+and the exact failure mode that PR guards against — a clause moving between introduction and adoption
+— is what a one-page summary would smooth over rather than reveal. So the correction is not to the
+verification standard.
+
+The correction is to the **map of surfaces**. This index has been treating a city as two surfaces —
+the **legislative record** (PrimeGov: agendas, packets, minutes, ordinance attachments) and the
+**codified record** (Municode/Code Publishing) — and when both are closed it writes "needs a human."
+There is a third, and it is the one a city maintains for the people who actually have to comply:
+the **department's forms, handouts and submittal checklists**. That surface is:
+
+- **plain static PDF**, because applicants have to be able to open it;
+- **post-adoption and current**, because staff has to hand it across a counter;
+- **not in the legislative record at all** — it is nobody's agenda item, so no documentList diff, no
+  meeting id, and no packet grep will ever surface it;
+- **not titled after the thing it contains** — the page is called "Forms & Applications," which is why
+  it survived weeks of sweeps that were looking for SB 79 in page *titles* and meeting *records*.
+
+**Guard: when the blocked question is "what does the adopted rule actually say," add the permitting
+department's forms/handouts page to the list of surfaces before writing "needs a human."** The same
+move as 2026-08-07 (the city posts HCD's letter even though HCD's own register is a Power BI embed)
+and 2026-08-13 (the sitemap answers what the JS listing page cannot): **an access limit measured on
+the authoritative surface is not a fact about the document.** Someone else has a reason to publish it.
+
+Two smaller notes from the same run, both about not upgrading what was measured. The handout carries
+**no date inside the document** — `07162026` appears only in its filename — so it is indexed as
+filename-stamped, not dated. And the **updated zoning map** it links (the one SECTION 3 directed,
+`zoning-districts-map-7-21-26.pdf`) fetches at 200 as 44.7 MB of `application/pdf` and extracts
+**1 character across 2 pages**: image-only, unread, no claim made, blocked on the same absent OCR
+toolchain as the Q2-update lead. A 44-megabyte 200 is not a read document.
+
+### One recurrence, logged
+
+A search-result summary today attributed *"first merits hearing … November 18, 2026"* to San
+Francisco's **SB 79** suit. The underlying post (Coblentz, 2026-09-02, read in full) attaches that
+date to a **different** case — the CalHDF/YIMBY Law challenge to the **Family Zoning Plan** — and
+separates three SF suits by name. Same trap as the KQED counter-citation row, in a new direction, and
+the fix is unchanged: **read the source, and write the date down with its owner attached.**
+
 
 ### What happened
 

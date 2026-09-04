@@ -6,6 +6,63 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-09-04 — A type-1 id rotated with no approval behind it. The filter held; the story didn't.
+
+### What happened
+
+Three compiled-document citations in `PRIMARY-SOURCES.md` went dead overnight, and the two-way
+`documentList` diff caught all three — Sept 9 Council (meeting **2901**) lost Agenda **21359** and
+Packet **21363**, and Sept 9 PTC (meeting **3081**) lost Agenda **21380**. All three now serve the
+familiar 1,101-byte `text/html` "Document Not Found" page under an HTTP **200**; the replacements
+(**21411** at 1.3 MB, **21412** at 28.5 MB, **21388** at 1.5 MB) are `application/pdf`. Repointed and
+deployed the same run.
+
+### The mechanism was new, and the write-up had quietly fused it to one cause
+
+The 2026-08-14 entry that installed the two-way diff describes the removal shape like this: Council
+approves minutes, PrimeGov replaces the draft with the approved document and unpublishes the draft.
+It then adds the correct filter — **only `compileOutputType == 1` removals are link rot** — and both
+prior occurrences (20981→21272 on 8/14, 21242→21361 on 8/28) were exactly that: draft→approved
+*minutes*.
+
+Today's was not. Nothing was approved. The agenda was **recompiled mid-cycle** because a supplemental
+report landed, and the recompile rotated the **type-1 Agenda and Packet** ids along with the type-3
+HTML Agenda. The 8/13 entry had already recorded that agendas get recompiled and that **type-3** ids
+churn routinely; nobody carried that forward to the type-1 documents produced by the same recompile.
+
+So the filter was right and the explanation was too narrow. **`compileOutputType == 1` tells you a
+removal is worth checking; it does not tell you why, and "the minutes were approved" is only one of
+the reasons.** Reading a type-1 removal as evidence that an approval happened would have been an
+outcome claim invented out of a document-set diff — the exact thing the tier gate exists to stop. On
+this occasion the cause turned out to be an administrative correction: the City Manager's supplement
+says updates for Objectives 1.6.1, 1.6.2 and 4.2.1 were "inadvertently omitted," and the PTC's says
+the published draft ordinance "contained an error."
+
+**Guard: a type-1 removal licenses repointing the citation, and nothing else.** Fetch the new
+document and read what changed before writing down a reason. The diff detects rot; it does not
+explain it.
+
+### Two smaller things from the same run
+
+**SB 79 turned up inside a climate report.** The only "SB 79" text in the 30-attachment Sept 14
+Council packet is in **Information Report B, the Sustainability and Climate Action Plan Q1–Q2 2026
+update** (SR #2605-6337, Public Works) — a land-use paragraph on the Downtown Housing Plan. A sweep
+that reads only the planning-shaped items on an agenda misses it. It also mis-dates the adoption to
+**June 1** (first reading; adoption was June 15) while getting the **count of two** temporary
+ordinances right — a reminder that a quarterly status report is a staff summary, not the record, and
+that the video plus approved action minutes outrank it.
+
+**A new records surface, and it is honestly closed.** That report's footnotes cite staff reports on
+`recordsportal.paloalto.gov` (Laserfiche WebLink), which this project had never used. Probed under a
+plain `curl/8.x` UA and a Chrome UA, with and without a cookie jar: root 200, and every
+`DocView.aspx?id=…` returns `<title>Sign In</title>`. **Checked, inaccessible — sign-in gated**, and
+recorded as a fact about that surface, not about the documents. Worth one attempt from a signed-in
+browser, since it may hold the *signed* ordinance PR #19 is blocked on. Noted in passing: its
+footnotes **53** and **56** carry the same `id=887027` for two different meetings, so at least one id
+is wrong in the City's own document — a cited id is not a verified id.
+
+---
+
 ## 2026-09-03 — The operative rule was on a permit-forms page the whole time
 
 ### What happened

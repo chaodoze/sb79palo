@@ -765,10 +765,19 @@ Public submissions filed with Council in connection with specific agenda items. 
   *"Ordinance Passed June 23, 2026 / Ordinance Published: 06/30/2026 / Ordinance Effective Date:
   06/30/2026,"* with Mayor concurrence **06/26/2026**. LA City Planning's page agrees: *"The
   ordinances were adopted by City Council on June 23, 2026. On June 30, 2026 the Low-Rise Ordinance
-  and Phased Implementation Ordinance became effective."* ⚠️ **The vote tally is NOT read.** The
-  Clerk's certification states only that the ordinance *"was passed … by a vote of not less than
-  three-fourths of all its members"* — a threshold, not a count. Nothing here asserts how any
-  member voted; that would need the Council minutes, which have not been fetched.
+  and Phased Implementation Ordinance became effective."* ✅ **The vote tally IS read, as of 2026-09-06 — from the Clerk's own Council File record.**
+  This previously said the tally "would need the Council minutes, which have not been fetched"; the
+  Council File page already carried it, under **"Council Vote Information."** Verbatim from
+  `ccfi.viewrecord&cfnumber=25-1083-S4` (HTTP 200 under both the plain CLI UA and a Chrome UA,
+  75,704 B): **Meeting Date 06/23/2026, Regular, Vote Given: (14 - 0 - 1)** — YES: Blumenfield (CD 3),
+  Harris-Dawson (8), Hernandez (1), Hutt (10), Jurado (14), Lee (12), McOsker (15), Nazarian (2),
+  Padilla (6), Price (9), Raman (4), Rodriguez (7), Soto-Martinez (13), Yaroslavsky (5); **ABSENT:
+  Park (11)**. The record shows a **second** vote, **06/03/2026, (13 - 0 - 2)**. This is the City
+  Clerk's structured record of the action, which is why it settles the count the ordinance's
+  three-fourths certification only bounded. ⚠️ It is a **tally**, not a transcript: it records how
+  each member voted and nothing about what was said, and this index still asserts nothing about
+  debate, amendments or motions. ⚠️ The relationship between the 6/03 and 6/23 votes (first/second
+  reading, or two separate ordinances) is **not** established here.
   **Two corrections to the alert's mechanism description, from the ordinance's own text.**
   (1) The temporary exemptions are **eight** lettered categories (Sec. 2, A–H), not six —
   A ≥50% density/FAR §65912.161(b)(1)(A); B the 33%/75%-aggregate test (b)(1)(B)(i); C low-resource

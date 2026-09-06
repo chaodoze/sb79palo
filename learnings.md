@@ -2760,3 +2760,50 @@ The caveat was not false, it was **unscoped**. It meant "never reported *in pres
 "never reported." Guard: **when writing "X was never reported," name who never reported it.** An
 unqualified negative is a claim about every source, and it will be read as one — including by the
 agent that wrote it.
+
+### "Has not been retrieved" is a task, not a property — and it named its own answer
+
+Yesterday's entry was about a caveat that was *unscoped*: it said "never reported" when it meant
+"never reported in press." Today's is the sharper version, and the failure is not in the wording at
+all. The caveat was **correct, specific, and it gave the exact address of its own remedy** — and then
+sat there for twenty days.
+
+Since **2026-08-17** the Housing Action Coalition row in `PRIMARY-SOURCES.md` had read: *"the letter
+itself should be in the June 15 packet correspondence and has **not** been retrieved."* That sentence
+is right. The letter is at **pp. 45–49 of the June 15 Item 23 Public Comment attachment**. Nothing
+was blocking it: HTTP 200, `application/octet-stream`, 2,219,984 B, 52 pp., **native text**, no OCR,
+no sign-in, no UA trick — one `curl` and one `pypdf` call, the same two calls this project makes
+dozens of times a run.
+
+The cost was not one letter. That same attachment also held a **joint Californians for Homeownership
+/ California Housing Defense Fund letter** (June 11, 2026) that this project had **no record of at
+all** — from the two organisations whose SB 79 suits against San Diego, San Francisco and Montebello
+this index has been tracking since August, writing to Palo Alto four days before the adoption vote,
+attaching the **Attorney General's 2023 urgency-ordinance letter**. And the HAC letter, once opened,
+asserts that Council **voted down a Lythcott-Haims amendment** on June 1 that would have let SB 79
+take effect in already-upzoned areas — an event `council-watch.html`'s meeting log does not have.
+Three findings, one unopened PDF, twenty days.
+
+**This is a different failure shape from every other false-negative in this file.** The Accusoft
+shell, the HCD Power BI embed, the image-only PDFs, `recordsportal` — those are surfaces that
+*refuse*, and the discipline there is to write down the surface and decline the inference. That
+discipline worked here too: the row honestly said "not retrieved" rather than claiming the letter
+didn't exist. **The bug is that an honest to-do, written into a durable index, became indistinguishable
+from a finished row.** Every subsequent run read that row, saw a completed-looking table cell with a
+caveat on it, and moved on. The daily loop scans *since `last_run`*; a to-do dated 8/17 is not "new
+activity" and no watermark scan will ever surface it again. The 8/08 backfill entry warned that a
+watermark scan is blind to what predates the watermark — **it is equally blind to its own backlog.**
+
+Two guards, and the second is the one that generalises:
+
+1. **Before writing "not retrieved / not located / needs a human," try it once.** If the surface is
+   already named and is an ordinary PDF or HTML fetch, the note costs more than the fetch does.
+2. **Grep the index for unfetched-but-named artifacts as a standing check, not a lead.** It is a
+   property of the file — no network, no window, like the ordinal checksum from 8/08:
+   `grep -niE "has not been (retrieved|located|read)|not been fetched|should be in" PRIMARY-SOURCES.md`
+   Anything that returns and names a URL or a document is a queue item, not a caveat. Run it on any
+   quiet day — today's PrimeGov diff was empty across all four instances and every other surface was
+   zero, which is exactly when there is room for it.
+
+Today's run: the *only* findings came from that queue. A day the scan correctly called tier (c)
+produced two PRs and a cap-filling deploy, because the backlog was finally read instead of re-scanned.

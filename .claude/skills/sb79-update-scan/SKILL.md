@@ -166,6 +166,18 @@ Same trap shape as the compiled-document (8/06), HCD-letter (8/07) and agenda-sw
 a check correctly performed on one surface standing in for the question. **If a listing page yields
 zero items of the kind it exists to list, the parse failed — regardless of status code.**
 
+⚠️ **Added 2026-09-07 — the parse assertion is not enough; assert FRESHNESS too.** A listing page can
+pass every check above and still be worthless: `losaltosca.gov/agendacenter` returned 200, ~350 KB,
+and hundreds of genuine agenda hrefs, and its link count even *rose* 693 → 784 — while its newest
+agenda of any body was **2025-04-28**. The city had moved to CivicClerk sixteen months earlier and
+its own Meetings page still linked to the dead surface. A stale archive and a quiet city emit the
+identical daily line. **So for every recurring sweep, extract the newest date the surface itself
+claims and compare it to today** — a council agenda listing whose newest item is >60 days old is
+failing, whatever its status code or diff. Where the page offers a year/period selector, read it:
+the absence of the current year is the cheapest and strongest tell (Los Altos' selector went
+2025 / 2024 / 2023 … 2013, with 2025 marked `current`). And note that **a changing number is not
+evidence of a live source** — the 91-link delta was vendor chrome churn.
+
 ### Read an agenda's attachments, not just its text
 
 The documentList diff tells you a meeting's document set changed. It does **not** tell you what is in
@@ -362,7 +374,17 @@ For each, the most useful primary endpoint is in parentheses. Add new ones to `s
   "LegistarConnectionString … is not set up" (see `scripts/check-meetings.sh`'s client table)
 - **Redwood City** — `https://www.redwoodcity.org/city-hall/agendas-minutes` (no SB 79 action on docket as of last scan)
 - **San Carlos** — `https://www.cityofsancarlos.org/city_hall/city_council/agendas_and_minutes.php`
-- **Los Altos** — `https://www.losaltosca.gov/agendacenter` — no city station, but San Antonio half-mile spills in
+- **Los Altos** — ⚠️ **route corrected 2026-09-07: use CivicClerk, NOT AgendaCenter.**
+  `https://losaltosca.api.civicclerk.com/v1/Events?$filter=startDateTime ge <iso> and startDateTime le <iso>`
+  → each event carries `categoryName`, `agendaId` and `publishedFiles[]` (Agenda / Agenda Packet /
+  Minutes, each with a `fileId`); pull the PDF with
+  `/v1/Meetings/GetMeetingFileStream(fileId=<id>,plainText=false)`.
+  **`https://www.losaltosca.gov/agendacenter` is an abandoned archive** — newest agenda of any body
+  is **2025-04-28**, the year selector has no 2026, and a date-bounded all-categories search for 2026
+  returns 200 with zero ids. It had been swept daily as a clean negative for the life of the daily
+  log. Confirm the client slug against the **API**, not DNS: `losaltosca.civicclerk.com` and
+  `losaltos.civicclerk.com` both 200 with the same 1,289-byte shell, but `losaltos.api.…` **404s**
+  (same wildcard trap as `*.legistar.com`). No city station, but San Antonio half-mile spills in.
 
 ## Reporting format
 

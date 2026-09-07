@@ -2807,3 +2807,67 @@ Two guards, and the second is the one that generalises:
 
 Today's run: the *only* findings came from that queue. A day the scan correctly called tier (c)
 produced two PRs and a cap-filling deploy, because the backlog was finally read instead of re-scanned.
+
+---
+
+## 2026-09-07 — The page was healthy, the parse worked, the number even went up. The city had stopped using it 17 months ago.
+
+Every day for the life of the daily agent, the neighbor sweep fetched
+`losaltosca.gov/agendacenter`, counted its links, grepped it for "SB 79," and wrote down a line like
+**"Los Altos 693, zero."** HTTP 200. ~350 KB. Hundreds of real `AgendaCenter/ViewFile/Agenda/…`
+hrefs — a genuine, parseable agenda listing, not a JS shell. Yesterday the count was 693; today it
+was **784**, a 13% rise that reads like a city publishing things.
+
+**Los Altos has not posted an agenda there since 2025-04-28.** The newest document of any body is
+sixteen months old. The City Council year selector offers **2025 / 2024 / 2023 … 2013 and no 2026 at
+all**, with 2025 carrying `class=current`. An all-categories, date-bounded server-side query —
+`/AgendaCenter/Search/?term=&CIDs=all&startDate=01/01/2026&endDate=12/31/2026` — returns **HTTP 200,
+106,371 B, zero 2026 ids**. The city moved to **CivicClerk**; its own Meetings page (`/642/Meetings`)
+still links to the abandoned AgendaCenter, which is presumably why nobody noticed.
+
+**This is a new false-negative shape and it is nastier than the ones already in this file.** The
+catalogue so far is surfaces that *fail*: the Accusoft shell returns markup and no content, the HCD
+Power BI embed doesn't render, `recordsportal` demands a sign-in, the City Manager index is a JS
+shell whose 543 anchors are all chrome, the image-only PDFs extract one character. Every one of those
+announces itself to a careful check — hence the standing rule, *"if a listing page yields zero items
+of the kind it exists to list, the parse failed."*
+
+**This page passed that test.** It listed exactly the kind of item it exists to list, in quantity,
+parseably. It was simply a **complete and accurate archive of a system of record the city had
+abandoned.** The rule as written checks whether the parse worked. It does not check whether the
+answer is *current*, and a stale archive and a quiet city produce the identical daily line.
+
+The link-count delta made it worse rather than better. The count is the sweep's tripwire for "did
+anything change," and here it moved 693 → 784 on a page whose newest content is from April 2025 —
+CivicPlus chrome churn, pure noise, reading as life. **A changing number is not evidence of a live
+source; it is evidence of a changing number.**
+
+The tell was free and sitting in the markup the sweep had already downloaded: **the year selector had
+no current year.** So:
+
+1. **Every recurring sweep needs a freshness assertion, not just a parse assertion.** Extract the
+   newest date the surface itself claims and compare it to today. A council agenda page whose newest
+   item is >60 days old is failing, whatever its status code, link count, or diff. This is cheap and
+   it is the check that would have caught this on day one.
+2. **When a listing offers a year/period selector, read it.** The absence of the current year is a
+   stronger and simpler signal than anything derivable from the item list.
+3. **Confirm a vendor client slug against the vendor's API, never against DNS.** `losaltosca.civicclerk.com`
+   and `losaltos.civicclerk.com` both answer **200 with the same 1,289-byte SPA shell**; only
+   `losaltosca.api.civicclerk.com` returns data (`losaltos.api.…` **404s**). Identical trap to the
+   `*.legistar.com` wildcard already recorded in `check-meetings.sh`'s client table — a second vendor
+   with the same shape, so treat it as the default assumption for any hosted-agenda vendor.
+4. **A city's own "where are our agendas" page can be stale.** `/642/Meetings` pointed at the dead
+   surface. The city site is authoritative about intent, not about plumbing.
+
+Cost: the sweep reported a clean negative on Los Altos for the whole life of this log while looking
+at a 2025 archive, and the thing it missed — a **city-commissioned §9212 report containing the only
+SB 79 paragraph Los Altos has ever published**, received by Council **2026-06-23** — sat unseen for
+**76 days**, while `neighbors.html` told readers in five separate places that the city had produced
+"no city analysis on record." Routed to PR #26; the route repair and the two documents are indexed.
+
+**Generalisation, and it is the 8/08 backfill lesson arriving from a new direction:** a watermark
+scan is blind to what predates the watermark, and it is blind to its own backlog (8/17→9/06) — and
+now, blind to a surface that stopped moving before the watermark existed. All three are the same
+error: **the scan trusted its own history.** A source that has returned "nothing new" every day since
+the log began is either a quiet city or a dead endpoint, and the daily line is identical in both
+cases. **Periodically ask each source to prove it is alive, rather than asking it what is new.**

@@ -109,6 +109,7 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
 
 | Date | Item | Status | Link |
 |---|---|---|---|
+| 2025-10-22 | **The earliest SB 79 item on any Palo Alto Council agenda this index has found** — City Council **Special Meeting**, PrimeGov meeting **2724**, **Item 4: "Update and Direction to Staff on the Downtown Housing Plan Project and Implementation of Senate Bill 79 (2025-2026). CEQA Status: Exempt Under CEQA Guidelines Section 15262."** Five weeks after SB 79 was chaptered (2025-09-17) and **six months before this site's council-watch timeline begins (2026-05-04)**. The real staff report is the **Late Packet Report, #2506-4861** (15 pp., 36,641 chars extracted, **49** "SB 79"/"65912" hits, read in full 2026-09-08); the document filed as "Item 4 Staff Report" (#2510-5298) is a **one-page placeholder** whose entire body reads *"This report will be a late packet report published on October 16, 2025."* Staff's recommendation: direction on *"next steps for the Downtown Housing Plan, including citywide implementation of Senate Bill (SB) 79,"* built around *"a proposal to refocus staff and consultant efforts on an SB 79 compliant TOD Alternative Plan, and potentially formation of a Council ad hoc to support staff planning efforts given the limited time available for Alternative Plan development."* **NEXT STEPS** anticipated that HCD review *"potentially iteratively"* plus environmental analysis *"will likely extend the effort to Q4 2026."* Attachments: A — Housing Development Economic Feasibility and Implementation Analysis; B — Community Outreach Summary and Preliminary Policy Recommendations; **C — SB 79 Map Based on Caltrain Platform Location** (1 p., 21,336 chars, text layer present); **D — SB 79 boundary in relation to Downtown Housing Plan and SOFA Boundary** (1 p., **0 chars — image-only, NOT READ**, same blocked OCR toolchain as the other image-only city PDFs); plus a 16-pp. staff presentation. | **Both minutes posted and read in full 2026-09-08.** **Action Minutes** (doc **18531**, `compileOutputType` 1, `publishDate` 2025-11-13T02:29:48; 685,464 B, 6 pp.) record Item 4 as **"NO ACTION"** and adjournment at 8:38 P.M.; DocuSign envelope EBEEDE61 signed by **Mayor Ed Lauing 11/6/2025** and **City Clerk Mahealani Ah Yun 11/12/2025**. **Summary Minutes** (doc **18611**, `publishDate` 2025-11-14T05:56:52; 567,892 B, 10 pp., **12** "SB 79" hits) also close the item **"NO ACTION."** ⚠️ **Council gave direction but took no formal action**, and nothing here is a vote. Per the Council's own note, *action minutes and the video/audio recordings are the official records*, so the summary minutes are reported speech, not quotation. Surfaced 2026-09-08 by the first deliberate pass over the **2025** PrimeGov archive, which the daily watermark scan had never covered. **Routed to a PR — no site page asserts any of this yet.** | [Meeting 2724 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18007) · [Action Minutes 18531](https://cityofpaloalto.primegov.com/Public/CompiledDocument/18531) · [Summary Minutes 18611](https://cityofpaloalto.primegov.com/Public/CompiledDocument/18611) · [video (id from the calendar's `videoUrl`; the published string is malformed with a second `?`)](https://www.youtube.com/watch?v=qReO1nzkHk8) |
 | 2026-05-04 | Council meeting where SB 79 was on agenda but **deferred due to late hour** | Video posted; transcript pulled; **minutes now posted** (*2026-07-19:* action minutes record "Agenda Item Number 14 not heard and deferred to a date uncertain" — corroborates the video account) | [YouTube](https://www.youtube.com/watch?v=vM0GY2Rdnow) (deferral exchange 4:58:43–5:00:24) · [action minutes](https://cityofpaloalto.primegov.com/Public/CompiledDocument/20952) · [summary minutes](https://cityofpaloalto.primegov.com/Public/CompiledDocument/20923) |
 | 2026-05-18 | Regular meeting — **SB 79 was NOT on the agenda** (Cubberley master plan, 156 California Ave builder's remedy, retail-vitality ordinance). The City Manager's floated May 18 reschedule did not happen. | Confirmed via PrimeGov agenda | [May 18 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18721) |
 | 2026-06-01 | SB 79 implementation = **Item 17**. Staff + SB 79 Ad Hoc Committee recommend adopting two temporary ordinances — historic-resource exemption + 50% rezone ("TOD Combining District") — with interim urgency versions on June 15. | Agenda + staff report #2605-6397 + draft ordinances posted | [June 1 agenda](https://cityofpaloalto.primegov.com/Portal/Meeting?meetingTemplateId=18727) |
@@ -201,6 +202,49 @@ YouTube's auto-generated captions for this video are accessible via the "Show tr
 - Government Code §§65912.155–65912.162 (the operative SB 79 sections)
 - HCD — SB 79 TOD page
   https://www.hcd.ca.gov/planning-and-research/sb79-tod
+
+  **⭐ Updated by HCD between 2026-09-04 and 2026-09-08 — a new "TOD Project Compliance" section.**
+  Caught 2026-09-08 by the daily version sweep: the page's own stamp moved from **`Last updated:
+  06/30/2026`** to **`Last updated: 8/19/2026`** (note the un-padded format — a different entry, and a
+  **backdated** one: the stamp predates publication). Verified two ways rather than from one reading —
+  the live page (HTTP 200, 110,602 B) against the **Wayback Machine capture `20260904032455`**
+  (108,424 B), which still reads `06/30/2026`, as do the `20260827233605` and `20260630235129`
+  captures. Twenty-six consecutive daily runs had recorded `06/30/2026`; the string now appears
+  **nowhere** on the page. The diff is **24 text lines**; the PDF link set is **unchanged** (no new
+  guidance document), and the only new asset is
+  `/sites/default/files/images/tod-compliance-diagram.webp` (server `last-modified` **2026-08-27**,
+  132,392 B — ⚠️ **an image, NOT READ**; its `alt` text and the body text below carry the same rule).
+  **What the new section says, verbatim:** *"Depending on whether HCD has found an ordinance to be out
+  of compliance or approved a TOD alternative plan, a housing development project would need to comply
+  with either the SB 79 standards and provisions under Government Code section 64912.157 or a local
+  ordinance and/or TOD alternative plan."* It then sets out three branches — *"Projects must follow the
+  TOD alternative plan … if the jurisdiction enacted a TOD alternative plan per Government Code section
+  65912.161, subdivision (a) that was approved by HCD"*; *"Projects must follow the local ordinance …
+  if the jurisdiction adopted and enacted an implementing, exemption, or temporary exclusion ordinance
+  per Government Code section 65912.160, subdivisions (c) or (e), or section 65912.161, subdivision
+  (b), respectively, that HCD has not determined to be out of compliance"*; and *"Projects must follow
+  Government Code section 64912.157 … standards and provisions in all other scenarios."*
+  HCD also retitled the section **"SB 79 Ordinance and TOD Alternative Plan (Optional)"** and replaced
+  *"they are not required to adopt and enact"* with the affirmative *"Local jurisdictions are required
+  to process qualifying SB 79 housing development projects starting July 1, 2026."*
+  ⚠️ **"64912.157" is HCD's typo — do not repeat it.** It appears **3×** on the page; every other
+  citation there is correctly `65912.xxx`, and the chaptered bill text uses **`65912.157`** 18 times.
+  There is no Government Code §64912.157 in this chapter.
+  **Why it matters to Palo Alto:** the City's temporary ordinances were adopted under §65912.161(b),
+  the second branch — so on HCD's own statement projects follow the **local** ordinance *unless and
+  until* HCD determines it out of compliance. This is consistent with what `council-watch.html`
+  already tells readers (*"review and notice, not pre-approval; the ordinances are already in force"*);
+  the **consequence of an adverse finding** is the part the site does not yet state, and that edit is
+  **routed to a PR**, not deployed.
+- **HCD — Housing Accountability Unit, "Legal Action"** — a surface this project had never used, found
+  2026-09-08. Parse-verified, **not** a JS shell (HTTP 200, 111,966 B, **16,813** text chars, **372**
+  hrefs, **14** linked PDF/DOC files). **Zero "SB 79" occurrences**; all 14 posted documents are
+  Housing-Element-Law / HAA matters (Blue Lake, Glendale MOU, Moreno Valley and Roseville settlements,
+  La Habra Heights, Malibu, Fullerton, San Bernardino, Coronado, plus amicus briefs incl. one from
+  `oag.ca.gov`). ⚠️ **Scoped negative:** this is a fact about *what HCD lists on this page as of
+  2026-09-08*, **not** a finding that HCD has taken no SB 79 legal action. Worth re-checking — it is
+  where an SB 79 enforcement referral would surface.
+  https://www.hcd.ca.gov/hau/legal
 - HCD MPO advisory (PDF, March 20, 2026) — tier definitions, train-count thresholds
   https://www.hcd.ca.gov/sites/default/files/docs/planning-and-community/sb-79-mpo-advisory.pdf
 - **California Attorney General — "Urgency Ordinances and Ministerial Approval of Housing Projects,"

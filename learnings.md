@@ -2871,3 +2871,80 @@ now, blind to a surface that stopped moving before the watermark existed. All th
 error: **the scan trusted its own history.** A source that has returned "nothing new" every day since
 the log began is either a quiet city or a dead endpoint, and the daily line is identical in both
 cases. **Periodically ask each source to prove it is alive, rather than asking it what is new.**
+
+---
+
+## 2026-09-08 — When your own daily log is the only witness, it is not a witness
+
+Two near-misses today, opposite in shape, same root: **the scan reasoning from its own history
+instead of from the record.** Yesterday's entry ended by saying the scan "trusted its own history."
+Today it nearly did so twice more, in both directions — once trusting it, once distrusting it.
+
+### 1. A count that equals the page size is a pagination artifact until proven otherwise
+
+The repaired Los Altos CivicClerk route was swept with a date-bounded query for Aug 1 – Oct 15. It
+returned **15 events**, and the **9/08 City Council meeting was not among them** — the very meeting
+whose packet yesterday's run had indexed. The obvious reading was the alarming one, and it is the
+reading this project's own rules push toward: *a removal is the more urgent signal.* Drafting
+"the Los Altos 9/08 Council meeting has vanished from the calendar" was one keystroke away.
+
+It had not vanished. **`$top=40` also returned 15.** CivicClerk paginates at 15 and silently ignores
+a larger `$top`; paging with `$skip` returned **32** events, the 9/08 Regular Meeting (id 2180)
+among them. A truncated page and a genuinely short calendar are byte-identical in shape.
+
+- **A result count that exactly equals a round number — 15, 20, 25, 50, 100 — is a page size until
+  you have proven it is a total.** Page it out with `$skip`/`offset` and confirm the last page is
+  short, or read the total from `@odata.count`. Do not diff against an unpaged response.
+- This is the parse-assertion rule (8/13) and the freshness-assertion rule (9/07) arriving as a
+  **completeness assertion**: the response was fresh, well-formed, correctly filtered, and wrong.
+- The alarming reading is the one to check hardest, not the one to ship fastest. **"A removal is the
+  more urgent signal" makes a false removal the most expensive parse error available.**
+
+Related non-finding worth keeping: the 9/08 packet is now published under **fileId 10967**, not the
+**10955** yesterday indexed. Both fetch, and their extracted text is **identical** (273 pp., 630,907
+chars), so this was a republish, not a recompile — but **CivicClerk fileIds rotate on republish**,
+so a fileId citation is a weaker anchor than a PrimeGov compiled-document id.
+
+### 2. A daily check that has reported the same value for 26 days cannot audit itself
+
+The HCD SB 79 TOD page read `Last updated: 8/19/2026` today. Every run since 2026-08-19 had recorded
+`06/30/2026`, and that string was now **absent from the page**. Two incompatible explanations, and
+**a fresh fetch cannot distinguish them**:
+
+- the page changed today; or
+- the page changed on 8/19 and **our check had been reporting a stale value for three weeks.**
+
+The second is not far-fetched — it is exactly the Los Altos failure from yesterday, one layer up.
+And the log cannot referee, because the log is the thing under suspicion.
+
+**The Wayback Machine settles it, for free.** The CDX API lists captures by digest; the `id_` raw
+snapshots (gzipped — decompress them) showed `06/30/2026` on **2026-06-30, 2026-08-27 and
+2026-09-04**. So the change is real, lands after 9/04, and the daily readings were honest.
+
+- **When a long-running check reports a changed value, the check itself is a suspect.** Get a second,
+  independent reading of the *past* — `web.archive.org/cdx/search/cdx?url=…&collapse=digest` then
+  `web.archive.org/web/<ts>id_/<url>`. Three requests.
+- **Then diff the content, not the stamp.** The stamp move was the trigger; the finding was a new
+  **"TOD Project Compliance"** section. Note the stamp is **backdated** — it says 8/19 while the
+  content was demonstrably not live on 9/04, so *a page's self-reported date is not a publication
+  date* and must not be cited as one.
+- **A state agency's own citations are not authority for a section number.** HCD's new text writes
+  **`64912.157` three times**; the chaptered bill uses **`65912.157`** (18×) and every other citation
+  on HCD's own page is `65912.xxx`. Copying a typo out of a primary source is still a wrong citation.
+
+### 3. The 2026/2027 sweep could never have seen 2025
+
+`ListArchivedMeetings` is called for **2026 and 2027 only** — a scope decision invisible in the daily
+output, because the log reports "zero new meetings" identically whether a year is quiet or unqueried.
+Adding 2025 surfaced **243 further Palo Alto meetings (979 documents)**, **73** of them on or after
+SB 79's chaptering date, none ever grepped. A bounded pass over the 13 Council meetings in that
+window found **2025-10-22 Item 4** — *"Update and Direction to Staff on the Downtown Housing Plan
+Project and Implementation of Senate Bill 79"* — Palo Alto's **first** SB 79 council item, the
+meeting the SB 79 ad hoc came out of, **six months before `council-watch.html`'s timeline begins**.
+Routed to PR #27; the record is indexed.
+
+**The generalisation, and it is the sharper form of yesterday's:** a scan is blind to what it does
+not ask for, and **its silence about the unasked is indistinguishable from a negative answer.** The
+year list, the page size, and the watermark are all *scope*, and none of them appear in the output.
+**Periodically print the scope, not just the result** — which years, which page, which window — and
+check that the scope is still the one the question needs.

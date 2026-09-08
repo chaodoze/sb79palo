@@ -2948,3 +2948,29 @@ not ask for, and **its silence about the unasked is indistinguishable from a neg
 year list, the page size, and the watermark are all *scope*, and none of them appear in the output.
 **Periodically print the scope, not just the result** — which years, which page, which window — and
 check that the scope is still the one the question needs.
+
+### Postscript, same day — the notification channel had never delivered
+
+The run above ended by calling `notify-email.sh`, which printed **`notify-email: sent via mail to
+chaolam@gmail.com`** and exited **0**. It had not been sent. `mailq` shows the message queued behind
+**46 others, the oldest from 2026-05-13** — 71 KB in 47 requests, from two different hostnames. Postfix
+on this machine has no relay configured, so it accepts mail and never delivers it.
+
+The script is not buggy. It calls `mail`, `mail` succeeds, and **queueing for delivery is what success
+means at that interface.** The gap is between "the call I made returned 0" and "the human was told."
+
+This is the **third distinct instance of one shape** now recorded here, and the first one that was
+about our own plumbing rather than someone else's server:
+
+- `/Public/CompiledDocument/<dead id>` returns **HTTP 200** with a 1.1 KB "not found" page (8/14).
+- `losaltosca.gov/agendacenter` returned **200 and 784 genuine links** while being sixteen months dead (9/07).
+- `notify-email.sh` returns **0** while the mail sits in a local queue forever (today).
+
+**A success code describes the call, not the outcome.** For any step whose whole purpose is an effect
+somewhere else — a document served, a page kept current, a human notified — the check must observe that
+effect, not the return value. Concretely: **`notify-email.sh` should verify the queue drained**
+(`mailq` empty, or the API's 2xx body) rather than trusting `mail`'s exit status, and every run-log line
+claiming a notification for the last four months should be read as "queued locally," not "delivered."
+
+Not fixed here: the remedy is a credential decision the owner has to make — set `SB79_EMAIL_API_URL` and
+`SB79_EMAIL_API_KEY`, or point `msmtp` at a real relay.

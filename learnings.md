@@ -2974,3 +2974,63 @@ claiming a notification for the last four months should be read as "queued local
 
 Not fixed here: the remedy is a credential decision the owner has to make — set `SB79_EMAIL_API_URL` and
 `SB79_EMAIL_API_KEY`, or point `msmtp` at a real relay.
+
+---
+
+## 2026-09-09 — Grepping the listing is not reading the articles; and a 404 that passes every parse check
+
+Today's live sweep was tier (c) on every live surface. The one genuine finding was **nine days old and
+had been sitting on a page this job fetches every morning**: Palo Alto Online's 2026-09-01 six-project
+survey, *"How Palo Alto's newest housing projects are testing the limits of what can be built"* (Linda
+Taaffe) — **5 "SB 79" + 1 "Senate Bill 79"**, one of its six profiles being **135 University Ave.**, a
+window filing this index already tracks. It was not in `PRIMARY-SOURCES.md`.
+
+**Why every sweep since 9/01 missed it.** The press check fetches `paloaltoonline.com/housing/`, strips
+tags, and greps the resulting text for "SB 79". That page is a **listing**: it carries headlines and
+short excerpts. This article's headline is about "housing projects" and "what can be built"; the phrase
+"SB 79" appears only in the **body**, in one of six profiles. So the listing greps **zero** — and the
+listing was **healthy by every assertion this project has added**: HTTP 200, 243,546 B, 110 links,
+**15 dated article hrefs**, newest **2026-09-09**. It passed the parse assertion (8/13) and the freshness
+assertion (9/07) and still returned a false negative, because **neither assertion is about the question.**
+
+Parse-verified answers "did the page render its items?" Freshness-verified answers "is the surface
+alive?" Neither answers **"is any of today's items about SB 79?"** — and a topic grep over a listing
+*cannot* answer it, because a listing does not contain its articles. The 8/13 entry already recorded
+this exact shape for agendas — *"an agenda's SB 79 content is almost never in the agenda text; agendas
+carry item titles, the substance is in the linked PDFs"* — and the fix there was to **enumerate the
+attachments and fetch each one.** The press arm never got the same treatment. Same document class, same
+error, one month apart, on the surface that is checked most often.
+
+**So, for every listing surface, the sweep owes three assertions, not two:**
+
+1. **Parse** — does it yield items of the kind it exists to list? (8/13)
+2. **Freshness** — is its newest item recent enough to be alive? (9/07)
+3. **Enumerate-and-fetch** — extract the dated item URLs, diff against what has already been read, and
+   **fetch the new ones and grep those.** A topic grep over the index is not a check on the articles.
+
+```bash
+# the listing gives you URLs, not content — take the URLs
+grep -oE 'href="[^"]*/20[0-9]{2}/[0-9]{2}/[0-9]{2}/[^"]*"' listing.html | sort -u
+```
+
+It is cheap: on `paloaltoonline.com/housing/` it is **15 hrefs**, of which one or two per day are new.
+Today three were fetched (two 9/09 pieces, both zero SB 79; the 9/01 piece, five hits).
+
+**And note what the miss did *not* look like.** No error, no 403, no stale stamp, no diff. The daily line
+for 9/01 through 9/08 read "press: seven outlets, parse- and freshness-verified, zero SB 79" — an
+accurate description of the checks performed and a false answer to the question asked. **A sweep that
+reports its assertions rather than its coverage cannot show you the gap between them.**
+
+### Second, smaller: a 404 on hcd.ca.gov passes every size and parse assertion
+
+Reaching for HCD's HAU legal page I guessed `hcd.ca.gov/hau/legal-action`. It is **`/hau/legal`**. The
+wrong URL returned **HTTP 404 with 140,201 bytes, 595 hrefs and 16,720 characters of text** — *more*
+of each than the real page (111,966 B, 401 hrefs, 16,796 chars), because Drupal renders the full site
+chrome around "page not found." Every heuristic this project uses to catch a lying 200 — body size,
+href count, extracted-text length — **passes on it**, and a topic grep returns a clean, meaningless zero.
+
+This is the inverse of the 8/14 and 9/07 entries, and it closes the pair: **status code and content
+assertions each catch exactly what the other misses.** A 200 can be empty; a 404 can be full. Check
+**both**, and on this domain get the URL from the section's own link list (`curl .../hau` and read the
+`href`s) rather than guessing a slug — the same "enumerate the links, don't guess" move that found
+Atherton's HCD letter on 8/07.

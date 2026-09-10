@@ -29,6 +29,13 @@ See [the chat-widget runbook](#chat-widget-runbook) below.
 - **Distinguish similar-sounding options.** Before describing two related paths, write out
   how they differ on every axis (timeline, who approves, interim effect, cost).
 - **Lint before declaring done.** Run `npx htmlhint *.html` on any changed HTML.
+- **The home page is a news feed.** `index.html` is a reverse-chronological list of
+  dated updates (`ol.news-feed`), one `li.news-item` per finding, newest first, each with
+  a tag, a verification badge (`is-record` / `is-press` / `is-fix`) and a source line.
+  Every change that would once have been a bare page edit or a PR gets an entry there
+  too; the topic pages (Council watch, Neighbors, FAQ) stay the canonical state, the
+  feed is the changelog readers see. Entries are dated by when we published, and the
+  body names the event date.
 - **Plain language on main pages.** Home, Palo Alto, and Council watch are written for
   residents with zero planning background. Jargon goes behind `a.term` links: dotted
   underline, hover definition via `data-def`, click-through to `glossary.html#anchor`.

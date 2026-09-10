@@ -77,7 +77,15 @@ Run from the repo root. Scripts live in `.claude/skills/sb79-daily-update/script
    needs the video, just a stub + notes), write a PR body to a temp file, then
    `bash .claude/skills/sb79-daily-update/scripts/open-pr.sh --slug <slug> --title "<title>" --body-file <tmp> <files…>`.
    The body **must** list what a human verifies before merge (e.g. "confirm the 23C vote
-   against meeting video <id>; distinguish HAPPENED from the press's framing"). If the
+   against meeting video <id>; distinguish HAPPENED from the press's framing").
+   **Every tier-(a) PR also adds one entry to the news feed on `index.html`** (the home
+   page is a reverse-chronological feed since 2026-09-10): a `<li class="news-item">`
+   inserted at the top of `<ol class="news-feed">`, dated by the run date, with a
+   `news-tag` (Palo Alto / Neighbors · City / State / Courts), a `news-status` badge
+   (`is-record` = we read the city/state document; `is-press` = press only, not yet
+   checked; `is-fix` = correction of a prior site claim), a 2–4 sentence plain-language
+   body that says what happened and how well it is verified, and a `news-src` line
+   linking the primary source. Copy the markup of the newest existing entry. If the
    transcriber MCP happens to be available on this machine, you may pre-fill a verified
    draft — but still PR it; **never merge**.
 8. **Corpus (guarded, optional, off the critical path)** — only if published content

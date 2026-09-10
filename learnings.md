@@ -6,6 +6,45 @@ site via `.assetsignore`.
 
 ---
 
+## 2026-09-10 — Twenty-seven PRs sat unreviewed for seven weeks; the sources kept moving and the pages did not
+
+### What happened
+
+The daily job routed every outcome-asserting finding to a PR, as designed, from July 20 to
+September 10. Nobody merged them. Meanwhile the same job kept committing source-index work
+straight to `main`, so by September the index had quietly *confirmed* most of what the PRs
+were waiting on (San Carlos's 3–0 minutes, Atherton's Ord. 678, the PTC 8/12 draft minutes,
+three city documents for the July 1, 2027 expiry) while every reader-facing page still
+carried the pre-July text — "San Carlos is silent", "seven projects", "until about 2032",
+"map official July 1". The site was 75 commits ahead in its notes and seven weeks behind
+in what it told readers. One PR (#15) was superseded outright by a later direct commit.
+
+### What we did
+
+Triaged all 27 against current `main` (a claim-by-claim check of "is it already on the
+page, did a later source confirm or contradict it"), merged 26 in dependency order, applied
+the touch-ups the later sources justified, and turned the home page into a
+reverse-chronological news feed with one entry per finding, each carrying a verification
+badge. The feed is now the channel: a finding that needs a human check ships as a
+`is-press` entry that says so, rather than waiting in a PR queue nobody reads.
+
+### The rules
+
+- **A PR queue with no reviewer is a staleness bug, not a safety feature.** If tier-(a)
+  findings must wait for a human, the human has to be scheduled; otherwise publish the
+  finding with its verification status stated, and let the badge carry the caveat.
+- **When triaging old PRs, grep `main` for the claim first.** Most of the "verify against
+  X" checklists had been satisfied by later index commits on `main`; the PR bodies were
+  right on the day they were written and wrong about what remained open.
+- **Merge order is by shared lines, not by PR number.** Every neighbors PR bumped the same
+  `update-stamp` line and three rewrote the same summary paragraph; resolve the paragraph
+  once with all the facts, then keep `ours` on every later conflict.
+- **A merged fact still needs the page's other sentences re-read.** The San Carlos PR
+  said "exclusion adopted" while two paragraphs later the Los Altos PR still said "three
+  cities are silent". Semantic collisions do not show up as git conflicts.
+
+---
+
 ## 2026-09-04 — A type-1 id rotated with no approval behind it. The filter held; the story didn't.
 
 ### What happened

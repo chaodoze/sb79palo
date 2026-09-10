@@ -1739,3 +1739,13 @@ table.tier-verdict-table td:nth-child(2) {
   .news-status { display: inline-block; margin: 0 0 0 0.4rem; }
   .feed-intro { grid-template-columns: 1fr; }
 }
+.hero-compact { padding: 1.6rem 0 1.4rem; }
+.hero-compact .container { display: block; }
+.hero-compact h1 { font-size: clamp(2rem, 4.2vw, 2.9rem); margin: 0.2rem 0 0.5rem; }
+.hero-compact .hero-links { margin: 0; font-size: 1rem; }
+.hero-compact .hero-links a { margin-right: 1.4rem; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.hero-compact .hero-links a:hover { color: var(--red); border-color: var(--red); }
+.feed-head { margin-top: 1.6rem; }
+.feed-note .news-status { margin: 0 0.15rem 0 0.4rem; vertical-align: middle; }
+.feed-legend { margin: 0.5rem 0 0; font-size: 0.86rem; color: var(--ink-2); }
+.feed-legend .news-status { margin: 0 0.2rem 0 0; vertical-align: middle; }

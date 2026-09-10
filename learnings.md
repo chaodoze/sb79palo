@@ -3034,3 +3034,124 @@ assertions each catch exactly what the other misses.** A 200 can be empty; a 404
 **both**, and on this domain get the URL from the section's own link list (`curl .../hau` and read the
 `href`s) rather than guessing a slug — the same "enumerate the links, don't guess" move that found
 Atherton's HCD letter on 8/07.
+
+---
+
+## 2026-09-10 — The link-rot grep ran in the wrong directory and reported no rot
+
+The tier gate this whole job is built around rests on one command. When the documentList diff shows a
+removed document id, the rule (2026-08-14) is: **`grep` the repo for that id before doing anything
+else**, because PrimeGov unpublishes superseded documents and the dead URL still returns HTTP 200.
+
+Today that grep returned zero. It was wrong, and it was wrong for a reason that has nothing to do with
+PrimeGov.
+
+The scan had been running its fetches inside a scratch directory, and the `Bash` call that did the rot
+check opened with `cd /tmp/sb79run && …`. Fourteen lines later:
+
+```bash
+grep -rn "10974\|10967\|10955" *.html *.md      # cwd is /tmp/sb79run, not the repo
+```
+
+`*.html` and `*.md` globbed the **scratch files this run had just downloaded** — `hcd_tod.html`,
+`sc_home_curl.html`, the press listings. Not one repository file was searched. The output was empty,
+and an empty output from a rot check reads exactly like good news.
+
+`PRIMARY-SOURCES.md:533` cites fileId **10974**. It had been deployed **the previous day** by this same
+job, and it had rotated to **10976** overnight. The correct answer was "yes, the repo cites this id."
+
+It happened to be harmless — CivicClerk keeps old fileIds alive, and all four of 10955 / 10967 / 10974 /
+10976 still serve `application/pdf` under 200 — but that was luck from a different check, not this one.
+Had it been a PrimeGov type-1 unpublish, this run would have recorded "no link rot" over a dead citation
+on the live site.
+
+**What makes this different from the eight or nine false negatives already in this file.** Those were all
+about the *remote* surface: a JS shell, a Power BI embed, an abandoned archive, a 404 with a full body, a
+listing whose excerpts don't carry the phrase. This one is about **local shell state**. The source was
+fine, the pattern was fine, the tool was fine. The *working directory* was wrong, and a wrong working
+directory does not raise an error — `grep` over files that exist and don't match is a completely normal,
+completely silent success.
+
+**So the rule generalizes past "verify the surface":**
+
+> A check whose negative result is an **empty set** must state what it searched, not just what it found.
+
+Three cheap defenses, in order of how much they cost:
+
+1. **Anchor the path. Never rely on cwd for a repo-scoped check.** The rot check should be written
+   `grep -rn "<id>" /Users/…/sb79palo/*.html /Users/…/sb79palo/*.md`, or prefixed with an explicit
+   `cd` to the repo in the *same* command. Cheapest fix, catches this exact bug forever.
+2. **Print the denominator.** A rot check that prints `searched 11 files in <dir>` is self-auditing;
+   `11 files in /tmp/sb79run` is visibly wrong to a reader in a way that a blank line is not. This is
+   the same discipline as the 9/09 "report your coverage, not just your assertions" entry, applied to a
+   one-line grep instead of a whole sweep arm.
+3. **Positive control.** Grep for something that *must* be present (`SB 79`, or a known-cited document
+   id) in the same invocation. A zero on the control means the search itself failed, whatever the target
+   returned. This is the grep equivalent of the 8/13 parse assertion: *if a search that exists to find
+   things finds nothing, suspect the search.*
+
+Note the near-miss shape: the run **did** separately confirm 10974 was alive by fetching it, so the
+published record never went wrong. Two independent checks, one of which was silently broken, and the
+sound one happened to cover the same ground. That is not a system property worth relying on twice.
+
+### Second: a hit count is a change-detector only if the counting method is pinned
+
+The daily state sweep records HCD's SB 79 TOD page partly as a count of "SB 79" occurrences. Yesterday's
+log says **28**. Today the same page returned **23**, and every substantive marker was identical: stamp
+still `8/19/2026`, `65912` ×7, HCD's own `64912.157` typo still ×3, the three-branch TOD Project
+Compliance paragraph verbatim, the same three PDF links and the same `tod-compliance-diagram.webp`.
+
+Five variant counting methods were tried — raw HTML vs extracted text, `SB\s*79` vs `SB.?79`, with and
+without "Senate Bill 79." They returned 23, 25, 21, 22, 25. **None reproduces 28.** Wayback can't
+arbitrate: its only nearby capture (9/04) is a JS shell with 12,554 characters and **zero** "SB 79."
+
+So the honest reading is: *the page did not change, and the number that is supposed to tell me whether it
+changed cannot be compared to its own previous value.* A count is a hash with a terrible collision
+profile and no stored algorithm. Two runs can differ because the page changed, because the regex changed,
+because the extraction changed, or because one counted markup and the other counted text — and the log
+records only the integer.
+
+**Store the artifact, not the tally.** A normalized-text SHA-256, or better, the **set of SB 79-bearing
+sentences** — which diffs to something a human can read ("this sentence was added") instead of "28 → 23,
+cause unknown." Today's set is 15 sentences and is a perfectly good fingerprint. The count can stay in the
+log as colour; it should not be the thing the watch depends on.
+
+### Third: an article body can be ROT47-obfuscated, and greps zero on a healthy 200
+
+`smdailyjournal.com` — which had exactly one row in this index, on Redwood City, and was never on the
+Tier-2 sweep list — published *"San Carlos east side faces SB 79 upzoning near Caltrain"* on **2026-08-11**.
+It was found today, **30 days late**, and it is the most substantive press account of San Carlos's SB 79
+posture in existence: Planning Manager Lisa Porras on the exclusion lasting to ~2032, the TOD Alternative
+Plan riding on the 2031 housing element, and the 35,000-population threshold discussed on the record.
+
+Two independent things hid it, and both extend yesterday's press-arm entry rather than repeating it.
+
+**(a) The UA matrix has another row.** `curl` with its own UA gets **403 and a zero-byte body**; a Chrome
+UA gets **200 and 583 KB**. That is the `hklaw.com` / `padailypost.com` side of the 8/15 matrix, the
+opposite of `paloalto.gov`. The 8/15 rule — *measure per domain, never carry one domain's answer to
+another* — is now four domains deep and still paying.
+
+| Domain | `curl/8.x` own UA | Chrome UA |
+|---|---|---|
+| `paloalto.gov` | **200** | 403 |
+| `menlopark.gov` | **200** | 403 |
+| `hklaw.com` / `padailypost.com` | 403 / 406 | **200** |
+| **`smdailyjournal.com`** | **403, 0 B** | **200, 583 KB** |
+
+**(b) The body is enciphered in the HTML.** BLOX CMS ships premium articles as **ROT47** — the paragraphs
+are present in the markup as `kAm…k^Am` (that is `<p>…</p>` shifted 47 places through printable ASCII).
+`grep -c 'SB 79'` on the fetched page returns hits only from the headline, standfirst and photo caption.
+The article reads as a thin preview that a scan would reasonably tag (c) — while 7,800 characters of
+substance sit in the file, unreadable to the grep and trivially readable to anyone who tries:
+
+```python
+rot47 = lambda t: ''.join(chr(33+(ord(c)-33+47)%94) if 33 <= ord(c) <= 126 else c for c in t)
+```
+
+This is the 8/13 lesson — *the substance is not in the surface you grepped* — arriving in a third
+costume. First it was agenda item titles vs. attachment PDFs. Then it was listing excerpts vs. article
+bodies (9/09). Now it is **rendered text vs. encoded text in the same file that already downloaded
+successfully**. The tell is consistent every time: a large, healthy 200 whose extractable text is much
+shorter than its byte count implies. **Make that ratio an assertion.** 583 KB of HTML yielding 40 KB of
+text is normal; 583 KB yielding 3 KB of text on a page whose headline is on-topic is a decode problem,
+not a short article.

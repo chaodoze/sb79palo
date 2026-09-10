@@ -579,6 +579,8 @@ Threshold check against DOF E-1 (2026-01-01) for every city on this page — **u
 | Smart Cities Dive (2026-08-21) — independent account; agrees on parties, cities and theories; gives **no** dates, courts or case numbers | https://www.smartcitiesdive.com/news/3-california-cities-lawsuit-housing-transit-oriented-development/828500/ |
 | CalHDF's own post on the SF case (2026-08-18) | https://calhdf.org/calhdf-sues-san-francisco-again-over-illegal-attempt-to-dodge-sb-79/ |
 | Gov. Code §65912.160 (read 2026-08-24; the (e)(1) walking-path text above is verbatim from it) | https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.160 |
+| MTC SB 79 Regional Map | Half-mile-buffer overlay on city boundaries. ⚠️ **Still labeled a preliminary draft as of 2026-07-25** — ABAG's SB 79 page states verbatim: "Working with transit agencies and local governments, MTC has developed a **preliminary draft map** of these TOD Zones," and MTC's own link to the viewer still carries `?draft=true`. SB 79 itself took effect July 1, 2026 regardless; no MTC adoption/finalization action has been located. A prior version of this row asserted the map was "Official as of July 1, 2026" — that was an anticipatory claim, not a verified one. Our independent GTFS tier computation therefore remains a working basis, not merely a cross-check — see usage note #2. | https://mtc.ca.gov/planning/land-use/senate-bill-79-regional-map |
+| ABAG SB 79 Summary, 2026-04-08 | Tier definitions, train-count thresholds, Caltrain station classifications. | https://abag.ca.gov/sites/default/files/documents/2026-04/SB79-Summary-040826.pdf |
 
 ---
 

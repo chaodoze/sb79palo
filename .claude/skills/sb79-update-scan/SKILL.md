@@ -373,7 +373,11 @@ For each, the most useful primary endpoint is in parentheses. Add new ones to `s
   like an empty calendar rather than a bad hostname. Same trap as the web API's
   "LegistarConnectionString … is not set up" (see `scripts/check-meetings.sh`'s client table)
 - **Redwood City** — `https://www.redwoodcity.org/city-hall/agendas-minutes` (no SB 79 action on docket as of last scan)
-- **San Carlos** — `https://www.cityofsancarlos.org/city_hall/city_council/agendas_and_minutes.php`
+- **San Carlos** — ⚠️ **route corrected 2026-09-11:** the long-listed
+  `…/city_hall/city_council/agendas_and_minutes.php` now **404s** (43 KB error page, 175 nav hrefs,
+  zero "SB 79" — reads like a quiet city). Live city page is
+  `https://www.cityofsancarlos.org/city_hall/public_meetings.php`; the authoritative route is and
+  remains the **PrimeGov API** (`cityofsancarlos.primegov.com`), which was unaffected.
 - **Los Altos** — ⚠️ **route corrected 2026-09-07: use CivicClerk, NOT AgendaCenter.**
   `https://losaltosca.api.civicclerk.com/v1/Events?$filter=startDateTime ge <iso> and startDateTime le <iso>`
   → each event carries `categoryName`, `agendaId` and `publishedFiles[]` (Agenda / Agenda Packet /

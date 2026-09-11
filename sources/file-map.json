@@ -6,40 +6,40 @@
       "title": "Council watch — pending Palo Alto City Council decisions",
       "url": "https://sb79.numtot.org/council-watch.html",
       "category": "site",
-      "content_hash": "9f0acd0a6a4d36768ee604d7497164f8ec29472f72f141a66905de4a7f6722a8",
-      "openai_file_id": "file-AfbgCht27fazHsh8fSCb8k"
+      "content_hash": "610ead074b7795c365ba82b9c4de8b2fc6d41c6858e4f049ab72a85f5f1dd3ca",
+      "openai_file_id": "file-1frwDnenPEpcowEUBzNFkX"
     },
     "site-index": {
       "id": "site-index",
       "title": "SB 79 Palo Alto — homepage",
       "url": "https://sb79.numtot.org/",
       "category": "site",
-      "content_hash": "23e65611bf3f30b55d06a070d121d985b29f7333fabab888ad52409b69eefbc4",
-      "openai_file_id": "file-NwFEM7Wp8B3rkXDgJFE4ah"
+      "content_hash": "8e320268f03313c127188f062b3e7f1aa4d6c60ae573cb7ab590982fbb3e542d",
+      "openai_file_id": "file-GoeYVtDwFa4tZvWNStbwNL"
     },
     "site-learn": {
       "id": "site-learn",
       "title": "Learn — how SB 79 works",
       "url": "https://sb79.numtot.org/learn.html",
       "category": "site",
-      "content_hash": "fab3962f9f65c81579759379131e2114abda71b19e283bb097c6754199ea2e4b",
-      "openai_file_id": "file-G85HcUwUPiRmgLRkH53bkx"
+      "content_hash": "56b5c8b59b808d549c8962119807fc162d56ee6a28e148b396ef345f5be5cd16",
+      "openai_file_id": "file-CGBJy8GsCGkjf9Djjt9aSg"
     },
     "site-palo-alto": {
       "id": "site-palo-alto",
       "title": "Palo Alto — what SB 79 means here",
       "url": "https://sb79.numtot.org/palo-alto.html",
       "category": "site",
-      "content_hash": "b30b72c02c9f9505e78b1141ce40b867dd92410fc3c18960a2475664cac11014",
-      "openai_file_id": "file-PDuWZDbmyJYHzCkhWgebx6"
+      "content_hash": "610775b0fa99e2e7a44577892fa4f35020880f3064494135da1adebb81f44f5d",
+      "openai_file_id": "file-WeWgJhpFVSu6kePoot3PVw"
     },
     "site-faq": {
       "id": "site-faq",
       "title": "FAQ — common questions about SB 79 in Palo Alto",
       "url": "https://sb79.numtot.org/faq.html",
       "category": "site",
-      "content_hash": "b662c9d61ff7e4f71991765659593b84ac4d9386a24065bae8033baf6212b751",
-      "openai_file_id": "file-EKqQFzNAtHLL3DPQqs6ToF"
+      "content_hash": "ef517dc1453819dfe407dc32c3999aecb7b471d76c3369aecde5840bfc8dc428",
+      "openai_file_id": "file-CFwKTftHxYsnny9679U8og"
     },
     "site-may-4-decision": {
       "id": "site-may-4-decision",
@@ -62,32 +62,32 @@
       "title": "Neighboring cities — SB 79 responses",
       "url": "https://sb79.numtot.org/neighbors.html",
       "category": "site",
-      "content_hash": "21427e93310af4c8f613b327fda871881833419431d502548ab6101ff5a9454d",
-      "openai_file_id": "file-PbMUCDkj2YBM5g3r45uSM9"
+      "content_hash": "9a7be436bd78f5b5a5d9590a291b0fdeab58626830da280b70a111bf224ca991",
+      "openai_file_id": "file-UNeURZDBB9G9oPzhD1RBLF"
     },
     "site-tier-analysis": {
       "id": "site-tier-analysis",
       "title": "Tier analysis — Palo Alto Caltrain stations under SB 79",
       "url": "https://sb79.numtot.org/tier-analysis.html",
       "category": "site",
-      "content_hash": "bd4331391057a654be224f6d1065cf9b93e2b2b0d9dff213f6c298c87307d8cc",
-      "openai_file_id": "file-WSy9UdxHer7FL9RfCq24cC"
+      "content_hash": "7972a9f29fdbfcdd95b2296c0a572b7fc0a7eb5104565006d1cb619ccdcbfb25",
+      "openai_file_id": "file-R7AvDYsPMU1naVKYrkahmZ"
     },
     "site-about": {
       "id": "site-about",
       "title": "About this site",
       "url": "https://sb79.numtot.org/about.html",
       "category": "site",
-      "content_hash": "d7ec7c2283e6ec61f428f1da9ae45c9eb9e731769921717260d86a561d7fdd2e",
-      "openai_file_id": "file-VCoXG1uynJyPWecKCFPLt9"
+      "content_hash": "7275432518ffb39fbd76139b52cbd34d505fb5bfc258746719654f583c35d9f5",
+      "openai_file_id": "file-CyFChCmTYh4aNELkJtCoed"
     },
     "site-primary-sources": {
       "id": "site-primary-sources",
       "title": "Primary sources index (editorial master list)",
       "url": "https://github.com/chaodoze/sb79palo/blob/main/PRIMARY-SOURCES.md",
       "category": "site",
-      "content_hash": "32a4bb4cf460c5f63ca873059c9e1b668e6c2f2d43d50d50c1afa52fa7b7c680",
-      "openai_file_id": "file-NQW3RGg2prXw6eKbf8PgLn"
+      "content_hash": "c4a3ec7107403c4b4d7066816e14f1717adb6de2c8d2def8aee14dc3911a00cc",
+      "openai_file_id": "file-8hmR4q6Vs23ydL749bHzPV"
     },
     "statute-leginfo-nav": {
       "id": "statute-leginfo-nav",

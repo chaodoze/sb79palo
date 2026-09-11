@@ -3194,3 +3194,54 @@ successfully**. The tell is consistent every time: a large, healthy 200 whose ex
 shorter than its byte count implies. **Make that ratio an assertion.** 583 KB of HTML yielding 40 KB of
 text is normal; 583 KB yielding 3 KB of text on a page whose headline is on-topic is a decode problem,
 not a short article.
+
+---
+
+## 2026-09-11 — Yesterday's rot-check lesson recurred within 24 hours, in a new costume, and this time there *was* rot
+
+Yesterday's entry closed with: *a check whose negative is an empty set must report what it searched, not
+only what it found.* Today the same check failed again, twice, for two different reasons — and on the
+first of them the empty set was hiding a live defect.
+
+**(a) A shell error prints nothing and reads as a clean negative.** The link-rot grep over six removed
+PrimeGov document ids ran as:
+
+```bash
+grep -rn "$id" --include=*.html --include=*.md . | ...
+```
+
+Under `zsh`, unquoted `--include=*.html` is glob-expanded before `grep` ever runs; with no matching file
+in `cwd` it aborts the command with `no matches found`. Every one of the six ids printed
+`NO HITS IN REPO`. **One of them was a live citation.** `PRIMARY-SOURCES.md:130` linked
+`…/Public/CompiledDocument/21426` — the Sept 14 Council agenda, deployed 9/04 — and PrimeGov had
+unpublished it overnight in a routine recompile (`21423/21424/21426 → 21468/21469/21463`). The dead URL
+serves the usual 1,101-byte "Document Not Found" page at **HTTP 200**.
+
+Yesterday's fix was *report the directory you searched*. That is necessary and **not sufficient**: here
+the directory was right and the search never executed. The stronger invariant is to **assert the check
+ran at all** — print the file list actually searched, and treat a zero-file or non-zero-exit search as an
+error, never as a negative. The re-run with quoted globs found the hit in one pass.
+
+**(b) The same shape again, half an hour later, from a delimiter collision.** The neighbor-city sweep
+packed its targets as `"name:url"` and split on the first colon with `${pair%%:*}` — which is the colon
+in `https:`. All three cities were fetched as the host `https` and returned **HTTP 000, 0 bytes**.
+Menlo Park, Redwood City and San Carlos would all have been logged *checked, inaccessible*; Menlo Park
+had answered 200 with 680 hrefs the day before. The tell was that **all three failed identically**.
+
+Generalise: **when every target in a sweep fails the same way, suspect the harness, not the targets.**
+A per-domain access fact should differ per domain — that is the entire premise of the 8/15 UA matrix.
+Uniform failure across heterogeneous surfaces is a bug signature. (Both of today's instances were caught
+only because a neighbouring fact contradicted them. That is luck, not method.)
+
+**(c) Two smaller notes from the same run.**
+
+- **`cityofsancarlos.org/city_hall/city_council/agendas_and_minutes.php` now 404s** — a 43 KB error page
+  with 175 nav hrefs, which greps zero "SB 79" and looks exactly like a quiet city. The live route is
+  `/city_hall/public_meetings.php`; the authoritative one remains the PrimeGov API, which is unaffected.
+  Corrected in `sb79-update-scan`'s tier-5 table. This is the 9/07 Los Altos trap with a 404 status code
+  attached, which is the easy version — the hard version returns 200.
+- **A title that names the subject is not the subject.** Sunnyvale Planning Commission 9/14 carries a
+  "Draft Ordinance Addressing Various State Housing Laws" — 26 pp., and **zero** SB 79. It implements
+  **SB 9 / SB 450 / AB 1061**, plus SB 937 and AB 2553 on impact fees. It was the single most SB-79-shaped
+  attachment name in the whole sweep. Read before indexing; the neighbour-city ordinance rows are exactly
+  where this would have done damage.

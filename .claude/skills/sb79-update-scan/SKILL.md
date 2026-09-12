@@ -383,6 +383,11 @@ For each, the most useful primary endpoint is in parentheses. Add new ones to `s
   → each event carries `categoryName`, `agendaId` and `publishedFiles[]` (Agenda / Agenda Packet /
   Minutes, each with a `fileId`); pull the PDF with
   `/v1/Meetings/GetMeetingFileStream(fileId=<id>,plainText=false)`.
+  ⚠️ **Fetch this API with `curl`, not system Python.** Python 3.9's `urllib` fails the TLS
+  handshake against `losaltosca.api.civicclerk.com` (`SSLError: TLSV1_ALERT_PROTOCOL_VERSION`)
+  while plain `curl` returns **200** on the identical URL (confirmed 2026-09-12). A client-side
+  TLS failure reads like a dead host; retry with a second *client* before recording the surface
+  as inaccessible, not just a second user-agent.
   **`https://www.losaltosca.gov/agendacenter` is an abandoned archive** — newest agenda of any body
   is **2025-04-28**, the year selector has no 2026, and a date-bounded all-categories search for 2026
   returns 200 with zero ids. It had been swept daily as a clean negative for the life of the daily

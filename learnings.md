@@ -3245,3 +3245,44 @@ only because a neighbouring fact contradicted them. That is luck, not method.)
   **SB 9 / SB 450 / AB 1061**, plus SB 937 and AB 2553 on impact fees. It was the single most SB-79-shaped
   attachment name in the whole sweep. Read before indexing; the neighbour-city ordinance rows are exactly
   where this would have done damage.
+
+---
+
+## 2026-09-12 — A negative check needs a positive control in the same breath
+
+Third consecutive day on the same theme, and today the check **worked** — which is why the lesson is
+finally the general one rather than another bug.
+
+**The setup.** Atherton's Council meeting 536 recompiled overnight and dropped documents `7584`,
+`7585`, `7586`. Per the 8/14 rule, a removed compiled-document id may be a live citation that just
+died, so the run greps the repo for each.
+
+**What went wrong first.** Grepping the **bare id** across `--include=*.json` returned **3.7 MB** of
+output: `assets/data/sb79-parcels.json` is a single-line file, and `7585` matches inside APNs, lot
+sizes and coordinates. The three-line answer was buried in a wall. Nothing was *wrong* — but a real
+hit on a fourth id would have been invisible in that output, and the natural next move (narrow the
+globs until it's quiet) is exactly how 9/10 and 9/11 produced their false negatives.
+
+**The fix, and the durable rule.** Grep the **citation form**, not the id: `CompiledDocument/<id>`.
+Three clean negatives in three lines. And then — this is the part worth keeping —
+
+> **Every negative link-rot check must carry a positive control in the same invocation.**
+
+The re-run appended `grep -rn "CompiledDocument/21463"` — an id known to be cited — and it printed
+`PRIMARY-SOURCES.md:130`. That one line is what licenses reading the three empty results as *absence*
+rather than as *the grep didn't run*. It costs nothing and it is the only cheap thing that
+distinguishes the two.
+
+The 9/10 (wrong directory), 9/11 (zsh ate the unquoted glob) and 9/12 (output too noisy to read)
+failures are three different bugs with one signature: **an empty result set that the method cannot
+tell apart from a broken search.** Reporting the directory (9/10's fix) and asserting the search ran
+(9/11's fix) each close one door. A positive control closes all of them at once, because a control
+that fails to fire proves the harness is broken no matter *why*.
+
+**Smaller note from the same run — the client can be the outage.** System Python 3.9's `urllib`
+cannot complete a TLS handshake with `losaltosca.api.civicclerk.com`
+(`SSLError: TLSV1_ALERT_PROTOCOL_VERSION`); plain `curl` gets **200** on the identical URL. Read
+against the 9/11 entry, this widens it: uniform failure is a bug signature, and the bug may be in the
+**HTTP client**, not only in the argument parsing. Before recording a surface as inaccessible, retry
+it with a second client — not just a second user-agent. Recorded in `sb79-update-scan` so the Los
+Altos sweep stays on `curl`.

@@ -97,10 +97,13 @@ wrong, and it blocked Atherton's minutes for five weeks. The correct route is
 Alto in `learnings.md` (2026-07-18), which nobody generalized to the other PrimeGov
 instances. Confirmed live on 2026-08-06 against three documents on two instances:
 `atherton.primegov.com` doc **7244** (3/18/2026 approved Minutes, 310,853 B, 4 pp.) and doc
-**7311** (4/15/2026 Minutes, 340,093 B), plus `cityofsancarlos.primegov.com` doc **17632**
-(8/10/2026 special-meeting Agenda, 466,179 B, 2 pp.). Note the id is the document's `id`
-from the calendar's `documentList`, **not** its `templateId`, and `-L` is required (without
-it you get a ~494-byte redirect stub that `file` reports as HTML).
+**7311** (4/15/2026 Minutes, 340,093 B), plus `cityofsancarlos.primegov.com` doc **17716**
+(8/10/2026 special-meeting Agenda, 466,179 B, 2 pp. — ⚠️ **this example was `17632` until
+2026-09-13, when a rot sweep found that id unpublished**; same document, same byte size, new
+id, which is exactly the type-1 rotation the "diff the documentList" section describes, and a
+reminder that a *worked example in this file* rots like any other citation). Note the id is
+the document's `id` from the calendar's `documentList`, **not** its `templateId`, and `-L`
+is required (without it you get a ~494-byte redirect stub that `file` reports as HTML).
 
 The genuine limit is narrower: `Portal/viewer?id=<docId>` (the Accusoft shell) is useless,
 and `historyattachment` serves attachments only. Neither of those implies the compiled

@@ -3286,3 +3286,75 @@ against the 9/11 entry, this widens it: uniform failure is a bug signature, and 
 **HTTP client**, not only in the argument parsing. Before recording a surface as inaccessible, retry
 it with a second client — not just a second user-agent. Recorded in `sb79-update-scan` so the Los
 Altos sweep stays on `curl`.
+
+---
+
+## 2026-09-13 — The documentList diff cannot find rot that predates the watch, and a negative control is the other half of a positive one
+
+Yesterday's rule — *every negative link-rot check must carry a positive control in the same
+invocation* — held up today and caught nothing, because today's rot was **invisible to the
+instrument that rule protects.**
+
+**The find.** `PRIMARY-SOURCES.md:528` cited
+`cityofsancarlos.primegov.com/Public/CompiledDocument/17632` as the sole source for the open
+`BP I SPE, LLC v. City of San Carlos` lead. It serves the 1,101-byte `text/html` "Document Not
+Found" page under **HTTP 200** — the 8/14 failure mode. The live id is **17716** (PrimeGov meeting
+**2914**, 8/10/2026 Council Special Meeting): **466,179 B, 2 pp. — the exact byte size this project
+recorded for 17632 on 8/06** — carrying the same closed-session item verbatim, case number and all.
+Same document, rotated id. No evidence changed; only the URL had died.
+
+**Why five weeks of two-way documentList diffs never saw it.** The 8/14 diff computes
+`removed = [d for d in prev if d not in now]` — it can only fire for a document that leaves a
+meeting **while that meeting is already in `seen_meeting_docs`**. Meeting 2914 entered the watch set
+*after* the rotation, so its baseline was `["17716"]` from day one. There was never a `prev`
+containing 17632 to diff against. The diff is a **change detector on the source**, and it is
+structurally blind to a citation that died before the source came under watch — permanently, not
+just for a day.
+
+> **A change detector on the source and a validity check on the citation are different instruments.
+> Owning the first does not give you the second.**
+
+The second instrument is cheap and the project simply never built it: enumerate every
+`CompiledDocument/<id>` **cited in the repo**, probe each, and diff against "serves a real PDF." That
+is **23 requests**, it needs no history, and it is the only check that would ever have found this.
+Same shape as the 8/08 backfill lesson — a watermark scan is blind to what predates the watermark —
+one level up: the *watch set* has a start date too.
+
+**And the negative control, which is not the same thing as a positive one.** The first attempt at
+that sweep collapsed: `for id in $ids` in **zsh** does not word-split an unquoted parameter, so all
+27 ids became one token and every row printed identically. A positive control would **not** have
+saved it — with one token there is no per-id row to control. What exposed it was the deliberate
+bogus id appended to the list printing the same failure as everything else: the 9/11 signature,
+*when every target fails identically, suspect the harness*.
+
+Then the negative control earned its keep a second time, on a different vendor:
+
+| Surface | bogus id returns |
+|---|---|
+| PrimeGov `/Public/CompiledDocument/<id>` | `200` · `text/html` · **1,101 B** |
+| Los Altos CivicClerk `GetMeetingFileStream(fileId=…)` | `200` · **`application/pdf`** · **0 B** |
+
+A probe asserting `status==200 && content_type==application/pdf` — the obvious check, and the one
+this project had been running against Los Altos fileIds — **passes a fileId that does not exist.**
+The discriminator is **size**, and it is vendor-specific.
+
+> **Pair every positive control with a negative one, and measure what "not found" looks like on
+> *that* surface before trusting the predicate.** The positive control proves the probe fires; only
+> the negative control proves it *discriminates*.
+
+**Smaller note — the HCD content-hash detector is mostly measuring navigation.** The 9/11 hash
+baseline for `hcd.ca.gov/planning-and-research/sb79-tod` did not reproduce today (16,839 → 16,731
+chars; 17 → 15 "SB 79 sentences"), and no permutation of the recorded normalisation recovers it. It
+is not fetch jitter: five fetches — cache-busted ×3, plain, and Chrome-UA — are **byte-identical**
+after normalisation. The cause is that the hash covers the whole page, of which **6,947 chars are
+HCD's sitewide nav**, and that nav contains both `SB 2 Planning Grants` and two `SB 79` tokens — so
+a menu item churning moves the hash *and* the sentence count without a word of the page's own
+content changing. Splitting at `Breadcrumb Home SB 79 Transit-Oriented Development` gives a
+**9,784-char body** whose every recorded marker is verbatim intact: stamp `8/19/2026`, `65912` ×7,
+HCD's `64912.157` typo ×3, the three-branch compliance paragraph, the same three PDFs and
+`tod-compliance-diagram.webp`. Re-baselined on the body hash. Also worth writing down: this page's
+`last-modified` and `etag` are **generated per render** — a cache-busted request comes back stamped
+with the moment of the request and an etag equal to that Unix timestamp — so they are not weak
+change signals, they are **not change signals at all**. The 9/11 entry recorded the count as
+unstable and logged a lead; the lead's answer is that the instrument was pointed at the wrong half
+of the document.

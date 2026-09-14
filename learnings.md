@@ -3358,3 +3358,63 @@ with the moment of the request and an etag equal to that Unix timestamp — so t
 change signals, they are **not change signals at all**. The 9/11 entry recorded the count as
 unstable and logged a lead; the lead's answer is that the instrument was pointed at the wrong half
 of the document.
+
+## 2026-09-14 — The 403 that looks exactly like a dead city, and a log that cannot tell you which UA worked
+
+The 8/15 rule says: *try the plain CLI UA **and** a browser UA before recording any domain as
+inaccessible, and write down which one worked.* Today that rule was the only thing standing between
+this project and a false negative on a tracked city — and the second half of it turned out never to
+have been followed.
+
+**The near-miss.** `menlopark.gov/Agendas-and-minutes` was fetched with a Chrome UA, which is what
+`padailypost.com` and `hklaw.com` require, and returned **403 · 398 B · zero hrefs**. That is not a
+soft failure. It is a clean, confident, small-bodied refusal, and it is *character-for-character the
+shape* of the honest negatives already in the matrix — `mountainview.gov` answers 403 · 426 B, and
+`redwoodcity.org` 403 · 408 B, on every UA there is. Had the sweep stopped there, the log would have
+carried "Menlo Park: 403 both UAs — checked, inaccessible" and it would have read as unremarkable,
+because two of the neighbor cities legitimately answer that way every single day.
+
+Plain `curl` returns **200 · 222,997 B · 719 hrefs** on the identical URL. `Wget/1.21.4` returns the
+same bytes. A suppressed UA (`-A ""`) 403s. Menlo Park is a **`paloalto.gov`-shaped** domain — it
+blocks browser *impersonation* — and it had been silently sorted into the wrong family.
+
+> **A 403 carries no information about whether a different client would have been served.** It is
+> equally convincing on a domain that refuses everyone and on a domain that would have handed you
+> 223 KB. The distinguishing test is cheap, deterministic, and the *only* way to tell the two apart —
+> so it is not a fallback you reach for when a 403 looks suspicious. Nothing about a 403 ever looks
+> suspicious.
+
+Behind the page: the 9/02 **Housing Commission** agenda packet (166 pp.), the 8/05 packet (26 pp.)
+and the 9/09 Complete Streets packet (64 pp.), all fetched and grepped, all **zero** SB 79. The
+Housing Commission is the Menlo Park body most likely to carry an SB 79 item, and it had never been
+opened — the 9/09 lead about reading MP's attachments rather than grepping its listing is only now
+reaching the commission agendas.
+
+**The part that should not have needed finding.** Was this a policy flip, or has the sweep simply
+been lucky about UA choice? **The daily log cannot answer that**, and neither can `run-log.md` for
+any prior day: every entry records the surface, the byte count and the href count, and **not one
+records which user-agent produced them.** The 8/15 rule's second clause — *write down which one
+worked* — was written into the scan skill and then never carried into the artifact where it would
+do any good. So a domain can change its UA policy and the log will show only a fetch that used to
+succeed and now 403s, with no way to tell a server-side change from a client-side choice.
+
+> **An instrument's parameters belong in its output.** A measurement logged without the setting that
+> produced it cannot be compared to tomorrow's measurement — it can only be compared to tomorrow's
+> *assumption*. This is the 9/08 lesson ("when your own daily log is the only witness, it is not a
+> witness") applied to how a fetch was made rather than to what it returned.
+
+Matrix updated with `menlopark.gov` and `hoodline.com`; from here the run log records the working UA
+for any domain where the two UAs disagree.
+
+**Unrelated, and logged rather than acted on: a bounded-set conflict.** A previously unindexed
+source — 21 Elements / SCCPC's SB 79 implementation tracker (San Mateo County housing-element
+collaborative, March 2026) — records Atherton staff telling a 3/9 session there are **10 sites**
+within a quarter mile of a Tier 1 stop. `neighbors.html` says, sourced to the Town, **seven**
+properties on Glenwood, Laurel and Victoria. Both cannot be a count of the same thing. The site was
+**not** changed: the Town's own figure is the stronger source, the tracker is a third party's
+summary of a verbal presentation given nine days before the ordinance's second reading, and the
+staff report it links is behind the Accusoft shell (id 3442 is not a compiled-document id, so
+`/Public/CompiledDocument/3442` returns the 1,101-byte not-found page). Recorded as an open lead
+with the discrepancy stated in the index row. Worth noting what the tracker *is* good for: it names
+the staff point person and email for each jurisdiction and their intended path on all three
+off-ramps — a route to people, not a citation, and every word of it is PROPOSED rather than HAPPENED.

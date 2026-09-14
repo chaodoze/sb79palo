@@ -460,11 +460,24 @@ For a typical "anything new on SB 79?" prompt:
   | `hklaw.com` | 403 (4,548 B block page) | 403 | **200** (64 KB) |
   | `padailypost.com` | 406 (300 B) | — | **200** (348 KB) |
   | `mountainview.gov` | 403 (426 B) | 403 (426 B) | 403 (426 B) |
+  | `menlopark.gov` | **200** (222,997 B) | **200** (222,997 B) | 403 (398 B) |
+  | `hoodline.com` | 403 (5,369 B) | — | 403 (5,646 B) |
+
+  ⚠️ **`menlopark.gov` row added 2026-09-14, and it nearly cost a tier-5 city.** The daily sweep
+  reached for a Chrome UA first — reasonable, since that is what `padailypost.com` and `hklaw.com`
+  require — and got **403 with a 398-byte body and zero hrefs**, which is indistinguishable from a
+  dead surface. Plain `curl` and `Wget` both return **222,997 B and 719 hrefs** on the identical
+  URL. Menlo Park is a **`paloalto.gov`-shaped** domain (blocks browser impersonation), not a
+  `padailypost.com`-shaped one. A suppressed UA (`-A ""`) 403s as well, so the working rule is an
+  *honest* CLI UA, not the absence of one. `hoodline.com` is the second honest negative alongside
+  `mountainview.gov`: it refuses both UAs, so it is **checked, inaccessible**.
 
   So: try the plain CLI UA **and** a browser UA before recording any domain as inaccessible, and
-  write down which one worked. `mountainview.gov` is the honest negative of the four — it refuses
-  all three, so it is **checked, inaccessible**, and **Legistar is the working route for Mountain
-  View** (`webapi.legistar.com/v1/mountainview/…`, which also serves the meeting attachments).
+  write down which one worked. **Two UAs is the floor, not a fallback you reach for after a 403
+  looks convincing** — the 403 is exactly as convincing on a domain that would have served you.
+  `mountainview.gov` is the honest negative of the set: it refuses all three UAs, so it is
+  **checked, inaccessible**, and **Legistar is the working route for Mountain View**
+  (`webapi.legistar.com/v1/mountainview/…`, which also serves the meeting attachments).
 
 - **Neighbor-city Legistar carries the SB 79 content in the attachments, same as PrimeGov.** The
   events API gives `EventAgendaFile` (a Granicus PDF — grep it), and

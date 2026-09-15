@@ -3418,3 +3418,101 @@ staff report it links is behind the Accusoft shell (id 3442 is not a compiled-do
 with the discrepancy stated in the index row. Worth noting what the tracker *is* good for: it names
 the staff point person and email for each jurisdiction and their intended path on all three
 off-ramps — a route to people, not a citation, and every word of it is PROPOSED rather than HAPPENED.
+
+## 2026-09-15 — The answer to yesterday's discrepancy was on a city FAQ page nobody had opened, and a validity sweep that counts dead ids is measuring the wrong thing
+
+**The lead closed itself in one fetch, from a surface the index had never listed.** Yesterday's run
+opened `lead:atherton:parcel-count-7-town-vs-10-21elements-tracker`: the 21 Elements tracker recorded
+Atherton staff saying "10 sites within ¼-mile of a Tier 1 TOD stop," while `neighbors.html` says
+**seven**, per the Town. The run reasoned correctly that the Town's own number was the stronger source
+and left the site alone — but it left the discrepancy standing, with the Town's number sourced to a
+page fetched **2026-07-19**. Today a routine WebSearch surfaced **`athertonca.gov/745/SB-79---FAQs`**,
+which greps **zero** in `PRIMARY-SOURCES.md`, `sources/index.json` and every page. It is the Town's own
+standing public explainer, it carries **28** "SB 79" occurrences, and its second answer reads: *"Atherton
+has **seven lots** within one-quarter mile of a **pedestrian entrance** to the Menlo Park Caltrain
+station."* One fetch, and a 24-hour-old open lead is closed in the site's favour — plus a qualifier the
+site does not state (the quarter mile runs from a **pedestrian entrance**, not the station centroid).
+
+**Why it had been missed is the useful part, and it is a new shape.** This project's Atherton coverage
+is deep — approved Minutes doc 7244, the HCD substantial-compliance letter, the Ch. 17.59 ordinance
+text, the PC draft minutes inside the July packet, even a meeting that vanished from the calendar. Every
+one of those is an **event** artifact: something that happened on a date, discovered through a
+dated feed (a documentList diff, an agenda sweep, a press item). The FAQ is a **standing** artifact —
+no date, no feed, no event, and therefore invisible to every instrument this scan owns. A watermark scan
+finds things that *changed*; a standing explainer's whole nature is that it does not change. The 8/08
+backfill entry recorded that a watermark scan is blind to what predates the watermark. This is the
+orthogonal blindness: **it is also blind to what has no date at all**, and no amount of backfilling a
+window would have found this page. ⚠️ Note what follows for citation: the page carries **no
+last-updated stamp**, so its recency cannot be asserted — it is current-as-fetched, not dated.
+
+**The cheap generalisation:** for every tracked city, enumerate the *topic* pages — FAQ, program page,
+"SB 79" landing page — once, deliberately, the same way 8/08 says to enumerate a closed window once.
+This is the same move that recovered the HCD letter on 2026-08-07 (*"check whether the subject
+jurisdiction publishes it"*), one step further out: don't only ask which document the city posted,
+ask **what the city says in its own voice, on a page with no date on it**.
+
+**And the tracker was wrong, which is worth stating plainly.** The 9/14 row indexed the 21 Elements
+figure with a caveat and deferred to the Town. That deferral is now confirmed by the Town directly. A
+third party's summary of a verbal staff presentation lost to the jurisdiction's own published FAQ —
+which is the ordering this project already assumes, now with a worked example behind it.
+
+### The validity sweep counts dead ids; what it needs to count is dead *links*
+
+Today's cited-document sweep reported **2 dead of 24**. Only **one** was a defect. `21282` (Palo Alto
+Aug 17 draft Action Minutes, replaced by signed doc **21491** and unpublished) was live rot: it sat
+inside a real markdown link in `PRIMARY-SOURCES.md:127`, and a reader clicking it got the 1,101-byte
+"Document Not Found" page at HTTP 200. `17632` was **not** a defect — it is San Carlos's *already
+repaired* id, surviving only as narrative prose in `learnings.md` and as the explicit string
+`*(dead, superseded: 17632)*` in the index, both of which exist **precisely to record that it is
+dead**. The sweep's regex scrapes `host/Public/CompiledDocument/<id>` from anywhere in the file and
+cannot tell a live citation from an epitaph — so a correct repair **permanently** adds one false
+positive to every future run's count, and the count drifts upward as the project does its job well.
+**A sweep whose false-positive rate grows with the number of correct repairs will be ignored.**
+The fix is to anchor on the link form — `\]\(https?://[^)]*<id>[^)]*\)` — not the bare URL, and to run
+the bare-URL scrape only as a second, advisory pass. Applied by hand today (it is what proved `17632`
+was safe); `lead:tooling:cited-id-validity-sweep-not-automated` now has a **specification**, not just a
+request, and that specification is the reason to automate it rather than keep re-deriving it.
+
+### Also from this run, for the record
+
+- **Nine document-set changes in one day, and every one of them tier (c) on substance.** Palo Alto
+  posted signed Action Minutes for **8/17** (21491) and **8/24** (21492) — both replacing unpublished
+  drafts (21282, 21331) — plus State of the City **8/19** (21488), UAC **8/05** Summary Minutes (21494)
+  and CASC **9/04** Summary Minutes (21493). San Carlos posted **8/10** Minutes for both the special
+  (17913) and regular (17914) meetings and **9/14** Supplemental Materials (17912). All eight fetched
+  and read: **zero** "SB 79" / "65912" anywhere. San Carlos 17912's two "Senate Bill" hits are **SB 946
+  and SB 635, sidewalk vending** — a reminder that the bare string "Senate Bill" is not a topic filter.
+- **The 8/24 draft removal (21331) was not rot, and the check that proved it is the one above.** It
+  appears in `learnings.md` as prose — "posted its Draft Action Minutes (doc 21331)" — with no URL at
+  all. Same shape as 17632: a removal is only a defect if something *links* it.
+- **A route this index explicitly named for a human got walked by the agent instead, and returned a
+  null.** The `BP I SPE, LLC v. City of San Carlos` row listed two routes: the court lookup, and "the
+  8/10 post-meeting closed-session report-out." The 8/10 Minutes posted today and say, verbatim, *"City
+  Attorney Greg Rubens reported that there are no reports from Closed Session."* The session was
+  **held**; nothing was reported. That is neither evidence the case concerns SB 79 nor evidence it does
+  not — the lead stays **open on substance** — but the route is now **exhausted**, and the row says so
+  so no later run re-walks it. **Recording that a route returned nothing is worth as much as recording
+  a finding**; otherwise the same dead end gets re-explored monthly.
+- **The 9/14 Council agenda recompiled post-meeting and the 8/13 rule caught it.** Meeting 2902's HTML
+  Agenda went **21469 → 21490** at `publishDate` **2026-09-15T01:22** — hours *after* the meeting — and
+  the attachment set grew **34 → 42**. All 42 re-downloaded and re-grepped: the same **two** carriers
+  (Information Report B, 4 hits; PTC Applications, 3), and the eight new documents — including the
+  9/14 City Manager Comments Presentation and Item 6 Public Comment — grep **zero**. Type-3 id
+  rotation, not rot, exactly as 2026-08-14 specifies.
+- **The HCD body-hash baseline failed to reproduce, and the instrument was at fault — again.** First
+  computation gave 9,733 chars / `a5395abd…` against a baseline of 9,784 / `9ede21fa…`, with SB 79
+  occurrences 19 → 18. The delta is **51 characters — exactly the split key** `"Breadcrumb Home SB 79
+  Transit-Oriented Development"` plus a space, and that key contains the one missing "SB 79". The
+  baseline **includes** the key; today's split **excluded** it. With the key retained the hash
+  reproduces byte-exactly. The 9/13 entry already warned that this page's `etag`/`last-modified` are
+  generated per render and are not change signals at all; the lesson extends to the replacement
+  instrument. **A content-hash baseline must record its split semantics, not just its split key** —
+  `body_split_key` alone is ambiguous between inclusive and exclusive, and the ambiguity presents as a
+  content change on a page that never moved. `content_baselines` now says which.
+- **A `SB79` token that is not SB 79.** `paloalto.gov/.../SCAP` moved in the sitemap and grepped one
+  hit; it is the substring `ASB79H` inside a base64 ASP.NET `__VIEWSTATE` blob. Grep the
+  **tag-stripped text**, not the raw HTML, before believing a single hit on a CMS page.
+- **`menlopark.gov` re-confirmed on the matrix one day after it was added**: plain `curl` **200 ·
+  221,715 B · 720 hrefs**, Chrome UA **403 · 398 B · 0 hrefs**. Freshness asserted per the 9/07 rule —
+  newest dated href **20260915**, i.e. today. `mountainview.gov` (403 both UAs), `redwoodcity.org` (403
+  both UAs) and `hoodline.com` (403 both UAs) remain honest negatives.

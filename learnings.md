@@ -3534,8 +3534,9 @@ Two things worth keeping:
 - **A counter-citation written against a specific wrong number does not generalise.** The July note is
   correct and was useless here: a reader arriving with "4–3" in hand would find the page rebutting
   "3–2" and could reasonably conclude the site was addressing some other dispute. The durable claim is
-  structural — *no adopt vote was taken, and two of seven members were recused* — and that is what the
-  note now leads with. **Counter-cite the shape of the error, not the instance.** Same lesson the
+  structural — *no adopt vote was taken, and two of seven members were recused* — so the note was
+  restructured to lead with that and treat each outlet's number as an instance beneath it.
+  **Counter-cite the shape of the error, not the instance.** Same lesson the
   KQED row records in `PRIMARY-SOURCES.md` ("counter-cite the case, not the URL"), in a new place.
 - **The error is now in the answer layer, not just the article.** The WebSearch summary for
   `"Palo Alto" "SB 79" September 2026`, generated during this same run, states as fact: *"the ordinance

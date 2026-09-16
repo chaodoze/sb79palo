@@ -3516,3 +3516,36 @@ request, and that specification is the reason to automate it rather than keep re
   221,715 B · 720 hrefs**, Chrome UA **403 · 398 B · 0 hrefs**. Freshness asserted per the 9/07 rule —
   newest dated href **20260915**, i.e. today. `mountainview.gov` (403 both UAs), `redwoodcity.org` (403
   both UAs) and `hoodline.com` (403 both UAs) remain honest negatives.
+
+## 2026-09-16 — A wrong vote count reached the answer layer, and the site's counter-citation was aimed at the wrong number
+
+`june-15-decision.html` has carried a section called "A note on the vote count" since July. It exists
+because two outlets recapped June 15 as a **3–2 vote with "Burt and Lauing in favor"** when the record
+shows **no motion to adopt 23C was ever made** — there was nothing to vote on. The note names those two
+outlets and that number.
+
+Today's sweep found a **third** count, in Palo Alto Online's recap of a September 15 candidate forum:
+the ordinance *"failed by a 4-3 vote,"* with all seven members assigned a side, including **Reckdahl
+and Lu — who were recused from the SB 79 item at both June meetings**. Three published accounts, three
+mutually exclusive numbers, and the record agreeing with none of them.
+
+Two things worth keeping:
+
+- **A counter-citation written against a specific wrong number does not generalise.** The July note is
+  correct and was useless here: a reader arriving with "4–3" in hand would find the page rebutting
+  "3–2" and could reasonably conclude the site was addressing some other dispute. The durable claim is
+  structural — *no adopt vote was taken, and two of seven members were recused* — and that is what the
+  note now leads with. **Counter-cite the shape of the error, not the instance.** Same lesson the
+  KQED row records in `PRIMARY-SOURCES.md` ("counter-cite the case, not the URL"), in a new place.
+- **The error is now in the answer layer, not just the article.** The WebSearch summary for
+  `"Palo Alto" "SB 79" September 2026`, generated during this same run, states as fact: *"the ordinance
+  failed by a 4-3 vote, creating a two-week window,"* and *"10 SB 79 projects were proposed."* Both come
+  straight from the one article. A wrong number in a local recap used to decay; a wrong number that a
+  search engine restates in prose is now the default answer for anyone who asks the question casually.
+  That raises the value of the site's counter-citations and lowers the value of assuming the record
+  speaks for itself.
+
+Corollary on the second figure: the same article quotes a candidate counting **"10 SB79 projects"** in
+the two-week window against the city's own enumerated **nine**. Not corrected on the site — a candidate's
+quoted number is a position, not a claim by the outlet — but indexed, because the same search summary
+repeats it too. Routed to PR #32 with the recusal verification a human still owes.

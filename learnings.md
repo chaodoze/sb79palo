@@ -3550,3 +3550,43 @@ Corollary on the second figure: the same article quotes a candidate counting **"
 the two-week window against the city's own enumerated **nine**. Not corrected on the site — a candidate's
 quoted number is a position, not a claim by the outlet — but indexed, because the same search summary
 repeats it too. Routed to PR #32 with the recusal verification a human still owes.
+
+## 2026-09-18 — A commission's outcome surfaced first in the *next* body's staff report, not in its own minutes; and a hash-shaped token in the log was an ETag
+
+**The watch was aimed at the right question and the wrong surface.** Since 8/19 this log has counted
+the days Mountain View EPC meeting 3398's minutes stayed `null` (day 34 yesterday), and `neighbors.html`
+said, correctly, *"What the commission did is not yet in the public record."* Today the Council agenda for
+**9/22** (Legistar 3365, Item 6.2) posted with a 28-page staff report whose pp. 5–6 recount the August 19
+hearing — speakers, written comments, *"The EPC recommendation is provided below"* — and a draft ordinance
+whose recital says the EPC *"recommended the City Council approve the Zoning Map Amendment."* The first
+public trace of a commission outcome was **the staff report of the body one step up**, written to carry the
+recommendation forward, and it arrived while the commission's own minutes were still unpublished. Nothing
+about the minutes watch was wrong; it was just the slower of two surfaces, and the faster one was never on
+the list. **When a body's minutes are pending, also watch the next body's agenda for the same item** — the
+upstream staff report is where the outcome is restated first, and a `data-videolocation`-style offset is
+not needed to find it: grep the attachment for the commission's name and "recommend."
+
+Two things about what that trace is worth. It is **still not the record** — no vote count, no mover, and a
+recital drafted by staff before the Council hearing it also "recites" (the ordinance already contains
+*"WHEREAS, the City Council held a public hearing on September 22, 2026"*, four days early). So the calendar
+half (hearing agendized, second reading set 10/13) deployed as tier (b) in `fecfb95`, and the outcome half
+went to **PR #34** with the video check the human still owes. And the site's sentence *"not yet in the
+public record"* had become **wrong in a narrow way while staying right in the way that matters**; the PR
+copy says both, rather than flipping to "recommended."
+
+**The staleness grep would not have caught the tentative date going stale.** `neighbors.html` carried *"A
+Council public hearing is tentatively scheduled for September 22, 2026"* — a forward claim four days from
+expiring — and the daily grep for past-due forward claims matches `will | is scheduled to | expected to |
+set to`, none of which is *"tentatively scheduled for."* Today's agenda replaced it before it aged out, by
+luck of timing, not by the check. Add the phrase; more generally, the verb list should be built from the
+site's own hedges (`grep -ohE '(tentatively|provisionally|expected|planned|anticipated) [a-z ]{0,20}for'`)
+rather than from what the author of the grep expected to have written.
+
+**And the instrument, again.** Every recent run-log line records MPO advisory `69c30846` and ABAG `6a8dbdca`
+as unmoved. Today's run computed sha256 of both PDFs, got `39061422` and `9bf70085`, and for one step read
+two unchanged state documents as changed at once. The logged tokens are the first eight characters of each
+file's **HTTP ETag** (`"69c30846-28d4b"`, `"6a8dbdca-126065"`), which the 8/25–8/26 entries even decode as
+mtime-size pairs. Same lesson as 9/13 and 9/15 — a baseline must record *what instrument produced it* — in
+a third form: a bare 8-hex token in prose reads as "a hash" to whoever comes next, and two pages both
+"changing" on the same day is itself the tell that the comparison, not the content, moved.
+`content_baselines` now carries both ETags and both sha256 prefixes, labelled.

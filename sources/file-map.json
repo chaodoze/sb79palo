@@ -14,8 +14,8 @@
       "title": "SB 79 Palo Alto — homepage",
       "url": "https://sb79.numtot.org/",
       "category": "site",
-      "content_hash": "8e320268f03313c127188f062b3e7f1aa4d6c60ae573cb7ab590982fbb3e542d",
-      "openai_file_id": "file-GoeYVtDwFa4tZvWNStbwNL"
+      "content_hash": "9f049c4d69c74f92c7f955d513511e4a0a32dfdef4706809eca5f643ef25376a",
+      "openai_file_id": "file-ESGdoMHccnKJyy7QYfFPJv"
     },
     "site-learn": {
       "id": "site-learn",
@@ -62,8 +62,8 @@
       "title": "Neighboring cities — SB 79 responses",
       "url": "https://sb79.numtot.org/neighbors.html",
       "category": "site",
-      "content_hash": "85d6553449fe1aaefd9f9d72e852e7418bb16aa6fb65996bc60eefd986e07916",
-      "openai_file_id": "file-Lq7hdERJn6HiyhB7Q1s3XZ"
+      "content_hash": "ec9a64e939e47cdaee45b97c1a219f3bd84c0e72fe84cfdbb1869b07585bcb7f",
+      "openai_file_id": "file-EXMS5iip15kWFrvg46p75M"
     },
     "site-tier-analysis": {
       "id": "site-tier-analysis",
@@ -86,8 +86,8 @@
       "title": "Primary sources index (editorial master list)",
       "url": "https://github.com/chaodoze/sb79palo/blob/main/PRIMARY-SOURCES.md",
       "category": "site",
-      "content_hash": "a95c168ba07b40ab60244fdd6e5fad6d21b5518f0bf15fb0ac3134f12d295d36",
-      "openai_file_id": "file-CX6MHpZUtbuM3sF5hKLqQm"
+      "content_hash": "00bbf605645d574a0e0ca7779ee89042f74da36d8afcfa0d917a80da32d6c089",
+      "openai_file_id": "file-ByGs2UXDZ12XW832mAQ3tX"
     },
     "statute-leginfo-nav": {
       "id": "statute-leginfo-nav",

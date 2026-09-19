@@ -3590,3 +3590,31 @@ mtime-size pairs. Same lesson as 9/13 and 9/15 — a baseline must record *what 
 a third form: a bare 8-hex token in prose reads as "a hash" to whoever comes next, and two pages both
 "changing" on the same day is itself the tell that the comparison, not the content, moved.
 `content_baselines` now carries both ETags and both sha256 prefixes, labelled.
+
+## 2026-09-19 — A roundup of suits the index already had carried a fifth one, and the dedup matched on the place name
+
+The 9/16 run-log line reads: *"every lawsuit lead (SANDAG, Oceanside/Solana Beach, San Diego, Montebello,
+SF …) already in the index."* Today's lawsuit search returned HousingWire's 9/18 roundup under the slug
+`sb79-upzoning-san-diego`, with a search summary about San Diego and SANDAG, and the word *Oceanside* in it.
+Every dedup key the sweep uses — outlet, headline, slug, search summary, the city names in the body — said
+"restated coverage, tier (c)." The body, read in full, counts **"the five"** and describes a **Sept. 11
+petition against the City of Oceanside** that the index did not have: a sidewalk-gap exclusion under the
+§65912.160(e)(1) walking-path exemption (the second suit on the theory that opened this project's own
+open lead), and the *city's* lower-tier classification of its transit center. Routed to PR #35, press-only.
+
+Two things worth keeping:
+
+- **Dedup on the respondent, not the place.** "Oceanside" was already "in the index" — as a *station* in
+  the SANDAG map suit. A suit *against* the City of Oceanside shares that token and nothing else: different
+  respondent, different acts (a parcel exclusion and a city tier finding, not an MPO map), different
+  filing date. Lawsuit fingerprints should be `outcome:<respondent>:<theory>`, and a place name matching an
+  existing row is a reason to read, not to skip. The 9/16 line's "Oceanside/Solana Beach" shorthand was a
+  station list standing in for a case list.
+- **A roundup of known material is where the unknown material hides, because the headline can only name
+  one thing.** This is the 9/09 listing-excerpt lesson and the 9/13 "the substance is not in the surface you
+  grepped" lesson in a fourth costume: the surface this time was the *set of proper nouns* in a summary. The
+  same article's last paragraph quotes counsel that the plaintiffs "have reached agreements with Beverly
+  Hills, Pasadena and **Burlingame**" — a Peninsula Caltrain city the site does not track — which no search
+  would ever surface under an SB 79 + Burlingame query, because the article is not about Burlingame. When an
+  in-window article on the topic is a roundup, read it to the end and diff its *list* against the index's
+  list, item by item, before tagging it (c).

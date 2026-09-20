@@ -362,6 +362,13 @@ These are *primary* records (entered into the official record) but reflect each 
 - ABAG SB 79 Summary — `https://abag.ca.gov/sites/default/files/documents/2026-04/SB79-Summary-040826.pdf`
 - LegInfo bill page — `https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB79`
 - Codified Gov. Code §65912.161 (the off-ramp statute) — `https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=65912.161`
+  ⚠️ **Added 2026-09-20 — neither of the two lines above can see an amendment by a *different* bill.** The SB 79
+  bill page is frozen at chaptering, and a codified-section page does not change until an amendment is
+  *operative* (AB 2576, Ch. 214, Stats. 2026, rewrote §65912.161(b)(1)(F) on 9/14–15 and the codified page will
+  show the 2025 text until 2027-01-01). Watch at the **bill** level: a LegInfo keyword search on `65912.15` /
+  `65912.16`, plus the pages of known amending bills —
+  `https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260AB2576` (chaptered) and
+  `…bill_id=202520260AB2415` (double-jointed with it; last row 08/19/26 concurrence pending).
 - Any AG opinion or filed legal challenge (search "SB 79 lawsuit" / "SB 79 court")
 
 ### Tier 5 — Neighbor cities (already tracked on `neighbors.html`)

@@ -3618,3 +3618,39 @@ Two things worth keeping:
   would ever surface under an SB 79 + Burlingame query, because the article is not about Burlingame. When an
   in-window article on the topic is a roundup, read it to the end and diff its *list* against the index's
   list, item by item, before tagging it (c).
+
+## 2026-09-20 — A different bill amended SB 79's off-ramp section five days ago, and both LegInfo watches were structurally blind to it
+
+The daily state-law check has two LegInfo surfaces: SB 79's own bill page (still "Chaptered 10/10/25,"
+47 history rows, unchanged for eleven months) and the codified `codes_displaySection` page for
+§65912.161 (still "(Added by Stats. 2025, Ch. 512, Sec. 1. (SB 79))"). Both were checked today and both
+read exactly as they did yesterday. Meanwhile **AB 2576 (Harabedian), Chapter 214, Statutes of 2026** —
+approved and filed September 14 per the chaptered text, 09/15 per the history log — had rewritten
+§65912.161(b)(1)(F) from "a local register" to three categories (local register; contributing sites in a
+State Historic Resources Inventory district; parcels individually listed in the SHRI). It surfaced only
+because a refined WebSearch on "65912.161 amend" ran as an afterthought to the LegInfo step. Routed to
+PR #36.
+
+- **A bill page never changes after chaptering, and a codified-section page does not change until an
+  amendment is *operative*.** AB 2576 has no urgency clause, so the codified page will keep showing the
+  2025 text until 2027-01-01 — three and a half months in which the law on the books and the law on that
+  page differ. Neither surface can ever answer "has anyone amended this section?" A watermark scan that
+  reads both as "unchanged" has measured the instrument, not the statute. The question needs a
+  **bill-level** watch: a LegInfo keyword search on the section number (`65912.15`/`65912.16`), or the
+  "Today's Law As Amended" view, run at least weekly during session and daily in the two weeks after
+  the Governor's signing deadline (Sept 30).
+- **Read the double-jointing sections.** AB 2576 carries a Sec. 1.5 that only operates if AB 2415 is
+  also enacted and AB 2576 is enacted last. AB 2415's last history row is 08/19 "Concurrence in Senate
+  amendments pending" — so Sec. 1 governs. A summary that quoted Sec. 1.5's small-city historic-district
+  carve-out as law would be wrong; a summary that omitted the contingency would be incomplete. Both
+  sections are in the same chaptered text, one after the other.
+- **The site's FAQ was ahead of the statute.** `faq.html` and `may-4-decision.html` have said since May
+  that SB 79 lets cities exempt sites "on a National, California, or local historic register." The
+  codified (b)(1)(F) names only a local register. That sentence becomes true from 2027 by way of this
+  bill, which is a strange way to find out it was not true before. Flagged in the PR body rather than
+  silently fixed, because the record page is dated.
+
+Also today: yesterday's run-log line counted Los Altos CivicClerk at "49 events (15/15/15/4)"; the state
+map written by that same run holds **45**, and today's API returns 45 on pages of 15/15/15/0 with no
+event gone. The log number was not derived from the artifact the diff runs against. When a count goes
+in the log, take it from the same object that gets written to `state.json`, not from a separate tally.

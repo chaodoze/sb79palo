@@ -3654,3 +3654,36 @@ Also today: yesterday's run-log line counted Los Altos CivicClerk at "49 events 
 map written by that same run holds **45**, and today's API returns 45 on pages of 15/15/15/0 with no
 event gone. The log number was not derived from the artifact the diff runs against. When a count goes
 in the log, take it from the same object that gets written to `state.json`, not from a separate tally.
+
+## 2026-09-23 — The fix for "a different bill amended §65912.161" was scoped to §65912.161, and SB 79's core section had been amended in July
+
+On 9/20 the lesson was: watch at the **bill** level, because neither the SB 79 bill page nor a codified
+section page can show an amendment by another bill. The Tier 4 note even said to search `65912.15` /
+`65912.16`. What was actually run that day was a web search on `65912.161`, the section that had just
+bitten. Today, running LegInfo's own 2025–26 keyword search once per SB 79 section (`65912.155`…`.162`)
+returned **four bills the repo had never mentioned**. One of them, **SB 722 (Ch. 100, Stats. 2026)**, is an
+**urgency** statute signed and operative **July 16**. It added **§65912.157(h)(3)**, which bars SB 79 projects
+on mobilehome, RV and special-occupancy park sites. Its findings name Sunnyvale. That is 69 days of the site
+describing SB 79's site rules without it. Routed to PR #37.
+
+- **A lesson learned on one section is a lesson about all eight.** The search costs six requests and
+  covers every section. Run it per section, not only on the section that just produced a finding.
+- **For an urgency statute, the codified page *does* move, and its history note says so.**
+  §65912.157's page reads "Amended … by Stats. 2026, Ch. 100, Sec. 2. (SB 722)". The 9/20 entry is right
+  that a codified page lags a *non-urgency* amendment until Jan 1. It does not follow that the page is
+  useless. Grep each SB 79 section page's history note for `Amended` as a second, independent check.
+- **The keyword search also returns bills that only cross-reference a section** (AB 1751, AB 2074). Read
+  the title line (`An act to amend Section …` vs `to add Section …`) before calling a bill an amendment.
+- **Enrolled is not law.** SB 1361 amends §65912.157(c) and sits on the Governor's desk until 9/30.
+  Indexed as pending only. Re-check each history page until it says Chaptered or Vetoed.
+
+Also today, two things that were instrument noise, not findings:
+
+- Atherton's SB 79 FAQ counted **30** "SB 79" against a baseline of **28**. The 28 was counted in
+  tag-stripped **text** (body 7,028 chars, unchanged). The 30 was counted in **raw HTML**, which adds the
+  `<title>` and `<meta>` tags. Same page. A count in the log needs its instrument next to it, the same
+  lesson as 9/18's ETag.
+- The staleness grep flagged `index.html` "a Council hearing is tentatively set for September 22" as past
+  due. It is inside the dated **Aug 15** feed entry. Feed entries are a changelog, true as of their date,
+  and are not rewritten. The live state for that hearing is `neighbors.html`. Exclude `li.news-item`
+  bodies from the staleness grep, or it will keep pointing at history.

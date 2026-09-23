@@ -369,6 +369,14 @@ These are *primary* records (entered into the official record) but reflect each 
   `65912.16`, plus the pages of known amending bills —
   `https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202520260AB2576` (chaptered) and
   `…bill_id=202520260AB2415` (double-jointed with it; last row 08/19/26 concurrence pending).
+  ⚠️ **Added 2026-09-23 — run the keyword search once per SB 79 section, every section.** Doing it for
+  `65912.161` alone missed **SB 722** (Ch. 100, Stats. 2026, *urgency*, operative 2026-07-16), which added
+  §65912.157(h)(3), for 69 days. It works headlessly with plain curl:
+  `https://leginfo.legislature.ca.gov/faces/billSearchClient.xhtml?session_year=20252026&keyword=65912.157&house=Both&author=All&lawCode=All`
+  for `65912.155` through `65912.162`. Grep the results for `bill_id=`, then read each new bill's title line
+  (`amend` vs `add`). Also grep each codified section page for an `(Amended … by Stats. 2026 …)` history
+  note, since urgency amendments show there right away. Known pending as of 9/23: **SB 1361** (amends
+  §65912.157(c), enrolled 09/08) and **AB 1751 / AB 2074** (cross-references only).
 - Any AG opinion or filed legal challenge (search "SB 79 lawsuit" / "SB 79 court")
 
 ### Tier 5 — Neighbor cities (already tracked on `neighbors.html`)

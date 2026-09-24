@@ -3687,3 +3687,37 @@ Also today, two things that were instrument noise, not findings:
   due. It is inside the dated **Aug 15** feed entry. Feed entries are a changelog, true as of their date,
   and are not rewritten. The live state for that hearing is `neighbors.html`. Exclude `li.news-item`
   bodies from the staleness grep, or it will keep pointing at history.
+
+## 2026-09-24 — "Plan on the minutes" was a fact about one tool, and a vote became checkable 36 hours after the meeting
+
+The scan skill says a long meeting can't be verified headlessly: the transcriber times out on anything
+over ~3 hours, so plan on the minutes, which run weeks behind (Mountain View EPC 8/19 minutes: still
+unposted on day 36). Mountain View's 9/22 Council ran **5 h 41 m**. Its Item 6.2 outcome was an open lead.
+Today it was verified from the city's own video in about ten minutes of wall time:
+
+1. **Legistar's event items carry `EventItemVideoIndex`** (seconds into the clip) once the clerk indexes
+   the video. Here that came the day after the meeting: 6.2 = 3186 s, Item 7 = 13576 s. The item's
+   `EventItemActionText` was **cleared** at the same moment. That is the clerk starting minutes, not a
+   sign the item was pulled. `EventVideoPath` on the event stayed `null` even though the clip was live.
+2. **The Granicus clip id comes from `ViewPublisher.php?view_id=<n>`**. Mountain View Council is view 6;
+   views 1, 4 and 8–10 return a 16-byte 404. Its MediaPlayer page names an `archive-video…mp4`.
+3. **That MP4 403s from CloudFront unless you send a `Referer` of the MediaPlayer page and a browser UA.**
+   It answers 206 with both, and 403 with either one missing. A bare 403 there would have read as
+   "video not public".
+4. **Seek, don't download.** `ffmpeg -headers "Referer: …" -ss <s> -t <s> -i <mp4> -vn -ac 1 -ar 16000`
+   pulls a 22-minute mono clip (3.9 MB) straight off the range-capable URL. OpenAI `whisper-1`
+   (`verbose_json`, key in the repo `.env`) transcribes it in under a minute. Add the clip offset to
+   each segment's start so timestamps match the city's player.
+5. **Read backward from the roll call.** The end of the item held two 7–0 votes. The first was a
+   *listing/delisting* motion for the December register hearing. Only the second, made at 3:21:44,
+   carried the SB 79 zoning-map ordinance, and the mover read its title aloud. Read only the last roll
+   call and you learn the tally. Read the motion too and you learn *what* passed.
+
+It is still a PR (#38). A machine transcript misspells names ("Schallwalter"), and "with the following
+amendments" does not say which ordinance each amendment touches. But the PR now asks a human to watch two
+timestamped windows, not to wait for minutes.
+
+- **An access limit belongs to the tool that hit it.** "The transcriber times out" was true. "The meeting
+  can't be verified headlessly" didn't follow. Same shape as 8/06 (compiled documents) and 8/07 (HCD letters).
+- **Before routing an outcome to "wait for minutes", check for an item-level video index.** PrimeGov's
+  `data-videolocation` is the same signal for Palo Alto, San Carlos and Atherton.

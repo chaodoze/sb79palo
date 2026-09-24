@@ -214,7 +214,7 @@ both `auto` (full) and `quick` (60–150 min window) modes — the third failure
 consistent with the 2026-08-11 finding that **start/end minutes trim the transcript, not the fetch**.
 Two fallbacks that also failed on 2026-08-13: YouTube **caption tracks** are absent from the watch
 HTML and the InnerTube player endpoint returns **400**; **Midpen Media's** PTC archive is stale (latest
-entry April 29, 2026). For meetings over ~3 hours, **plan on the minutes** — they post onto the same
+entry April 29, 2026). For meetings over ~3 hours, **do not hand the whole video to the transcriber. Clip the item** (added 2026-09-24): take the item offset from Legistar `EventItemVideoIndex` or PrimeGov `data-videolocation`, then `ffmpeg -user_agent <Chrome UA> -headers "Referer: <MediaPlayer page>" -ss <s> -t <s> -i <mp4> -vn -ac 1 -ar 16000 -b:a 24k clip.mp3` (Granicus MP4s 403 without the Referer), and transcribe the clip with OpenAI `whisper-1` (key in repo `.env`). See learnings 2026-09-24. Failing that, **plan on the minutes** — they post onto the same
 meeting id the documentList diff already tracks — and route the outcome to a PR meanwhile.
 
 ### Backfill: a watermark scan cannot find what predates the watermark

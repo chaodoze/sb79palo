@@ -3721,3 +3721,23 @@ timestamped windows, not to wait for minutes.
   can't be verified headlessly" didn't follow. Same shape as 8/06 (compiled documents) and 8/07 (HCD letters).
 - **Before routing an outcome to "wait for minutes", check for an item-level video index.** PrimeGov's
   `data-videolocation` is the same signal for Palo Alto, San Carlos and Atherton.
+
+## 2026-09-30 — "Approved" was not a terminal state: PrimeGov re-published two signed Action Minutes under new ids
+
+The documentList diff flagged two type-1 removals on Palo Alto meetings **2835** (May 4) and **2838**
+(June 1). Their Action Minutes went from **20952 → 21635** and **21004 → 21636**. Both old ids now serve the
+1,101-byte "Document Not Found" page at HTTP 200. One was cited on a deployed page (`may-4-decision.html`),
+and both were cited in `PRIMARY-SOURCES.md`. Repointed and deployed the same run (c21377b).
+
+What was new: **21004 was already the approved, DocuSigned copy.** The 8/14 and later entries explain rot
+as draft → approved, or as a mid-cycle agenda recompile. Neither fits here. Nothing was up for approval, no
+agenda was recompiled, and two meetings four weeks apart rotated in the same publish. The replacements read
+the same where we quote them: "Agenda Item Number 14 not heard and deferred to a date uncertain" and
+"MOTION PASSED: 5-0-2, Lu, Reckdahl Recused". The cause is unknown, and none was inferred.
+
+- **Don't exempt a citation from the rot sweep because it points at an approved record.** Signed minutes can
+  rotate too. The sweep has to cover every cited compiled-document id, not only drafts.
+- **Check the replacement against the quoted text before repointing.** A new id under the same template is
+  probably the same document, but "probably" is a claim. Read the sentence the site quotes.
+- Instrument note: in zsh, `R="--resolve host:443:ip"; curl $R …` passes one argument and curl rejects it
+  as an unknown option. The LegInfo `--resolve` recipe (8/31) needs a bash array or an inline flag.

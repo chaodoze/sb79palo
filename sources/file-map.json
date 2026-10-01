@@ -6,16 +6,16 @@
       "title": "Council watch — pending Palo Alto City Council decisions",
       "url": "https://sb79.numtot.org/council-watch.html",
       "category": "site",
-      "content_hash": "610ead074b7795c365ba82b9c4de8b2fc6d41c6858e4f049ab72a85f5f1dd3ca",
-      "openai_file_id": "file-1frwDnenPEpcowEUBzNFkX"
+      "content_hash": "62ad50f7b35bb5170d25dbf2c757d95f56bedb8e7fe21ea2f610e4979a8c4fc3",
+      "openai_file_id": "file-HtRh9xjBgYiduPRoZf6KuU"
     },
     "site-index": {
       "id": "site-index",
       "title": "SB 79 Palo Alto — homepage",
       "url": "https://sb79.numtot.org/",
       "category": "site",
-      "content_hash": "9f049c4d69c74f92c7f955d513511e4a0a32dfdef4706809eca5f643ef25376a",
-      "openai_file_id": "file-ESGdoMHccnKJyy7QYfFPJv"
+      "content_hash": "84288962f056a20c00c2823c8e0854ccf8df661ba9b233ccb8a786a083f924f4",
+      "openai_file_id": "file-EZzTjzEq3o3VuctpzNsvq6"
     },
     "site-learn": {
       "id": "site-learn",
@@ -86,8 +86,8 @@
       "title": "Primary sources index (editorial master list)",
       "url": "https://github.com/chaodoze/sb79palo/blob/main/PRIMARY-SOURCES.md",
       "category": "site",
-      "content_hash": "6a90c45ea7448fe9a34beb46efdb91729b104dbded14e4eec8192f4bc58877a0",
-      "openai_file_id": "file-6prEyw7fGzfybpK5FRGXQw"
+      "content_hash": "7a4f7b31292ab21380a2ad4329d2b95745af5f318f3e859d410ef0f77c5cd2ee",
+      "openai_file_id": "file-TJ9TQ4wv4EFkxGf5CTdc47"
     },
     "statute-leginfo-nav": {
       "id": "statute-leginfo-nav",

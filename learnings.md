@@ -3741,3 +3741,18 @@ the same where we quote them: "Agenda Item Number 14 not heard and deferred to a
   probably the same document, but "probably" is a claim. Read the sentence the site quotes.
 - Instrument note: in zsh, `R="--resolve host:443:ip"; curl $R …` passes one argument and curl rejects it
   as an unknown option. The LegInfo `--resolve` recipe (8/31) needs a bash array or an inline flag.
+
+## 2026-10-02 — The rot sweep only covers `main`; an open PR's citation died before merge
+
+Council 10/5 (meeting 2904) was recompiled on 10/1 at 22:20. The Agenda went **21610 → 21673** and the Packet
+**21612 → 21675**. Nothing on `main` cited either old id, so the daily rot check (`grep` over the working tree)
+came back clean. **PR #39 cited both**, in a `PRIMARY-SOURCES.md` row that has been waiting for review since
+9/25. Merged as-is, it would have shipped two links that return the 1,101-byte "Document Not Found" page at
+HTTP 200. Flagged on the PR with the replacement ids. The new packet carries the same quoted work-plan text.
+
+- **Grep every open PR's diff for removed ids, not just the working tree:**
+  `for b in $(gh pr list --json headRefName -q '.[].headRefName'); do git diff origin/main...origin/$b | grep -oE 'CompiledDocument/[0-9]+'; done`.
+  Open auto-PRs can wait for review for weeks, and that's long enough for PrimeGov to rotate what they cite.
+- **Pre-meeting recompiles are routine.** A packet for a meeting that is days away will usually change id at
+  least once before the meeting. A PR that cites an upcoming meeting's compiled document should prefer the
+  stable `meetingTemplateId` link (unchanged here: 19168), and give the compiled id as "as of <date>".

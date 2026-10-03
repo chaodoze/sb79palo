@@ -3756,3 +3756,23 @@ HTTP 200. Flagged on the PR with the replacement ids. The new packet carries the
 - **Pre-meeting recompiles are routine.** A packet for a meeting that is days away will usually change id at
   least once before the meeting. A PR that cites an upcoming meeting's compiled document should prefer the
   stable `meetingTemplateId` link (unchanged here: 19168), and give the compiled id as "as of <date>".
+
+## 2026-10-03 — LegInfo's keyword search sometimes returns an empty result page; one empty answer isn't a negative
+
+The daily per-section bill watch (`billSearchClient.xhtml?keyword=65912.155` … `.162`) returned **4 bills
+instead of the known 7**. `65912.157` came back with **zero** `bill_id=` hits, though SB 722 and SB 1361
+both amend that exact section. The empty pages were normal size (~131 KB, HTTP 200), with no error text and
+nothing to tell them apart from a genuine "no results". Re-running the same URLs returned all 7 bills on
+`.157` and `SB79` on `.155`, which had also come back empty on the first pass. On one retry `.155` went
+empty → `SB79` between two calls a minute apart. Nothing had changed. The search intermittently
+returns an empty result set.
+
+- **A section that drops to zero bills, or a known bill that vanishes from the union, is an instrument
+  reading until it reproduces.** Retry that section at least twice before you record a change. Compare the
+  **union across retries** with the known set (SB 79, SB 722, SB 1361, AB 1751, AB 2074, AB 2415, AB 2576
+  as of today).
+- Same family as the `pdftotext`-missing and unreadable-surface entries: an empty read licenses neither
+  "no new bills" nor "a bill was dropped".
+- **Same run, second near-miss:** a case-sensitive `count('mobilehome')` returned 0 on SB 1361's chaptered
+  text, which capitalizes "Mobilehome Residency Law". It nearly reported SB 722's §65912.157(h)(3) as
+  dropped. Grep statute text case-insensitively.

@@ -3776,3 +3776,24 @@ returns an empty result set.
 - **Same run, second near-miss:** a case-sensitive `count('mobilehome')` returned 0 on SB 1361's chaptered
   text, which capitalizes "Mobilehome Residency Law". It nearly reported SB 722's §65912.157(h)(3) as
   dropped. Grep statute text case-insensitively.
+
+## 2026-10-06 — A Palo Alto Council outcome was checkable the next morning from YouTube's auto-captions, before PrimeGov indexed the video
+
+Council 10/5 Item 10 (the PTC work plan behind PR #39) looked unverifiable the next day. Meeting 2904's
+recompiled agenda had **no `data-videolocation`**, no minutes were posted, and the video ran 4 h 51 m, past the
+transcriber's limit. But YouTube had already generated auto-captions. `uvx --python 3.12 yt-dlp@latest
+--js-runtimes node --skip-download --write-auto-subs --sub-langs en -o cc <url>` returned a 1.8 MB VTT in
+one second. The system yt-dlp on Python 3.9 failed with "The page needs to be reloaded", and without a JS
+runtime the extraction is degraded. Grepping the deduped captions for "item 10" / "work plan" and reading
+backward from "motion carries" found the call, the motion, the referral and the vote in minutes. No audio
+download and no Whisper cost.
+
+- **For PrimeGov cities on YouTube, try auto-captions before the clip-and-Whisper route (9/24).** It's
+  cheaper, and it works before the clerk adds item offsets.
+- **Captions don't give the tally of an electronic vote.** Palo Alto now votes by button, and "motion
+  carries" is all the audio says. A tally still comes from the minutes, so this is still a PR comment, not
+  a deploy.
+- Auto-captions misspell names ("Lowing", "Seagull"). Map them to the roster before quoting, and say the
+  source is machine captions.
+- Same run: LegInfo answered every request with a Cloudflare challenge page (403, ~5.9 KB). That isn't
+  the flaky empty search from 10/03. Record the LegInfo watch as **not performed**, not as "no change".

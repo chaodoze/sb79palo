@@ -3797,3 +3797,20 @@ download and no Whisper cost.
   source is machine captions.
 - Same run: LegInfo answered every request with a Cloudflare challenge page (403, ~5.9 KB). That isn't
   the flaky empty search from 10/03. Record the LegInfo watch as **not performed**, not as "no change".
+
+## 2026-10-08 — The 8/31 `--resolve` recipe fixes a local resolver fault; it isn't a way past LegInfo's Cloudflare challenge
+
+LegInfo answered every request with a Cloudflare "Just a moment" challenge (403, ~5.9–6.2 KB) for a **third
+straight run**, on the per-section keyword search and on bill-history pages, under Chrome, curl and Wget
+UAs alike. The `watch_next` note said "if it persists, try a browser route", and the run reached for the
+8/31 `--resolve leginfo…:443:<ip>` recipe. The permission layer blocked it as an access-control bypass.
+That was the right call.
+
+- **The 8/31 recipe repaired *our* broken stub resolver**: the name was fine in DNS and the server was
+  serving 200. Pinning an IP to get around a challenge the site is *deliberately* serving is a different
+  act, and it's out of bounds. The same goes for any other trick whose only purpose is to dodge the
+  challenge.
+- **Record the bill watch as NOT PERFORMED and hand it to a human.** The legitimate routes are a person
+  in a real browser (the challenge is meant for them), or official bulk data the Legislature publishes
+  for machine use. Ask before switching the watch to the bulk data. Don't improvise it mid-run.
+- Same rule as the CAPTCHA-gated Odyssey portal (8/29): an access control isn't an instrument fault.

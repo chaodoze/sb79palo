@@ -3814,3 +3814,20 @@ That was the right call.
   in a real browser (the challenge is meant for them), or official bulk data the Legislature publishes
   for machine use. Ask before switching the watch to the bulk data. Don't improvise it mid-run.
 - Same rule as the CAPTCHA-gated Odyssey portal (8/29): an access control isn't an instrument fault.
+
+## 2026-10-12 — Four PrimeGov instances, HCD and ABAG all refused at once; the cause was our egress, which had moved to Singapore
+
+All four PrimeGov calendar APIs (Palo Alto, San Carlos, Atherton, Redwood City) returned a Cloudflare
+"Attention Required" page (403, 4,547 B) in place of JSON. In the same minute, HCD's SB 79 page served
+a 403 "Site is down for maintenance" page, ABAG's PDF returned a Varnish 403 from a `cache-sin` edge,
+and LegInfo was still on its challenge. `https://www.cloudflare.com/cdn-cgi/trace` showed `colo=SIN loc=SG
+warp=off`: the Mac Mini's traffic was leaving through Singapore. paloalto.gov (sitemap 200, 1.1 MB),
+Legistar, CivicClerk and the press feeds were all fine.
+
+- **When several unrelated .gov surfaces fail at once, check our own egress before blaming the sites.**
+  The `cdn-cgi/trace` call costs one request and settles it.
+- **Don't let a failed sweep overwrite state.** `pg.py` read "0 meetings, 196 GONE" because JSON parsing
+  failed on the HTML. Writing that snapshot to `seen_meeting_docs` would have turned the next good run into
+  hundreds of false "NEW" meetings. Keep the previous snapshot and record the sweep as **NOT PERFORMED**.
+- Don't route around it. The network path is the machine owner's call. A geo or bot block is an access
+  control, the same as 10/08.

@@ -3831,3 +3831,21 @@ Legistar, CivicClerk and the press feeds were all fine.
   hundreds of false "NEW" meetings. Keep the previous snapshot and record the sweep as **NOT PERFORMED**.
 - Don't route around it. The network path is the machine owner's call. A geo or bot block is an access
   control, the same as 10/08.
+
+## 2026-10-13 — An ETag read off a 403 page is the error page's ETag; the 10/12 "MPO unchanged" was never checked
+
+The 10/12 run logged "MPO ETag `6acb126e-40f` is unchanged". The baseline in `state.json` is
+`"69c30846-28d4b"` (0x28d4b = 167,243 B, the 9-page PDF). `6acb126e-40f` is what HCD's **403 page** carries:
+0x40f = **1,039 B**, which is exactly the `content-length` of that 403 today. A `curl -I` header grep for
+`etag` doesn't look at the status line, so an error page's ETag was taken for the document's. The run
+didn't even compare it to the baseline. It just reported a token.
+
+- **Check the status line and the size before reading a validator.** An ETag, `last-modified` or hash is
+  evidence only when the response is a `200` of the expected type and roughly the expected size. If it
+  isn't, the check is **NOT PERFORMED**, whatever header comes back.
+- **Compare against the stored baseline value, not yesterday's log line.** A run-log token that has
+  drifted from `content_baselines` is a sign the instrument changed.
+- On a Nginx-style ETag, the part after the dash is the hex body length. That makes this kind of confusion
+  easy to spot.
+- So the MPO advisory has gone unchecked since the egress move (10/12, 10/13), and so have the HCD page and
+  ABAG. Re-baseline all three on the first run with working egress.

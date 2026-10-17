@@ -3849,3 +3849,22 @@ didn't even compare it to the baseline. It just reported a token.
   easy to spot.
 - So the MPO advisory has gone unchecked since the egress move (10/12, 10/13), and so have the HCD page and
   ABAG. Re-baseline all three on the first run with working egress.
+
+## 2026-10-17 — The rot sweep reads PR diffs, but a PR *comment* cited a pre-meeting packet that rotated
+
+The 10/09 comment on PR #39 cited Council 10/19 packet **21741** for the 10/5 draft minutes. On 10/15 PrimeGov recompiled
+meeting 2905 (21741 → **21815**), and 21741 now returns the 1,101 B "Document Not Found" page at HTTP 200. The 10/02 recipe
+(`git diff origin/main...origin/<branch>`) never sees comments, so nothing flagged it. It surfaced only because today's
+`documentList` diff listed 21741 as removed and the id was searched by hand. That was the first good-egress run since
+10/10.
+
+- **Include open-PR comments in the rot grep:** `gh pr view <n> --json comments -q '.comments[].body' | grep -oE 'CompiledDocument/[0-9]+'`.
+  The reviewer reads comments as evidence, and a dead id there sends them to an error page.
+- Same lesson as 10/02, one level down: a comment that cites an *upcoming* meeting's packet should give the stable
+  `meetingTemplateId` link and say the compiled id is "as of <date>".
+- Instrument note: a long sweep piped through `| tail -30` in a background job prints nothing until the job exits.
+  When the 10-minute background limit killed the Legistar sweep, every line of its output was lost, and the half-written
+  PDFs looked like corrupt files (`Invalid object in /Pages`). Write long sweeps to a file (`> out.txt`) and re-fetch any
+  file that fails to parse before calling it unreadable.
+- Egress came back (`colo=SJC loc=US`) after five days in Singapore, but LegInfo still served the Cloudflare challenge
+  (403, 5,915 B). So LegInfo's block, which began 10/06, before the egress move, isn't about where our traffic exits.

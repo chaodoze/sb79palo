@@ -3868,3 +3868,18 @@ meeting 2905 (21741 → **21815**), and 21741 now returns the 1,101 B "Document 
   file that fails to parse before calling it unreadable.
 - Egress came back (`colo=SJC loc=US`) after five days in Singapore, but LegInfo still served the Cloudflare challenge
   (403, 5,915 B). So LegInfo's block, which began 10/06, before the egress move, isn't about where our traffic exits.
+
+## 2026-10-19 — `python3 -I` hides the `pypdf` this file calls "installed"
+
+Today's run used `python3 -I` (isolated mode) to read downloaded PDFs, as the downloaded-file safety rule requires.
+`-I` turns off the user site-packages, and that's where `pypdf` lives on this Mac Mini. So `import pypdf` raised
+`ModuleNotFoundError`, and `pdftotext` is still missing (8/17). If the run had kept going, Council 10/5 Summary
+Minutes 21829 (19 pp.) could have been logged as "unreadable", or its zero SB 79 hits read as a real result.
+
+- **Recipe:** `uv run -q --no-project --with pypdf python -I <script.py> <file.pdf>`. That gets isolation *and* the
+  library, with the script kept outside the download directory. It extracted 50,335 characters from 21829.
+- An import error is the instrument failing, not the document. Same family as 8/17: never record a PDF's grep count
+  until the extraction has printed a non-zero character count.
+- Side note: `Public/CompiledDocument/<id>` serves the "Document Not Found" page for **type-3 HTML Agenda** ids
+  (21814) as well as for dead ids. That's the 8/14 rule again: grep the type-1 PDF agenda (21810) instead, and don't
+  record a type-3 miss as rot.

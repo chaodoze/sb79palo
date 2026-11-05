@@ -3883,3 +3883,19 @@ Minutes 21829 (19 pp.) could have been logged as "unreadable", or its zero SB 79
 - Side note: `Public/CompiledDocument/<id>` serves the "Document Not Found" page for **type-3 HTML Agenda** ids
   (21814) as well as for dead ids. That's the 8/14 rule again: grep the type-1 PDF agenda (21810) instead, and don't
   record a type-3 miss as rot.
+
+## 2026-11-05 — The Legistar sweep stalls on serial attachment downloads; one slow file ate the whole tool window
+
+The 11/04 run killed `lg.py` after 30+ minutes, and today's run hit the same thing. The script downloads every item
+attachment one at a time, and a single slow Granicus file can sit until its `--max-time` runs out. Sunnyvale Council
+11/10 (event 4528) has 29 attachments. The serial loop was still on file 24 when the 10-minute background limit hit.
+In parallel, the last five finished in under 30 seconds. A sweep that gets killed mid-event prints nothing for that
+event, so "no hits" and "never read" look the same in the output.
+
+- **Recipe:** list the event's items and attachment URLs first, then fetch them in parallel (`curl … &` + `wait`), then
+  grep. Count downloaded files against the URL list before you record a zero.
+- Check the background-task output for the last event the script actually printed. If an event in the
+  modified-since list is missing from it, sweep that event separately, as was done for 4528 today.
+- pypdf can also fail on one page or one file ("Reached maximum number of tokens per stream" on San Carlos 18158
+  p. 79; "Stream has ended unexpectedly" on Sunnyvale 4528 Policy 7.2.20). Check what the failed page or file is (here,
+  a lease exhibit photo and a duplicate policy PDF) before calling the document clean.

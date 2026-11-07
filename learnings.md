@@ -3899,3 +3899,22 @@ event, so "no hits" and "never read" look the same in the output.
 - pypdf can also fail on one page or one file ("Reached maximum number of tokens per stream" on San Carlos 18158
   p. 79; "Stream has ended unexpectedly" on Sunnyvale 4528 Policy 7.2.20). Check what the failed page or file is (here,
   a lease exhibit photo and a duplicate policy PDF) before calling the document clean.
+
+## 2026-11-07 — The 11/05 Legistar fix was never applied: the run copied yesterday's serial script forward
+
+Today's run copied the previous day's `~/.cache/sb79-1106-run/*.py` into a new run directory, and `lg.py` was still the
+serial downloader that 11/05 recorded as the cause of the stall. It stalled again: eight events, 20+ minutes, and the
+waiter was killed at the 10-minute background limit. The 11/05 recipe was written in this file, but the script lives
+in a per-run cache directory outside the repo, so the fix never landed anywhere the next run would pick it up.
+
+- A recipe kept only in `learnings.md` does not change a script that each run copies forward. Before reusing a cached
+  run script, check it against the latest learnings entry for that sweep. Or move the sweep into the repo
+  (`.claude/skills/sb79-update-scan/scripts/`), so the fix is made once.
+- **pymupdf reads what pypdf can't.** After a 900-second parallel re-fetch, three files still failed in pypdf
+  ("Reached maximum number of tokens per stream" / "Stream has ended unexpectedly"): MV 3368 project plans (35 MB) and
+  Sunnyvale 4415 plan sets (520 and 363 pp.). `uv run -q --with pymupdf python -I …` extracted 53 K–1.5 M characters
+  from each. Use it as the second extractor before calling a file unreadable.
+- Two "PDFs" that failed were Legistar `LegislationDetail` **HTML** pages (MV 3368 Atts 6 and 10). Run `file` on the
+  download before blaming the parser, and grep the HTML.
+- The 84 MB MV Climate Forward plan (3368 Att 26), which 11/06 left "truncated, unchecked", read cleanly with a
+  900-second timeout: 300 K characters, zero SB 79 hits.

@@ -3918,3 +3918,21 @@ in a per-run cache directory outside the repo, so the fix never landed anywhere 
   download before blaming the parser, and grep the HTML.
 - The 84 MB MV Climate Forward plan (3368 Att 26), which 11/06 left "truncated, unchecked", read cleanly with a
   900-second timeout: 300 K characters, zero SB 79 hits.
+
+## 2026-11-14 — Legistar's "downloaded N/N" counted attempts, and four real PDFs came back as 1,245-byte HTML
+
+Mountain View Council 11/17 (Legistar event 3369) was re-modified today, so `lg.py` swept it again. It printed
+`downloaded 52/52 urls`, but four `legistar1.granicus.com/mountainview/attachments/<guid>.pdf` files had been saved as a
+**1,245-byte XHTML error page**: 6.3 ATT 15 Public Comment, 6.3 Council Report, 4.3 ATT 1 and the 4.7 Council Report.
+pypdf rejected them as "invalid pdf header" (stderr only), and the hit list silently left them out. ATT 15 carried
+**4 SB 79 hits** in yesterday's sweep, so a reader of today's output would have concluded those hits were gone. A
+plain retry a few minutes later returned `200 application/pdf` at full size for all four (514 KB to 11.8 MB), and the
+hits were unchanged.
+
+- The 11/05 rule ("count downloaded files against the URL list") was implemented as a count of *curl jobs*, which is
+  always N/N. Count **files that start with `%PDF`** (or are a known non-PDF type) instead, and retry the rest before
+  grepping.
+- Same 1.1 KB-HTML-on-a-200 shape as PrimeGov's "Document Not Found" (8/14), but on Granicus and **transient**. So a
+  tiny HTML body there means retry, not link rot. Only call it rot if the retry fails too.
+- A hit that disappears between two sweeps of the same, unchanged attachment is an instrument failure until proven
+  otherwise. Diff the per-file hit list against the previous run's.

@@ -3936,3 +3936,22 @@ hits were unchanged.
   tiny HTML body there means retry, not link rot. Only call it rot if the retry fails too.
 - A hit that disappears between two sweeps of the same, unchanged attachment is an instrument failure until proven
   otherwise. Diff the per-file hit list against the previous run's.
+
+## 2026-11-17 — A browser user-agent made 16 touched paloalto.gov pages read as "0 SB 79", and one of them was the finding
+
+The `paloalto.gov` sitemap touched 16 pages on 11/16. The first pass grepped them with a Chrome UA (copied from the
+press script) and printed `0 hits` for all 16 at **~280 characters each**. Those were Akamai's "Access Denied" 403
+pages, not the city's. PRIMARY-SOURCES has said since 2026-08-12 that paloalto.gov **blocks browser-shaped UAs and
+allows plain `curl`**. A plain-curl refetch returned 200 at 270–360 KB for all 16. One of them, **2455 El Camino Real**,
+is the city's first project page for a July SB 79 filing (26PLN-00328, "Major AR submittal 10/21/2026") → PR #44.
+
+- `misc.py` lists touched URLs but does not fetch them. The fetch was improvised each day, so the UA rule lived in a doc
+  and not in code. Fetch touched pages inside `misc.py` with curl's default UA, and print the HTTP status and byte
+  count beside each hit count.
+- **A grep result on a body under ~1 KB is not a result.** Treat it as a failed fetch, the same as Legistar's
+  1,245-byte HTML (11/14) and PrimeGov's 1.1 KB "Document Not Found" (8/14).
+- Earlier logs that say "N touched, zero SB 79" for paloalto.gov pages (e.g. 11/14: 14 touched, incl. the 531
+  Stanford project page) may share this flaw. Their status codes weren't recorded. Re-check any touched
+  `/Current-Planning/Projects/` page from those runs before treating it as clean.
+- Project pages are a primary-record surface the sweep was not watching for. List
+  `/Current-Planning/Projects/` URLs from the sitemap each run and diff them against the last run.

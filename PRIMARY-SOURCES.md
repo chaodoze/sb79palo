@@ -97,6 +97,32 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
   page text carries **zero** "SB 79" occurrences and none of the four plan sets has been read.* The
   SB 79 alternative is documented in the PTC staff report (below), not here.
   https://www.paloalto.gov/Departments/Planning-Development-Services/Current-Planning/Projects/332-Forest-Avenue
+- **2455 El Camino Real — the city's own project page** (sitemap `lastmod` **2026-11-16T18:34:29Z**;
+  fetched 200 with plain curl UA 2026-11-17; not in Wayback). **The first city document this index
+  holds for any of the nine July 1–15 window filings beyond the 8/04 summary table.** Verbatim:
+  "**Application # 26PLN-00328** — Request for a multi-family housing development project **under SB
+  79 and the state density bonus law** to demolish existing commercial buildings and construct a new
+  six story residential building with **76 rental units** at a maximum height of **65 feet**. The new
+  building will have **two below grade levels of parking**, tenant amenities spaces, and a roof top
+  terrace." Zoning: CC(2) + TOD combining district. Environmental assessment: Pending. Planner:
+  Steven Switzer. One link: **Cycle 1 Plans** (PDF, 84 MB, 52 sheets, OTJ Architects for Bayhill
+  Ventures; PDF created 2026-10-21, modified 10-28), every sheet stamped **"MAJOR AR SUBMITTAL
+  10/21/2026"**. Sheet G0-001 (read): APN 124-33-008; parcel 16,500 SF (survey) / 16,501 SF (GIS);
+  "FAR ALLOWED\*: 6.00 · FAR PROPOSED\*: 5.93 · DENSITY ALLOWED: 38 UNITS (100 UNITS PER ACRE) ·
+  DENSITY PROPOSED\*: 76 UNITS — \***PURSUANT TO SB 79 (CAL GOVT CODE SEC 65912.157(A)(4)(C)) & 100%
+  DENSITY BONUS PURSUANT TO STATE DENSITY BONUS (CAL GOVT CODE SEC 65915)**." G0-002: unit total 76
+  (19 studios / 32 one-bed / 25 two-bed by the per-floor tallies; BMR diagram shows 50%-AMI and
+  120%-AMI units, count not extracted). G0-003/004 planning-code notes are image-only, unread.
+  ⚠️ **Differences from the 7/06 press accounts** (below): press gave the mix as 48 one-bed / 23
+  two-bed / 5 studios and parking as basement + ground level, 152 spaces; the city page says two
+  below-grade levels; the mix in these plans differs. ⚠️ **Not established:** (1) that 26PLN-00328 is
+  the *formal* application the city's 8/04 statement says must follow each pre-application within
+  180 days (SB 330) — the "Major AR" label and the high 2026 sequence number (26PLN-00229 is a page
+  dated 11/04) point that way, but neither the page nor the plans say so; (2) the filing date the city
+  recorded; (3) whether the city accepts the full-SB 79 basis (the applicant's claim, vs the city's
+  1.5–2.25 interim FAR). ⚠️ The §65912.157(a)(4)(C) pin cite is the applicant's, not checked against
+  codified text (LegInfo still blocked). Routed to **PR (2026-11-17)**.
+  https://www.paloalto.gov/Departments/Planning-Development-Services/Current-Planning/Projects/2455-El-Camino-Real
 
 > **⚠️ Fetching paloalto.gov — send an honest CLI user-agent, not a browser one.** Corrected
 > 2026-08-12, reversing the standing advice. The domain sits behind Akamai, which **allows**

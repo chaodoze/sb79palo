@@ -3955,3 +3955,19 @@ is the city's first project page for a July SB 79 filing (26PLN-00328, "Major AR
   `/Current-Planning/Projects/` page from those runs before treating it as clean.
 - Project pages are a primary-record surface the sweep was not watching for. List
   `/Current-Planning/Projects/` URLs from the sitemap each run and diff them against the last run.
+
+## 2026-11-21 — Two runs held the PTC 11/18 video id in their own data and never wrote it down
+
+`watch_next.pa-ptc-1118` said: *"Next run: get videoUrl from 3085 agenda page; outcome is tier (a)."* The 11/19 and
+11/20 runs both saved `pg_palo-alto.json` with `"videoUrl": "qrzuapADSJI"` on meeting 3085. But `pg.py` prints a
+meeting only when its **document set** changes, and 3085's set didn't change. So neither run surfaced the video, and the
+instruction went unread for two days. Today's run identity-checked it against agenda page template 20395 (YouTube
+title "Planning & Transportation Commission Meeting - November 18, 2026", 3 h 40 m) and commented it on PR #43.
+
+- **A `watch_next` entry that says "next run: do X" is an instruction, not background.** Before the sweep, grep
+  `watch_next` for "Next run" / "After <date>" entries whose date has passed, and do them or carry them forward on purpose.
+- `pg.py` should print `videoUrl` for any meeting whose `dateTime` is in the past and whose id appears in `watch_next`,
+  whether or not its documents changed. A video posting is an event, even with no new documents.
+- Repeat of 10/19: the copied-forward `lg.py` was launched with bare `python3 -I` and died on `import pypdf`. The
+  recipe (`uv run -q --no-project --with pypdf --with pymupdf python -I …`) belongs in the launch command that gets
+  copied, not only in this file.

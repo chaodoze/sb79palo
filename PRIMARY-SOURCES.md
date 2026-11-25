@@ -97,6 +97,33 @@ Running list of authoritative source material for the SB 79 / Palo Alto coverage
   page text carries **zero** "SB 79" occurrences and none of the four plan sets has been read.* The
   SB 79 alternative is documented in the PTC staff report (below), not here.
   https://www.paloalto.gov/Departments/Planning-Development-Services/Current-Planning/Projects/332-Forest-Avenue
+- **450 Lytton Avenue (City-owned surface Lot T): Council 11/30 Item 13 staff report #2604-6324**
+  (PrimeGov meeting **3142**, City Council Special Meeting **Mon 2026-11-30**, 5:30 PM; Agenda
+  **22095**, Packet **22102**, 950 pp., published 2026-11-20; Item 13 staff report = packet
+  pp. 699–711, Attachment C Zoning Consistency pp. ~731–733, Attachment F applicant letter
+  pp. ~762–767; text extracted with pypdf and read 2026-11-20). **Application 26PLN-00016**, Alta
+  Housing + City: six stories, ~76,560 SF, **72 units, 100% affordable** (33 ELI / 10 VLI / 28 LI +
+  1 manager), 0.43 acre, zoned **PF**, "within 0.4 miles of the Palo Alto Caltrain Station." Council
+  is asked to approve the Streamlined Housing Development Review (Director referred it up because
+  the land is City-owned and City-funded), a **$5.5 M** loan and a ground-lease option; AB 130
+  tolling agreement requires a decision **by 2026-12-31**. **The SB 79 sentence (p. 705), verbatim:**
+  "Although Council adopted modifications to upzone most parcels within 0.5 miles of a major transit
+  stop, and therefore the full allowances under SB 79 do not currently apply to those parcels, **SB 79
+  development standards apply to all City-owned parcels within 0.5 miles of transit.**" Staff then
+  apply a **65 ft** SB 79 height (0.25–0.5 mi of a Tier 1 stop; the footnote cites §65912.156(n)) plus
+  the 100%-affordable **+33 ft / three stories** under §65915(d)(2)(D); project is 62 ft roof /
+  66.5 ft parapet / 72 ft stair. Attachment C table: "Maximum Floor Area Ratio **3.0:1** (Housing
+  development project pursuant to SB 79)", proposed FAR 3.89 with an 88.75% density bonus; seven
+  SDBL concessions (zero setbacks, lot coverage 30%→93%, no upper-floor stepbacks). Attachment F
+  footnote 5 (Alta's attorney): "**City Staff assert** that this Project is eligible for entitlement
+  under SB 79." ⚠️ **Not established:** (1) *why* City-owned parcels fall outside the June 15 interim
+  rules. Staff give no ordinance section, and the site currently says "everything else near the
+  stations gets half of SB 79's building size"; check the adopted TOD Combining District text for a
+  PF or public-land carve-out before changing that sentence. (2) The 3.0 FAR and 65 ft figures are
+  staff's, not checked against codified §65912.157 (LegInfo still blocked). (3) **Nothing has been
+  decided.** This is a scheduled 11/30 public hearing (notice in the Daily Post 11/20). The outcome
+  needs the 11/30 video or minutes. Routed to **PR (2026-11-20)**.
+  https://cityofpaloalto.primegov.com/Public/CompiledDocument/22102
 
 > **⚠️ Fetching paloalto.gov — send an honest CLI user-agent, not a browser one.** Corrected
 > 2026-08-12, reversing the standing advice. The domain sits behind Akamai, which **allows**
